@@ -10,7 +10,7 @@ class Randomize
 {
 public:
     Randomize();
-
+    Randomize(unsigned int seed);
     bool choice(float probability);
     NodeT randomElement(vector<NodeT> a);
     Edge randomElement(vector<Edge> a);

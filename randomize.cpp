@@ -6,6 +6,9 @@ using namespace std;
 Randomize::Randomize() : m_rgen(m_rseed())
 {
 }
+Randomize::Randomize(unsigned int seed) : m_rgen(seed)
+{
+}
 bool Randomize::choice(float probability)
 {
     std::uniform_int_distribution<int> idist(0,10000);

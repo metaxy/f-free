@@ -3,10 +3,11 @@ require 'date'
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
 $FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random2", "random2 --rounds 5", "random2 --rounds 10"]
+$PROGS = ["random --rounds 10", "random2 --rounds 10"]
 $f = nil
+$SEED = "5489"
 def run_prog(name, input, forbidden, timeout)
-  ret = `timeout #{timeout}s  #{$BIN_PATH}/ffree_#{name} --input #{input} --forbidden #{forbidden}`
+  ret = `timeout #{timeout}s  #{$BIN_PATH}/ffree_#{name} --input #{input} --forbidden #{forbidden} --seed #{$SEED}`
   return ret
 end
 
@@ -31,6 +32,8 @@ def main()
   
   quality = Hash.new
   count = Hash.new
+  time = Hash.new
+  failed = Hash.new
   entries_size = entries.size
   current_file = 0
   entries.each do |graph|
@@ -65,14 +68,19 @@ def main()
       if(quality[prog].nil?)
         quality[prog] = 0.0
         count[prog] = 0
+        time[prog] = 0
+        failed[prog] = 0
       end
       quality[prog] += qual
       count[prog] += 1
+      failed[porg] += (k == -1)
+      time[prog] += diff
       putf "#{prog};#{graph};#{k},#{kcorrect};#{diff}s;#{qual}"
     end
   end
   $PROGS.each do |prog|
-    putf "#Quality of #{prog}: #{(quality[prog]/count[prog].to_f)*100}%"
+    putf "#Quality of #{prog}: #{(quality[prog]/count[prog].to_f)*100}% failed: #{failed[porg]}"
+    putf "#Mean Time of #{prog}: #{(time[prog]/count[prog].to_f)*100}%"
   end
   putf "#End Time: #{Time.now.to_s}"
 end
