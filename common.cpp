@@ -10,9 +10,9 @@ Common::Common()
 }
 
 
-Graph Common::graphFromStdin()
+GGraph Common::graphFromStdin()
 {
-    Graph g;
+    GGraph g;
     string line, node1, node2;
     while (getline(cin, line))
     {
@@ -32,9 +32,9 @@ Graph Common::graphFromStdin()
     }
     return g;
 }
-Graph Common::graphFromFile(string fileName)
+GGraph Common::graphFromFile(string fileName)
 {
-    Graph g;
+    GGraph g;
     string line, node1, node2;
     std::ifstream infile(fileName);
     while (std::getline(infile, line))

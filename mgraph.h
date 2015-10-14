@@ -8,7 +8,7 @@ class MGraph
 public:
     MGraph();
     MGraph(int nodeCount);
-    MGraph(Graph input);
+    MGraph(GGraph input);
     MGraph(MGraph *copy);
     MGraph(const MGraph &copy);
     ~MGraph();
@@ -58,10 +58,10 @@ public:
     set<NodeT> costlyNeighborhood(NodeT node, int maxCost) const;
     set<NodeT> closedCostlyNeighborhood(NodeT node, int maxCost) const;
 
-    vector<Subgraph> findInducedSubgraph(MGraph *g);
+    Subgraph findInducedSubgraph(MGraph *g);
    private:
     int m_nodeCount;
-    Graph m_input;
+    GGraph m_input;
     int absolut(NodeT u, NodeT v) const;
     int getWeight(NodeT x, NodeT y) const;
     

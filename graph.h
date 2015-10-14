@@ -34,14 +34,14 @@ public:
     }
 };
 
-class Graph
+class GGraph
 {
 public:
     int nodeCount;
     GEdge *firstEdge;
     GNode *firstNode;
 
-    Graph();
+    GGraph();
     void reset();
 	void intNodes(int n);
     int insertEdge(NodeT Node1, NodeT Node2);

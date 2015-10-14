@@ -12,8 +12,8 @@ class Common
 {
 public:
     Common();
-    Graph static graphFromStdin();
-    Graph static graphFromFile(string fileName);
+    GGraph static graphFromStdin();
+    GGraph static graphFromFile(string fileName);
 
     static void printMatrix(int **matrix, unsigned int size);
     static void printVector(int *vector, unsigned int size);

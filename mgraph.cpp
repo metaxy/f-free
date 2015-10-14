@@ -25,7 +25,7 @@ MGraph::MGraph(int nodeCount) : m_nodeCount(nodeCount)
        memset(m_matrix[i], -1, m_nodeCount * sizeof(NodeT));
     }
 }
-MGraph::MGraph(Graph input) : MGraph(input.nodeCount)
+MGraph::MGraph(GGraph input) : MGraph(input.nodeCount)
 {
     de("MGraph::Mgraph(Graph)");
     m_input = input;
