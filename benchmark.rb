@@ -11,6 +11,11 @@ def run_prog(name, input, forbidden, timeout)
 end
 
 def main()
+  if(`git status -s` != "")
+    puts "Please commit first"
+    exit
+  end
+  
   `cd $BIN_PATH && make`
   fileName = DateTime.now.strftime("benchmarks/bench_%Y_%m_%d__%H_%M_%S.txt")  
   
