@@ -15,8 +15,10 @@ Graph VF::createGraph(MGraph *input)
     for(int i = 0; i < input->nodeCount(); i++) {
         ed.InsertNode(NULL);
     }
-    for(const Edge e: input->edges()) {
+    for(const Edge e: input->connectedEdges()) {
+        //clog << e.first << e.second << endl;
         ed.InsertEdge(e.first, e.second, NULL);
+        //ed.InsertEdge(e.second, e.first, NULL);
     }
     Graph g(&ed);
     return g;
@@ -40,6 +42,7 @@ Subgraph VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
     int n;
     node_id ni1[MAXNODES], ni2[MAXNODES];
     if (!match(&s0, &n, ni1, ni2)) {
+        de("no match found");
         return ret;
     }
     map<NodeT, NodeT> mapping;
