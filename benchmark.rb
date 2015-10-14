@@ -73,7 +73,7 @@ def main()
       end
       quality[prog] += qual
       count[prog] += 1
-      failed[porg] += (k == -1)
+      failed[prog] += (k == -1)
       time[prog] += diff
       putf "#{prog};#{graph};#{k},#{kcorrect};#{diff}s;#{qual}"
     end
