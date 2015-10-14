@@ -77,6 +77,15 @@ void Common::printVector(int *vector, unsigned int size)
     clog << endl;
 #endif
 }
+void Common::printSubgraph(Subgraph *subgraph)
+{
+#ifdef _DEBUG
+    for(Edge e: *subgraph) {
+         clog << e.first  << "<->" << e.second << ",";
+    }
+    clog <<endl;
+#endif
+}
 
 map<string, string> Common::parseConfig(int argc, char* argv[])
 {
@@ -98,5 +107,14 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     /* 8. DONE */
     delete opt;
     return config;
+}
+
+string Common::dotColor(float id, int size)
+{
+    float hue_factor = 1 / (float)size;
+    float saturation = 1 - ((1 / (size)));
+    //return std::to_string(id*hue_factor) + " " +std::to_string((id % 10) *saturation) + " " + std::to_string(0.999);
+    return std::to_string((id+1)*hue_factor) + " " +std::to_string(0.99) + " " + std::to_string(0.999);
+
 }
 

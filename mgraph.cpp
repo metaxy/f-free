@@ -29,6 +29,9 @@ MGraph::MGraph(GGraph input) : MGraph(input.nodeCount)
 {
     de("MGraph::Mgraph(Graph)");
     m_input = input;
+    for (GEdge *e = input.firstEdge; e != NULL; e = e->next) {
+        this->addEdge(e->toEdge());
+    }
 }
 MGraph::MGraph(MGraph *copy)
 {
@@ -367,9 +370,9 @@ void MGraph::printMatrix() const
     #endif
 }
 
-string MGraph::printGraph()
+string MGraph::printGraph(vector<Subgraph> highlight)
 {
-    #ifdef _DEBUG
+    //#ifdef _DEBUG
     string ret = "digraph G {\n";
     ret += "edge [dir=none]\n";
     for(int x = 0; x < m_nodeCount; x++) {
@@ -378,28 +381,43 @@ string MGraph::printGraph()
 
         for(int y = x+1; y < m_nodeCount; y++) {
             if(!isDeleted(y) && connected(x,y)) {
-                ret += "" +  m_input.getNodeByInt(x) + " -> " +  m_input.getNodeByInt(y) + " [label=\""+std::to_string(m_matrix[x][y]) + "\"";
+                ret += "" +  m_input.nodeName(x) + " -> " +  m_input.nodeName(y) + " [label=\""+std::to_string(m_matrix[x][y]) + "\"";
+                for(int i = 0; i < highlight.size(); i++) {
+                    bool found = false;
+                    for(Edge e : highlight[i]) {
+                        if((e.first == x && e.second == y) || (e.first == y && e.second == x)) {
+                            ret += ",color=\"" + Common::dotColor(i, highlight.size()) + "\"";
+                            clog << "found " << "i = " << i << " of " << highlight.size() << endl;
+                            found = true;
+                            break;
+                        }
+                    }
+                    if(found) break;
+                }
                 ret += "];\n";
             }
         }
     }
     ret += "\n}\n";
     return ret;
-    #endif
+    //#endif
 }
 
 
-void MGraph::writeGraph(string fileName)
+
+
+void MGraph::writeGraph(string fileName, vector<Subgraph> highlight)
 {
-    #ifdef _DEBUG
+    //#ifdef _DEBUG
+    de("write graph");
     std::ofstream fout(fileName+".dot");
-    fout << printGraph();
+    fout << printGraph(highlight);
     fout.close();
     std::stringstream stream;
     stream << "dot -Tpng \"" << fileName << ".dot\" -o \"" << fileName << ".png\"";
     system(stream.str().c_str());
-    remove((fileName+".dot").c_str());
-    #endif
+    //remove((fileName+".dot").c_str());
+   // #endif
 }
 
 int MGraph::mergeCost(NodeT u, NodeT v) const
@@ -418,14 +436,6 @@ int MGraph::mergeCost(NodeT u, NodeT v) const
 int MGraph::mergeCost(Edge e) const
 {
     return mergeCost(e.first,e.second);
-}
-
-Subgraph MGraph::findInducedSubgraph(MGraph *g)
-{
-    Subgraph needle = g->edges();
-    Subgraph haystack = this->edges();
-
-
 }
 
 

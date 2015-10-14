@@ -42,8 +42,8 @@ public:
     void normalize();
 
     void printMatrix() const;
-    string printGraph();
-    void writeGraph(string fileName);
+    string printGraph(vector<Subgraph> highlight);
+    void writeGraph(string fileName, vector<Subgraph> highlight);
 
     int mergeCost(NodeT u, NodeT v) const;
     int mergeCost(Edge e) const;

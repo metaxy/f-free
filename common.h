@@ -1,7 +1,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-//#define _DEBUG
+#define _DEBUG
 #include "graph.h"
 #include <cstring>
 #include <tuple>
@@ -18,7 +18,10 @@ public:
     static void printMatrix(int **matrix, unsigned int size);
     static void printVector(int *vector, unsigned int size);
 
+    static void printSubgraph(Subgraph *subgraph);
+
     static map<string, string> parseConfig(int argc, char* argv[]);
+    static string dotColor(float id, int size);
 
 };
 
