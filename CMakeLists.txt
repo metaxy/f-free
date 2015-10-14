@@ -14,6 +14,7 @@ set( ffree_SRCS
 
     state.cpp
     state_random.cpp
+    state_random2.cpp
 )
 
 set( vflib_SRCS
@@ -87,3 +88,10 @@ target_link_libraries(
     ffree_random
     ${ffree_LIBS}
 )
+add_executable(ffree_random2 ${ffree_SRCS} main_random2.cpp)
+
+target_link_libraries(
+    ffree_random2
+    ${ffree_LIBS}
+)
+

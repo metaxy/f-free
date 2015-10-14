@@ -10,7 +10,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/easy/k_003_n_038.txt";
+        fileName = "../model/easy/k_005_n_047.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
@@ -75,4 +75,29 @@ MGraph State::solveMultiple(int count)
     bestSolved.printEdges(bestEdges);
     //bestSolved.writeGraph("solved");
     return bestSolved;
+}
+
+double State::getDouble(const string &name, double def)
+{
+    auto iter = m_config.find(name);
+    if(iter != m_config.end()) {
+        std::istringstream i(iter->second);
+        double x;
+        if (!(i >> x))
+            return def;
+        return x;
+    }
+    return def;
+}
+int State::getInt(const string &name, int def)
+{
+    auto iter = m_config.find(name);
+    if(iter != m_config.end()) {
+        std::istringstream i(iter->second);
+        int x;
+        if (!(i >> x))
+            return def;
+        return x;
+    }
+    return def;
 }

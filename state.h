@@ -17,7 +17,8 @@ protected:
     Config m_config;
     MGraph m_input;
     vector<MGraph> m_forbidden;
-
+    double getDouble(const string &name, double def);
+    int getInt(const string &name, int def);
 
 private:
     MGraph getInput();

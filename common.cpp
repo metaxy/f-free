@@ -107,6 +107,8 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     opt->setOption( "input", 'i' );
     opt->setOption( "forbidden", 'f' );
     opt->setOption( "seed" );
+    opt->setOption( "rounds" );
+    opt->setOption( "random2_subgraph_batch" );
 
     /* go through the command line and get the options  */
     opt->processCommandArgs( argc, argv );
@@ -118,6 +120,12 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     }
     if( opt->getValue( "forbidden" ) != NULL) {
         config["forbidden"] = opt->getValue( "forbidden" );
+    }
+    if( opt->getValue( "rounds" ) != NULL) {
+        config["rounds"] = opt->getValue( "rounds" );
+    }
+    if( opt->getValue( "random2_subgraph_batch" ) != NULL) {
+        config["random2_subgraph_batch"] = opt->getValue( "random2_subgraph_batch" );
     }
     /* 8. DONE */
     delete opt;
@@ -155,4 +163,29 @@ vector<string> Common::listFiles(string path)
 Edge Common::transformEdge(const Edge &e, NodeMapping *mapping)
 {
     return Edge(mapping->at(e.first), mapping->at(e.second));
+}
+
+double Common::getDouble(Config *m_config, const string &name, double def)
+{
+    auto iter = m_config->find(name);
+    if(iter != m_config->end()) {
+        std::istringstream i(iter->second);
+        double x;
+        if (!(i >> x))
+            return def;
+        return x;
+    }
+    return def;
+}
+int Common::getInt(Config *m_config, const string &name, int def)
+{
+    auto iter = m_config->find(name);
+    if(iter != m_config->end()) {
+        std::istringstream i(iter->second);
+        int x;
+        if (!(i >> x))
+            return def;
+        return x;
+    }
+    return def;
 }

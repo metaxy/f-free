@@ -1,0 +1,12 @@
+#ifndef STATE_RANDOM2_H
+#define STATE_RANDOM2_H
+#include "state.h"
+class StateRandom2 : public State
+{
+public:
+    StateRandom2(Config conf);
+
+    MGraph solveSingle(MGraph input, MGraph forbidden);
+};
+
+#endif // STATE_RANDOM_H

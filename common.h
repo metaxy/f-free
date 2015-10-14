@@ -29,7 +29,8 @@ public:
 
     static vector<string> listFiles(string path = ".");
     static  Edge transformEdge(const Edge &e, NodeMapping *mapping);
-
+    static double getDouble(Config *m_config, const string &name, double def);
+    static int getInt(Config *m_config, const string &name, int def);
 };
 
 template <typename T> int sgn(T val) {
