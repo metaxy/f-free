@@ -72,7 +72,6 @@ bool subgraphIsoAllVisitorCap(int n, node_id ni1[], node_id ni2[], void *usr_dat
     }
     subgraphIsoData->push_back(mapping);
     // Return false to search for the next matching
-    clog << subgraphIsoData->capacity() << subgraphIsoData->size() << (subgraphIsoData->capacity() >= (subgraphIsoData->size() - 1)) << endl;
     return subgraphIsoData->capacity() >= (subgraphIsoData->size() - 1);
 }
 vector<NodeMapping> VF::subgraphIsoAll(MGraph *haystack, MGraph *needle)

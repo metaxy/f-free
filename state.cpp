@@ -1,5 +1,5 @@
 #include "state.h"
-
+#include <sstream>
 State::State(Config conf) : m_config(conf)
 {
     m_input = this->getInput();
