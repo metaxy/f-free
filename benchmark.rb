@@ -6,6 +6,7 @@ $FORBIDDEN = "./forbidden/cluster"
 $PROGS = ["random --rounds 10", "random2 --rounds 10"]
 $f = nil
 $SEED = "5489"
+$MAX_TIME=2
 def run_prog(name, input, forbidden, timeout)
   ret = `timeout #{timeout}s  #{$BIN_PATH}/ffree_#{name} --input #{input} --forbidden #{forbidden} --seed #{$SEED}`
   return ret
@@ -47,7 +48,7 @@ def main()
     puts "# File #{current_file} of #{entries_size}"
     $PROGS.each do |prog|
       start = Time.now
-      ret = run_prog(prog, $INSTANCES+"/"+graph, $FORBIDDEN, 10)
+      ret = run_prog(prog, $INSTANCES+"/"+graph, $FORBIDDEN, $MAX_TIME)
       finish = Time.now
       if(ret.chomp == "")
         k = -1
@@ -81,7 +82,7 @@ def main()
     end
   end
   $PROGS.each do |prog|
-    putf "#Quality of #{prog}: #{(quality[prog]/count[prog].to_f)*100}% failed: #{failed[porg]}"
+    putf "#Quality of #{prog}: #{(quality[prog]/count[prog].to_f)*100}% failed: #{failed[prog]}"
     putf "#Mean Time of #{prog}: #{(time[prog]/count[prog].to_f)*100}%"
   end
   putf "#End Time: #{Time.now.to_s}"
