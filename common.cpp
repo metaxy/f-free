@@ -40,6 +40,10 @@ GGraph Common::graphFromFile(string fileName)
     GGraph g;
     string line, node1, node2;
     std::ifstream infile(fileName);
+    if(!infile) {
+        clog << "coud not read file " << fileName << endl;
+        exit(-1);
+    }
     while (std::getline(infile, line))
     {
         int i;
@@ -100,8 +104,8 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     opt->addUsage( "" );
     opt->addUsage( "" );
     opt->setFlag( "help", 'h' );
-    opt->setFlag( "input", 'i' );
-    opt->setFlag( "forbidden", 'f' );
+    opt->setOption( "input", 'i' );
+    opt->setOption( "forbidden", 'f' );
     opt->setOption( "seed" );
 
     /* go through the command line and get the options  */
@@ -111,6 +115,9 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     }
     if( opt->getValue( "input" ) != NULL) {
         config["input"] = opt->getValue( "input" );
+    }
+    if( opt->getValue( "forbidden" ) != NULL) {
+        config["forbidden"] = opt->getValue( "forbidden" );
     }
     /* 8. DONE */
     delete opt;
@@ -133,6 +140,10 @@ vector<string> Common::listFiles(string path)
     vector<string> files;
 
     dir = opendir(path.c_str());
+    if(!dir)  {
+        clog << "cloud not open " << path << endl;
+        exit(-1);
+    }
 
     while (pdir = readdir(dir)) {
         files.push_back(pdir->d_name);

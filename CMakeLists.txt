@@ -81,9 +81,9 @@ ADD_DEFINITIONS(
     -std=c++11
     -Ofast
 )
-add_executable(ffree ${ffree_SRCS} main.cpp)
+add_executable(ffree_random ${ffree_SRCS} main_random.cpp)
 
 target_link_libraries(
-    ffree
+    ffree_random
     ${ffree_LIBS}
 )

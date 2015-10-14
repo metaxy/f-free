@@ -37,8 +37,6 @@ Subgraph VF::createSubgraph(MGraph *needle, map<NodeT, NodeT> mapping)
 }
 NodeMapping VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
 {
-    de("subgraph iso one");
-
     Graph big = VF::createGraph(haystack);
     Graph small = VF::createGraph(needle);
 
@@ -47,7 +45,6 @@ NodeMapping VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
     int n;
     node_id ni1[MAXNODES], ni2[MAXNODES];
     if (!match(&s0, &n, ni1, ni2)) {
-        de("no match found");
         return mapping;
     }
     for(int i=0; i<n; i++) {

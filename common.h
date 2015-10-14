@@ -1,7 +1,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#define _DEBUG
+//#define _DEBUG
 #include "graph.h"
 #include <cstring>
 #include <tuple>
@@ -28,7 +28,7 @@ public:
     static string dotColor(float id, int size);
 
     static vector<string> listFiles(string path = ".");
-    static Edge transformEdge(const Edge &e, NodeMapping *mapping);
+    static  Edge transformEdge(const Edge &e, NodeMapping *mapping);
 
 };
 
