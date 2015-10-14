@@ -9,6 +9,7 @@ public:
 
     static Subgraph subgraphIsoOne(MGraph *haystack, MGraph *needle);
     static vector<Subgraph> subgraphIsoAll(MGraph *haystack, MGraph *needle);
+    static Subgraph createSubgraph(MGraph *needle, map<NodeT, NodeT> mapping);
 
 private:
     static Graph createGraph(MGraph *input);

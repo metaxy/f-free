@@ -1,7 +1,8 @@
 #include "vf.h"
 #include "argedit.h"
 #include "vf2_sub_state.h"
-#include <match.h>
+#include "match.h"
+#include <chrono>
 #define MAXNODES 200
 VF::VF()
 {
@@ -20,6 +21,16 @@ Graph VF::createGraph(MGraph *input)
     Graph g(&ed);
     return g;
 }
+Subgraph VF::createSubgraph(MGraph *needle, map<NodeT, NodeT> mapping)
+{
+    Subgraph a = needle->connectedEdges();
+    Subgraph ret;
+    for(Edge e : a) {
+        Edge newEdge(mapping[e.first], mapping[e.second]);
+        ret.push_back(newEdge);
+    }
+    return ret;
+}
 Subgraph VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
 {
     Graph big = VF::createGraph(haystack);
@@ -31,18 +42,21 @@ Subgraph VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
     if (!match(&s0, &n, ni1, ni2)) {
         return ret;
     }
+    map<NodeT, NodeT> mapping;
     for(int i=0; i<n; i++) {
-        ret.push_back(Edge(ni1[i], ni2[i]));
+        mapping[ni1[i]] = ni2[i];
     }
+    return VF::createSubgraph(needle, mapping);
 }
 bool subgraphIsoAllVisitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
 {
-    vector<Subgraph> *subgraphIsoData = (vector<Subgraph> *) usr_data;
+    vector<map<NodeT, NodeT>> *subgraphIsoData = (vector<map<NodeT, NodeT>> *) usr_data;
     Subgraph ret;
+    map<NodeT, NodeT> mapping;
     for(int i=0; i<n; i++) {
-        ret.push_back(Edge(ni1[i], ni2[i]));
+        mapping[ni1[i]] = ni2[i];
     }
-    subgraphIsoData->push_back(ret);
+    subgraphIsoData->push_back(mapping);
     // Return false to search for the next matching
     return false;
 }
@@ -52,7 +66,12 @@ vector<Subgraph> VF::subgraphIsoAll(MGraph *haystack, MGraph *needle)
     Graph big = VF::createGraph(haystack);
     Graph small = VF::createGraph(needle);
     VF2SubState s0(&small, &big);
-    vector<Subgraph> subgraphIsoData;
+    vector<map<NodeT, NodeT>> subgraphIsoData;
     match(&s0, subgraphIsoAllVisitor, &subgraphIsoData);
-    return subgraphIsoData;
+
+    vector<Subgraph> ret;
+    for(map<NodeT, NodeT> mapping : subgraphIsoData) {
+        ret.push_back(VF::createSubgraph(needle, mapping));
+    }
+    return ret;
 }

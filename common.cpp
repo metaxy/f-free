@@ -3,6 +3,9 @@
 #include <sstream>
 #include <fstream>
 #include <iomanip>
+#include <dirent.h>
+#include <string>
+#include <vector>
 #include "anyoption.h"
 using namespace std;
 Common::Common()
@@ -97,12 +100,17 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     opt->addUsage( "" );
     opt->addUsage( "" );
     opt->setFlag( "help", 'h' );
+    opt->setFlag( "input", 'i' );
+    opt->setFlag( "forbidden", 'f' );
     opt->setOption( "seed" );
 
     /* go through the command line and get the options  */
     opt->processCommandArgs( argc, argv );
     if( opt->getValue( "seed" ) != NULL) {
         config["seed"] = opt->getValue( "seed" );
+    }
+    if( opt->getValue( "input" ) != NULL) {
+        config["input"] = opt->getValue( "input" );
     }
     /* 8. DONE */
     delete opt;
@@ -118,3 +126,17 @@ string Common::dotColor(float id, int size)
 
 }
 
+vector<string> Common::listFiles(string path)
+{
+    DIR*    dir;
+    dirent* pdir;
+    vector<string> files;
+
+    dir = opendir(path.c_str());
+
+    while (pdir = readdir(dir)) {
+        files.push_back(pdir->d_name);
+    }
+
+    return files;
+}

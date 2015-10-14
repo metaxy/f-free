@@ -26,3 +26,17 @@ NodeT Randomize::randomElement(set<NodeT> list)
     advance(it, dis(m_rgen));
     return *it;
 }
+
+Edge  Randomize::randomElement(vector<Edge> list)
+{
+    std::uniform_int_distribution<> dis(0, list.size() - 1);
+    return list[dis(m_rgen)];
+}
+
+
+Subgraph Randomize::randomElement(vector<Subgraph> list)
+{
+    std::uniform_int_distribution<> dis(0, list.size() - 1);
+    return list[dis(m_rgen)];
+}
+

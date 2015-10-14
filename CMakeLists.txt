@@ -11,6 +11,9 @@ set( ffree_SRCS
     randomize.cpp
     anyoption.cpp
     vf.cpp
+
+    state.cpp
+    state_random.cpp
 )
 
 set( vflib_SRCS

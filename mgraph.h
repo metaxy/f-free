@@ -44,6 +44,7 @@ public:
     void printMatrix() const;
     string printGraph(vector<Subgraph> highlight);
     void writeGraph(string fileName, vector<Subgraph> highlight);
+    void writeGraph(string fileName);
 
     int mergeCost(NodeT u, NodeT v) const;
     int mergeCost(Edge e) const;
@@ -58,9 +59,15 @@ public:
     set<NodeT> costlyNeighborhood(NodeT node, int maxCost) const;
     set<NodeT> closedCostlyNeighborhood(NodeT node, int maxCost) const;
 
-    Subgraph findInducedSubgraph(MGraph *g);
+
+   void printEdges(vector<Edge> edges);
+   void printEdge(const Edge &e);
+
+   void debugEdges(vector<Edge> edges);
+   void debugEdge(const Edge &e);
    private:
     int m_nodeCount;
+
     GGraph m_input;
     int absolut(NodeT u, NodeT v) const;
     int getWeight(NodeT x, NodeT y) const;

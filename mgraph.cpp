@@ -4,12 +4,12 @@
 #include <cassert>
 MGraph::MGraph()
 {
-    de("MGraph::Mgraph()");
+    //de("MGraph::Mgraph()");
 }
 
 MGraph::MGraph(int nodeCount) : m_nodeCount(nodeCount)
 {
-    de("MGraph::Mgraph(int) ");
+    //de("MGraph::Mgraph(int) ");
     m_matrix = new NodeT*[m_nodeCount];
 
     //init vector where is saved whether the node is deleted,
@@ -27,7 +27,7 @@ MGraph::MGraph(int nodeCount) : m_nodeCount(nodeCount)
 }
 MGraph::MGraph(GGraph input) : MGraph(input.nodeCount)
 {
-    de("MGraph::Mgraph(Graph)");
+    //de("MGraph::Mgraph(Graph)");
     m_input = input;
     for (GEdge *e = input.firstEdge; e != NULL; e = e->next) {
         this->addEdge(e->toEdge());
@@ -35,7 +35,7 @@ MGraph::MGraph(GGraph input) : MGraph(input.nodeCount)
 }
 MGraph::MGraph(MGraph *copy)
 {
-    de("MGraph::Mgraph(MGraph*)");
+    //de("MGraph::Mgraph(MGraph*)");
     m_nodeCount = copy->m_nodeCount;
     m_input = copy->m_input;
     m_matrix = new NodeT*[m_nodeCount];
@@ -50,7 +50,7 @@ MGraph::MGraph(MGraph *copy)
 }
 MGraph::MGraph(const MGraph &copy)
 {
-    de("MGraph::Mgraph(MGraph&)");
+    //de("MGraph::Mgraph(MGraph&)");
     m_nodeCount = copy.m_nodeCount;
     m_input = copy.m_input;
     m_matrix = new NodeT*[m_nodeCount];
@@ -372,7 +372,7 @@ void MGraph::printMatrix() const
 
 string MGraph::printGraph(vector<Subgraph> highlight)
 {
-    //#ifdef _DEBUG
+    #ifdef _DEBUG
     string ret = "digraph G {\n";
     ret += "edge [dir=none]\n";
     for(int x = 0; x < m_nodeCount; x++) {
@@ -400,7 +400,7 @@ string MGraph::printGraph(vector<Subgraph> highlight)
     }
     ret += "\n}\n";
     return ret;
-    //#endif
+    #endif
 }
 
 
@@ -408,18 +408,21 @@ string MGraph::printGraph(vector<Subgraph> highlight)
 
 void MGraph::writeGraph(string fileName, vector<Subgraph> highlight)
 {
-    //#ifdef _DEBUG
-    de("write graph");
+    #ifdef _DEBUG
     std::ofstream fout(fileName+".dot");
     fout << printGraph(highlight);
     fout.close();
     std::stringstream stream;
     stream << "dot -Tpng \"" << fileName << ".dot\" -o \"" << fileName << ".png\"";
     system(stream.str().c_str());
-    //remove((fileName+".dot").c_str());
-   // #endif
+    remove((fileName+".dot").c_str());
+    #endif
 }
-
+void MGraph::writeGraph(string fileName)
+{
+    vector<Subgraph> highlight;
+    this->writeGraph(fileName, highlight);
+}
 int MGraph::mergeCost(NodeT u, NodeT v) const
 {
     int depth = 0;
@@ -438,4 +441,25 @@ int MGraph::mergeCost(Edge e) const
     return mergeCost(e.first,e.second);
 }
 
+void MGraph::printEdge(const Edge &e)
+{
+    cout << m_input.nodeName(e.first) << " " << m_input.nodeName(e.second) << endl;
+}
 
+void  MGraph::printEdges(vector<Edge> edges)
+{
+    for(const Edge &e: edges)
+        printEdge(e);
+}
+
+
+void MGraph::debugEdge(const Edge &e)
+{
+    clog << m_input.nodeName(e.first) << " " << m_input.nodeName(e.second) << endl;
+}
+
+void  MGraph::debugEdges(vector<Edge> edges)
+{
+    for(const Edge &e: edges)
+        printEdge(e);
+}

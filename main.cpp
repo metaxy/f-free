@@ -2,17 +2,15 @@
 #include "common.h"
 #include "mgraph.h"
 #include "vf.h"
-int main()
-{
-    GGraph g = Common::graphFromFile("../model/k_003_n_038.txt");
-    GGraph cluster = Common::graphFromFile("../forbidden/cluster.graph");
-    MGraph mg(g);
-    MGraph mcluster(cluster);
 
-    vector<Subgraph> graphs = VF::subgraphIsoAll(&mg, &mcluster);
-    /*for(Subgraph g : graphs) {
-        Common::printSubgraph(&g);
-    }*/
+#include "state_random.h"
+int main(int argc, char* argv[])
+{
+    Config conf = Common::parseConfig(argc, argv);
+    StateRandom state(conf);
+    MGraph ret = state.solveMultiple(1);
+
+    //ret.writeGraph("result");
 
     return 0;
 }

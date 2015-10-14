@@ -8,6 +8,10 @@
 #include <set>
 #include <map>
 #include "graph.h"
+#include "mgraph.h"
+
+typedef map<string, string> Config;
+
 class Common
 {
 public:
@@ -20,8 +24,10 @@ public:
 
     static void printSubgraph(Subgraph *subgraph);
 
-    static map<string, string> parseConfig(int argc, char* argv[]);
+    static Config parseConfig(int argc, char* argv[]);
     static string dotColor(float id, int size);
+
+    static vector<string> listFiles(string path = ".");
 
 };
 

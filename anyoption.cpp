@@ -50,7 +50,7 @@
  * have not bothered tracking it down.
  *
  * Also updated to use modern C++ style headers, rather than
- * depricated iostream.h (it was causing my compiler problems)
+ * deprecated iostream.h (it was causing my compiler problems)
 */
 
 /* 

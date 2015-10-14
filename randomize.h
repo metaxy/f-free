@@ -13,6 +13,8 @@ public:
 
     bool choice(float probability);
     NodeT randomElement(vector<NodeT> a);
+    Edge randomElement(vector<Edge> a);
+    Subgraph randomElement(vector<Subgraph> a);
     NodeT randomElement(set<NodeT> a);
 private:
     std::random_device m_rseed;
