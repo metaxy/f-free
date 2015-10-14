@@ -3,7 +3,7 @@ require 'date'
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
 $FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random --rounds 10", "random2 --rounds 10"]
+$PROGS = ["random2 --rounds 10", "random2 --rounds 10 --random2_subgraph_batch= 50"]
 $f = nil
 $SEED = "5489"
 $MAX_TIME=2
@@ -83,7 +83,7 @@ def main()
   end
   $PROGS.each do |prog|
     putf "#Quality of #{prog}: #{(quality[prog]/count[prog].to_f)*100}% failed: #{failed[prog]}"
-    putf "#Mean Time of #{prog}: #{(time[prog]/count[prog].to_f)*100}%"
+    putf "#Mean Time of #{prog}: #{(time[prog]/count[prog].to_f)}s"
   end
   putf "#End Time: #{Time.now.to_s}"
 end
