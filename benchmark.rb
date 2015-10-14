@@ -3,7 +3,7 @@ require 'date'
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
 $FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random", "random --rounds 5", "random --rounds 10"]
+$PROGS = ["random2", "random2 --rounds 5", "random2 --rounds 10"]
 $f = nil
 def run_prog(name, input, forbidden, timeout)
   ret = `timeout #{timeout}s  #{$BIN_PATH}/ffree_#{name} --input #{input} --forbidden #{forbidden}`
@@ -31,13 +31,17 @@ def main()
   
   quality = Hash.new
   count = Hash.new
-  
+  entries_size = entries.size
+  current_file = 0
   entries.each do |graph|
+    current_file += 1
+    
     next if graph == "k.txt" or graph == "k-cvd.txt" or graph.end_with? ".zip" 
     next if graph.start_with? "."
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     grep = `grep #{graph} #{$INSTANCES}/all.k`
     kcorrect = grep.split()[1].to_i
+    puts "# File #{current_file} of #{entries_size}"
     $PROGS.each do |prog|
       start = Time.now
       ret = run_prog(prog, $INSTANCES+"/"+graph, $FORBIDDEN, 10)
