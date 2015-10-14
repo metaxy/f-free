@@ -68,12 +68,14 @@ def main()
       if(quality[prog].nil?)
         quality[prog] = 0.0
         count[prog] = 0
-        time[prog] = 0
+        time[prog] = 0.0
         failed[prog] = 0
       end
       quality[prog] += qual
       count[prog] += 1
-      failed[prog] += (k == -1)
+      if(k == -1)
+        failed[prog] += 1
+      end
       time[prog] += diff
       putf "#{prog};#{graph};#{k},#{kcorrect};#{diff}s;#{qual}"
     end
