@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 {
     Config conf = Common::parseConfig(argc, argv);
     StateRandom state(conf);
-    MGraph ret = state.solveMultiple(1);
+    MGraph ret = state.solveMultiple(10);
 
     //ret.writeGraph("result");
 

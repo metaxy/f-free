@@ -140,3 +140,8 @@ vector<string> Common::listFiles(string path)
 
     return files;
 }
+
+Edge Common::transformEdge(const Edge &e, NodeMapping *mapping)
+{
+    return Edge(mapping->at(e.first), mapping->at(e.second));
+}

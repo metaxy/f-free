@@ -65,6 +65,9 @@ public:
 
    void debugEdges(vector<Edge> edges);
    void debugEdge(const Edge &e);
+
+   P3 findP3() const;
+
    private:
     int m_nodeCount;
 

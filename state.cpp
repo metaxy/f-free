@@ -10,7 +10,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/k_002_n_006.txt";
+        fileName = "../model/k_005_n_026.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
@@ -44,6 +44,11 @@ MGraph State::solve()
     for(MGraph needle : m_forbidden) {
         input = this->solveSingle(input, needle);
     }
+    if(input.findP3() != P3(0,0,0)) {
+        clog << "NOT SOLVED !!! " << endl;
+    } else {
+        clog << "rightly solved" << endl;
+    }
     return input;
 }
 
@@ -65,6 +70,7 @@ MGraph State::solveMultiple(int count)
         }
     }
     cout << "#k: " << bestSize << endl;
-    //bestSolved.printEdges(bestEdges);
+    bestSolved.printEdges(bestEdges);
+    bestSolved.writeGraph("solved");
     return bestSolved;
 }

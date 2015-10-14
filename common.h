@@ -11,7 +11,7 @@
 #include "mgraph.h"
 
 typedef map<string, string> Config;
-
+typedef map<NodeT, NodeT> NodeMapping;
 class Common
 {
 public:
@@ -28,6 +28,7 @@ public:
     static string dotColor(float id, int size);
 
     static vector<string> listFiles(string path = ".");
+    static Edge transformEdge(const Edge &e, NodeMapping *mapping);
 
 };
 

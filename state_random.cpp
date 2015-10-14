@@ -8,17 +8,17 @@ StateRandom::StateRandom(Config conf) : State(conf)
 MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
 {
     Randomize r;
-    Subgraph found = VF::subgraphIsoOne(&input, &forbidden);
-    input.writeGraph("input1");
-    forbidden.writeGraph("forbidden");
-    input.debugEdges(found);
-
+    NodeMapping mapping = VF::subgraphIsoOne(&input, &forbidden);
     int countSteps = 0;
-    while(found.size() != 0) {
-        Edge e = r.randomElement(found);
-        input.flip(e);
+    while(!mapping.empty()) {
+        Edge e = Common::transformEdge(r.randomElement(forbidden.edges()), &mapping);
+        if(r.choice(0.5))
+            input.flip(e);
+        else
+            input.merge(e);
+
         countSteps++;
-        found = VF::subgraphIsoOne(&input, &forbidden);
+        mapping = VF::subgraphIsoOne(&input, &forbidden);
     }
     return input;
 }

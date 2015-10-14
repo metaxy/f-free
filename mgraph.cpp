@@ -463,3 +463,24 @@ void  MGraph::debugEdges(vector<Edge> edges)
     for(const Edge &e: edges)
         printEdge(e);
 }
+
+P3 MGraph::findP3() const
+{
+    for(int i = 0; i < m_nodeCount; i++) {
+        if(isDeleted(i)) continue;
+
+        for(int j = 0; j < m_nodeCount; j++) {
+            if(isDeleted(j) || i == j || !connected(i,j)) continue;
+
+            for(int k = 0; k < m_nodeCount; k++) {
+                if(isDeleted(k)) continue;
+
+                if(j != k && i != k && connected(j,k) && !connected(i,k)) {
+                    return P3(i,j,k);
+                }
+            }
+
+        }
+    }
+    return P3(0,0,0);
+}
