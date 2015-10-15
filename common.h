@@ -4,6 +4,7 @@
 //#define _DEBUG
 #include "graph.h"
 #include <cstring>
+#include <iostream>
 #include <tuple>
 #include <set>
 #include <map>

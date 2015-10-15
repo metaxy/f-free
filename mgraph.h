@@ -17,8 +17,12 @@ public:
     int absolut(const Edge &e) const;
     bool isDeleted(NodeT x) const;
     void flip(const Edge &e);
-    void setWeight(Edge e, int weight);
+    int setWeight(Edge e, int weight);
     int getWeight(Edge e) const;
+    int increaseWeight(const Edge &e, int factor);
+
+
+
     void clear();
 
     int merge(Edge e);
@@ -67,6 +71,9 @@ public:
    void debugEdge(const Edge &e);
 
    P3 findP3() const;
+
+
+   vector<Edge> absHeightesEdgeOfEachRow();
 
    private:
     int m_nodeCount;

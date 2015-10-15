@@ -2,83 +2,54 @@
 #include <fstream>
 #include "graph.h"
 
-GGraph::GGraph() : nodeCount(0), firstEdge(NULL), firstNode(NULL) {}
-
-
-void GGraph::reset()
+GGraph::GGraph() : m_nodeCount(0)
 {
-	while (firstEdge != NULL)
-	{
-		GEdge *e = firstEdge->next;
-		delete firstEdge;
-		firstEdge = e;
-	}
-	while (firstNode != NULL)
-	{
-		GNode *n = firstNode->next;
-		delete firstNode;
-		firstNode = n;
-	}
-    nodeCount = 0;
+
 }
 
 
-
-void GGraph::intNodes(int n)
+void GGraph::insertEdge(string node1, string node2)
 {
-	for (int i=0; i<n; i++)
-	{
-		ostringstream node;
-		node << i;
-        nodePosition(node.str());
-	}
+    int u,v;
+    if(m_nodeNames.find(node1) != m_nodeNames.end()) {
+        u = m_nodeNames[node1];
+    } else {
+        u = m_nodeCount;
+        m_nodeNames[node1] = u;
+        m_nodeCount++;
+    }
+    if(m_nodeNames.find(node2) != m_nodeNames.end()) {
+        v = m_nodeNames[node2];
+    } else {
+        v = m_nodeCount;
+        m_nodeNames[node2] = v;
+        m_nodeCount++;
+    }
+    m_edges.push_back(Edge(u,v));
 }
 
-int GGraph::insertEdge(NodeT u, NodeT v)
+int GGraph::nodePosition(string name) const
 {
-	ostringstream node1, node2;
-	node1 << u;
-	node2 << v;
-	return insertEdge(node1.str(), node2.str());
+    return m_nodeNames.find(name)->second;
 }
 
-int GGraph::insertEdge(string Node1, string Node2)
+string GGraph::nodeName(int value) const
 {
-    int u = nodePosition(Node1), v = nodePosition(Node2);
-    if (u == v) return 0;
-    GEdge *edge = new GEdge(u, v, firstEdge);
-    firstEdge = edge;
-    return 1;
+    auto it = m_nodeNames.begin();
+    std::advance(it, value);
+    return it->first;
 }
 
-int GGraph::nodePosition(string name)
+int GGraph::edgesCount() const
 {
-    GNode *node = firstNode;
-    for (int i = nodeCount; --i >= 0; node = node->next)
-        if (name == node->name) return i;
-    node = new GNode(name, firstNode);
-    firstNode = node;
-    nodeCount ++;
-    return nodeCount - 1;
+    return m_edges.size();
+}
+int GGraph::nodeCount() const
+{
+    return m_nodeCount;
 }
 
-string GGraph::nodeName(int value)
+vector<Edge> GGraph::edges() const
 {
-    GNode *node = firstNode;
-    if (value >= nodeCount) return "unbekannt";
-    while (++value < nodeCount) node = node->next;
-    return node->name;
-}
-
-int GGraph::edgesCount()
-{
-	int n=0;
-	for (GEdge *e=firstEdge; e!=NULL; e=e->next) n++;
-	return n;
-}
-
-void GGraph::output()
-{
-	for (GEdge *e=firstEdge; e!=NULL; e=e->next)
-        cout << nodeName(e->u) << " " << nodeName(e->v) << endl;
+    return m_edges;
 }

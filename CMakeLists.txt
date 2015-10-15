@@ -1,9 +1,12 @@
 cmake_minimum_required(VERSION 2.6)
 project(f-free)
-#find_path(
-#    GUROBI_PATH include/gurobi_c++.h
-#    PATHS ~/bin/gurobi600/linux64/ /afs/akt.tu-berlin.de/user/pwalger/gruppe1/gurobi /home/users/w/walger/irb-ubuntu/cluster/gruppe1/gurobi
-#)
+find_path(
+    GUROBI_PATH include/gurobi_c++.h
+    PATHS ~/bin/gurobi605/linux64/ /home/users/w/walger/irb-ubuntu/cluster/gruppe1/gurobi
+)
+
+option(test "Build all tests." OFF)
+
 set( ffree_SRCS
     graph.cpp
     mgraph.cpp
@@ -15,6 +18,7 @@ set( ffree_SRCS
     state.cpp
     state_random.cpp
     state_random2.cpp
+    state_random_half.cpp
 )
 
 set( vflib_SRCS
@@ -94,4 +98,48 @@ target_link_libraries(
     ffree_random2
     ${ffree_LIBS}
 )
+add_executable(ffree_random_half ${ffree_SRCS} main_random_half.cpp)
+
+target_link_libraries(
+    ffree_random_half
+    ${ffree_LIBS}
+)
+
+
+
+if (test)
+  # This adds another subdirectory, which has 'project(gtest)'.
+  add_subdirectory(lib/gtest-1.6.0)
+  enable_testing()
+  include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+  ##############
+  # Unit Tests
+  ##############
+  add_executable(runUnitTests test_project1.cpp)
+  target_link_libraries(runUnitTests gtest gtest_main)
+  target_link_libraries(runUnitTests project1_lib)
+
+  add_test(NAME that-test-I-made COMMAND runUnitTests)
+
+  # You can also omit NAME and COMMAND. The second argument could be some other
+  # test executable.
+  add_test(that-other-test-I-made runUnitTests)
+endif()
+
+if(DEFINED GUROBI_PATH)
+    include_directories(
+        ${GUROBI_PATH}/include
+    )
+    add_executable(ffree-blp ${ffree_SRCS} gurobilp.cpp main_random.cpp )
+    find_library(G1 libgurobi_g++4.2.a ${GUROBI_PATH}/lib)
+    find_library(G2 libgurobi60.so ${GUROBI_PATH}/lib)
+
+    target_link_libraries(
+        ffree-blp
+        ${ffree_LIBS}
+        ${G2}
+        ${G1}
+    )
+endif()
 

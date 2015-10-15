@@ -10,7 +10,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/easy/k_005_n_047.txt";
+        fileName = "../model/cluster/k_727_n_680.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
