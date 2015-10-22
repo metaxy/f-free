@@ -16,8 +16,7 @@ public:
     void addVars(vector<Edge>);
     void addModelVars(Model weights);
     void addModelVarsRelaxed(Model weights);
-    void addConstraint(P3 p3);
-    void addConstraints(vector<P3> p3s);
+    void addConstraint(MGraph *graph, NodeMapping mapping);
     Model optimize();
     ModelRelaxed optimizeRelaxed();
 private:

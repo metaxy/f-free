@@ -2,6 +2,7 @@
 #include "vf.h"
 #include "randomize.h"
 #include "gurobilp.h"
+#include "forbidden.h"
 StateBlp::StateBlp(Config conf) : State(conf)
 {
 }
@@ -10,17 +11,17 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
 {
     Randomize r(getInt("seed", 5489));
 
-     GurobiLP g(graph.nodeCount());
-     Model model = input.createModel();
-     g.addModelVars(model);
-     g.setObjective(model);
+    GurobiLP g(input.nodeCount());
+    Model model = input.createModel();
+    g.addModelVars(model);
+    g.setObjective(model);
 
+    vector<MGraph> sols = Forbidden::posibleSolutions(forbidden);
     vector<NodeMapping> mappings = VF::subgraphIsoAll(&input, &forbidden);
     while(!mappings.empty()) {
         for(NodeMapping mapping : mappings) {
-            for(const Edge &edge : forbidden.edges()) {
-                Edge e = Common::transformEdge(edge, &mapping);
-                //int weight = input.reduceWeight(e, 2);
+            for(MGraph potentialSol : sols) {
+                g.addConstraint(&potentialSol, mapping);
             }
         }
        

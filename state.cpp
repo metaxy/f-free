@@ -4,7 +4,6 @@ State::State(Config conf) : m_config(conf)
 {
     m_input = this->getInput();
     m_forbidden = this->getForbidden();
-    m_input.writeGraph("input");
 }
 MGraph State::getInput()
 {

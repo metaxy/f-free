@@ -98,20 +98,21 @@ void GurobiLP::setObjective(Model weights)
         exit(-1);
     }
 }
-void GurobiLP::addConstraint(P3 p3)
+void GurobiLP::addConstraint(MGraph *graph, NodeMapping mapping)
 {
-    NodeT u = get<0>(p3);
-    NodeT v = get<1>(p3);
-    NodeT w = get<2>(p3);
-    m_model->addConstr(e(u,v) + e(v,w) - e(u,w) <= 1);
-    m_model->addConstr(e(u,v) - e(v,w) + e(u,w) <= 1);
-    m_model->addConstr(-e(u,v) + e(v,w) + e(u,w) <= 1);
-}
-void GurobiLP::addConstraints(vector<P3> p3s)
-{
-    de("add constainst");
-    for(const auto &i : p3s)
-        addConstraint(i);
+    GRBLinExpr expr;
+    int sum = 0;
+    for(Edge edge: graph->edges()) {
+        Edge trans = Common::transformEdge(edge, &mapping);
+        if(graph->connected(edge)) {
+            expr += e(trans);
+            sum += 1;
+        } else {
+            expr -= e(trans);
+            sum -= 1;
+        }
+    }
+    m_model->addConstr(expr <= sum);
 }
 Model GurobiLP::optimize()
 {

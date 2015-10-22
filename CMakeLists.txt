@@ -13,13 +13,14 @@ set( ffree_SRCS
     common.cpp
     randomize.cpp
     anyoption.cpp
+    forbidden.cpp
     vf.cpp
 
     state.cpp
     state_random.cpp
     state_random2.cpp
     state_random_half.cpp
-    state_blp.cpp
+
 )
 
 set( vflib_SRCS
@@ -133,7 +134,7 @@ if(DEFINED GUROBI_PATH)
     include_directories(
         ${GUROBI_PATH}/include
     )
-    add_executable(ffree_blp ${ffree_SRCS} gurobilp.cpp main_blp.cpp)
+    add_executable(ffree_blp ${ffree_SRCS} gurobilp.cpp state_blp.cpp main_blp.cpp)
 
     find_library(G1 libgurobi_g++4.2.a ${GUROBI_PATH}/lib)
     find_library(G2 libgurobi60.so ${GUROBI_PATH}/lib)
