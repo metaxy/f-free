@@ -1,10 +1,10 @@
 require 'date'
+require 'json'
 
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
 $FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random --rounds 10", "random2 --rounds 10", "random2 --rounds 10 --random2_subgraph_batch=100"]
-$f = nil
+$PROGS = ["random --rounds 1","random --rounds 10", "random2 --rounds 10", "random2 --rounds 10 --random2_subgraph_batch=100"]
 $SEED = "5489"
 $MAX_TIME=2
 def run_prog(name, input, forbidden, timeout)
@@ -13,6 +13,7 @@ def run_prog(name, input, forbidden, timeout)
 end
 
 def main()
+  
   if(`git status -s` != "")
     puts "Please commit first"
     exit
@@ -20,17 +21,18 @@ def main()
   
   `cd $BIN_PATH && make`
   fileName = DateTime.now.strftime("benchmarks/bench_%Y_%m_%d__%H_%M_%S.txt")  
-  
-  $f = open(fileName, 'a');
+  output = {}
   entries = Dir.entries($INSTANCES+"/")
   
-  putf "#INSTANCES: #{$INSTANCES}"
-  putf "#FORBIDDEN: #{$FORBIDDEN}"
-  putf "#Start Time: #{Time.now.to_s}"
-  putf "#Git Hash: #{`git rev-parse --verify HEAD`}"
-  putf "#Git Commit Message: #{`git log -1 --pretty=%B`}"
-  putf "#Format: Progname, graph file, distance, correct distance, time, quality"
+  output['instances'] = $INSTANCES
+  output['forbidden'] = $FORBIDDEN
+  output['start_time'] = Time.now.to_s
+  output['git_hash'] = `git rev-parse --verify HEAD`
+  output['commit_message'] = `git log -1 --pretty=%B`
+  output['seed'] = $SEED
+  output['max_time'] = $MAX_TIME
   
+  output['results'] = []
   quality = Hash.new
   count = Hash.new
   time = Hash.new
@@ -78,20 +80,31 @@ def main()
         failed[prog] += 1
       end
       time[prog] += diff
-      putf "#{prog};#{graph};#{k},#{kcorrect};#{diff}s;#{qual}"
+      output['results'] << {
+        "prog" => prog,
+        "graph" => graph,
+        "k" => k,
+        "kcorrect" => kcorrect,
+        "time" => diff,
+        "quality" => qual
+      }
     end
   end
+  output['end_time'] = Time.now.to_s
+  
+  output['stats'] = {}
   $PROGS.each do |prog|
-    putf "#Quality of #{prog}: #{(quality[prog]/count[prog].to_f)*100}% failed: #{failed[prog]}"
-    putf "#Mean Time of #{prog}: #{(time[prog]/count[prog].to_f)}s"
+    output['stats'][prog] = {
+      "quality" => (quality[prog]/count[prog].to_f)*100,
+      "failed" => failed[prog],
+      "failed_percent" => (failed[prog]/count[prog].to_f)*100,
+      "mean_time" => (time[prog]/count[prog].to_f)
+    }
   end
-  putf "#End Time: #{Time.now.to_s}"
+  
+  File.write(fileName,  JSON.generate(output))
 end
 
-def putf(string)
-  puts string
-  $f.puts string
-end
 
 main()
 
