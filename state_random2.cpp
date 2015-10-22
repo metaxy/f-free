@@ -14,14 +14,9 @@ MGraph StateRandom2::solveSingle(MGraph input, MGraph forbidden)
     while(!mappings.empty()) {
         for(NodeMapping mapping : mappings) {
             Edge e = Common::transformEdge(r.randomElement(forbidden.edges()), &mapping);
-            if(r.choice(0.5))
-                input.flip(e);
-            else
-                input.merge(e);
+            input.flip(e);
             countSteps++;
         }
-
-
         mappings = VF::subgraphIso(&input, &forbidden, batch);
     }
     return input;

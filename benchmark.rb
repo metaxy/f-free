@@ -3,7 +3,7 @@ require 'date'
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
 $FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random2 --rounds 10", "random2 --rounds 10 --random2_subgraph_batch= 50"]
+$PROGS = ["random --rounds 10", "random2 --rounds 10", "random2 --rounds 10 --random2_subgraph_batch=100"]
 $f = nil
 $SEED = "5489"
 $MAX_TIME=2
