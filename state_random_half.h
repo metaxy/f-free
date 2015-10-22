@@ -1,5 +1,5 @@
-#ifndef STATE_RANDOM2_H
-#define STATE_RANDOM2_H
+#ifndef STATE_RANDOM_HALF_H
+#define STATE_RANDOM_HALF_H
 #include "state.h"
 class StateRandomHalf : public State
 {

@@ -7,7 +7,7 @@ StateRandom::StateRandom(Config conf) : State(conf)
 
 MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
 {
-    Randomize r(getInt("seed", 5489);
+    Randomize r(getInt("seed", 5489));
     NodeMapping mapping = VF::subgraphIsoOne(&input, &forbidden);
     int countSteps = 0;
     while(!mapping.empty()) {

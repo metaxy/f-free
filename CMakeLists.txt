@@ -19,6 +19,7 @@ set( ffree_SRCS
     state_random.cpp
     state_random2.cpp
     state_random_half.cpp
+    state_blp.cpp
 )
 
 set( vflib_SRCS
@@ -107,6 +108,7 @@ target_link_libraries(
 
 
 
+
 if (test)
   # This adds another subdirectory, which has 'project(gtest)'.
   add_subdirectory(lib/gtest-1.6.0)
@@ -131,12 +133,13 @@ if(DEFINED GUROBI_PATH)
     include_directories(
         ${GUROBI_PATH}/include
     )
-    add_executable(ffree-blp ${ffree_SRCS} gurobilp.cpp main_random.cpp )
+    add_executable(ffree_blp ${ffree_SRCS} gurobilp.cpp main_blp.cpp)
+
     find_library(G1 libgurobi_g++4.2.a ${GUROBI_PATH}/lib)
     find_library(G2 libgurobi60.so ${GUROBI_PATH}/lib)
 
     target_link_libraries(
-        ffree-blp
+        ffree_blp
         ${ffree_LIBS}
         ${G2}
         ${G1}
