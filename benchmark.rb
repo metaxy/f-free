@@ -20,7 +20,7 @@ def main()
   end
   
   `cd $BIN_PATH && make`
-  fileName = DateTime.now.strftime("benchmarks/bench_%Y_%m_%d__%H_%M_%S.txt")  
+  fileName = DateTime.now.strftime("benchmarks/bench_%Y_%m_%d__%H_%M_%S.json")  
   output = {}
   entries = Dir.entries($INSTANCES+"/")
   
@@ -102,7 +102,7 @@ def main()
     }
   end
   
-  File.write(fileName,  JSON.generate(output))
+  File.write(fileName,  JSON.pretty_generate(output))
 end
 
 
