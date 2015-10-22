@@ -4,9 +4,9 @@ require 'json'
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
 $FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random --rounds 1","random --rounds 10", "random2 --rounds 10", "random2 --rounds 10 --random2_subgraph_batch=100"]
+$PROGS = ["random --rounds 1", "ffree_blp"]
 $SEED = "5489"
-$MAX_TIME=2
+$MAX_TIME=5
 def run_prog(name, input, forbidden, timeout)
   ret = `timeout #{timeout}s  #{$BIN_PATH}/ffree_#{name} --input #{input} --forbidden #{forbidden} --seed #{$SEED}`
   return ret
