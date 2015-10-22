@@ -4,7 +4,7 @@ require 'json'
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
 $FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random --rounds 1", "ffree_blp"]
+$PROGS = ["random --rounds 1", "blp"]
 $SEED = "5489"
 $MAX_TIME=5
 def run_prog(name, input, forbidden, timeout)
