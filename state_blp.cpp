@@ -10,6 +10,11 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
 {
     Randomize r(getInt("seed", 5489));
 
+     GurobiLP g(graph.nodeCount());
+     Model model = input.createModel();
+     g.addModelVars(model);
+     g.setObjective(model);
+
     vector<NodeMapping> mappings = VF::subgraphIsoAll(&input, &forbidden);
     while(!mappings.empty()) {
         for(NodeMapping mapping : mappings) {
@@ -18,7 +23,12 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
                 //int weight = input.reduceWeight(e, 2);
             }
         }
-        //mappings = VF::subgraphIso(&input, &forbidden, batch);
+       
+        Model ret = g.optimize();
+        for(const auto &i: ret) {
+            input.setWeight(i.first, i.second);
+        }
+        mappings = VF::subgraphIsoAll(&input, &forbidden);
     }
     return input;
 }

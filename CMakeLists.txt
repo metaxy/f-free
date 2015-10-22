@@ -141,8 +141,8 @@ if(DEFINED GUROBI_PATH)
     target_link_libraries(
         ffree_blp
         ${ffree_LIBS}
-        ${G2}
         ${G1}
+        ${G2}
     )
 endif()
 
