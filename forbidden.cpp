@@ -12,9 +12,6 @@ vector<MGraph> Forbidden::posibleSolutions(MGraph forbidden)
         n.flip(e);
         //if(VF::subgraphIsoAll(&n, &forbidden).empty()) {
             ret.push_back(n);
-        /*} else {
-            clog << "is isomorh " << endl;
-        }*/
     }
     return ret;
 }
