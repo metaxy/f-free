@@ -103,7 +103,7 @@ void GurobiLP::addConstraint(MGraph *graph, NodeMapping *mapping)
     int sum = 0;
     for(Edge edge: graph->edges()) {
         Edge trans = Common::transformEdge(edge, mapping);
-        clog << "edge " << edge.first << " " << egde.second << "connected " << graph->connected(edge) <<  endl;
+        clog << "edge " << edge.first << " " << edge.second << "connected " << graph->connected(edge) <<  endl;
         clog << "trans edge " << trans.first << " " << trans.second << endl;
         if(graph->connected(edge)) {
             expr += e(trans);
