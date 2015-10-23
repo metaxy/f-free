@@ -8,7 +8,7 @@ $FORBIDDEN = "./forbidden/cluster"
 $PROGS = ["random --rounds 1", "blp"]
 $SEED = "5489"
 $MAX_TIME=5
-$TMP_FILE = DateTime.now.strftime("%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
+$TMP_FILE = DateTime.now.strftime("tmp_%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
 
 def create_command(name, input, forbidden, timeout)
   format_string_time = '{"elapsed_time": "%E", "kernel_time" : "%S", "user_time" : "%U", "cpu_usage" : "%P", "max_memory" : "%M", "page_faults" : "%F", "context_switches_forced" : "%c", "context_switches": "%w", "io_input": "%I", "io_output": "%O"}'
@@ -33,7 +33,7 @@ end
 
 def parse_time(file_name)
   file = File.read(file_name)
-  if(file.starts_with? 'Command exited')
+  if(file.start_with? 'Command exited')
     lines = file.lines
     data = JSON.parse(lines[1])
     data['extra'] = lines[0]
