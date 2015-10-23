@@ -414,7 +414,6 @@ string MGraph::printGraph(vector<Subgraph> highlight)
 
 void MGraph::writeGraph(string fileName, vector<Subgraph> highlight)
 {
-    #ifdef _DEBUG
     std::ofstream fout(fileName+".dot");
     fout << printGraph(highlight);
     fout.close();
@@ -422,7 +421,6 @@ void MGraph::writeGraph(string fileName, vector<Subgraph> highlight)
     stream << "dot -Tpng \"" << fileName << ".dot\" -o \"" << fileName << ".png\"";
     system(stream.str().c_str());
     remove((fileName+".dot").c_str());
-    #endif
 }
 void MGraph::writeGraph(string fileName)
 {

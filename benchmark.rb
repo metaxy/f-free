@@ -8,7 +8,8 @@ $FORBIDDEN = "./forbidden/cluster"
 $PROGS = ["random --rounds 1", "blp"]
 $SEED = "5489"
 $MAX_TIME=5
-$TMP_FILE = DateTime.now.strftime("tmp_%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
+$TMP_FILE = DateTime.now.strftime("./tmp/tmp_%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
+$BENCHMARKS_PATH = "./data_benchmarks"
 
 def create_command(name, input, forbidden, timeout)
   format_string_time = '{"elapsed_time": "%E", "kernel_time" : "%S", "user_time" : "%U", "cpu_usage" : "%P", "max_memory" : "%M", "page_faults" : "%F", "context_switches_forced" : "%c", "context_switches": "%w", "io_input": "%I", "io_output": "%O"}'
@@ -29,6 +30,7 @@ def check_env()
     exit
   end
   `cd '$BIN_PATH' && make`
+  FileUtils.mk_path './tmp'
 end
 
 def parse_time(file_name)
@@ -45,8 +47,10 @@ end
 
 
 def main()
+  bench_folder = DateTime.now.strftime("#{$BENCHMARKS_PATH}/%Y_%m_%d__%H_%M_%S")
+  fileName = DateTime.now.strftime("#{bench_folder}/results.json")
+  FileUtils.mkpath(bench_folder)
   
-  fileName = DateTime.now.strftime("benchmarks/bench_%Y_%m_%d__%H_%M_%S.json")  
   output = {}
   
   
@@ -67,6 +71,7 @@ def main()
   entries = Dir.entries($INSTANCES+"/")
   entries_size = entries.size
   current_file = 0
+  i = 0
   entries.each do |graph|
     current_file += 1
     
@@ -82,6 +87,9 @@ def main()
       
       start = Time.now
       ret = `#{command}`
+      i += 1
+      result_file_name = "output_#{graph}_#{prog}__#{i}.txt"
+      File.write(bench_folder+"/"+result_file_name, ret)
       
       finish = Time.now
       if(ret.chomp == "")
@@ -119,10 +127,10 @@ def main()
         "kcorrect" => kcorrect,
         "time" => diff,
         "quality" => qual,
-        "command" => command,
         "simple_command" => simple_command,
         "time_log" => parse_time($TMP_FILE+'.time'),
-        "log_output" => File.read($TMP_FILE+'.log')
+        "log_output" => File.read($TMP_FILE+'.log'),
+        "result_file_name" => result_file_name
       }
       FileUtils.rm($TMP_FILE+'.time')
       FileUtils.rm($TMP_FILE+'.log')

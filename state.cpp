@@ -45,6 +45,8 @@ MGraph State::solve()
     MGraph input = m_input;
     for(MGraph needle : m_forbidden) {
         input = this->solveSingle(input, needle);
+        input.restoreMerges();
+        input.normalize();
     }
     return input;
 }
@@ -57,6 +59,7 @@ MGraph State::solveMultiple(int count)
     int bestSize = -1;
     for(int i = 0; i< count; i++) {
         MGraph solved = this->solve();
+        if(!testSolved(solved)) continue;
         solved.restoreMerges();
         solved.normalize();
         vector<Edge> edges = m_input.difference(&solved);
@@ -70,7 +73,9 @@ MGraph State::solveMultiple(int count)
     bestSolved.printEdges(bestEdges);
     //bestSolved.writeGraph("solved");
 
-    testSolved(bestSolved);
+    if(!testSolved(bestSolved)) {
+        clog << "NOT SOLVED" << endl;
+    }
     return bestSolved;
 }
 
@@ -103,7 +108,6 @@ bool State::testSolved(MGraph output)
 {
     for(MGraph needle : m_forbidden) {
         if(!VF::subgraphIsoOne(&output, &needle).empty()) {
-            clog << "NOT SOLVED !" << endl;
             return false;
         }
     }

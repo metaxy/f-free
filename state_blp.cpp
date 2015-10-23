@@ -27,7 +27,11 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
        
         Model ret = g.optimize();
         for(const auto &i: ret) {
-            input.setWeight(i.first, i.second);
+            if(i.second > 0) {
+                input.setWeight(i.first, 1);
+            } else {
+                input.setWeight(i.first, -1);
+            }
         }
         mappings = VF::subgraphIsoAll(&input, &forbidden);
     }
