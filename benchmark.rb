@@ -35,7 +35,7 @@ def parse_time(file_name)
   file = File.read(file_name)
   if(file.start_with? 'Command exited')
     lines = file.split(/(\n)/)
-    data = JSON.parse(lines[1])
+    data = JSON.parse(lines[2])
     data['extra'] = lines[0]
     return data
   else
