@@ -127,6 +127,13 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     if( opt->getValue( "random2_subgraph_batch" ) != NULL) {
         config["random2_subgraph_batch"] = opt->getValue( "random2_subgraph_batch" );
     }
+
+    if( opt->getValue( "print_output" ) != NULL) {
+        config["print_output"] = opt->getValue( "print_output" );
+    }
+    if( opt->getValue( "print_input" ) != NULL) {
+        config["print_input"] = opt->getValue( "print_input" );
+    }
     /* 8. DONE */
     delete opt;
     return config;
