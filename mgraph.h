@@ -7,7 +7,7 @@ class MGraph
 {
 public:
     MGraph();
-    MGraph(int nodeCount);
+    MGraph(int nodeCount, int defValue=-1);
     MGraph(GGraph input);
     MGraph(MGraph *copy);
     MGraph(const MGraph &copy);
