@@ -21,12 +21,13 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
     while(!mappings.empty()) {
         for(NodeMapping mapping : mappings) {
             for(MGraph potentialSol : sols) {
-                g.addConstraint(&potentialSol, mapping);
+                g.addConstraint(&potentialSol, &mapping);
             }
         }
        
         Model ret = g.optimize();
         for(const auto &i: ret) {
+            clog << i.second << endl;
             if(i.second > 0) {
                 input.setWeight(i.first, 1);
             } else {
