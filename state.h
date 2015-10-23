@@ -12,6 +12,8 @@ public:
     virtual MGraph solveSingle(MGraph input, MGraph forbidden) = 0;
     MGraph solveMultiple(int count);
 
+    bool testSolved(MGraph output);
+
     //virtual MGraph solveSingle(MGraph forbidden) = 0;
 protected:
     Config m_config;

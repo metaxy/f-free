@@ -1,4 +1,5 @@
 #include "state.h"
+#include "vf.h"
 #include <sstream>
 State::State(Config conf) : m_config(conf)
 {
@@ -73,6 +74,8 @@ MGraph State::solveMultiple(int count)
     cout << "#k: " << bestSize << endl;
     bestSolved.printEdges(bestEdges);
     //bestSolved.writeGraph("solved");
+
+    testSolved(bestSolved);
     return bestSolved;
 }
 
@@ -99,4 +102,15 @@ int State::getInt(const string &name, int def)
         return x;
     }
     return def;
+}
+
+bool State::testSolved(MGraph output)
+{
+    for(MGraph needle : m_forbidden) {
+        if(!VF::subgraphIsoOne(&output, &needle).empty()) {
+            clog << "NOT SOLVED !" << endl;
+            return false;
+        }
+    }
+    return true;
 }

@@ -48,7 +48,6 @@ inline int GurobiLP::weight(Edge edge)
 
 double GurobiLP::weightRelaxed(NodeT x, NodeT y)
 {
-    clog <<  (double)e(x,y).get(GRB_DoubleAttr_X) << endl;
     return e(x,y).get(GRB_DoubleAttr_X);
 }
 double GurobiLP::weightRelaxed(Edge edge)
@@ -84,7 +83,6 @@ void GurobiLP::addModelVarsRelaxed(Model weights)
 }
 void GurobiLP::setObjective(Model weights)
 {
-    de("set objective");
     try {
         GRBLinExpr min = 0;
         for(const auto &kv : weights) {
@@ -149,7 +147,6 @@ ModelRelaxed GurobiLP::optimizeRelaxed()
     ModelRelaxed ret;
     for(const auto &i : m_weights) {
         ret[i.first] = weightRelaxed(i.first);
-     //   clog << i.first.first<< " " << i.first.second << " = " << weightRelaxed(i.first) << endl; 
     }
     return ret;
 }
