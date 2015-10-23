@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     StateBlp state(conf);
     MGraph res = state.solveMultiple(Common::getInt(&conf, "rounds", 1));
     if(!conf["print_output"].empty()) {
-        res.writeGraph("output");
+        res.writeGraph(conf["print_output"]);
     }
     return 0;
 }

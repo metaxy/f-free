@@ -47,8 +47,8 @@ public:
 
     void printMatrix() const;
     string printGraph(vector<Subgraph> highlight);
-    void writeGraph(string fileName, vector<Subgraph> highlight);
-    void writeGraph(string fileName);
+    int writeGraph(string fileName, vector<Subgraph> highlight);
+    int writeGraph(string fileName);
 
     int mergeCost(NodeT u, NodeT v) const;
     int mergeCost(Edge e) const;

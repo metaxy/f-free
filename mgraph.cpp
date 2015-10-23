@@ -412,20 +412,21 @@ string MGraph::printGraph(vector<Subgraph> highlight)
 
 
 
-void MGraph::writeGraph(string fileName, vector<Subgraph> highlight)
+int MGraph::writeGraph(string fileName, vector<Subgraph> highlight)
 {
     std::ofstream fout(fileName+".dot");
     fout << printGraph(highlight);
     fout.close();
     std::stringstream stream;
     stream << "dot -Tpng \"" << fileName << ".dot\" -o \"" << fileName << ".png\"";
-    system(stream.str().c_str());
+    int ret = system(stream.str().c_str());
     remove((fileName+".dot").c_str());
+    return ret;
 }
-void MGraph::writeGraph(string fileName)
+int MGraph::writeGraph(string fileName)
 {
     vector<Subgraph> highlight;
-    this->writeGraph(fileName, highlight);
+    return this->writeGraph(fileName, highlight);
 }
 int MGraph::mergeCost(NodeT u, NodeT v) const
 {

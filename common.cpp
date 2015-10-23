@@ -109,6 +109,8 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     opt->setOption( "seed" );
     opt->setOption( "rounds" );
     opt->setOption( "random2_subgraph_batch" );
+    opt->setOption( "print_output" );
+    opt->setOption( "print_input" );
 
     /* go through the command line and get the options  */
     opt->processCommandArgs( argc, argv );
