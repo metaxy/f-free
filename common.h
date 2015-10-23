@@ -26,6 +26,7 @@ public:
     static void printSubgraph(Subgraph *subgraph);
 
     static Config parseConfig(int argc, char* argv[]);
+   static Config parseConfigOptions(int argc, char* argv[], vector<string> options);
     static string dotColor(float id, int size);
 
     static vector<string> listFiles(string path = ".");

@@ -107,6 +107,12 @@ target_link_libraries(
     ${ffree_LIBS}
 )
 
+add_executable(isomorph ${ffree_SRCS} main_isomorph.cpp)
+
+target_link_libraries(
+    isomorph
+    ${ffree_LIBS}
+)
 
 
 

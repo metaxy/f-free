@@ -140,7 +140,30 @@ map<string, string> Common::parseConfig(int argc, char* argv[])
     delete opt;
     return config;
 }
+map<string, string> Common::parseConfigOptions(int argc, char* argv[], vector<string> options)
+{
+    map<string,string> config;
+    AnyOption *opt = new AnyOption();
+    opt->noPOSIX();
+    opt->addUsage( "" );
+    opt->addUsage( "Usage: " );
+    opt->addUsage( "" );
+    opt->addUsage( "" );
+    opt->setFlag( "help", 'h' );
+    for(string option: options) {
+        opt->setOption( option.c_str() );
+    }
 
+    opt->processCommandArgs( argc, argv );
+    for(string option: options) {
+        if( opt->getValue( option.c_str() ) != NULL) {
+            config[option] = opt->getValue( option.c_str() );
+        }
+    }
+
+    delete opt;
+    return config;
+}
 string Common::dotColor(float id, int size)
 {
     float hue_factor = 1 / (float)size;
