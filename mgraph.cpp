@@ -7,9 +7,8 @@ MGraph::MGraph()
     //de("MGraph::Mgraph()");
 }
 
-MGraph::MGraph(int nodeCount, int defValue) : m_nodeCount(nodeCount)
+MGraph::MGraph(int nodeCount, NodeT defValue) : m_nodeCount(nodeCount)
 {
-    //de("MGraph::Mgraph(int) ");
     m_matrix = new NodeT*[m_nodeCount];
 
     //init vector where is saved whether the node is deleted,
@@ -17,14 +16,17 @@ MGraph::MGraph(int nodeCount, int defValue) : m_nodeCount(nodeCount)
     //when value is >= 0, this is node it was merged with
     m_deleted = new NodeT[m_nodeCount];
 
-    memset(m_deleted, defValue, m_nodeCount * sizeof(NodeT));
+    memset(m_deleted, -1, m_nodeCount * sizeof(NodeT));
 
     //init main matrix
     for (int i=0; i<m_nodeCount; i++) {
        m_matrix[i] = new NodeT[m_nodeCount];
-       memset(m_matrix[i], defValue, m_nodeCount * sizeof(NodeT));
+       for (int j=0; j<m_nodeCount; j++) {
+           m_matrix[i][j] = defValue;
+       }
     }
 }
+
 MGraph::MGraph(GGraph input) : MGraph(input.nodeCount())
 {
     //de("MGraph::Mgraph(Graph)");

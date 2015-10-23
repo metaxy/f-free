@@ -17,9 +17,9 @@ set( ffree_SRCS
     vf.cpp
 
     state.cpp
-    state_random.cpp
-    state_random2.cpp
-    state_random_half.cpp
+
+
+
 
 )
 
@@ -78,7 +78,6 @@ add_library(
 target_include_directories(vflib PUBLIC lib/vflib/include/)
 
 include_directories(lib/vflib/include/)
-
 set(
   ffree_LIBS
   vflib
@@ -88,19 +87,19 @@ ADD_DEFINITIONS(
     -std=c++11
     -Ofast
 )
-add_executable(ffree_random ${ffree_SRCS} main_random.cpp)
+add_executable(ffree_random ${ffree_SRCS} state_random.cpp main_random.cpp)
 
 target_link_libraries(
     ffree_random
     ${ffree_LIBS}
 )
-add_executable(ffree_random2 ${ffree_SRCS} main_random2.cpp)
+add_executable(ffree_random2 ${ffree_SRCS} state_random2.cpp main_random2.cpp)
 
 target_link_libraries(
     ffree_random2
     ${ffree_LIBS}
 )
-add_executable(ffree_random_half ${ffree_SRCS} main_random_half.cpp)
+add_executable(ffree_random_half ${ffree_SRCS} state_random_half.cpp main_random_half.cpp)
 
 target_link_libraries(
     ffree_random_half
