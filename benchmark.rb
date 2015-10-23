@@ -12,11 +12,14 @@ $TMP_FILE = DateTime.now.strftime("%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to
 
 def create_command(name, input, forbidden, timeout)
   format_string_time = '{"elapsed_time": "%E", "kernel_time" : "%S", "user_time" : "%U", "cpu_usage" : "%P", "max_memory" : "%M", "page_faults" : "%F", "context_switches_forced" : "%c", "context_switches": "%w", "io_input": "%I", "io_output": "%O"}'
-  return "/usr/bin/time -f '#{format_string_time}' --output '#{$TMP_FILE}.time' timeout --preserve-status #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED} 2>#{$TMP_FILE}.log"
+  return "/usr/bin/time -f '#{format_string_time}' --output '#{$TMP_FILE}.time' timeout  #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED} 2>#{$TMP_FILE}.log"
 end
 
 def create_simple_command(name, input, forbidden, timeout)
   return "timeout #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED}"
+end
+
+def parse_log(file)
 end
 
 
@@ -28,8 +31,16 @@ def check_env()
   `cd '$BIN_PATH' && make`
 end
 
-def parse_log()
-  
+def parse_time(file_name)
+  file = File.read(file_name)
+  if(file.starts_with? 'Command exited')
+    lines = file.lines
+    data = JSON.parse(lines[1])
+    data['extra'] = lines[0]
+    return data
+  else
+    return JSON.parse(file)
+  end
 end
 
 
@@ -110,7 +121,7 @@ def main()
         "quality" => qual,
         "command" => command,
         "simple_command" => simple_command,
-        "time_log" => JSON.parse(File.read($TMP_FILE+'.time')),
+        "time_log" => parse_time($TMP_FILE+'.time'),
         "log_output" => File.read($TMP_FILE+'.log')
       }
       FileUtils.rm($TMP_FILE+'.time')
