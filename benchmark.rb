@@ -12,7 +12,7 @@ $TMP_FILE = DateTime.now.strftime("%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to
 
 def create_command(name, input, forbidden, timeout)
   format_string_time = '{"elapsed_time": "%E", "kernel_time" : "%S", "user_time" : "%U", "cpu_usage" : "%P", "max_memory" : "%M", "page_faults" : "%F", "context_switches_forced" : "%c", "context_switches": "%w", "io_input": "%I", "io_output": "%O"}'
-  return "/usr/bin/time -f '#{format_string_time}' --output '#{$TMP_FILE}.time' timeout −−preserve−status #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED} 2>#{$TMP_FILE}.log"
+  return "/usr/bin/time -f '#{format_string_time}' --output '#{$TMP_FILE}.time' timeout --preserve−status #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED} 2>#{$TMP_FILE}.log"
 end
 
 def create_simple_command(name, input, forbidden, timeout)
