@@ -30,7 +30,7 @@ def check_env()
     exit
   end
   `cd '$BIN_PATH' && make`
-  FileUtils.mk_path './tmp'
+  FileUtils.mkpath './tmp'
 end
 
 def parse_time(file_name)
