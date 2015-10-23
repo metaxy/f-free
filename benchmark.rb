@@ -29,7 +29,7 @@ def check_env()
     puts "Please commit first"
     exit
   end
-  `cd '$BIN_PATH' && make`
+  `cd '#{$BIN_PATH}' && make`
   FileUtils.mkpath './tmp'
 end
 
