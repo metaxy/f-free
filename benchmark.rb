@@ -1,5 +1,6 @@
 require 'date'
 require 'json'
+require 'fileutils'
 
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
@@ -7,22 +8,31 @@ $FORBIDDEN = "./forbidden/cluster"
 $PROGS = ["random --rounds 1", "blp"]
 $SEED = "5489"
 $MAX_TIME=5
-def run_prog(name, input, forbidden, timeout)
-  ret = `timeout #{timeout}s  #{$BIN_PATH}/ffree_#{name} --input #{input} --forbidden #{forbidden} --seed #{$SEED}`
-  return ret
+$TMP_FILE = DateTime.now.strftime("%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
+
+def create_command(name, input, forbidden, timeout)
+  format_string_time = '{"elapsed_time": "%E", "kernel_time" : "%S", "user_time" : "%U", "cpu_usage" : "%P", "max_memory" : "%M", "page_faults" : "%F", "context_switches_forced" : "%c", "context_switches": "%w", "io_input": "%I", "io_output": "%O"}'
+  return "/usr/bin/time -f '#{format_string_time}' --output '#{$TMP_FILE}.time' timeout #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED} 2>#{$TMP_FILE}.log"
 end
 
-def main()
-  
+def create_simple_command(name, input, forbidden, timeout)
+  return "timeout #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED}"
+end
+
+
+def check_env()
   if(`git status -s` != "")
     puts "Please commit first"
     exit
   end
+  `cd '$BIN_PATH' && make`
+end
+
+def main()
   
-  `cd $BIN_PATH && make`
   fileName = DateTime.now.strftime("benchmarks/bench_%Y_%m_%d__%H_%M_%S.json")  
   output = {}
-  entries = Dir.entries($INSTANCES+"/")
+  
   
   output['instances'] = $INSTANCES
   output['forbidden'] = $FORBIDDEN
@@ -37,6 +47,8 @@ def main()
   count = Hash.new
   time = Hash.new
   failed = Hash.new
+  
+  entries = Dir.entries($INSTANCES+"/")
   entries_size = entries.size
   current_file = 0
   entries.each do |graph|
@@ -49,8 +61,12 @@ def main()
     kcorrect = grep.split()[1].to_i
     puts "# File #{current_file} of #{entries_size}"
     $PROGS.each do |prog|
+      command = create_command(prog, $INSTANCES+"/"+graph, $FORBIDDEN, $MAX_TIME)
+      simple_command = create_simple_command(prog, $INSTANCES+"/"+graph, $FORBIDDEN, $MAX_TIME)
+      
       start = Time.now
-      ret = run_prog(prog, $INSTANCES+"/"+graph, $FORBIDDEN, $MAX_TIME)
+      ret = `#{command}`
+      
       finish = Time.now
       if(ret.chomp == "")
         k = -1
@@ -86,8 +102,13 @@ def main()
         "k" => k,
         "kcorrect" => kcorrect,
         "time" => diff,
-        "quality" => qual
+        "quality" => qual,
+        "command" => command,
+        "simple_command" => simple_command,
+        "time_log" => JSON.parse(File.read($TMP_FILE+'.time')),
+        "log_output" => File.read($TMP_FILE+'.log')
       }
+      FileUtils.rm($TMP_FILE+'.time')
     end
   end
   output['end_time'] = Time.now.to_s

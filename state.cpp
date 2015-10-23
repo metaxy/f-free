@@ -46,11 +46,6 @@ MGraph State::solve()
     for(MGraph needle : m_forbidden) {
         input = this->solveSingle(input, needle);
     }
-    /*if(input.findP3() != P3(0,0,0)) {
-        clog << "NOT SOLVED !!! " << endl;
-    } else {
-        clog << "rightly solved" << endl;
-    }*/
     return input;
 }
 
