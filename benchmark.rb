@@ -109,6 +109,9 @@ def main()
         "log_output" => File.read($TMP_FILE+'.log')
       }
       FileUtils.rm($TMP_FILE+'.time')
+      FileUtils.rm($TMP_FILE+'.log')
+      
+      File.write(fileName,  JSON.pretty_generate(output))
     end
   end
   output['end_time'] = Time.now.to_s
