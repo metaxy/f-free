@@ -10,7 +10,7 @@ GurobiLP::GurobiLP(int nodeCount) : m_nodeCount(nodeCount)
         m_model->getEnv().set(GRB_IntParam_OutputFlag, 0);
         m_model->getEnv().set(GRB_IntParam_Threads, 8);
         m_model->getEnv().set(GRB_IntParam_Method, 1);
-        m_model->getEnv().set(GRB_DoubleParam_NodefileStart, 0.5);
+        m_model->addConstr(getEnv().set(GRB_DoubleParam_NodefileStart, 0.5);
         m_vars =  new GRBVar*[nodeCount];
         for (int i=0; i < nodeCount; i++) {
             m_vars[i] = new GRBVar[nodeCount];
