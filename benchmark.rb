@@ -47,6 +47,7 @@ end
 
 
 def main()
+  check_env()
   bench_folder = DateTime.now.strftime("#{$BENCHMARKS_PATH}/%Y_%m_%d__%H_%M_%S")
   fileName = DateTime.now.strftime("#{bench_folder}/results.json")
   FileUtils.mkpath(bench_folder)
