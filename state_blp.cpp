@@ -35,14 +35,12 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
        
         Model ret = g.optimize();
         for(const auto &i: ret) {
-            clog << i.second;
             if(i.second > 0) {
                 input.setWeight(i.first, 1);
             } else {
                 input.setWeight(i.first, -1);
             }
         }
-        clog << endl;
         copy.printEdges(copy.difference(&input));
         step++;
         mappings = VF::subgraphIsoAll(&input, &forbidden);

@@ -7,9 +7,11 @@ GurobiLP::GurobiLP(int nodeCount) : m_nodeCount(nodeCount)
     try {
         m_env = new GRBEnv();
         m_model = new GRBModel(*m_env);
-        m_model->getEnv().set(GRB_IntParam_OutputFlag, 0);
-        /*m_model->getEnv().set(GRB_IntParam_Threads, 8);
-        m_model->getEnv().set(GRB_IntParam_Method, 1);
+        // no output from gurobi
+        m_model->getEnv().set(GRB_IntParam_OutputFlag, 1);
+        m_model->getEnv().set(GRB_IntParam_LogToConsole, 0);
+
+       /* m_model->getEnv().set(GRB_IntParam_Method, 1);
         m_model->addConstr(getEnv().set(GRB_DoubleParam_NodefileStart, 0.5);*/
         m_vars =  new GRBVar*[nodeCount];
         for (int i=0; i < nodeCount; i++) {
@@ -109,7 +111,7 @@ void GurobiLP::addConstraint(MGraph *graph, NodeMapping *mapping)
             sum -= 1;
         }
     }
-    m_model->addConstr(expr <= sum);
+    m_model->addConstr(expr <= 1);
 }
 Model GurobiLP::optimize()
 {
