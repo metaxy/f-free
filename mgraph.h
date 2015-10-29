@@ -20,7 +20,7 @@ public:
     int setWeight(Edge e, int weight);
     int getWeight(Edge e) const;
     int increaseWeight(const Edge &e, int factor);
-
+    string printEdgeLatex(const Edge &e);
     string info();
 
 

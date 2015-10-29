@@ -100,15 +100,12 @@ void GurobiLP::setObjective(Model weights)
 void GurobiLP::addConstraint(MGraph *graph, NodeMapping *mapping)
 {
     GRBLinExpr expr;
-    int sum = 0;
     for(Edge edge: graph->edges()) {
         Edge trans = Common::transformEdge(edge, mapping);
         if(graph->connected(edge)) {
             expr += e(trans);
-            sum += 1;
         } else {
             expr -= e(trans);
-            sum -= 1;
         }
     }
     m_model->addConstr(expr <= 1);

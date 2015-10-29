@@ -10,7 +10,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/cluster/k_034_n_010.txt";
+        fileName = "../model/hand/trianangle.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
@@ -18,7 +18,7 @@ vector<MGraph> State::getForbidden()
 {
     string folder = m_config["forbidden"];
     if(folder.empty()) {
-        folder = "../forbidden/claw";
+        folder = "../forbidden/triangle";
     }
     vector<string> files = Common::listFiles(folder);
     vector<MGraph> ret;

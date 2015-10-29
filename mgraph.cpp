@@ -455,6 +455,10 @@ void MGraph::printEdge(const Edge &e)
 {
     cout << m_input.nodeName(e.first) << " " << m_input.nodeName(e.second) << endl;
 }
+string MGraph::printEdgeLatex(const Edge &e)
+{
+    return "e_{"+m_input.nodeName(e.first) + "," + m_input.nodeName(e.second) +"}";
+}
 
 void  MGraph::printEdges(vector<Edge> edges)
 {
