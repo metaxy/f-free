@@ -21,7 +21,7 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
     Model model = input.createModel();
     g.addModelVars(model);
     g.setObjective(model);
-
+    MGraph copy(input);
 
     vector<NodeMapping> mappings = VF::subgraphIsoAll(&input, &forbidden);
     int step = 0;
@@ -41,6 +41,7 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
                 input.setWeight(i.first, -1);
             }
         }
+        copy.printEdges(copy.difference(input));
         step++;
         mappings = VF::subgraphIsoAll(&input, &forbidden);
     }
