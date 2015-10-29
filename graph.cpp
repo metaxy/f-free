@@ -35,6 +35,8 @@ int GGraph::nodePosition(string name) const
 
 string GGraph::nodeName(int value) const
 {
+    if(m_nodeNames.size() <= value) return std::to_string(value);//no graph
+
     auto it = m_nodeNames.begin();
     std::advance(it, value);
     return it->first;

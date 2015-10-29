@@ -22,7 +22,10 @@ MGraph::MGraph(int nodeCount, NodeT defValue) : m_nodeCount(nodeCount)
     for (int i=0; i<m_nodeCount; i++) {
        m_matrix[i] = new NodeT[m_nodeCount];
        for (int j=0; j<m_nodeCount; j++) {
-           m_matrix[i][j] = defValue;
+           if(i == j)
+               m_matrix[i][j] = -1; //
+           else
+               m_matrix[i][j] = defValue;
        }
     }
 }
@@ -508,4 +511,9 @@ vector<Edge> MGraph::absHeightesEdgeOfEachRow()
         ret.push_back(Edge(i, maxj));
     }
     return ret;
+}
+
+string MGraph::info()
+{
+    return "nodeCount = " + std::to_string(m_nodeCount);
 }

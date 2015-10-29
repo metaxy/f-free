@@ -21,6 +21,8 @@ public:
     int getWeight(Edge e) const;
     int increaseWeight(const Edge &e, int factor);
 
+    string info();
+
 
 
     void clear();

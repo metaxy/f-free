@@ -11,6 +11,11 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
 {
     Randomize r(getInt("seed", 5489));
     vector<MGraph> sols = Forbidden::posibleSolutions(forbidden);
+    /*int i = 0;
+    for(MGraph a : sols) {
+        i++;
+        a.writeGraph("forbidden" + std::to_string(i));
+    }*/
     GurobiLP g(input.nodeCount());
     Model model = input.createModel();
     g.addModelVars(model);
