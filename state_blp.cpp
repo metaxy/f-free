@@ -41,7 +41,7 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
                 input.setWeight(i.first, -1);
             }
         }
-        copy.printEdges(copy.difference(input));
+        copy.printEdges(copy.difference(&input));
         step++;
         mappings = VF::subgraphIsoAll(&input, &forbidden);
     }
