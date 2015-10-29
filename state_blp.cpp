@@ -42,7 +42,7 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
                 input.setWeight(i.first, -1);
             }
         }
-        clog <<< endl;
+        clog << endl;
         copy.printEdges(copy.difference(&input));
         step++;
         mappings = VF::subgraphIsoAll(&input, &forbidden);
