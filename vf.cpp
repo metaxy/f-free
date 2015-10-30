@@ -56,8 +56,12 @@ bool subgraphIsoAllVisitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
 {
     vector<NodeMapping> *subgraphIsoData = (vector<NodeMapping> *) usr_data;
     NodeMapping mapping;
+    int last = -1;
     for(int i=0; i<n; i++) {
+        if(ni2[i] <= last) return false;
+        last = ni2[i];
         mapping[ni1[i]] = ni2[i];
+
     }
     subgraphIsoData->push_back(mapping);
     // Return false to search for the next matching

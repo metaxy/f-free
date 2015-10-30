@@ -5,7 +5,7 @@ require 'fileutils'
 $BIN_PATH = "./build"
 $INSTANCES = "./model/cluster_very_small"
 $FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random --rounds 1", "blp"]
+$PROGS = ["random --rounds 1"]
 $SEED = "5489"
 $MAX_TIME=5
 $TMP_FILE = DateTime.now.strftime("./tmp/tmp_%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
