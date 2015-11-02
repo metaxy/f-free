@@ -102,7 +102,7 @@ void GurobiLP::addConstraint(MGraph *graph, MGraph *forbidden, NodeMapping *mapp
     GRBLinExpr expr;
     for(Edge edge: forbidden->edges()) {
         Edge trans = Common::transformEdge(edge, mapping);
-        if(graph->connected(edge)) {
+        if(graph->connected(trans)) {
             expr += 1 - e(trans);
         } else {
             expr += e(trans);
