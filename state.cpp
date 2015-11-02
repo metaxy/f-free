@@ -71,7 +71,6 @@ MGraph State::solveMultiple(int count)
     }
     cout << "#k: " << bestSize << endl;
     bestSolved.printEdges(bestEdges);
-    bestSolved.writeGraph("solved");
 
     if(!testSolved(bestSolved)) {
         clog << "NOT SOLVED" << endl;
