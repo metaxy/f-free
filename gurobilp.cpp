@@ -103,9 +103,9 @@ void GurobiLP::addConstraint(MGraph *graph, MGraph *forbidden, NodeMapping *mapp
     for(Edge edge: forbidden->edges()) {
         Edge trans = Common::transformEdge(edge, mapping);
         if(graph->connected(edge)) {
-            expr += e(trans);
-        } else {
             expr += 1 - e(trans);
+        } else {
+            expr += e(trans);
         }
     }
     m_model->addConstr(expr >= 1);
