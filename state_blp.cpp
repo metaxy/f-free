@@ -10,27 +10,17 @@ StateBlp::StateBlp(Config conf) : State(conf)
 MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
 {
     Randomize r(getInt("seed", 5489));
-    vector<MGraph> sols = Forbidden::posibleSolutions(forbidden);
-    clog << "forbidden sols size " << sols.size() << endl;
-    /*int i = 0;
-    for(MGraph a : sols) {
-        i++;
-        a.writeGraph("forbidden" + std::to_string(i));
-    }*/
     GurobiLP g(input.nodeCount());
     Model model = input.createModel();
     g.addModelVars(model);
     g.setObjective(model);
-    MGraph copy(input);
 
     vector<NodeMapping> mappings = VF::subgraphIsoAll(&input, &forbidden);
     int step = 0;
     while(!mappings.empty()) {
         clog << "[" << step << "] found isomorphisms " << mappings.size() << endl;
         for(NodeMapping mapping : mappings) {
-            for(MGraph potentialSol : sols) {
-                g.addConstraint(&potentialSol, &mapping);
-            }
+            g.addConstraint(&input, &forbidden, &mapping);
         }
        
         Model ret = g.optimize();

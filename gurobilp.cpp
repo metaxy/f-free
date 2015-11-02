@@ -97,18 +97,18 @@ void GurobiLP::setObjective(Model weights)
         exit(-1);
     }
 }
-void GurobiLP::addConstraint(MGraph *graph, NodeMapping *mapping)
+void GurobiLP::addConstraint(MGraph *graph, MGraph *forbidden, NodeMapping *mapping)
 {
     GRBLinExpr expr;
-    for(Edge edge: graph->edges()) {
+    for(Edge edge: forbidden->edges()) {
         Edge trans = Common::transformEdge(edge, mapping);
         if(graph->connected(edge)) {
             expr += e(trans);
         } else {
-            expr -= e(trans);
+            expr += 1 - e(trans);
         }
     }
-    m_model->addConstr(expr <= 1);
+    m_model->addConstr(expr >= 1);
 }
 Model GurobiLP::optimize()
 {
