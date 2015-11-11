@@ -8,11 +8,12 @@
 #include <tuple>
 #include <set>
 #include <map>
+#include <unordered_map>
 #include "graph.h"
 #include "mgraph.h"
 
 typedef map<string, string> Config;
-typedef map<NodeT, NodeT> NodeMapping;
+typedef unordered_map<NodeT, NodeT> NodeMapping;
 class Common
 {
 public:
