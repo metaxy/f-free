@@ -6,7 +6,7 @@ require 'optparse'
 $BIN_PATH = "./build"
 
 def create_command(name, input, forbidden, timeout)
-  return "timeout  #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' 2>/dev/null"
+  return "timeout  #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}'"
 end
 
 
@@ -31,7 +31,6 @@ def main()
   entries = Dir.entries(options[:instances])
   entries_size = entries.size
   current_file = 0
-  i = 0
   
   output = {}
   notsolved = []
@@ -41,8 +40,9 @@ def main()
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     
     puts "# File #{current_file} of #{entries_size}"
-    command = create_command(options[:prog], options[:instances]+"/"+graph, options[:forbidden], "5")
+    command = create_command(options[:prog], options[:instances]+"/"+graph, options[:forbidden], "50")
     ret = `#{command}`
+    puts ret
     if(ret.chomp == "")
       k = -1
       notsolved << graph

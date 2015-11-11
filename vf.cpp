@@ -20,7 +20,7 @@ public:
     }
 
     bool add(NodeMapping mapping) {
-        string key;
+        string key = "";
         for(const auto &m : mapping) {
             key += "."+std::to_string(m.first);
         }
