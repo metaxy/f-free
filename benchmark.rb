@@ -54,13 +54,14 @@ def main()
   OptionParser.new do |opts|
     opts.banner = "Usage: benchmark.rb [options]"
 
-    opts.on("-c", "--config configFile", "Which config file should be used for this benchmark") do |v|
+    opts.on("-c", "--config CONFIG", "Which config file should be used for this benchmark") do |v|
       options[:config] = v
     end
   end.parse!
-
-  
-  config = JSON.parse(File.read(options[:config]))
+  abort("config option no set") if options[:config].nil?
+  c = File.read(options[:config])
+  abort("config file not found") if c.nil?
+  config = JSON.parse(c)
   
   output = {}
   output['options'] = options
