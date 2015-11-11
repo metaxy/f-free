@@ -59,7 +59,7 @@ def main()
     end
   end.parse!
   abort("config option no set") if options[:config].nil?
-  c = File.read(options[:config])
+  c = options[:config])
   abort("config file not found") if c.nil?
   config = JSON.parse(c)
   
@@ -80,6 +80,8 @@ def main()
   entries_size = entries.size
   current_file = 0
   i = 0
+  
+  sols = JSON.parse(File.read("#{config["instances"]}/#{File.basename(config["forbidden"])}.k.json"))
   entries.each do |graph|
     current_file += 1
     
@@ -87,7 +89,7 @@ def main()
     next if graph.start_with? "."
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     
-    grep = `grep #{graph} #{config["instances"]}/all.k`
+    grep = `grep #{graph} `
     kcorrect = grep.split()[1].to_i
     puts "# File #{current_file} of #{entries_size}"
     config["progs"].each do |prog|
@@ -101,6 +103,7 @@ def main()
       result_file_name = "output_#{graph}_#{prog}__#{i}.txt"
       File.write(bench_folder+"/"+result_file_name, ret)
       
+      kcorrect = sols[graph]
       
       if(ret.chomp == "")
         k = -1
