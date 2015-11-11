@@ -1,23 +1,19 @@
 require 'date'
 require 'json'
 require 'fileutils'
+require 'optparse'
 
 $BIN_PATH = "./build"
-$INSTANCES = "./model/cluster_very_small"
-$FORBIDDEN = "./forbidden/cluster"
-$PROGS = ["random --rounds 1", "blp"]
-$SEED = "5489"
-$MAX_TIME=5
 $TMP_FILE = DateTime.now.strftime("./tmp/tmp_%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
 $BENCHMARKS_PATH = "./data_benchmarks"
 
-def create_command(name, input, forbidden, timeout)
+def create_command(name, input, forbidden, timeout, seed)
   format_string_time = '{"elapsed_time": "%E", "kernel_time" : "%S", "user_time" : "%U", "cpu_usage" : "%P", "max_memory" : "%M", "page_faults" : "%F", "context_switches_forced" : "%c", "context_switches": "%w", "io_input": "%I", "io_output": "%O"}'
-  return "/usr/bin/time -f '#{format_string_time}' --output '#{$TMP_FILE}.time' timeout  #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED} 2>#{$TMP_FILE}.log"
+  return "/usr/bin/time -f '#{format_string_time}' --output '#{$TMP_FILE}.time' timeout  #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{seed} 2>#{$TMP_FILE}.log"
 end
 
-def create_simple_command(name, input, forbidden, timeout)
-  return "timeout #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{$SEED}"
+def create_simple_command(name, input, forbidden, timeout, seed)
+  return "timeout #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{seed}"
 end
 
 def parse_log(file)
@@ -53,16 +49,25 @@ def main()
   fileName = DateTime.now.strftime("#{bench_folder}/results.json")
   FileUtils.mkpath(bench_folder)
   
+  
+  options = {}
+  OptionParser.new do |opts|
+    opts.banner = "Usage: benchmark.rb [options]"
+
+    opts.on("-c", "--config configFile", "Which config file should be used for this benchmark") do |v|
+      options[:config] = v
+    end
+  end.parse!
+
+  
+  config = JSON.parse(File.read(options[:config]))
+  
   output = {}
-  
-  
-  output['instances'] = $INSTANCES
-  output['forbidden'] = $FORBIDDEN
+  output['options'] = options
+  output['config'] = config
   output['start_time'] = Time.now.to_s
   output['git_hash'] = `git rev-parse --verify HEAD`
   output['commit_message'] = `git log -1 --pretty=%B`
-  output['seed'] = $SEED
-  output['max_time'] = $MAX_TIME
   
   output['results'] = []
   quality = Hash.new
@@ -70,7 +75,7 @@ def main()
   time = Hash.new
   failed = Hash.new
   
-  entries = Dir.entries($INSTANCES+"/")
+  entries = Dir.entries(config["instances"]+"/")
   entries_size = entries.size
   current_file = 0
   i = 0
@@ -80,12 +85,13 @@ def main()
     next if graph == "k.txt" or graph == "k-cvd.txt" or graph.end_with? ".zip" 
     next if graph.start_with? "."
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
-    grep = `grep #{graph} #{$INSTANCES}/all.k`
+    
+    grep = `grep #{graph} #{config["instances"]}/all.k`
     kcorrect = grep.split()[1].to_i
     puts "# File #{current_file} of #{entries_size}"
-    $PROGS.each do |prog|
-      command = create_command(prog, $INSTANCES+"/"+graph, $FORBIDDEN, $MAX_TIME)
-      simple_command = create_simple_command(prog, $INSTANCES+"/"+graph, $FORBIDDEN, $MAX_TIME)
+    config["progs"].each do |prog|
+      command = create_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])
+      simple_command = create_simple_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])
       
       start = Time.now
       ret = `#{command}`
@@ -144,8 +150,10 @@ def main()
   output['end_time'] = Time.now.to_s
   
   output['stats'] = {}
-  $PROGS.each do |prog|
-    output['stats'][prog] = {
+  
+  config["progs"].each do |prog|
+    output['stats'][prog] = 
+    {
       "quality" => (quality[prog]/count[prog].to_f)*100,
       "failed" => failed[prog],
       "failed_percent" => (failed[prog]/count[prog].to_f)*100,
@@ -154,6 +162,7 @@ def main()
   end
   
   File.write(fileName,  JSON.pretty_generate(output))
+  
 end
 
 
