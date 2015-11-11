@@ -5,6 +5,39 @@
 #include "match.h"
 #include <chrono>
 #define MAXNODES 200
+
+class VFSorted {
+public:
+    VFSorted() : m_max(-1) {
+
+    }
+
+    VFSorted(int max) : m_max(max) {
+        m_data.reserve(max);
+    }
+
+    bool add(NodeMapping mapping) {
+        m_data.push_back(mapping);
+
+        if(m_max == -1) {
+            return false; //do not stop
+        } else {
+            if(m_max - 1 == m_data.size())
+                return true; // stop, its enought
+            return false;
+        }
+    }
+
+    vector<NodeMapping> get() {
+        return m_data;
+    }
+
+private:
+    int m_max;
+    vector<NodeMapping> m_data;
+};
+
+
 VF::VF()
 {
 
@@ -54,40 +87,22 @@ NodeMapping VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
 }
 bool subgraphIsoAllVisitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
 {
-    vector<NodeMapping> *subgraphIsoData = (vector<NodeMapping> *) usr_data;
+    VFSorted *subgraphIsoData = (VFSorted *) usr_data;
     NodeMapping mapping;
-    //int last = -1;
     for(int i=0; i<n; i++) {
-        //if(ni2[i] <= last) return false;
-        //last = ni2[i];
         mapping[ni1[i]] = ni2[i];
+    }
+    return subgraphIsoData->add(mapping);
+}
 
-    }
-    subgraphIsoData->push_back(mapping);
-    // Return false to search for the next matching
-    return false;
-}
-bool subgraphIsoAllVisitorCap(int n, node_id ni1[], node_id ni2[], void *usr_data)
-{
-    vector<NodeMapping> *subgraphIsoData = (vector<NodeMapping> *) usr_data;
-    NodeMapping mapping;
-    for(int i=0; i<n; i++) {
-        mapping[ni1[i]] = ni2[i];
-    }
-    subgraphIsoData->push_back(mapping);
-    // Return false to search for the next matching
-    if(subgraphIsoData->capacity() - 1 == subgraphIsoData->size())
-        return true;
-    return false;
-}
 vector<NodeMapping> VF::subgraphIsoAll(MGraph *haystack, MGraph *needle)
 {
     Graph big = VF::createGraph(haystack);
     Graph small = VF::createGraph(needle);
     VF2SubState s0(&small, &big);
-    vector<NodeMapping> subgraphIsoData;
+    VFSorted subgraphIsoData;
     match(&s0, subgraphIsoAllVisitor, &subgraphIsoData);
-    return subgraphIsoData;
+    return subgraphIsoData.get();
 }
 
 vector<NodeMapping> VF::subgraphIso(MGraph *haystack, MGraph *needle, int count)
@@ -95,9 +110,8 @@ vector<NodeMapping> VF::subgraphIso(MGraph *haystack, MGraph *needle, int count)
     Graph big = VF::createGraph(haystack);
     Graph small = VF::createGraph(needle);
     VF2SubState s0(&small, &big);
-    vector<NodeMapping> subgraphIsoData;
-    subgraphIsoData.reserve(count);
-    match(&s0, subgraphIsoAllVisitorCap, &subgraphIsoData);
-    return subgraphIsoData;
+    VFSorted subgraphIsoData(count);
+    match(&s0, subgraphIsoAllVisitor, &subgraphIsoData);
+    return subgraphIsoData.get();
 }
 

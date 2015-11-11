@@ -89,11 +89,12 @@ def main()
       
       start = Time.now
       ret = `#{command}`
+      finish = Time.now
       i += 1
       result_file_name = "output_#{graph}_#{prog}__#{i}.txt"
       File.write(bench_folder+"/"+result_file_name, ret)
       
-      finish = Time.now
+      
       if(ret.chomp == "")
         k = -1
         qual = 0
