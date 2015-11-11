@@ -194,6 +194,10 @@ vector<string> Common::listFiles(string path)
 
 Edge Common::transformEdge(const Edge &e, NodeMapping *mapping)
 {
+    /*clog << e.first << " " << e.second << endl;
+    for(auto a: *mapping) {
+        clog << a.first << " -> " << a.second << endl;
+    }*/
     return Edge(mapping->at(e.first), mapping->at(e.second));
 }
 

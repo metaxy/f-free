@@ -13,7 +13,7 @@
 #include "mgraph.h"
 
 typedef map<string, string> Config;
-typedef unordered_map<NodeT, NodeT> NodeMapping;
+typedef map<NodeT, NodeT> NodeMapping;
 class Common
 {
 public:

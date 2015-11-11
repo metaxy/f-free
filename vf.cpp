@@ -20,10 +20,13 @@ public:
     }
 
     bool add(NodeMapping mapping) {
+        //clog << "add mapping" << endl;
         string key = "";
         for(const auto &m : mapping) {
+            //clog << m.first << endl;
             key += "."+std::to_string(m.first);
         }
+        //clog << key << endl;
         m_data[key] = mapping;
 
         if(m_max == -1) {
@@ -36,8 +39,9 @@ public:
     }
 
     vector<NodeMapping> get() {
-        vector<NodeMapping> ret(m_data.size());
+        vector<NodeMapping> ret;
         for(const auto &m : m_data) {
+            //clog << m.first << clog;
             ret.push_back(m.second);
         }
         return ret;
@@ -45,7 +49,7 @@ public:
 
 private:
     int m_max;
-    unordered_map<string, NodeMapping> m_data;
+    map<string, NodeMapping> m_data;
 };
 
 
@@ -60,9 +64,7 @@ Graph VF::createGraph(MGraph *input)
     for(int i = 0; i < input->nodeCount(); i++) {
         ed.InsertNode(NULL);
     }
-    //clog << "count edges " << input->connectedEdges().size() << " " << input->edges().size() << endl;
     for(const Edge e: input->connectedEdges()) {
-        //clog << e.first << e.second << endl;
         ed.InsertEdge(e.first, e.second, NULL);
         ed.InsertEdge(e.second, e.first, NULL);
     }
