@@ -24,7 +24,7 @@ public:
         string key = "";
         for(const auto &m : mapping) {
             //clog << m.first << endl;
-            key += "."+std::to_string(m.first);
+            key += "."+std::to_string(m.second);
         }
         //clog << key << endl;
         m_data[key] = mapping;
