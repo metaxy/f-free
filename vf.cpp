@@ -4,6 +4,9 @@
 #include "ull_sub_state.h"
 #include "match.h"
 #include <chrono>
+#include <set>
+#include <unordered_map>
+
 #define MAXNODES 200
 
 class VFSorted {
@@ -13,11 +16,15 @@ public:
     }
 
     VFSorted(int max) : m_max(max) {
-        m_data.reserve(max);
+        //m_data.reserve(max);
     }
 
     bool add(NodeMapping mapping) {
-        m_data.push_back(mapping);
+        string key;
+        for(const auto &m : mapping) {
+            key += "."+std::to_string(m.first);
+        }
+        m_data[key] = mapping;
 
         if(m_max == -1) {
             return false; //do not stop
@@ -29,12 +36,16 @@ public:
     }
 
     vector<NodeMapping> get() {
-        return m_data;
+        vector<NodeMapping> ret(m_data.size());
+        for(const auto &m : m_data) {
+            ret.push_back(m.second);
+        }
+        return ret;
     }
 
 private:
     int m_max;
-    vector<NodeMapping> m_data;
+    unordered_map<string, NodeMapping> m_data;
 };
 
 
