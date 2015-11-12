@@ -145,6 +145,7 @@ def main()
         "log_output" => File.read($TMP_FILE+'.log'),
         "result_file_name" => result_file_name
       }
+      puts "k: #{k} of #{kcorrect} (#{qual*100}%)"
       FileUtils.rm($TMP_FILE+'.time')
       FileUtils.rm($TMP_FILE+'.log')
       
