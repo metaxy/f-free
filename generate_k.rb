@@ -40,7 +40,8 @@ def main()
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     
     puts "# File #{current_file} of #{entries_size}"
-    command = create_command(options[:prog], options[:instances]+"/"+graph, options[:forbidden], "50")
+    command = create_command(options[:prog], options[:instances]+"/"+graph, options[:forbidden], 60*15)
+    ret = `#{command}`
     puts ret
     if(ret.chomp == "")
       k = -1
