@@ -25,22 +25,26 @@ def main()
     opts.on("-p", "--prog CONFIG", "Which structures to forbid") do |v|
       options[:prog] = v
     end
+    opts.on("-t", "--t CONFIG", "Max time in seconds") do |v|
+      options[:time] = t
+    end
   end.parse!
   
   
-  entries = Dir.entries(options[:instances])
+  entries = Dir[options[:instances]+'/*'].sort_by{ |f| File.size(f) }
   entries_size = entries.size
   current_file = 0
   
   output = {}
   notsolved = []
+  
   entries.each do |graph|
     current_file += 1
     next if graph.start_with? "."
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     
     puts "# File #{current_file} of #{entries_size}"
-    command = create_command(options[:prog], options[:instances]+"/"+graph, options[:forbidden], 60*15)
+    command = create_command(options[:prog], graph, options[:forbidden], 60*5)
     ret = `#{command}`
     puts ret
     if(ret.chomp == "")
