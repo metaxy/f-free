@@ -89,9 +89,9 @@ def main()
     next if graph.start_with? "."
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     
-    grep = `grep #{graph} `
-    kcorrect = grep.split()[1].to_i
+    kcorrect = sols[graph].to_i
     puts "# File #{current_file} of #{entries_size}"
+    next if kcorrect == -1
     config["progs"].each do |prog|
       command = create_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])
       simple_command = create_simple_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])
