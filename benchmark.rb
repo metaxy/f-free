@@ -59,7 +59,7 @@ def main()
     end
   end.parse!
   abort("config option no set") if options[:config].nil?
-  c = options[:config])
+  c = File.read(options[:config])
   abort("config file not found") if c.nil?
   config = JSON.parse(c)
   
