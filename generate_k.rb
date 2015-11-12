@@ -48,9 +48,8 @@ def main()
       notsolved << graph
     else
       k = ret.split("\n").select{ |line| ! line.start_with?("#")}.size
-      output[graph] = k  
     end
-     
+    output[graph] = k
     
   end
   puts "Notsolved:"
