@@ -1,3 +1,10 @@
 build/
 data_benchmarks/
 tmp/
+model/cluster/
+model/cluster_small/
+model/cluster_very_small/cluster.k.json
+model/easy/
+model/easy2/
+model/some/
+
