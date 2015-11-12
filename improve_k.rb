@@ -27,7 +27,7 @@ def main()
       options[:prog] = v
     end
     opts.on("-t", "--t CONFIG", "Max time in seconds") do |v|
-      options[:time] = t
+      options[:time] = v
     end
   end.parse!
   
