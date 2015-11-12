@@ -32,20 +32,21 @@ def main()
   end.parse!
   
   
-  entries = Dir.entries(options[:instances])
+  entries = Dir[options[:instances]+'/*'].sort_by{ |f| File.size(f) }
   entries_size = entries.size
   current_file = 0
   
   output = {}
   notsolved = []
-  
+  sols = JSON.parse(File.read("#{config["instances"]}/#{File.basename(config["forbidden"])}.k.json"))
   entries.each do |graph|
     current_file += 1
     next if graph.start_with? "."
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
+    next if sols[graph] != -1
     
     puts "# File #{current_file} of #{entries_size}"
-    command = create_command(options[:prog], options[:instances]+'/'+graph, options[:forbidden], options[:time])
+    command = create_command(options[:prog], graph, options[:forbidden], options[:time])
     ret = `#{command}`
     puts ret
     if(ret.chomp == "")
