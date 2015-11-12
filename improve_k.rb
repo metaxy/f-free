@@ -36,9 +36,10 @@ def main()
   entries_size = entries.size
   current_file = 0
   
-  output = {}
+  
   notsolved = []
   sols = JSON.parse(File.read("#{config["instances"]}/#{File.basename(config["forbidden"])}.k.json"))
+  output = sols
   entries.each do |graph|
     current_file += 1
     next if graph.start_with? "."
