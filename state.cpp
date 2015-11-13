@@ -69,7 +69,10 @@ MGraph State::solveMultiple(int count)
             bestSize = edges.size();
         }
     }
+    this->final();
     cout << "#k: " << bestSize << endl;
+    cout << "#debug: " << debug() << endl;
+
     bestSolved.printEdges(bestEdges);
 
     if(!testSolved(bestSolved)) {
@@ -111,4 +114,20 @@ bool State::testSolved(MGraph output)
         }
     }
     return true;
+}
+
+string State::debug() const
+{
+    string ret = "{";
+    for(const auto i: m_debug) {
+        if(ret.size() > 1)
+            ret += ", ";
+        ret += "\""+i.first+"\":\""+i.second+"\"";
+    }
+    ret += "}";
+    return ret;
+}
+void State::final()
+{
+
 }

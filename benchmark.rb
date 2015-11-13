@@ -104,12 +104,16 @@ def main()
       File.write(bench_folder+"/"+result_file_name, ret)
       
       kcorrect = sols[graph]
-      
+      debug_out = {}
       if(ret.chomp == "")
         k = -1
         qual = 0
       else
         k = ret.split("\n").select{ |line| ! line.start_with?("#")}.size
+        debug_outstring = ret.split("\n").select{ |line| line.start_with?("#debug:")}
+        if(debug_outstring) 
+          debug_out = JSON.parse(debug_outstring[8..debug_outstring.size])
+        end
         if(kcorrect != 0)
           qual = kcorrect.to_f/k.to_f
         else
@@ -143,7 +147,8 @@ def main()
         "simple_command" => simple_command,
         "time_log" => parse_time($TMP_FILE+'.time'),
         "log_output" => File.read($TMP_FILE+'.log'),
-        "result_file_name" => result_file_name
+        "result_file_name" => result_file_name,
+        "debug_out" => debug_out
       }
       puts "k: #{k} of #{kcorrect} (#{qual*100}%)"
       FileUtils.rm($TMP_FILE+'.time')
