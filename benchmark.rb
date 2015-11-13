@@ -111,8 +111,8 @@ def main()
       else
         k = ret.split("\n").select{ |line| ! line.start_with?("#")}.size
         debug_outstring = ret.split("\n").select{ |line| line.start_with?("#debug:")}
-        if(debug_outstring) 
-          debug_out = JSON.parse(debug_outstring[8..debug_outstring.size])
+        if(debug_outstring.size() > 0)
+          debug_out = JSON.parse(debug_outstring[0].slice(8,debug_outstring[0].size))
         end
         if(kcorrect != 0)
           qual = kcorrect.to_f/k.to_f
