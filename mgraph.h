@@ -19,11 +19,8 @@ public:
     void flip(const Edge &e);
     int setWeight(Edge e, int weight);
     int getWeight(Edge e) const;
-    int increaseWeight(const Edge &e, int factor);
     string printEdgeLatex(const Edge &e);
     string info();
-
-
 
     void clear();
 
@@ -71,9 +68,6 @@ public:
 
    void debugEdges(vector<Edge> edges);
    void debugEdge(const Edge &e);
-
-   P3 findP3() const;
-
 
    vector<Edge> absHeightesEdgeOfEachRow();
 

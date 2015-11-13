@@ -5,6 +5,7 @@ State::State(Config conf) : m_config(conf)
 {
     m_input = this->getInput();
     m_forbidden = this->getForbidden();
+    r = new Randomize(getInt("seed", 5489));
 }
 MGraph State::getInput()
 {
@@ -42,7 +43,7 @@ MGraph State::solve(MGraph input, vector<MGraph> forbidden)
 
 MGraph State::solve()
 {
-    MGraph input = m_input;
+    MGraph input(m_input);
     for(MGraph needle : m_forbidden) {
         input = this->solveSingle(input, needle);
         input.restoreMerges();

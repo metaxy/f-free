@@ -128,10 +128,6 @@ int MGraph::getWeight(NodeT x, NodeT y) const
     return m_matrix[x][y];
 }
 
-int MGraph::increaseWeight(const Edge &e, int factor)
-{
-    return setWeight(e, getWeight(e) * factor);
-}
 void MGraph::clear()
 {
     for(Edge e : edges()) {
@@ -478,27 +474,6 @@ void  MGraph::debugEdges(vector<Edge> edges)
         printEdge(e);
 }
 
-P3 MGraph::findP3() const
-{
-    for(int i = 0; i < m_nodeCount; i++) {
-        if(isDeleted(i)) continue;
-
-        for(int j = 0; j < m_nodeCount; j++) {
-            if(isDeleted(j) || i == j || !connected(i,j)) continue;
-
-            for(int k = 0; k < m_nodeCount; k++) {
-                if(isDeleted(k)) continue;
-
-                if(j != k && i != k && connected(j,k) && !connected(i,k)) {
-                    return P3(i,j,k);
-                }
-            }
-
-        }
-    }
-    return P3(0,0,0);
-}
-
 vector<Edge> MGraph::absHeightesEdgeOfEachRow()
 {
     vector<Edge> ret;
@@ -506,13 +481,14 @@ vector<Edge> MGraph::absHeightesEdgeOfEachRow()
     for(int i = 0; i<m_nodeCount; i++) {
         int max = 0;
         int maxj = 0;
-        for(int j = 0; j<m_nodeCount;j++) {
+        for(int j = 0; j<i;j++) {
             if(abs(m_matrix[i][j]) > max) {
                 max = abs(m_matrix[i][j]);
                 maxj = j;
             }
         }
-        ret.push_back(Edge(i, maxj));
+        if(max > 1)
+            ret.push_back(Edge(i, maxj));
     }
     return ret;
 }
