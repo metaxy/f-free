@@ -27,7 +27,7 @@ MGraph StateRandomHalf::solveSingle(MGraph input, MGraph forbidden)
             Edge e = Common::transformEdge(edge, &mapping);
             int weight = abs(input.getWeight(e));
 
-            if(r->choice((atan(weight)/(M_PI/2))*0.5)) {
+            if(r->choice((atan(weight*0.5)/(M_PI/2)))) {
                 input.flip(e);
                 break;
             }
