@@ -90,7 +90,7 @@ def main()
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     
     kcorrect = sols[graph].to_i
-    puts "# File #{current_file} of #{entries_size}"
+    puts "# File #{current_file} of #{entries_size} (#{graph})"
     next if kcorrect == -1
     config["progs"].each do |prog|
       command = create_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])
@@ -150,7 +150,7 @@ def main()
         "result_file_name" => result_file_name,
         "debug_out" => debug_out
       }
-      puts "k: #{k} of #{kcorrect} (#{qual*100}%)"
+      puts "[#{prog}] k: #{k} of #{kcorrect} (#{qual*100}%)"
       FileUtils.rm($TMP_FILE+'.time')
       FileUtils.rm($TMP_FILE+'.log')
       
