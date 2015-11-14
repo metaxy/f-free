@@ -11,7 +11,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/hand/double_claw.txt";
+        fileName = "../model/cluster_very_small/optK_19_c_0.66_cost_matrix_component_nr_1162_size_15_cutoff_10.0.graph";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
