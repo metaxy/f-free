@@ -22,9 +22,6 @@ MGraph StateRandomHalf::solveSingle(MGraph input, MGraph forbidden)
                     copy.setWeight(e,  weight - 1 );
             }
         }
-        input.printMatrix();
-        copy.printMatrix();
-        clog << "abs " << copy.absHeightesEdgeOfEachRow().size() << endl;
         for(Edge e : copy.absHeightesEdgeOfEachRow()) {
             input.flip(e);
         }
