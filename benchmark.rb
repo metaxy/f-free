@@ -162,13 +162,16 @@ def main()
   output['stats'] = {}
   
   config["progs"].each do |prog|
+    
     output['stats'][prog] = 
     {
       "quality" => (quality[prog]/count[prog].to_f)*100,
+      "qualitySolved" => (quality[prog]/(count[prog]-failed[prog]).to_f)*100,
       "failed" => failed[prog],
       "failed_percent" => (failed[prog]/count[prog].to_f)*100,
       "mean_time" => (time[prog]/count[prog].to_f)
     }
+    puts "[#{prog}] qual: #{output['stats'][prog]["quality"]}, qualSolved: #{output['stats'][prog]["qualitySolved"]}, failed:  #{output['stats'][prog]["failed"]}"
   end
   
   File.write(fileName,  JSON.pretty_generate(output))
