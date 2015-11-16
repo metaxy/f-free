@@ -8,7 +8,7 @@ StateRandom::StateRandom(Config conf) : State(conf), m_countSteps(0)
 
 MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
 {
-    unordered_map<edge, int> modified;
+    map<Edge, int> modified;
     vector<Edge> forbiddenEdges = forbidden.edges();
     double forbiddenEdgesSize = forbiddenEdges.size();
 

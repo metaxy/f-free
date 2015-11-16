@@ -7,6 +7,9 @@ public:
     StateRandom2(Config conf);
 
     MGraph solveSingle(MGraph input, MGraph forbidden);
+    void final();
+protected:
+    int m_countSteps;
 };
 
 #endif // STATE_RANDOM_H
