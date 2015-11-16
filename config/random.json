@@ -1,6 +1,6 @@
 {
   "instances" : "./model/cluster_very_small",
-  "forbidden" : "./forbidden/cluster",
+  "forbidden" : "./forbidden/claw",
   "progs" : ["random --rounds 2","random2 --rounds 1", "random_half --rounds 2"],
   "seed" : 5489,
   "max_time" : 15
