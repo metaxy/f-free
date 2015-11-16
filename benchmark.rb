@@ -47,6 +47,7 @@ def main()
   check_env()
   bench_folder = DateTime.now.strftime("#{$BENCHMARKS_PATH}/%Y_%m_%d__%H_%M_%S")
   fileName = DateTime.now.strftime("#{bench_folder}/results.json")
+  fileName = DateTime.now.strftime("#{bench_folder}/results.json")
   FileUtils.mkpath(bench_folder)
   
   
@@ -175,6 +176,10 @@ def main()
   end
   
   File.write(fileName,  JSON.pretty_generate(output))
+  
+  list = JSON.parse(File.read($BENCHMARKS_PATH+'/list.json'))
+  list << fileName;
+  File.write($BENCHMARKS_PATH+'/list.json',  JSON.pretty_generate(list))
   
 end
 
