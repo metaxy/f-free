@@ -13,7 +13,7 @@ MGraph StateRandomHalf::solveSingle(MGraph input, MGraph forbidden)
     for(NodeMapping mapping : mappings) {
         for(const Edge &edge : forbidden.edges()) {
             Edge e = Common::transformEdge(edge, &mapping);
-            int weight = input.getWeight(e);
+            int weight = copy.getWeight(e);
             if(weight > 0)
                 copy.setWeight(e,  weight + 1 );
             else
@@ -25,7 +25,7 @@ MGraph StateRandomHalf::solveSingle(MGraph input, MGraph forbidden)
     while(!mapping.empty()) {
         for(const Edge &edge : forbidden.edges()) {
             Edge e = Common::transformEdge(edge, &mapping);
-            int weight = abs(input.getWeight(e));
+            int weight = abs(copy.getWeight(e));
 
             if(r->choice((atan(weight*0.5)/(M_PI/2)))) {
                 input.flip(e);
