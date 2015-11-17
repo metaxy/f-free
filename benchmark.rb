@@ -139,7 +139,10 @@ def main()
         failed[prog] += 1
       end
       time[prog] += diff
-      output['results'] << {
+      if(output['results'][graph].nil?)
+        output['results'][graph] = []
+      end
+      output['results'][graph] << {
         "prog" => prog,
         "graph" => graph,
         "k" => k,
