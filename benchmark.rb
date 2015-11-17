@@ -68,9 +68,9 @@ def main()
   output = {}
   output['options'] = options
   output['config'] = config
-  output['start_time'] = Time.now.to_s
+  output['start_time'] = Time.now.strftime "%Y-%m-%d %H:%M:%S"
   output['git_hash'] = `git rev-parse --verify HEAD`
-  output['commit_message'] = `git log -1 --pretty=%B`
+  output['commit_message'] = `git log -1 --pretty=%B`.strip!
   
   output['results'] = {}
   quality = Hash.new
