@@ -111,7 +111,6 @@ def main()
       result_file_name = "output_#{graph}_#{prog}__#{i}.txt"
       File.write(bench_folder+"/"+result_file_name, ret)
       
-      kcorrect = sols[graph]
       debug_out = {}
       if(ret.chomp == "")
         k = -1
