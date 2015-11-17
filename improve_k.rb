@@ -44,7 +44,7 @@ def main()
     current_file += 1
     next if graph.start_with? "."
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
-    next if sols[graph] != -1
+    next if sols[graph]['min_k'] != -1
     
     puts "# File #{current_file} of #{entries_size}"
     command = create_command(options[:prog], graph, options[:forbidden], options[:time])
@@ -56,7 +56,7 @@ def main()
     else
       k = ret.split("\n").select{ |line| ! line.start_with?("#")}.size
     end
-    output[graph] = k
+    output[graph]['min_k'] = k
     
   end
   puts "Notsolved:"

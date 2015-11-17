@@ -1,42 +1,122 @@
 {
-  "k_022_n_035.txt": 10,
-  "k_023_n_015.txt": 0,
-  "k_026_n_015.txt": 0,
-  "k_026_n_093.txt": 13,
-  "k_029_n_024.txt": 0,
-  "k_034_n_010.txt": 3,
-  "k_034_n_055.txt": 14,
-  "k_034_n_131.txt": 14,
-  "k_132_n_104.txt": 61,
-  "k_199_n_024.txt": 29,
-  "k_211_n_092.txt": 103,
-  "k_227_n_102.txt": 102,
-  "k_274_n_615.txt": 120,
-  "k_326_n_036.txt": -1,
-  "k_412_n_053.txt": -1,
-  "k_424_n_111.txt": 222,
-  "k_671_n_045.txt": -1,
-  "k_727_n_680.txt": 352,
-  "k_785_n_068.txt": -1,
-  "k_790_n_416.txt": 402,
-  "n_0011_nr_3599.txt": 2,
-  "n_0032_nr_1065.txt": 1,
-  "n_0033_nr_2024.txt": 23,
-  "n_0051_nr_1345.txt": 7,
-  "n_0057_nr_0012.txt": -1,
-  "optK_01_c_0.5_cost_matrix_component_nr_3675_size_4_cutoff_10.0.graph": 0,
-  "optK_05_c_0.5_cost_matrix_component_nr_2646_size_10_cutoff_10.0.graph": 2,
-  "optK_18_c_0.33_cost_matrix_component_nr_1816_size_34_cutoff_10.0.graph": 4,
-  "optK_19_c_0.66_cost_matrix_component_nr_1162_size_15_cutoff_10.0.graph": 5,
-  "optK_19_c_0.66_cost_matrix_component_nr_2915_size_13_cutoff_10.0.graph": 2,
-  "k_005_n_026.txt": 1,
-  "optK_20_c_0.33_cost_matrix_component_nr_2078_size_17_cutoff_10.0.graph": 5,
-  "optK_23_c_0.5_cost_matrix_component_nr_2489_size_24_cutoff_10.0.graph": 5,
-  "optK_30_c_0.33_cost_matrix_component_nr_3624_size_22_cutoff_10.0.graph": 12,
-  "optK_32_c_0.66_cost_matrix_component_nr_204_size_27_cutoff_10.0.graph": 7,
-  "optK_41_c_0.33_cost_matrix_component_nr_854_size_39_cutoff_10.0.graph": 13,
-  "optK_41_c_0.66_cost_matrix_component_nr_1812_size_29_cutoff_10.0.graph": 0,
-  "optK_45_c_0.5_cost_matrix_component_nr_1816_size_34_cutoff_10.0.graph": 14,
-  "optK_53_c_0.66_cost_matrix_component_nr_428_size_65_cutoff_10.0.graph": 5,
-  "optK_55_c_0.33_cost_matrix_component_nr_701_size_40_cutoff_10.0.graph": 20
+  "k_022_n_035.txt": {
+    "min_k": 10
+  },
+  "k_023_n_015.txt": {
+    "min_k": 0
+  },
+  "k_026_n_015.txt": {
+    "min_k": 0
+  },
+  "k_026_n_093.txt": {
+    "min_k": 13
+  },
+  "k_029_n_024.txt": {
+    "min_k": 0
+  },
+  "k_034_n_010.txt": {
+    "min_k": 3
+  },
+  "k_034_n_055.txt": {
+    "min_k": 14
+  },
+  "k_034_n_131.txt": {
+    "min_k": 14
+  },
+  "k_132_n_104.txt": {
+    "min_k": 61
+  },
+  "k_199_n_024.txt": {
+    "min_k": 29
+  },
+  "k_211_n_092.txt": {
+    "min_k": 103
+  },
+  "k_227_n_102.txt": {
+    "min_k": 102
+  },
+  "k_274_n_615.txt": {
+    "min_k": 120
+  },
+  "k_326_n_036.txt": {
+    "min_k": -1
+  },
+  "k_412_n_053.txt": {
+    "min_k": -1
+  },
+  "k_424_n_111.txt": {
+    "min_k": 222
+  },
+  "k_671_n_045.txt": {
+    "min_k": -1
+  },
+  "k_727_n_680.txt": {
+    "min_k": 352
+  },
+  "k_785_n_068.txt": {
+    "min_k": -1
+  },
+  "k_790_n_416.txt": {
+    "min_k": 402
+  },
+  "n_0011_nr_3599.txt": {
+    "min_k": 2
+  },
+  "n_0032_nr_1065.txt": {
+    "min_k": 1
+  },
+  "n_0033_nr_2024.txt": {
+    "min_k": 23
+  },
+  "n_0051_nr_1345.txt": {
+    "min_k": 7
+  },
+  "n_0057_nr_0012.txt": {
+    "min_k": -1
+  },
+  "optK_01_c_0.5_cost_matrix_component_nr_3675_size_4_cutoff_10.0.graph": {
+    "min_k": 0
+  },
+  "optK_05_c_0.5_cost_matrix_component_nr_2646_size_10_cutoff_10.0.graph": {
+    "min_k": 2
+  },
+  "optK_18_c_0.33_cost_matrix_component_nr_1816_size_34_cutoff_10.0.graph": {
+    "min_k": 4
+  },
+  "optK_19_c_0.66_cost_matrix_component_nr_1162_size_15_cutoff_10.0.graph": {
+    "min_k": 5
+  },
+  "optK_19_c_0.66_cost_matrix_component_nr_2915_size_13_cutoff_10.0.graph": {
+    "min_k": 2
+  },
+  "k_005_n_026.txt": {
+    "min_k": 1
+  },
+  "optK_20_c_0.33_cost_matrix_component_nr_2078_size_17_cutoff_10.0.graph": {
+    "min_k": 5
+  },
+  "optK_23_c_0.5_cost_matrix_component_nr_2489_size_24_cutoff_10.0.graph": {
+    "min_k": 5
+  },
+  "optK_30_c_0.33_cost_matrix_component_nr_3624_size_22_cutoff_10.0.graph": {
+    "min_k": 12
+  },
+  "optK_32_c_0.66_cost_matrix_component_nr_204_size_27_cutoff_10.0.graph": {
+    "min_k": 7
+  },
+  "optK_41_c_0.33_cost_matrix_component_nr_854_size_39_cutoff_10.0.graph": {
+    "min_k": 13
+  },
+  "optK_41_c_0.66_cost_matrix_component_nr_1812_size_29_cutoff_10.0.graph": {
+    "min_k": 0
+  },
+  "optK_45_c_0.5_cost_matrix_component_nr_1816_size_34_cutoff_10.0.graph": {
+    "min_k": 14
+  },
+  "optK_53_c_0.66_cost_matrix_component_nr_428_size_65_cutoff_10.0.graph": {
+    "min_k": 5
+  },
+  "optK_55_c_0.33_cost_matrix_component_nr_701_size_40_cutoff_10.0.graph": {
+    "min_k": 20
+  }
 }

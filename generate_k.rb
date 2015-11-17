@@ -38,6 +38,11 @@ def main()
   
   output = {}
   notsolved = []
+  if(File.exists("#{config["instances"]}/#{File.basename(config["forbidden"])}.k.json"))
+    sols = JSON.parse(File.read("#{config["instances"]}/#{File.basename(config["forbidden"])}.k.json"))
+  else
+    sols = {}
+  end
   
   entries.each do |graph|
     current_file += 1
@@ -45,16 +50,22 @@ def main()
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     
     puts "# File #{current_file} of #{entries_size}"
-    command = create_command(options[:prog], options[:instances]+'/'+graph, options[:forbidden], options[:time])
-    ret = `#{command}`
-    puts ret
-    if(ret.chomp == "")
-      k = -1
-      notsolved << graph
-    else
-      k = ret.split("\n").select{ |line| ! line.start_with?("#")}.size
+    if(not sols[graph].nil?) 
+      output[graph] = sols[graph]
     end
-    output[graph] = k
+    
+    if(sols[graph].nil? || sols[graph]['min_k'] == '-1')
+      command = create_command(options[:prog], options[:instances]+'/'+graph, options[:forbidden], options[:time])
+      ret = `#{command}`
+        puts ret
+      if(ret.chomp == "")
+        k = -1
+        notsolved << graph
+      else
+        k = ret.split("\n").select{ |line| ! line.start_with?("#")}.size
+      end
+      output[graph]['min_k'] = k
+    end
     
   end
   puts "Notsolved:"

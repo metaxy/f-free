@@ -73,6 +73,7 @@ def main()
   output['commit_message'] = `git log -1 --pretty=%B`.strip!
   
   output['results'] = {}
+  output['graphs'] = {}
   quality = Hash.new
   count = Hash.new
   time = Hash.new
@@ -91,9 +92,14 @@ def main()
     next if graph.start_with? "."
     next if not (graph.end_with? ".txt" or graph.end_with? ".graph")
     
-    kcorrect = sols[graph].to_i
+    kcorrect = sols[graph]['min_k'].to_i
     puts "# File #{current_file} of #{entries_size} (#{graph})"
+    
     next if kcorrect == -1
+    
+    graph_content = File.read(config["instances"]+"/"+graph)
+    
+    output['graphs'][graph] = sols[graph]
     config["progs"].each do |prog|
       command = create_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])
       simple_command = create_simple_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])

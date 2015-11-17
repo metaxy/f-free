@@ -32,6 +32,7 @@ MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
         }
 
         input.flip(foundEdge);
+        modified[foundEdge] = 1;
         m_countSteps++;
         mapping = VF::subgraphIsoOne(&input, &forbidden);
     }
