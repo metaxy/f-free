@@ -95,7 +95,7 @@ def main()
     kcorrect = sols[graph]['min_k'].to_i
     puts "# File #{current_file} of #{entries_size} (#{graph})"
     
-    next if kcorrect == -1 or kcorect == 0
+    next if kcorrect == -1 or kcorrect == 0
     
     graph_content = File.read(config["instances"]+"/"+graph)
     
