@@ -6,6 +6,7 @@
 #include "state_random_half.h"
 int main(int argc, char* argv[])
 {
+
     Config conf = Common::parseConfig(argc, argv);
     StateRandomHalf state(conf);
     state.solveMultiple(Common::getInt(&conf, "rounds", 1));
