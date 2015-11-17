@@ -93,7 +93,15 @@ void Common::printSubgraph(Subgraph *subgraph)
     clog <<endl;
 #endif
 }
-
+void Common::printNodeMapping(NodeMapping map)
+{
+#ifdef _DEBUG
+    for(const auto i: map) {
+         clog << i.first  << "<->" << i.second << ",";
+    }
+    clog <<endl;
+#endif
+}
 map<string, string> Common::parseConfig(int argc, char* argv[])
 {
     map<string,string> config;

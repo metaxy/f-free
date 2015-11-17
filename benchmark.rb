@@ -95,7 +95,7 @@ def main()
     kcorrect = sols[graph]['min_k'].to_i
     puts "# File #{current_file} of #{entries_size} (#{graph})"
     
-    next if kcorrect == -1
+    next if kcorrect == -1 or kcorect == 0
     
     graph_content = File.read(config["instances"]+"/"+graph)
     
@@ -188,7 +188,11 @@ def main()
   
   File.write(fileName,  JSON.pretty_generate(output))
   
-  list = JSON.parse(File.read($BENCHMARKS_PATH+'/list.json'))
+  if(File.exists? $BENCHMARKS_PATH+'/list.json')
+    list = JSON.parse(File.read($BENCHMARKS_PATH+'/list.json'))
+  else
+    list = []
+  end
   list << {"fileName" => fileName, 
            "time" => time_string, 
            "progs" =>  config["progs"], 

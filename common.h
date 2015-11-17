@@ -23,6 +23,7 @@ public:
 
     static void printMatrix(int **matrix, unsigned int size);
     static void printVector(int *vector, unsigned int size);
+    static void printNodeMapping(NodeMapping map);
 
     static void printSubgraph(Subgraph *subgraph);
 
