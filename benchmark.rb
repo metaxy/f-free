@@ -72,7 +72,7 @@ def main()
   output['git_hash'] = `git rev-parse --verify HEAD`
   output['commit_message'] = `git log -1 --pretty=%B`
   
-  output['results'] = []
+  output['results'] = {}
   quality = Hash.new
   count = Hash.new
   time = Hash.new
