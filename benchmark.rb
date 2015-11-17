@@ -137,8 +137,10 @@ def main()
       count[prog] += 1
       if(k == -1)
         failed[prog] += 1
+      else
+        time[prog] += diff
       end
-      time[prog] += diff
+      
       if(output['results'][graph].nil?)
         output['results'][graph] = []
       end
@@ -171,10 +173,10 @@ def main()
     output['stats'][prog] = 
     {
       "quality" => (quality[prog]/count[prog].to_f)*100,
-      "qualitySolved" => (quality[prog]/(count[prog]-failed[prog]).to_f)*100,
+      "quality_solved" => (quality[prog]/(count[prog]-failed[prog]).to_f)*100,
       "failed" => failed[prog],
       "failed_percent" => (failed[prog]/count[prog].to_f)*100,
-      "mean_time" => (time[prog]/count[prog].to_f)
+      "mean_time" => (time[prog]/(count[prog]-failed[prog]).to_f)
     }
     puts "[#{prog}] qual: #{output['stats'][prog]["quality"]}, qualSolved: #{output['stats'][prog]["qualitySolved"]}, failed:  #{output['stats'][prog]["failed"]}"
   end
