@@ -9,15 +9,19 @@ MGraph StateBottom::solve()
 {
     MGraph input(m_input);
     input.clear();
-    int nothing = 0;
-    while(nothing < m_input.nodeCount()*m_input.nodeCount()) {
-        Edge e = r->randomElement(m_input.difference(&input));
-        input.flip(e);
-        if(!isValid(&input)) {
+    while(true) {
+        vector<Edge> diff = r->randomVector(m_input.difference(&input));
+        bool oneChange = false;
+        for(const Edge &e: diff) {
             input.flip(e);
-            nothing++;
-        } else {
-            nothing = 0;
+            if(!isValid(&input)) {
+                input.flip(e);
+            } else {
+                oneChange = true;
+            }
+        }
+        if(!oneChange) {
+            break;
         }
 
     }
@@ -26,5 +30,5 @@ MGraph StateBottom::solve()
 
 bool StateBottom::isValid(MGraph *input)
 {
-    return VF::subgraphIsoHasOne(input, m_forbidden);
+    return !VF::subgraphIsoHasOne(input, m_forbidden);
 }

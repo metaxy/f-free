@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <random>
 #include <iterator>
+#include <algorithm>
 using namespace std;
 Randomize::Randomize() : m_rgen(m_rseed())
 {
+    m_seed = m_rseed();
 }
-Randomize::Randomize(unsigned int seed) : m_rgen(seed)
+Randomize::Randomize(unsigned int seed) : m_rgen(seed), m_seed(seed)
 {
 }
 bool Randomize::choice(float probability)
@@ -36,10 +38,9 @@ Edge  Randomize::randomElement(vector<Edge> list)
     return list[dis(m_rgen)];
 }
 
-
-Subgraph Randomize::randomElement(vector<Subgraph> list)
+vector<Edge> Randomize::randomVector(vector<Edge> a)
 {
-    std::uniform_int_distribution<> dis(0, list.size() - 1);
-    return list[dis(m_rgen)];
+    std::shuffle(std::begin(a), std::end(a), std::default_random_engine(m_seed));
+    return a;
 }
 

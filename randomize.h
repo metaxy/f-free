@@ -14,11 +14,13 @@ public:
     bool choice(float probability);
     NodeT randomElement(vector<NodeT> a);
     Edge randomElement(vector<Edge> a);
-    Subgraph randomElement(vector<Subgraph> a);
     NodeT randomElement(set<NodeT> a);
+    vector<Edge> randomVector(vector<Edge> a);
 private:
     std::random_device m_rseed;
     std::mt19937 m_rgen;
+
+    int m_seed;
 };
 
 #endif // RANDOMIZE_H
