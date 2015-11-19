@@ -15,7 +15,6 @@ set( ffree_SRCS
     anyoption.cpp
     forbidden.cpp
     vf.cpp
-
     state.cpp
 
 
@@ -105,6 +104,14 @@ target_link_libraries(
     ffree_random_half
     ${ffree_LIBS}
 )
+
+add_executable(ffree_bottom ${ffree_SRCS} state_bottom.cpp main_bottom.cpp)
+
+target_link_libraries(
+    ffree_bottom
+    ${ffree_LIBS}
+)
+
 
 add_executable(isomorph ${ffree_SRCS} main_isomorph.cpp)
 

@@ -5,7 +5,7 @@ class StateRandom2 : public State
 {
 public:
     StateRandom2(Config conf);
-
+    MGraph solve();
     MGraph solveSingle(MGraph input, MGraph forbidden);
     void final();
 protected:

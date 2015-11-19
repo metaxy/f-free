@@ -5,7 +5,14 @@
 StateRandom::StateRandom(Config conf) : State(conf), m_countSteps(0)
 {
 }
-
+MGraph StateRandom::solve()
+{
+    MGraph input(m_input);
+    for(MGraph needle : m_forbidden) {
+        input = this->solveSingle(input, needle);
+    }
+    return input;
+}
 MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
 {
     map<Edge, int> modified;

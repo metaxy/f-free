@@ -7,9 +7,7 @@ class State
 {
 public:
     State(Config conf);
-    MGraph solve();
-    virtual MGraph solve(MGraph input, vector<MGraph> forbidden);
-    virtual MGraph solveSingle(MGraph input, MGraph forbidden) = 0;
+    virtual MGraph solve() = 0;
 
     virtual void final();
     MGraph solveMultiple(int count);

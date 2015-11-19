@@ -30,29 +30,6 @@ vector<MGraph> State::getForbidden()
     return ret;
 }
 
-
-MGraph State::solve(MGraph input, vector<MGraph> forbidden)
-{
-    for(MGraph needle : forbidden) {
-        input = this->solveSingle(input, needle);
-        input.restoreMerges();
-        input.normalize();
-    }
-    return input;
-}
-
-MGraph State::solve()
-{
-    MGraph input(m_input);
-    for(MGraph needle : m_forbidden) {
-        input = this->solveSingle(input, needle);
-        input.restoreMerges();
-        input.normalize();
-    }
-    return input;
-}
-
-
 MGraph State::solveMultiple(int count)
 {
     vector<Edge> bestEdges;
@@ -61,8 +38,6 @@ MGraph State::solveMultiple(int count)
     for(int i = 0; i< count; i++) {
         MGraph solved = this->solve();
         if(!testSolved(solved)) continue;
-        solved.restoreMerges();
-        solved.normalize();
         vector<Edge> edges = m_input.difference(&solved);
         if(edges.size() < bestSize) {
             bestSolved = solved;

@@ -11,13 +11,6 @@ MGraph::MGraph(int nodeCount, NodeT defValue) : m_nodeCount(nodeCount)
 {
     m_matrix = new NodeT*[m_nodeCount];
 
-    //init vector where is saved whether the node is deleted,
-    //when value is -1, this means it is not deleted
-    //when value is >= 0, this is node it was merged with
-    m_deleted = new NodeT[m_nodeCount];
-
-    memset(m_deleted, -1, m_nodeCount * sizeof(NodeT));
-
     //init main matrix
     for (int i=0; i<m_nodeCount; i++) {
        m_matrix[i] = new NodeT[m_nodeCount];
@@ -44,9 +37,7 @@ MGraph::MGraph(MGraph *copy)
     m_nodeCount = copy->m_nodeCount;
     m_input = copy->m_input;
     m_matrix = new NodeT*[m_nodeCount];
-    m_deleted = new NodeT[m_nodeCount];
     for(int i = 0; i < m_nodeCount; i++) {
-        m_deleted[i] = copy->m_deleted[i];
         m_matrix[i] = new NodeT[m_nodeCount];
         for(int j = 0; j < m_nodeCount; j++) {
             m_matrix[i][j] = copy->m_matrix[i][j];
@@ -59,9 +50,7 @@ MGraph::MGraph(const MGraph &copy)
     m_nodeCount = copy.m_nodeCount;
     m_input = copy.m_input;
     m_matrix = new NodeT*[m_nodeCount];
-    m_deleted = new NodeT[m_nodeCount];
     for(int i = 0; i < m_nodeCount; i++) {
-        m_deleted[i] = copy.m_deleted[i];
         m_matrix[i] = new NodeT[m_nodeCount];
         for(int j = 0; j < m_nodeCount; j++) {
             m_matrix[i][j] = copy.m_matrix[i][j];
@@ -88,12 +77,6 @@ int MGraph::absolut(NodeT u, NodeT v) const
 int MGraph::absolut(const Edge &e) const
 {
     return absolut(e.first,e.second);
-}
-bool MGraph::isDeleted(NodeT x) const
-{
-    assert(x >= 0);
-    assert(x < m_nodeCount);
-    return m_deleted[x] != -1;
 }
 bool MGraph::connected(NodeT x, NodeT y) const
 {
@@ -135,54 +118,12 @@ void MGraph::clear()
     }
 }
 
-int MGraph::merge(const Edge e)
-{
-    const NodeT u = e.first;
-    const NodeT v = e.second;
-
-    int depth = 0;
-
-    for(int i = 0; i< m_nodeCount; i++) {
-        if(i != v && i != u && !isDeleted(i)) {
-            if(sgn(m_matrix[i][u]) != sgn(m_matrix[i][v])) {
-                depth += min(abs(m_matrix[i][u]), abs(m_matrix[i][v]));
-            }
-            m_matrix[i][u] += m_matrix[i][v];
-            m_matrix[u][i] = m_matrix[i][u];
-        }
-    }
-
-    m_deleted[v] = u;//v is deleted
-    return depth;
-}
-int MGraph::dismerge(const Edge e)
-{
-    const NodeT u = e.first;
-    const NodeT v = e.second;
-    int depth = 0;
-
-    for(int i = 0; i< m_nodeCount; i++) {
-        if(i != v && i != u && !isDeleted(i)) {
-            m_matrix[i][u] -= m_matrix[i][v];
-            m_matrix[u][i] = m_matrix[i][u];
-            if(sgn(m_matrix[i][u]) != sgn(m_matrix[i][v])) {
-                depth += min(abs(m_matrix[i][u]), abs(m_matrix[i][v]));
-            }
-        }
-    }
-
-    //node v is not deleted
-    m_deleted[v] = -1;
-    return depth;
-}
 
 vector<NodeT> MGraph::nodes() const
 {
     vector<NodeT> list;
     for(int i = 0; i < m_nodeCount; i++) {
-        if(!isDeleted(i)) {
-            list.push_back(i);
-        }
+        list.push_back(i);
     }
     return list;
 }
@@ -191,9 +132,7 @@ set<NodeT> MGraph::nodesSet() const
 {
     set<NodeT> list;
     for(int i = 0; i < m_nodeCount; i++) {
-        if(!isDeleted(i)) {
-            list.insert(i);
-        }
+        list.insert(i);
     }
     return list;
 }
@@ -203,9 +142,7 @@ vector<Edge> MGraph::edges() const
 {
     vector<Edge> list;
     for(int i = 0; i < m_nodeCount; i++) {
-        if(isDeleted(i)) continue;
         for(int j = i+1; j < m_nodeCount; j++) {
-            if(isDeleted(i)) continue;
             list.push_back(Edge(i,j));
         }
     }
@@ -215,9 +152,8 @@ vector<Edge> MGraph::connectedEdges() const
 {
     vector<Edge> list;
     for(int i = 0; i < m_nodeCount; i++) {
-        if(isDeleted(i)) continue;
         for(int j = i+1; j < m_nodeCount; j++) {
-            if(!isDeleted(j) && connected(i,j)) {
+            if(connected(i,j)) {
                 list.push_back(Edge(i,j));
             }
         }
@@ -230,9 +166,7 @@ Model MGraph::createModel() const
     Model model;
     for(int i = 0; i < m_nodeCount; i++) {
        for(int j = i+1; j < m_nodeCount; j++) {
-           if(!isDeleted(i) && !isDeleted(j)) {
-               model[Edge(i,j)] = getWeight(i,j);
-           }
+            model[Edge(i,j)] = getWeight(i,j);
        }
    }
    return model;
@@ -251,9 +185,9 @@ Edge MGraph::edge(NodeT x, NodeT y)
 bool MGraph::hasSameNeighbours(NodeT u, NodeT v)
 {
     NodeT i;
-    for (i=0; i<u; i++) if (!isDeleted(i) && (connected(i,u) != connected(i, v))) return false;
-    for (i++; i<v; i++) if (!isDeleted(i) && (connected(u,i) != connected(i, v))) return false;
-    for (i++; i<m_nodeCount; i++) if (!isDeleted(i) && (connected(u,i) != connected(v, i))) return false;
+    for (i=0; i<u; i++) if (connected(i,u) != connected(i, v)) return false;
+    for (i++; i<v; i++) if (connected(u,i) != connected(i, v)) return false;
+    for (i++; i<m_nodeCount; i++) if (connected(u,i) != connected(v, i)) return false;
     return true;
 }
 int MGraph::nodeCount() const
@@ -265,42 +199,13 @@ vector<Edge> MGraph::difference(MGraph *other)
 {
     vector<Edge> list;
     for(int i = 0; i < m_nodeCount; i++) {
-        if(isDeleted(i)) continue;
         for(int j = i+1; j < m_nodeCount; j++) {
-            if(isDeleted(j)) continue;
             if(other->m_matrix[i][j] - m_matrix[i][j] != 0) {
                 list.push_back(Edge(i,j));
             }
         }
     }
     return list;
-}
-
-void MGraph::restoreMerges()
-{
-    int count = 0;
-    while(count <= m_nodeCount) {
-        for(int i = 0; i< m_nodeCount; i++) {
-            if(isDeleted(i)) {
-                NodeT mergeTarget = m_deleted[i];
-                if(!isDeleted(mergeTarget)) {
-                    for(int t=0; t < m_nodeCount; t++) {
-                        if(t == mergeTarget) {
-                            m_matrix[i][t] = 1;
-                            m_matrix[t][i] = 1;
-                        } else {
-                            m_matrix[i][t] = connected(mergeTarget,t) ? 1 : -1;
-                            m_matrix[t][i] = connected(mergeTarget,t) ? 1 : -1;
-                        }
-                    }
-                    m_deleted[i] = -1;//i is not anymore deleted
-                } else {
-                    count = -1;
-                }
-            }
-            count++;
-        }
-    }
 }
 
 void MGraph::normalize()
@@ -316,19 +221,8 @@ set<NodeT> MGraph::neighborhood(NodeT node) const
 {
     set<NodeT> ret;
     for(int i = 0; i< m_nodeCount; i++) {
-        if(isDeleted(i) || node == i) continue;
+        if(node == i) continue;
         if(connected(node, i)) ret.insert(i);
-    }
-    return ret;
-}
-set<NodeT> MGraph::costlyNeighborhood(NodeT node, int maxCost) const
-{
-    set<NodeT> ret;
-    for(int i = 0; i< m_nodeCount; i++) {
-        if(isDeleted(i) || node == i) continue;
-        if(mergeCost(node,i) <= maxCost) {
-            ret.insert(i);
-        }
     }
     return ret;
 }
@@ -336,38 +230,6 @@ set<NodeT> MGraph::closedNeighborhood(NodeT node) const
 {
     set<NodeT> ret = neighborhood(node);
     ret.insert(node);
-    return ret;
-}
-set<NodeT> MGraph::closedCostlyNeighborhood(NodeT node, int maxCost) const
-{
-    set<NodeT> ret = costlyNeighborhood(node, maxCost);
-    ret.insert(node);
-    return ret;
-}
-int MGraph::costMakingClique(NodeT node)
-{
-    set<NodeT> n = closedNeighborhood(node);
-    int ret = 0;
-    for(NodeT v : n) {
-        for(NodeT w : n) {
-            if(!connected(v,w)) {
-                ret += abs(getWeight(v,w));
-            }
-        }
-    }
-    return ret;
-}
-int MGraph::costCutting(NodeT node)
-{
-    set<NodeT> n = closedNeighborhood(node);
-    int ret = 0;
-    for(NodeT v : n) {
-        for(NodeT w : nodes()) {
-            if(n.count(w) == 0 && connected(v,w)) {
-                ret += getWeight(v,w);
-            }
-        }
-    }
     return ret;
 }
 void MGraph::printMatrix() const
@@ -383,11 +245,9 @@ string MGraph::printGraph(vector<Subgraph> highlight)
     string ret = "digraph G {\n";
     ret += "edge [dir=none]\n";
     for(int x = 0; x < m_nodeCount; x++) {
-        if(isDeleted(x))
-            continue;
 
         for(int y = x+1; y < m_nodeCount; y++) {
-            if(!isDeleted(y) && connected(x,y)) {
+            if(connected(x,y)) {
                 ret += "" +  m_input.nodeName(x) + " -> " +  m_input.nodeName(y) + " [label=\""+std::to_string(m_matrix[x][y]) + "\"";
                 for(int i = 0; i < highlight.size(); i++) {
                     bool found = false;
@@ -429,23 +289,6 @@ int MGraph::writeGraph(string fileName)
     vector<Subgraph> highlight;
     return this->writeGraph(fileName, highlight);
 }
-int MGraph::mergeCost(NodeT u, NodeT v) const
-{
-    int depth = 0;
-    for(int t = 0; t< m_nodeCount; t++) {
-        if(t != u && t != v && !isDeleted(t)) {
-            if(sgn(m_matrix[t][u]) != sgn(m_matrix[t][v])) {
-                depth += min(abs(m_matrix[t][u]), abs(m_matrix[t][v]));
-            }
-        }
-    }
-    assert(depth >= 0);
-    return depth;
-}
-int MGraph::mergeCost(Edge e) const
-{
-    return mergeCost(e.first,e.second);
-}
 
 void MGraph::printEdge(const Edge &e)
 {
@@ -472,25 +315,6 @@ void  MGraph::debugEdges(vector<Edge> edges)
 {
     for(const Edge &e: edges)
         printEdge(e);
-}
-
-vector<Edge> MGraph::absHeightesEdgeOfEachRow()
-{
-    vector<Edge> ret;
-    ret.reserve(m_nodeCount);
-    for(int i = 0; i<m_nodeCount; i++) {
-        int max = 0;
-        int maxj = 0;
-        for(int j = 0; j<i;j++) {
-            if(abs(m_matrix[i][j]) > max) {
-                max = abs(m_matrix[i][j]);
-                maxj = j;
-            }
-        }
-        if(max > 1)
-            ret.push_back(Edge(i, maxj));
-    }
-    return ret;
 }
 
 string MGraph::info()

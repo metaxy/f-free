@@ -5,7 +5,7 @@ class StateRandomHalf : public State
 {
 public:
     StateRandomHalf(Config conf);
-
+    MGraph solve();
     MGraph solveSingle(MGraph input, MGraph forbidden);
 };
 

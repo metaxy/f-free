@@ -98,6 +98,21 @@ NodeMapping VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
     }
     return mapping;
 }
+bool VF::subgraphIsoHasOne(MGraph *haystack, vector<MGraph> needle)
+{
+     Graph big = VF::createGraph(haystack);
+     for(MGraph n : needle) {
+         Graph small = VF::createGraph(&n);
+         UllSubState s0(&small, &big);
+         int count;
+         node_id ni1[MAXNODES], ni2[MAXNODES];
+         if (match(&s0, &count, ni1, ni2)) {
+             return true;
+         }
+     }
+     return false;
+}
+
 bool subgraphIsoAllVisitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
 {
     VFSorted *subgraphIsoData = (VFSorted *) usr_data;

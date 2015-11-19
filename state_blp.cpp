@@ -6,6 +6,14 @@
 StateBlp::StateBlp(Config conf) : State(conf)
 {
 }
+MGraph StateBlp::solve()
+{
+    MGraph input(m_input);
+    for(MGraph needle : m_forbidden) {
+        input = this->solveSingle(input, needle);
+    }
+    return input;
+}
 
 MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
 {

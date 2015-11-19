@@ -12,64 +12,56 @@ public:
     MGraph(MGraph *copy);
     MGraph(const MGraph &copy);
     ~MGraph();
-    void addEdge(const Edge &e);
+
     bool connected(const Edge &e) const;
-    int absolut(const Edge &e) const;
-    bool isDeleted(NodeT x) const;
+    bool connected(NodeT x, NodeT y) const;
+
+    void addEdge(const Edge &e);
     void flip(const Edge &e);
+
+
     int setWeight(Edge e, int weight);
     int getWeight(Edge e) const;
-    string printEdgeLatex(const Edge &e);
-    string info();
+    int absolut(const Edge &e) const;
 
     void clear();
+    void normalize();
 
-    int merge(Edge e);
-    int dismerge(Edge e);
+    static Edge normalize(Edge e);
+    static Edge edge(NodeT x, NodeT y);
 
     vector<NodeT> nodes() const;
     set<NodeT> nodesSet() const;
     vector<Edge> edges() const;
-    set<NodeT> neighborhood(NodeT node) const;
+    vector<Edge> connectedEdges() const;
+
+
     Model createModel() const;
-
-
-    static Edge normalize(Edge e);
-    static Edge edge(NodeT x, NodeT y);
 
     int nodeCount() const;
 
     vector<Edge> difference(MGraph *other);
 
-    void restoreMerges();
-    void normalize();
+    set<NodeT> neighborhood(NodeT node) const;
+    set<NodeT> closedNeighborhood(NodeT node) const;
+    bool hasSameNeighbours(NodeT u, NodeT v);
+    set<NodeT> costlyNeighborhood(NodeT node, int maxCost) const;
+
+    //DEBUG FUNCTIONS
 
     void printMatrix() const;
     string printGraph(vector<Subgraph> highlight);
     int writeGraph(string fileName, vector<Subgraph> highlight);
     int writeGraph(string fileName);
 
-    int mergeCost(NodeT u, NodeT v) const;
-    int mergeCost(Edge e) const;
-    vector<Edge> connectedEdges() const;
+    void printEdges(vector<Edge> edges);
+    void printEdge(const Edge &e);
 
-    bool connected(NodeT x, NodeT y) const;
+    void debugEdges(vector<Edge> edges);
+    void debugEdge(const Edge &e);
 
-    int costCutting(NodeT node);
-    int costMakingClique(NodeT node);
-    set<NodeT> closedNeighborhood(NodeT node) const;
-    bool hasSameNeighbours(NodeT u, NodeT v);
-    set<NodeT> costlyNeighborhood(NodeT node, int maxCost) const;
-    set<NodeT> closedCostlyNeighborhood(NodeT node, int maxCost) const;
-
-
-   void printEdges(vector<Edge> edges);
-   void printEdge(const Edge &e);
-
-   void debugEdges(vector<Edge> edges);
-   void debugEdge(const Edge &e);
-
-   vector<Edge> absHeightesEdgeOfEachRow();
+    string printEdgeLatex(const Edge &e);
+    string info();
 
    private:
     int m_nodeCount;
@@ -79,7 +71,6 @@ public:
     int getWeight(NodeT x, NodeT y) const;
     
     NodeT **m_matrix = nullptr;
-    NodeT *m_deleted = nullptr;
 
 };
 
