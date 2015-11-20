@@ -7,14 +7,14 @@ class VF
 public:
     VF();
 
-    static NodeMapping subgraphIsoOne(MGraph *haystack, MGraph *needle);
-    static bool subgraphIsoHasOne(MGraph *haystack, vector<MGraph> needle);
-    static vector<NodeMapping> subgraphIsoAll(MGraph *haystack, MGraph *needle);
-    static Subgraph createSubgraph(MGraph *needle, map<NodeT, NodeT> mapping);
-    static vector<NodeMapping> subgraphIso(MGraph *haystack, MGraph *needle, int count);
+    static NodeMapping subgraphIsoOne(const MGraph *haystack, const MGraph *needle);
+    static bool subgraphIsoHasOne(const MGraph *haystack, vector<MGraph> needle);
+    static vector<NodeMapping> subgraphIsoAll(const MGraph *haystack, const MGraph *needle);
+    static Subgraph createSubgraph(const MGraph *needle, map<NodeT, NodeT> mapping);
+    static vector<NodeMapping> subgraphIso(const MGraph *haystack, const MGraph *needle, int count);
 
 private:
-    static Graph createGraph(MGraph *input);
+    static Graph createGraph(const MGraph *input);
 
 };
 

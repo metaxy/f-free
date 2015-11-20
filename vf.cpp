@@ -58,7 +58,7 @@ VF::VF()
 
 }
 
-Graph VF::createGraph(MGraph *input)
+Graph VF::createGraph(const MGraph *input)
 {
     ARGEdit ed;  // The object used to create the graph
     for(int i = 0; i < input->nodeCount(); i++) {
@@ -71,7 +71,7 @@ Graph VF::createGraph(MGraph *input)
     Graph g(&ed);
     return g;
 }
-Subgraph VF::createSubgraph(MGraph *needle, map<NodeT, NodeT> mapping)
+Subgraph VF::createSubgraph(const MGraph *needle, map<NodeT, NodeT> mapping)
 {
     Subgraph a = needle->connectedEdges();
     Subgraph ret;
@@ -81,7 +81,7 @@ Subgraph VF::createSubgraph(MGraph *needle, map<NodeT, NodeT> mapping)
     }
     return ret;
 }
-NodeMapping VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
+NodeMapping VF::subgraphIsoOne(const MGraph *haystack, const MGraph *needle)
 {
     Graph big = VF::createGraph(haystack);
     Graph small = VF::createGraph(needle);
@@ -98,7 +98,7 @@ NodeMapping VF::subgraphIsoOne(MGraph *haystack, MGraph *needle)
     }
     return mapping;
 }
-bool VF::subgraphIsoHasOne(MGraph *haystack, vector<MGraph> needle)
+bool VF::subgraphIsoHasOne(const MGraph *haystack, vector<MGraph> needle)
 {
      Graph big = VF::createGraph(haystack);
      for(MGraph n : needle) {
@@ -123,7 +123,7 @@ bool subgraphIsoAllVisitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
     return subgraphIsoData->add(mapping);
 }
 
-vector<NodeMapping> VF::subgraphIsoAll(MGraph *haystack, MGraph *needle)
+vector<NodeMapping> VF::subgraphIsoAll(const MGraph *haystack, const MGraph *needle)
 {
     Graph big = VF::createGraph(haystack);
     Graph small = VF::createGraph(needle);
@@ -133,7 +133,7 @@ vector<NodeMapping> VF::subgraphIsoAll(MGraph *haystack, MGraph *needle)
     return subgraphIsoData.get();
 }
 
-vector<NodeMapping> VF::subgraphIso(MGraph *haystack, MGraph *needle, int count)
+vector<NodeMapping> VF::subgraphIso(const MGraph *haystack, const MGraph *needle, int count)
 {
     Graph big = VF::createGraph(haystack);
     Graph small = VF::createGraph(needle);

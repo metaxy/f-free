@@ -15,3 +15,22 @@ vector<MGraph> Forbidden::posibleSolutions(MGraph forbidden)
     }
     return ret;
 }
+
+MGraph Forbidden::forbiddenWeight(const MGraph *input, vector<MGraph> forbidden)
+{
+    MGraph copy(*input);
+    for(const MGraph &f : forbidden) {
+        vector<NodeMapping> mappings = VF::subgraphIsoAll(input, &f);
+        for(NodeMapping mapping : mappings) {
+            for(const Edge &edge : f.edges()) {
+             Edge e = Common::transformEdge(edge, &mapping);
+             int weight = copy.getWeight(e);
+             if(weight > 0)
+                    copy.setWeight(e,  weight + 1 );
+             else
+                    copy.setWeight(e,  weight - 1 );
+            }
+        }
+    }
+    return copy;
+}
