@@ -42,29 +42,12 @@ def parse_time(file_name)
   end
 end
 
-
-def main()
-  check_env()
+def run_a_config(config, options, forbidden, instances)
   bench_folder = DateTime.now.strftime("#{$BENCHMARKS_PATH}/%Y_%m_%d__%H_%M_%S")
   time_string = DateTime.now.strftime("%Y.%m.%d %H:%M:%S")
-  
+   
   fileName = "#{bench_folder}/results.json"
   FileUtils.mkpath(bench_folder)
-  
-  
-  options = {}
-  OptionParser.new do |opts|
-    opts.banner = "Usage: benchmark.rb [options]"
-
-    opts.on("-c", "--config CONFIG", "Which config file should be used for this benchmark") do |v|
-      options[:config] = v
-    end
-  end.parse!
-  abort("config option no set") if options[:config].nil?
-  c = File.read(options[:config])
-  abort("config file not found") if c.nil?
-  config = JSON.parse(c)
-  
   output = {}
   output['options'] = options
   output['config'] = config
@@ -79,12 +62,12 @@ def main()
   time = Hash.new
   failed = Hash.new
   
-  entries = Dir.entries(config["instances"]+"/")
+  entries = Dir.entries(instances+"/")
   entries_size = entries.size
   current_file = 0
   i = 0
   
-  sols = JSON.parse(File.read("#{config["instances"]}/#{File.basename(config["forbidden"])}.k.json"))
+  sols = JSON.parse(File.read("#{instances}/#{File.basename(forbidden)}.k.json"))
   entries.each do |graph|
     current_file += 1
     
@@ -97,12 +80,12 @@ def main()
     
     next if kcorrect == -1 or kcorrect == 0
     
-    graph_content = File.read(config["instances"]+"/"+graph)
+    graph_content = File.read(instances+"/"+graph)
     
     output['graphs'][graph] = sols[graph]
     config["progs"].each do |prog|
-      command = create_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])
-      simple_command = create_simple_command(prog, config["instances"]+"/"+graph, config["forbidden"], config["max_time"], config["seed"])
+      command = create_command(prog, instances+"/"+graph, forbidden, config["max_time"], config["seed"])
+      simple_command = create_simple_command(prog, instances+"/"+graph, forbidden, config["max_time"], config["seed"])
       
       start = Time.now
       ret = `#{command}`
@@ -183,7 +166,7 @@ def main()
       "failed_percent" => (failed[prog]/count[prog].to_f)*100,
       "mean_time" => (time[prog]/(count[prog]-failed[prog]).to_f)
     }
-    puts "[#{prog}] qual: #{output['stats'][prog]["quality"]}, qualSolved: #{output['stats'][prog]["qualitySolved"]}, failed:  #{output['stats'][prog]["failed"]}"
+    puts "[#{prog}] qual: #{output['stats'][prog]["quality"]}, qualSolved: #{output['stats'][prog]["quality_solved"]}, failed:  #{output['stats'][prog]["failed"]}"
   end
   
   File.write(fileName,  JSON.pretty_generate(output))
@@ -196,9 +179,34 @@ def main()
   list << {"fileName" => fileName, 
            "time" => time_string, 
            "progs" =>  config["progs"], 
-           "forbidden" => config["forbidden"], 
-           "instances" => config["instances"]}
+           "forbidden" => forbidden, 
+           "instances" => instances}
   File.write($BENCHMARKS_PATH+'/list.json',  JSON.pretty_generate(list))
+  
+end
+
+
+def main()
+  check_env()
+
+  options = {}
+  OptionParser.new do |opts|
+    opts.banner = "Usage: benchmark.rb [options]"
+
+    opts.on("-c", "--config CONFIG", "Which config file should be used for this benchmark") do |v|
+      options[:config] = v
+    end
+  end.parse!
+  abort("config option no set") if options[:config].nil?
+  c = File.read(options[:config])
+  abort("config file not found") if c.nil?
+  config = JSON.parse(c)
+  
+  config["instances"].each do |instance|
+    config["forbidden"].each do |forbidden|
+      run_a_config(config, options, forbidden, instance)
+    end
+  end
   
 end
 
