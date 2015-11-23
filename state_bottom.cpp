@@ -21,7 +21,7 @@ MGraph StateBottom::solve()
         bool oneChange = false;
         for(const Edge &e: diff) {
 
-            if(this->getInt("useWeight", 1) == 1 && r->choice((atan(weighted.getWeight(e)*0.5)/(M_PI/2)))) {
+            if(this->getInt("useWeight", 1) == 1 && !r->choice((atan(weighted.getWeight(e)*0.5)/(M_PI/2)))) {
                 m_skipBecauseOfWeight++;
                 continue;
             }
