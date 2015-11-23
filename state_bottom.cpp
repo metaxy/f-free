@@ -11,6 +11,7 @@ MGraph StateBottom::solve()
     MGraph input(m_input);
     MGraph weighted;
     input.clear();
+    int countChangeLess = 0;
     while(true) {
         m_countIteration++;
         weighted = Forbidden::forbiddenWeight(&m_input, m_forbidden);
@@ -28,8 +29,12 @@ MGraph StateBottom::solve()
             }
         }
         if(!oneChange) {
-            break;
+            countChangeLess++;
+        } else {
+            countChangeLess = 0;
         }
+        if(countChangeLess > 3)
+            break;
 
     }
     return input;
