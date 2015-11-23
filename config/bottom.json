@@ -1,7 +1,7 @@
 {
   "instances" : "./model/cluster_very_small",
   "forbidden" : "./forbidden/claw",
-  "progs" : [ "bottom", "bottom_random --useWight 0", "bottom_random"],
+  "progs" : [ "bottom", "bottom_random --useWeight 0", "bottom_random"],
   "seed" : 5489,
   "max_time" : 20
 }
