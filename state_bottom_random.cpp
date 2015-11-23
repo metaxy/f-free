@@ -1,23 +1,31 @@
-#include "state_bottom.h"
+#include "state_bottom_random.h"
 #include "vf.h"
 #include "randomize.h"
 #include "forbidden.h"
 #include <math.h>
-StateBottom::StateBottom(Config conf) : State(conf), m_countIteration(0), m_validChanges(0), m_invalidChanges(0), m_skipBecauseOfWeight(0)
+StateBottomRandom::StateBottomRandom(Config conf) : State(conf), m_countIteration(0), m_validChanges(0), m_invalidChanges(0), m_skipBecauseOfWeight(0)
 {
 }
-MGraph StateBottom::solve()
+MGraph StateBottomRandom::solve()
 {
     MGraph input(m_input);
     MGraph weighted;
     input.clear();
     while(true) {
         m_countIteration++;
-        weighted = Forbidden::forbiddenWeight(&m_input, m_forbidden);
+        if(this->getInt("useWeight", 1) == 1) {
+            weighted = Forbidden::forbiddenWeight(&m_input, m_forbidden);
+        }
 
-        list<Edge> diff = this->sortedVector(m_input.difference(&input), &weighted);
+        vector<Edge> diff = r->randomVector(m_input.difference(&input));
         bool oneChange = false;
         for(const Edge &e: diff) {
+
+            if(this->getInt("useWeight", 1) == 1 && !r->choice((atan(weighted.getWeight(e)*0.5)/(M_PI/2)))) {
+                m_skipBecauseOfWeight++;
+                continue;
+            }
+
             input.flip(e);
             if(!isValid(&input)) {
                 input.flip(e);
@@ -34,25 +42,12 @@ MGraph StateBottom::solve()
     }
     return input;
 }
-list<Edge> StateBottom::sortedVector(const vector<Edge> &input, MGraph *weightedGraph)
-{
-    multimap<int, Edge> edges;
-    for(const Edge &e : input) {
-        edges.insert(std::make_pair(weightedGraph->getWeight(e), e));
-    }
 
-    list<Edge> ret;
-    for(const auto &e : edges) {
-        ret.push_front(e.second);
-    }
-    return ret;
-}
-
-bool StateBottom::isValid(MGraph *input)
+bool StateBottomRandom::isValid(MGraph *input)
 {
     return !VF::subgraphIsoHasOne(input, m_forbidden);
 }
-void StateBottom::final()
+void StateBottomRandom::final()
 {
     m_debug["countIteration"] = std::to_string(m_countIteration);
     m_debug["validChanges"] = std::to_string(m_validChanges);

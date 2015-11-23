@@ -1,17 +1,14 @@
-#ifndef STATE_BOTTOM_H
-#define STATE_BOTTOM_H
+#ifndef STATE_BOTTOM_random_H
+#define STATE_BOTTOM_random_H
 #include "state.h"
-#include <list>
-class StateBottom : public State
+class StateBottomRandom : public State
 {
 public:
-    StateBottom(Config conf);
+    StateBottomRandom(Config conf);
     MGraph solve();
     void final();
-
 protected:
     bool isValid(MGraph *input);
-    list<Edge> sortedVector(const vector<Edge> &input, MGraph *weightedGraph);
     int m_countIteration;
     int m_validChanges;
     int m_invalidChanges;

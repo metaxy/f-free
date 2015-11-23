@@ -112,6 +112,12 @@ target_link_libraries(
     ${ffree_LIBS}
 )
 
+add_executable(ffree_bottom_random ${ffree_SRCS} state_bottom_random.cpp main_bottom_random.cpp)
+
+target_link_libraries(
+    ffree_bottom_random
+    ${ffree_LIBS}
+)
 
 add_executable(isomorph ${ffree_SRCS} main_isomorph.cpp)
 
