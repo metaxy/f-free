@@ -10,12 +10,13 @@ MGraph StateBottom::solve()
 {
     MGraph input(m_input);
     MGraph weighted;
-    if(this->getInt("useWeight", 1) == 1) {
-       weighted = Forbidden::forbiddenWeight(&m_input, m_forbidden);
-    }
     input.clear();
     while(true) {
         m_countIteration++;
+        if(this->getInt("useWeight", 1) == 1) {
+            weighted = Forbidden::forbiddenWeight(&m_input, m_forbidden);
+        }
+
         vector<Edge> diff = r->randomVector(m_input.difference(&input));
         bool oneChange = false;
         for(const Edge &e: diff) {
