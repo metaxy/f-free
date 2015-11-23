@@ -43,7 +43,7 @@ list<Edge> StateBottom::sortedVector(const vector<Edge> &input, MGraph *weighted
 
     list<Edge> ret;
     for(const auto &e : edges) {
-        ret.push_front(e.second);
+        ret.push_back(e.second);
     }
     return ret;
 }
