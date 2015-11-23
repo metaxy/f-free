@@ -1,7 +1,7 @@
 {
   "instances" : "./model/cluster_very_small",
   "forbidden" : "./forbidden/triangle",
-  "progs" : [ "bottom", "bottom --rounds 2", "bottom --useWeight 0"],
+  "progs" : [ "bottom", "bottom --rounds 10", "bottom --useWeight 0"],
   "seed" : 5489,
-  "max_time" : 15
+  "max_time" : 30
 }
