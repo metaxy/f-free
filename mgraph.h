@@ -46,6 +46,7 @@ public:
     set<NodeT> closedNeighborhood(NodeT node) const;
     bool hasSameNeighbours(NodeT u, NodeT v);
     set<NodeT> costlyNeighborhood(NodeT node, int maxCost) const;
+    int degree(NodeT node) const;
 
     //DEBUG FUNCTIONS
 

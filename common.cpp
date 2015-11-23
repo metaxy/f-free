@@ -233,3 +233,14 @@ int Common::getInt(Config *m_config, const string &name, int def)
     }
     return def;
 }
+string Common::json(map<string,string> map)
+{
+    string ret = "{";
+    for(const auto i: map) {
+        if(ret.size() > 1)
+            ret += ", ";
+        ret += "\""+i.first+"\":\""+i.second+"\"";
+    }
+    ret += "}";
+    return ret;
+}

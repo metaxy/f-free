@@ -94,14 +94,7 @@ bool State::testSolved(MGraph output)
 
 string State::debug() const
 {
-    string ret = "{";
-    for(const auto i: m_debug) {
-        if(ret.size() > 1)
-            ret += ", ";
-        ret += "\""+i.first+"\":\""+i.second+"\"";
-    }
-    ret += "}";
-    return ret;
+    return Common::json(m_debug);
 }
 void State::final()
 {

@@ -226,6 +226,16 @@ set<NodeT> MGraph::neighborhood(NodeT node) const
     }
     return ret;
 }
+
+int MGraph::degree(NodeT node) const
+{
+    int ret;
+    for(int i = 0; i< m_nodeCount; i++) {
+        if(node == i) continue;
+        if(connected(node, i)) ret++;
+    }
+    return ret;
+}
 set<NodeT> MGraph::closedNeighborhood(NodeT node) const
 {
     set<NodeT> ret = neighborhood(node);
@@ -321,3 +331,4 @@ string MGraph::info()
 {
     return "nodeCount = " + std::to_string(m_nodeCount);
 }
+
