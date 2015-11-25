@@ -74,7 +74,6 @@ add_library(
     ${vflib_INCLUDE}
 )
 
-target_include_directories(vflib PUBLIC lib/vflib/include/)
 
 include_directories(lib/vflib/include/)
 set(
