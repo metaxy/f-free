@@ -1,6 +1,6 @@
 #ifndef GUROBILP_H
 #define GUROBILP_H
-#include "gurobi_c++.h"
+#include <gurobi_c++.h>
 #include "graph.h"
 #include "common.h"
 #include <map>

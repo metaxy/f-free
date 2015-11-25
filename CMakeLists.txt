@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 project(f-free)
 find_path(
     GUROBI_PATH include/gurobi_c++.h
-    PATHS ~/bin/gurobi605/linux64/ /home/users/w/walger/irb-ubuntu/cluster/gruppe1/gurobi
+    PATHS ~/bin/gurobi650/linux64/ /home/users/w/walger/irb-ubuntu/cluster/gruppe1/gurobi
 )
 
 option(test "Build all tests." OFF)
@@ -154,7 +154,7 @@ if(DEFINED GUROBI_PATH)
     add_executable(ffree_blp ${ffree_SRCS} gurobilp.cpp state_blp.cpp main_blp.cpp)
 
     find_library(G1 libgurobi_g++4.2.a ${GUROBI_PATH}/lib)
-    find_library(G2 libgurobi60.so ${GUROBI_PATH}/lib)
+    find_library(G2 libgurobi65.so ${GUROBI_PATH}/lib)
 
     target_link_libraries(
         ffree_blp
