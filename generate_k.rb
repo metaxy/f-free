@@ -38,8 +38,8 @@ def main()
   
   output = {}
   notsolved = []
-  if(File.exists("#{config["instances"]}/#{File.basename(config["forbidden"])}.k.json"))
-    sols = JSON.parse(File.read("#{config["instances"]}/#{File.basename(config["forbidden"])}.k.json"))
+  if(File.exists?("#{options[:instances]}/#{File.basename(options[:forbidden])}.k.json"))
+    sols = JSON.parse(File.read("#{config[:instances]}/#{File.basename(config[:forbidden])}.k.json"))
   else
     sols = {}
   end
@@ -52,6 +52,8 @@ def main()
     puts "# File #{current_file} of #{entries_size}"
     if(not sols[graph].nil?) 
       output[graph] = sols[graph]
+    else
+      output[graph] = {}
     end
     
     if(sols[graph].nil? || sols[graph]['min_k'] == '-1')
