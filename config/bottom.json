@@ -1,7 +1,7 @@
 {
   "instances" : ["./model/cluster_very_small"],
   "forbidden" : ["./forbidden/claw", "./forbidden/triangle"],
-  "progs" : [ "bottom --maxPercent 0.5", "bottom --maxPercent 0.9"],
+  "progs" : [ "bottom", "bottom_random"],
   "seed" : 5489,
   "max_time" : 20
 }

@@ -14,7 +14,7 @@ MGraph StateBottom::solve()
     int countChangeLess = 0;
     while(true) {
         m_countIteration++;
-        weighted = Forbidden::forbiddenWeight(&m_input, m_forbidden);
+        weighted = Forbidden::forbiddenWeight2(&m_input, m_forbidden);
 
         list<Edge> diff = this->sortedVector(m_input.difference(&input), &weighted);
         bool oneChange = false;
@@ -41,19 +41,19 @@ MGraph StateBottom::solve()
 }
 list<Edge> StateBottom::sortedVector(const vector<Edge> &input, MGraph *weightedGraph)
 {
-    int inputSize = input.size();
-    int retSize = 0;
+    /*int inputSize = input.size();
+    int retSize = 0;*/
     multimap<int, Edge> edges;
     for(const Edge &e : input) {
-        edges.insert(std::make_pair(weightedGraph->getWeight(e), e));
+        edges.insert(std::make_pair(abs(weightedGraph->getWeight(e)), e));
     }
 
     list<Edge> ret;
     for(const auto &e : edges) {
         ret.push_back(e.second);
-        retSize++;
-        if(retSize >= 2 && retSize >= inputSize*this->getDouble("maxPercent", 0.5))
-            break;
+        /*retSize++;
+          if(retSize >= 2 && retSize >= inputSize*this->getDouble("maxPercent", 0.5))
+            break;*/
     }
     return ret;
 }
