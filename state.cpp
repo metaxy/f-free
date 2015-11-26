@@ -11,7 +11,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/cluster_very_small/k_211_n_092.txt";
+        fileName = "../model/cluster_very_small/optK_53_c_0.66_cost_matrix_component_nr_428_size_65_cutoff_10.0.graph";
     }
     return MGraph(Common::graphFromFile(fileName));
 }

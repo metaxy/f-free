@@ -11,31 +11,28 @@ MGraph StateBottom::solve()
     MGraph input(m_input);
     MGraph weighted;
     input.clear();
-    int countChangeLess = 0;
     while(true) {
         m_countIteration++;
         weighted = Forbidden::forbiddenWeight2(&m_input, m_forbidden);
-
+        //clog << "new iteration" << m_countIteration << endl;
+        //clog << "----------------------------------" << endl;
         list<Edge> diff = this->sortedVector(m_input.difference(&input), &weighted);
         bool oneChange = false;
         for(const Edge &e: diff) {
             input.flip(e);
             if(!isValid(&input)) {
                 input.flip(e);
+                //clog << "invalid change " << e.first << "<->" << e.second << " weight=" << weighted.getWeight(e) << endl;
                 m_invalidChanges++;
             } else {
+                //clog << "change " << e.first << "<->" << e.second << " with weight=" << weighted.getWeight(e) << endl;
                 oneChange = true;
                 m_validChanges++;
             }
         }
         if(!oneChange) {
-            countChangeLess++;
-        } else {
-            countChangeLess = 0;
-        }
-        if(countChangeLess > 3)
             break;
-
+        }
     }
     return input;
 }
@@ -48,7 +45,7 @@ list<Edge> StateBottom::sortedVector(const vector<Edge> &input, MGraph *weighted
 
     list<Edge> ret;
     for(const auto &e : edges) {
-        ret.push_back(e.second);
+        ret.push_front(e.second);
     }
     return ret;
 }
