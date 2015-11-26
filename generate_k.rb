@@ -39,7 +39,7 @@ def main()
   output = {}
   notsolved = []
   if(File.exists?("#{options[:instances]}/#{File.basename(options[:forbidden])}.k.json"))
-    sols = JSON.parse(File.read("#{config[:instances]}/#{File.basename(config[:forbidden])}.k.json"))
+    sols = JSON.parse(File.read("#{options[:instances]}/#{File.basename(options[:forbidden])}.k.json"))
   else
     sols = {}
   end
