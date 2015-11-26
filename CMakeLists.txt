@@ -146,8 +146,7 @@ if (test)
   # test executable.
   add_test(that-other-test-I-made runUnitTests)
 endif()
-
-if(DEFINED GUROBI_PATH)
+if(GUROBI_PATH)
     include_directories(
         ${GUROBI_PATH}/include
     )
