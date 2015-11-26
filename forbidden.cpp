@@ -44,11 +44,13 @@ MGraph Forbidden::forbiddenWeight2(const MGraph *input, vector<MGraph> forbidden
                 Edge transformedEdge = Common::transformEdge(edge, &mapping);
                 int weight = copy.getWeight(transformedEdge);
                 int shouldBe = 1 - f.getWeight(edge);
-                if(shouldBe == 0) {
+
+                if(shouldBe == 1) {
                     copy.setWeight(transformedEdge,  weight + 1 );
                 } else {
                     copy.setWeight(transformedEdge,  weight - 1 );
                 }
+                //clog << "shouldBe " << shouldBe << " weight " << weight << " new weight" << copy.getWeight(transformedEdge) << endl;
             }
         }
     }
