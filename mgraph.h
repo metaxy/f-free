@@ -3,11 +3,14 @@
 #include "common.h"
 #include <vector>
 #include <set>
+#define M_CONNECTED (1)
+#define M_NOT_CONNECTED (0)
+
 class MGraph
 {
 public:
     MGraph();
-    MGraph(int nodeCount, NodeT defValue = -1);
+    MGraph(int nodeCount, NodeT defValue = M_NOT_CONNECTED);
     MGraph(GGraph input);
     MGraph(MGraph *copy);
     MGraph(const MGraph &copy);

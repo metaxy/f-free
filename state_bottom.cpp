@@ -41,8 +41,6 @@ MGraph StateBottom::solve()
 }
 list<Edge> StateBottom::sortedVector(const vector<Edge> &input, MGraph *weightedGraph)
 {
-    /*int inputSize = input.size();
-    int retSize = 0;*/
     multimap<int, Edge> edges;
     for(const Edge &e : input) {
         edges.insert(std::make_pair(abs(weightedGraph->getWeight(e)), e));
@@ -51,9 +49,6 @@ list<Edge> StateBottom::sortedVector(const vector<Edge> &input, MGraph *weighted
     list<Edge> ret;
     for(const auto &e : edges) {
         ret.push_back(e.second);
-        /*retSize++;
-          if(retSize >= 2 && retSize >= inputSize*this->getDouble("maxPercent", 0.5))
-            break;*/
     }
     return ret;
 }

@@ -16,7 +16,7 @@ MGraph::MGraph(int nodeCount, NodeT defValue) : m_nodeCount(nodeCount)
        m_matrix[i] = new NodeT[m_nodeCount];
        for (int j=0; j<m_nodeCount; j++) {
            if(i == j)
-               m_matrix[i][j] = -1; //
+               m_matrix[i][j] = M_NOT_CONNECTED; //
            else
                m_matrix[i][j] = defValue;
        }
@@ -68,7 +68,7 @@ MGraph::~MGraph()
 }
 void MGraph::addEdge(const Edge &e)
 {
-    setWeight(e, 1);
+    setWeight(e, M_CONNECTED);
 }
 int MGraph::absolut(NodeT u, NodeT v) const
 {
@@ -84,7 +84,7 @@ bool MGraph::connected(NodeT x, NodeT y) const
     assert(x < m_nodeCount);
     assert(y >= 0);
     assert(y < m_nodeCount);
-    return m_matrix[x][y] > 0;
+    return m_matrix[x][y] > M_NOT_CONNECTED;
 }
 bool MGraph::connected(const Edge &e) const
 {
@@ -98,8 +98,8 @@ int MGraph::setWeight(Edge e, int weight)
 }
 void MGraph::flip(const Edge &e)
 {
-    m_matrix[e.first][e.second] = -m_matrix[e.first][e.second];
-    m_matrix[e.second][e.first] = -m_matrix[e.second][e.first];
+    int newVal  = connected(e) ? 0 : 1;
+    setWeight(e, newVal);
 }
 
 int MGraph::getWeight(Edge e) const
@@ -114,7 +114,7 @@ int MGraph::getWeight(NodeT x, NodeT y) const
 void MGraph::clear()
 {
     for(Edge e : edges()) {
-        setWeight(e, -1); //not connected
+        setWeight(e, M_NOT_CONNECTED); //not connected
     }
 }
 
@@ -212,7 +212,7 @@ void MGraph::normalize()
 {
    for(int i=0; i< m_nodeCount; i++) {
        for(int j=0; j<m_nodeCount; j++) {
-           m_matrix[i][j] = connected(i,j) ? 1 : -1;
+           m_matrix[i][j] = connected(i,j) ? M_CONNECTED : M_NOT_CONNECTED;
        }
    }
 
