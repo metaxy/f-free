@@ -35,9 +35,9 @@ MGraph StateBlp::solve()
             Model ret = g.optimize();
             for(const auto &i: ret) {
                 if(i.second > 0) {
-                    input.setWeight(i.first, 1);
+                    input.setWeight(i.first, M_CONNECTED);
                 } else {
-                    input.setWeight(i.first, -1);
+                    input.setWeight(i.first, M_NOT_CONNECTED);
                 }
             }
             //copy.printEdges(copy.difference(&input));
