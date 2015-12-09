@@ -22,10 +22,10 @@ MGraph StateBottom::solve()
             input.flip(e);
             if(!isValid(&input)) {
                 input.flip(e);
-                clog << "invalid change " << e.first << "<->" << e.second << " weight=" << weighted.getWeight(e) << endl;
+                //clog << "invalid change " << e.first << "<->" << e.second << " weight=" << weighted.getWeight(e) << endl;
                 m_invalidChanges++;
             } else {
-                clog << "change " << e.first << "<->" << e.second << " with weight=" << weighted.getWeight(e) << endl;
+                //clog << "change " << e.first << "<->" << e.second << " with weight=" << weighted.getWeight(e) << endl;
                 oneChange = true;
                 m_validChanges++;
             }

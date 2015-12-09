@@ -13,7 +13,7 @@ GurobiLP::GurobiLP(int nodeCount) : m_nodeCount(nodeCount)
         // no output from gurobi
         m_model->getEnv().set(GRB_IntParam_OutputFlag, 1);
         m_model->getEnv().set(GRB_IntParam_LogToConsole, 0);
-        m_model->getEnv().set(GRB_IntParam_Threads, 12);
+        //m_model->getEnv().set(GRB_IntParam_Threads, 12);
 
        /* m_model->getEnv().set(GRB_IntParam_Method, 1);
         m_model->addConstr(getEnv().set(GRB_DoubleParam_NodefileStart, 0.5);*/

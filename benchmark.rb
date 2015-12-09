@@ -94,8 +94,8 @@ def run_a_config(config, options, forbidden, instances)
       ret = `#{command}`
       finish = Time.now
       i += 1
-      result_file_name = "output_#{graph}_#{prog}__#{i}.txt"
-      File.write(bench_folder+"/"+result_file_name, ret)
+      result_file_name = "output_#{graph}_#{prog}__#{i}.json"
+      File.write(bench_folder+"/"+result_file_name, ret.split("\n").select{ |line| ! line.start_with?("#")}.map{ |line| line.split(" ")})
       
       debug_out = {}
       if(ret.chomp == "")
