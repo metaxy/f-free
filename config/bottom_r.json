@@ -1,7 +1,0 @@
-{
-  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz"],
-  "forbidden" : ["./forbidden/claw", "./forbidden/triangle",  "./forbidden/cluster"],
-  "progs" : ["bottom_random", "random"],
-  "seed" : 5489,
-  "max_time" : 10
-}

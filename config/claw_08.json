@@ -1,7 +1,0 @@
-{
-  "instances" : ["./model/0.8"],
-  "forbidden" : ["./forbidden/claw"],
-  "progs" : ["random --rounds 1"],
-  "seed" : 5489,
-  "max_time" : 5
-}
