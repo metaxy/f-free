@@ -1,6 +1,9 @@
 #include "gurobilp.h"
 #include "gurobi_c++.h"
 
+#define GUROBI_CONNECTED 1
+#define GUROBI_NOT_CONNECTED 0
+
 using namespace std;
 GurobiLP::GurobiLP(int nodeCount) : m_nodeCount(nodeCount)
 {
@@ -37,11 +40,9 @@ inline GRBVar GurobiLP::e(Edge ed)
     return e(ed.first, ed.second);
 }
 
-inline int GurobiLP::weight(NodeT x, NodeT y)
+inline int GurobiLP::weight(NodeT x, NodeT y) //return 1 for connected and 0 for not connected
 {
-    int a = e(x,y).get(GRB_DoubleAttr_X);
-    if(a < 0.5) return -1;
-    return 1;
+    return (int)e(x,y).get(GRB_DoubleAttr_X);
 }
 inline int GurobiLP::weight(Edge edge)
 {
@@ -58,7 +59,7 @@ double GurobiLP::weightRelaxed(Edge edge)
 }
 void GurobiLP::addVar(Edge e)
 {
-    m_vars[e.first][e.second] = m_model->addVar(0.0, 1.0, 0.0, GRB_BINARY);
+    m_vars[e.first][e.second] = m_model->addVar(0.0, 1.0, 0.0, GRB_BINARY);//0.0 is not connected, 1.0 is connected
 }
 void GurobiLP::addVarRelaxed(Edge e)
 {
@@ -88,7 +89,7 @@ void GurobiLP::setObjective(Model weights)
     try {
         GRBLinExpr min = 0;
         for(const auto &kv : weights) {
-            min -= kv.second * e(kv.first);
+            min -= (kv.second > 0 ? 1 : -1) * e(kv.first);
         }
         m_model->setObjective(min, GRB_MINIMIZE);
         m_weights = weights;

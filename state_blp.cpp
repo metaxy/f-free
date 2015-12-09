@@ -26,7 +26,7 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
     vector<NodeMapping> mappings = VF::subgraphIsoAll(&input, &forbidden);
     int step = 0;
     while(!mappings.empty()) {
-        clog << "[" << step << "] found isomorphisms " << mappings.size() << endl;
+        //clog << "[" << step << "] found isomorphisms " << mappings.size() << endl;
         for(NodeMapping mapping : mappings) {
             g.addConstraint(&input, &forbidden, &mapping);
         }
@@ -36,7 +36,7 @@ MGraph StateBlp::solveSingle(MGraph input, MGraph forbidden)
             if(i.second > 0) {
                 input.setWeight(i.first, 1);
             } else {
-                input.setWeight(i.first, -1);
+                input.setWeight(i.first, 0);
             }
         }
         //copy.printEdges(copy.difference(&input));

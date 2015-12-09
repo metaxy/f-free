@@ -9,8 +9,8 @@ typedef pair<NodeT,NodeT> Edge;
 typedef vector<Edge> Subgraph;
 typedef tuple<NodeT,NodeT,NodeT> P3;
 
-typedef map<Edge,int> Model;
-typedef map<Edge,float> ModelRelaxed;
+typedef map<Edge, int> Model;
+typedef map<Edge, float> ModelRelaxed;
 
 class GGraph
 {
