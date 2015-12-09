@@ -50,7 +50,7 @@ def run_a_config(config, options, forbidden, instances)
   FileUtils.mkpath(bench_folder)
   output = {}
   output['options'] = options
-  output['config'] = config
+  output['config'] = config.dup
   output['config']['forbidden'] = forbidden
   output['config']['instances'] = instances
   
