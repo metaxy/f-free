@@ -59,7 +59,7 @@ def main()
     if(sols[graph].nil? || sols[graph]['min_k'] == '-1')
       command = create_command(options[:prog], options[:instances]+'/'+graph, options[:forbidden], options[:time])
       ret = `#{command}`
-        puts ret
+      puts ret
       if(ret.chomp == "")
         k = -1
         notsolved << graph
@@ -67,6 +67,9 @@ def main()
         k = ret.split("\n").select{ |line| ! line.start_with?("#")}.size
       end
       output[graph]['min_k'] = k
+      if(k != -1)
+        output[graph]['solution'] = ret.split("\n").select{ |line| ! line.start_with?("#")}.map{ |line| line.split(" ")}
+      end
     end
     
   end
