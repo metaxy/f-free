@@ -1,0 +1,7 @@
+{
+  "instances" : ["./model/albert_barabasi"],
+  "forbidden" : ["./forbidden/triangle",  "./forbidden/cluster"],
+  "progs" : ["bottom_random", "random", "random2"],
+  "seed" : 5489,
+  "max_time" : 10
+}
