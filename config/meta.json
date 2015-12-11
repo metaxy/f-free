@@ -1,5 +1,5 @@
 {
-  "instances" : ["./model/albert_barabasi", "model/newman_watts_strogatz/"],
+  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz"],
   "forbidden" : ["./forbidden/triangle", "./forbidden/claw"],
   "progs" : ["bottom_random", "random", "random2"],
   "seed" : 5489,
