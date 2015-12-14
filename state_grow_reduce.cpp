@@ -10,13 +10,12 @@ MGraph StateGrowReduce::solve()
 {
     MGraph graph(m_input);
     graph.clear();
-
-    for(int i = 0; i < m_input.nodeCount(); i++) {
-        this->grow(&graph);
+    vector<NodeT> nodes = r->randomVector(m_input.nodes());
+    for(NodeT node: nodes) {
+        this->grow(&graph, node);
         //clog << "difference size" << m_input.difference(&graph).size() << endl;
         if(m_input.difference(&graph).size() == 0) break;
         this->reduce(&graph);
-
     }
     return graph;
 }
@@ -26,9 +25,8 @@ bool StateGrowReduce::isValid(MGraph *input)
     return !VF::subgraphIsoHasOne(input, m_forbidden);
 }
 
-void StateGrowReduce::grow(MGraph *graph)
+void StateGrowReduce::grow(MGraph *graph, NodeT node)
 {
-    NodeT node = r->randomElement(m_input.nodes());
     set<NodeT> neighborhood = m_input.neighborhood(node);
     clog << "neigborhood size " << neighborhood.size() << endl;
     for(NodeT n: neighborhood) {
@@ -49,7 +47,7 @@ void StateGrowReduce::reduce(MGraph *graph)
             int size_before = VF::subgraphIsoAll(graph, &forbidden).size();
            // clog << size_before << endl;
             graph->flip(foundEdge);
-            if(VF::subgraphIsoAll(graph, &forbidden).size() > size_before) {
+            if(VF::subgraphIsoAll(graph, &forbidden).size() >= size_before) {
                 graph->flip(foundEdge);
             }
             mapping = VF::subgraphIsoOne(graph, &forbidden);

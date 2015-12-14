@@ -43,4 +43,9 @@ vector<Edge> Randomize::randomVector(vector<Edge> a)
     std::shuffle(std::begin(a), std::end(a), std::default_random_engine(m_rseed()));
     return a;
 }
+vector<NodeT> Randomize::randomVector(vector<NodeT> a)
+{
+    std::shuffle(std::begin(a), std::end(a), std::default_random_engine(m_rseed()));
+    return a;
+}
 

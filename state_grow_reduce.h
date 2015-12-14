@@ -8,7 +8,7 @@ public:
     MGraph solve();
     void final();
 
-    void grow(MGraph *graph);
+    void grow(MGraph *graph, NodeT node);
     void reduce(MGraph *graph);
 protected:
     bool isValid(MGraph *input);
