@@ -11,7 +11,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/cluster_very_small/optK_53_c_0.66_cost_matrix_component_nr_428_size_65_cutoff_10.0.graph";
+        fileName = "../model/newman_watts_strogatz/n_70_m_2_p_0.2.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
@@ -19,7 +19,7 @@ vector<MGraph> State::getForbidden()
 {
     string folder = m_config["forbidden"];
     if(folder.empty()) {
-        folder = "../forbidden/claw";
+        folder = "../forbidden/triangle";
     }
     vector<string> files = Common::listFiles(folder);
     vector<MGraph> ret;
@@ -35,15 +35,16 @@ MGraph State::solveMultiple(int count)
     vector<Edge> bestEdges;
     MGraph bestSolved;
     int bestSize = -1;
-    for(int i = 0; i< count; i++) {
+    for(int i = 0; i< count; ) {
         MGraph solved = this->solve();
-        if(!testSolved(solved)) continue;
+        if(!testSolved(&solved)) continue;
         vector<Edge> edges = m_input.difference(&solved);
         if(edges.size() < bestSize) {
             bestSolved = solved;
             bestEdges = edges;
             bestSize = edges.size();
         }
+        i++;
     }
     this->final();
     cout << "#k: " << bestSize << endl;
@@ -51,7 +52,7 @@ MGraph State::solveMultiple(int count)
 
     bestSolved.printEdges(bestEdges);
 
-    if(!testSolved(bestSolved)) {
+    if(!testSolved(&bestSolved)) {
         clog << "NOT SOLVED" << endl;
     }
     return bestSolved;
@@ -82,10 +83,10 @@ int State::getInt(const string &name, int def)
     return def;
 }
 
-bool State::testSolved(MGraph output)
+bool State::testSolved(MGraph *output)
 {
     for(MGraph needle : m_forbidden) {
-        if(!VF::subgraphIsoOne(&output, &needle).empty()) {
+        if(!VF::subgraphIsoOne(output, &needle).empty()) {
             return false;
         }
     }

@@ -12,7 +12,7 @@ public:
     virtual void final();
     MGraph solveMultiple(int count);
 
-    bool testSolved(MGraph output);
+    bool testSolved(MGraph *output);
 
     //virtual MGraph solveSingle(MGraph forbidden) = 0;
 protected:
