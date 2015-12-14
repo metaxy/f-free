@@ -27,11 +27,13 @@ bool StateGrowReduce::isValid(MGraph *input)
 
 void StateGrowReduce::grow(MGraph *graph, NodeT node)
 {
-    set<NodeT> neighborhood = m_input.neighborhood(node);
+    set<NodeT> neighborhood = m_input.closedNeighborhood(node);
     clog << "neigborhood size " << neighborhood.size() << endl;
-    for(NodeT n: neighborhood) {
-        Edge e(n, node);
-        graph->setWeight(e, m_input.getWeight(e));
+    for(NodeT x: neighborhood) {
+        for(NodeT y: neighborhood) {
+            Edge e(x,y);
+            graph->setWeight(e, m_input.getWeight(e));
+        }
     }
 }
 
