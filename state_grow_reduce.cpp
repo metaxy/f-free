@@ -17,6 +17,7 @@ MGraph StateGrowReduce::solve()
         if(m_input.difference(&graph).size() == 0) break;
         this->reduce(&graph);
     }
+    this->extend(&graph);
     return graph;
 }
 
@@ -52,6 +53,14 @@ void StateGrowReduce::reduce(MGraph *graph)
             }
             mapping = VF::subgraphIsoOne(graph, &forbidden);
         }
+    }
+}
+void StateGrowReduce::extend(MGraph *graph)
+{
+    for(Edge e : m_input.difference(graph)) {
+        graph->flip(e);
+        if(!isValid(graph))
+            graph->flip(e);
     }
 }
 

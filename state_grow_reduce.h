@@ -12,6 +12,7 @@ public:
     void reduce(MGraph *graph);
 protected:
     bool isValid(MGraph *input);
+    void extend(MGraph *graph);
     int m_countIteration;
     int m_validChanges;
     int m_invalidChanges;
