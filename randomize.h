@@ -15,6 +15,7 @@ public:
     NodeT randomElement(vector<NodeT> a);
     Edge randomElement(vector<Edge> a);
     NodeT randomElement(set<NodeT> a);
+    vector<NodeT> randomVector(vector<NodeT> a);
     vector<Edge> randomVector(vector<Edge> a);
 private:
     std::random_device m_rseed;

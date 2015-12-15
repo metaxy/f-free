@@ -14,8 +14,8 @@ MGraph StateBottom::solve()
     while(true) {
         m_countIteration++;
         weighted = Forbidden::forbiddenWeight2(&m_input, m_forbidden);
-        clog << "new iteration" << m_countIteration << endl;
-        clog << "----------------------------------" << endl;
+        //clog << "new iteration" << m_countIteration << endl;
+        //clog << "----------------------------------" << endl;
         list<Edge> diff = this->sortedVector(m_input.difference(&input), &weighted);
         bool oneChange = false;
         for(const Edge &e: diff) {

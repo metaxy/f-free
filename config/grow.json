@@ -1,0 +1,7 @@
+{
+  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz"],
+  "forbidden" : ["./forbidden/triangle"],
+  "progs" : ["grow_reduce"],
+  "seed" : 5489,
+  "max_time" : 10
+}

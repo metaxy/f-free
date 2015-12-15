@@ -145,7 +145,8 @@ def run_a_config(config, options, forbidden, instances)
         "simple_command" => simple_command,
         "time_log" => parse_time($TMP_FILE+'.time'),
         "log_output" => File.read($TMP_FILE+'.log'),
-        "result_file_name" => result_file_name,
+        "result_file_name" => bench_folder+"/"+result_file_name,
+        "model_file_name" => instances+"/"+graph,
         "debug_out" => debug_out
       }
       puts "[#{prog}] k: #{k} of #{kcorrect} (#{qual*100}%)"
