@@ -17,7 +17,7 @@ MGraph StateGrowReduce2::solve()
         /*if(sim == 0 || simBefore == sim) {
             this->grow(&graph, r->randomElement(m_input.nodes()));
         }*/
-        simBefore = sim;
+        //simBefore = sim;
         this->reduce(&graph);
         this->extend(&graph);
         if(m_input.difference(&graph).size() == 0) break;
