@@ -8,14 +8,18 @@ StateGrowReduce2::StateGrowReduce2(Config conf) : State(conf), m_countIteration(
 }
 MGraph StateGrowReduce2::solve()
 {
+    //clog << "solve" << endl;
     MGraph graph(m_input);
     graph.clear();
-    for(int i = 0; i++; i < 10) {
+    for(int i = 0; i < 20; i++) {
+        clog << "iteration " << i << "----------------" <<endl;
         int sim = this->growIsomorph(&graph);
-        if(sim == 0) {
+        /*if(sim == 0 || simBefore == sim) {
             this->grow(&graph, r->randomElement(m_input.nodes()));
-        }
+        }*/
+        simBefore = sim;
         this->reduce(&graph);
+        this->extend(&graph);
         if(m_input.difference(&graph).size() == 0) break;
     }
     this->extend(&graph);
@@ -28,6 +32,7 @@ bool StateGrowReduce2::isValid(MGraph *input)
 }
 void StateGrowReduce2::grow(MGraph *graph, NodeT node)
 {
+    clog << "grow" << endl;
     set<NodeT> neighborhood = m_input.neighborhood(node);
     for(NodeT n: neighborhood) {
         Edge e(n, node);
@@ -36,6 +41,7 @@ void StateGrowReduce2::grow(MGraph *graph, NodeT node)
 }
 int StateGrowReduce2::growIsomorph(MGraph *graph)
 {
+    clog << "grow isomorhph" << endl;
     vector<Edge> diff = m_input.difference(graph);
     map<Edge, int> modified;
     int count1 = 0;
@@ -44,7 +50,7 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
     for(auto forbidden : m_forbidden) {
         vector<MGraph> solutions = Forbidden::posibleSolutions(forbidden);
         for(const MGraph solution : solutions) {
-            vector<NodeMapping> mappings = VF::subgraphIso(&m_input, &solution, 2000);
+            vector<NodeMapping> mappings = VF::subgraphMono(&m_input, &solution, 100);
             for(const NodeMapping mapping: mappings) {
                 int sim = Forbidden::similarity(mapping, &forbidden, diff);
                 if(sim < 1) {
@@ -54,10 +60,7 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
                         graph->flip(e);
                         modified[e] = 1;
                     }
-
-
                 }
-
                 if(sim == 0)
                     count0++;
                 if(sim == 1)
@@ -65,9 +68,9 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
             }
         }
     }
-    clog << "after: " << sizeBefore - m_input.difference(graph).size() << endl;
+    //clog << "after: " << sizeBefore - m_input.difference(graph).size() << endl;
     clog << "1: " << count1 << " 0: " << count0 << endl;
-    return count0;
+    return count1;
 }
 
 void StateGrowReduce2::reduce(MGraph *graph)

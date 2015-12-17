@@ -1,9 +1,10 @@
 #include "vf.h"
 #include "argedit.h"
 #include "vf2_sub_state.h"
+#include "vf2_mono_state.h"
 #include "ull_sub_state.h"
 #include "match.h"
-#include <chrono>
+#include <algorithm>
 #include <set>
 #include <unordered_map>
 
@@ -16,17 +17,22 @@ public:
     }
 
     VFSorted(int max) : m_max(max) {
-        //m_data.reserve(max);
     }
 
     bool add(NodeMapping mapping) {
-        //clog << "add mapping" << endl;
         string key = "";
+        /* m.first is the node in the forbidden graph,
+         * m.second is the node in the input graph*/
+        vector<int> keys;
         for(const auto &m : mapping) {
-            //clog << m.first << endl;
-            key += "."+std::to_string(m.second);
+            keys.push_back(m.second);
+        }
+        sort(keys.begin(), keys.end());
+        for(int k : keys) {
+            key += "."+std::to_string(k);
         }
         //clog << key << endl;
+        /* so if a graph has some automorphism, than we will store only one NodeMapping*/
         m_data[key] = mapping;
 
         if(m_max == -1) {
@@ -41,7 +47,6 @@ public:
     vector<NodeMapping> get() {
         vector<NodeMapping> ret;
         for(const auto &m : m_data) {
-            //clog << m.first << clog;
             ret.push_back(m.second);
         }
         return ret;
@@ -142,4 +147,12 @@ vector<NodeMapping> VF::subgraphIso(const MGraph *haystack, const MGraph *needle
     match(&s0, subgraphIsoAllVisitor, &subgraphIsoData);
     return subgraphIsoData.get();
 }
-
+vector<NodeMapping> VF::subgraphMono(const MGraph *haystack, const MGraph *needle, int count)
+{
+    Graph big = VF::createGraph(haystack);
+    Graph small = VF::createGraph(needle);
+    VF2MonoState s0(&small, &big);
+    VFSorted subgraphIsoData(count);
+    match(&s0, subgraphIsoAllVisitor, &subgraphIsoData);
+    return subgraphIsoData.get();
+}

@@ -11,7 +11,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/albert_barabasi/n_140_m_5.txt";
+        fileName = "../model/albert_barabasi/n_120_m_1.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
@@ -19,7 +19,7 @@ vector<MGraph> State::getForbidden()
 {
     string folder = m_config["forbidden"];
     if(folder.empty()) {
-        folder = "../forbidden/triangle";
+        folder = "../forbidden/claw";
     }
     vector<string> files = Common::listFiles(folder);
     vector<MGraph> ret;
@@ -51,7 +51,7 @@ MGraph State::solveMultiple(int count)
     cout << "#debug: " << debug() << endl;
 
     bestSolved.printEdges(bestEdges);
-
+    cout << "#k_repeat: " << bestSize << endl;
     if(!testSolved(&bestSolved)) {
         clog << "NOT SOLVED" << endl;
     }
