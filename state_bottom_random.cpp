@@ -43,10 +43,6 @@ MGraph StateBottomRandom::solve()
     return input;
 }
 
-bool StateBottomRandom::isValid(MGraph *input)
-{
-    return !VF::subgraphIsoHasOne(input, m_forbidden);
-}
 void StateBottomRandom::final()
 {
     m_debug["countIteration"] = std::to_string(m_countIteration);

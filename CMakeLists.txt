@@ -133,6 +133,12 @@ target_link_libraries(
     ${ffree_LIBS}
 )
 
+add_executable(ffree_extend ${ffree_SRCS} state_extend.cpp main_extend.cpp)
+
+target_link_libraries(
+    ffree_extend
+    ${ffree_LIBS}
+)
 add_executable(isomorph ${ffree_SRCS} main_isomorph.cpp)
 
 target_link_libraries(

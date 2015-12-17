@@ -49,11 +49,6 @@ list<Edge> StateBottom::sortedVector(const vector<Edge> &input, MGraph *weighted
     }
     return ret;
 }
-
-bool StateBottom::isValid(MGraph *input)
-{
-    return !VF::subgraphIsoHasOne(input, m_forbidden);
-}
 void StateBottom::final()
 {
     m_debug["countIteration"] = std::to_string(m_countIteration);

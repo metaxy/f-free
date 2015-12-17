@@ -10,7 +10,6 @@ public:
     void final();
 
 protected:
-    bool isValid(MGraph *input);
     list<Edge> sortedVector(const vector<Edge> &input, MGraph *weightedGraph);
     int m_countIteration;
     int m_validChanges;

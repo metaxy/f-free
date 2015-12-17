@@ -102,3 +102,7 @@ void State::final()
 {
 
 }
+bool State::isValid(const MGraph *input)
+{
+    return !VF::subgraphIsoHasOne(input, m_forbidden);
+}

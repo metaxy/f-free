@@ -21,11 +21,6 @@ MGraph StateGrowReduce::solve()
     return graph;
 }
 
-bool StateGrowReduce::isValid(MGraph *input)
-{
-    return !VF::subgraphIsoHasOne(input, m_forbidden);
-}
-
 void StateGrowReduce::grow(MGraph *graph, NodeT node)
 {
     set<NodeT> neighborhood = m_input.neighborhood(node);

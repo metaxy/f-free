@@ -11,7 +11,7 @@ MGraph StateGrowReduce2::solve()
     //clog << "solve" << endl;
     MGraph graph(m_input);
     graph.clear();
-    for(int i = 0; i < 30; i++) {
+    for(int i = 0; i < 20; i++) {
         clog << "iteration " << i << "----------------" <<endl;
         //int sim = this->growIsomorph(&graph);
         /*if(sim == 0 || simBefore == sim) {
@@ -26,10 +26,6 @@ MGraph StateGrowReduce2::solve()
     return graph;
 }
 
-bool StateGrowReduce2::isValid(MGraph *input)
-{
-    return !VF::subgraphIsoHasOne(input, m_forbidden);
-}
 void StateGrowReduce2::grow(MGraph *graph, NodeT node)
 {
     clog << "grow" << endl;

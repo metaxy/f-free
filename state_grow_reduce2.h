@@ -12,7 +12,6 @@ public:
     int growIsomorph(MGraph *graph);
     void reduce(MGraph *graph);
 protected:
-    bool isValid(MGraph *input);
     void extend(MGraph *graph);
     int m_countIteration;
     int m_validChanges;
