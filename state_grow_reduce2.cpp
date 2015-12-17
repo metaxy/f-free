@@ -13,7 +13,7 @@ MGraph StateGrowReduce2::solve()
     graph.clear();
     for(int i = 0; i < 20; i++) {
         clog << "iteration " << i << "----------------" <<endl;
-        int sim = this->growIsomorph(&graph);
+        //int sim = this->growIsomorph(&graph);
         /*if(sim == 0 || simBefore == sim) {
             this->grow(&graph, r->randomElement(m_input.nodes()));
         }*/
