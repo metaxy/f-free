@@ -10,15 +10,15 @@ MGraph StateGrowReduce2::solve()
 {
     MGraph graph(m_input);
     graph.clear();
-    int i = 0;
-    while(this->growIsomorph(&graph) > 0 && i < 10) {
+    for(int i = 0; i++; i < 10) {
+        int sim = this->growIsomorph(&graph);
+        if(sim == 0) {
+            this->grow(&graph, r->randomElement(m_input.nodes()));
+        }
         this->reduce(&graph);
-        i++;
         if(m_input.difference(&graph).size() == 0) break;
-
     }
-    this->reduce(&graph);
-    //this->extend(&graph);
+    this->extend(&graph);
     return graph;
 }
 
@@ -44,10 +44,10 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
     for(auto forbidden : m_forbidden) {
         vector<MGraph> solutions = Forbidden::posibleSolutions(forbidden);
         for(const MGraph solution : solutions) {
-            vector<NodeMapping> mappings = VF::subgraphIsoAll(&m_input, &solution);
+            vector<NodeMapping> mappings = VF::subgraphIso(&m_input, &solution, 2000);
             for(const NodeMapping mapping: mappings) {
                 int sim = Forbidden::similarity(mapping, &forbidden, diff);
-                if(sim <= 1) {
+                if(sim < 1) {
                     Edge e = Common::transformEdge(r->randomElement(forbidden.edges()), &mapping);
                     bool mod = modified.find(e) != modified.end();
                     if(!mod) {
@@ -65,9 +65,9 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
             }
         }
     }
-    //clog << "after: " << sizeBefore - m_input.difference(graph).size() << endl;
-   // clog << "1: " << count1 << " 0: " << count0 << endl;
-    return count1+count0;
+    clog << "after: " << sizeBefore - m_input.difference(graph).size() << endl;
+    clog << "1: " << count1 << " 0: " << count0 << endl;
+    return count0;
 }
 
 void StateGrowReduce2::reduce(MGraph *graph)
