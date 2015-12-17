@@ -195,7 +195,7 @@ int MGraph::nodeCount() const
     return m_nodeCount;
 }
 
-vector<Edge> MGraph::difference(MGraph *other)
+vector<Edge> MGraph::difference(const MGraph *other)
 {
     vector<Edge> list;
     for(int i = 0; i < m_nodeCount; i++) {

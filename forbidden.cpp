@@ -1,5 +1,6 @@
 #include "forbidden.h"
 #include "vf.h"
+#include <algorithm>
 Forbidden::Forbidden()
 {
 }
@@ -8,10 +9,22 @@ vector<MGraph> Forbidden::posibleSolutions(MGraph forbidden)
 {
     vector<MGraph> ret;
     for(Edge e: forbidden.edges()) {
-        MGraph n(forbidden.nodeCount(), 1); // start with complete graph
+        MGraph n(forbidden.nodeCount(), M_CONNECTED); // start with complete graph
         n.flip(e);
-        //if(VF::subgraphIsoAll(&n, &forbidden).empty()) {
+        if(VF::subgraphIsoAll(&n, &forbidden).empty()) {
             ret.push_back(n);
+        }
+    }
+    return ret;
+}
+
+int Forbidden::similarity(NodeMapping mapping, MGraph *forbidden, vector<Edge> diff)
+{
+    int ret = 0;
+    for(Edge edge: forbidden->edges()) {
+        Edge transformedEdge = Common::transformEdge(edge, &mapping);
+        if(find(diff.begin(), diff.end(), transformedEdge) == diff.end())
+            ret++;
     }
     return ret;
 }
@@ -26,9 +39,9 @@ MGraph Forbidden::forbiddenWeight(const MGraph *input, vector<MGraph> forbidden)
              Edge transformedEdge = Common::transformEdge(edge, &mapping);
              int weight = copy.getWeight(transformedEdge);
              if(weight > 0)
-                    copy.setWeight(transformedEdge,  weight + 1 );
+                copy.setWeight(transformedEdge,  weight + 1 );
              else
-                    copy.setWeight(transformedEdge,  weight - 1 );
+                copy.setWeight(transformedEdge,  weight - 1 );
             }
         }
     }

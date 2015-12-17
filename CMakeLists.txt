@@ -125,6 +125,14 @@ target_link_libraries(
     ${ffree_LIBS}
 )
 
+
+add_executable(ffree_grow_reduce2 ${ffree_SRCS} state_grow_reduce2.cpp main_grow_reduce2.cpp)
+
+target_link_libraries(
+    ffree_grow_reduce2
+    ${ffree_LIBS}
+)
+
 add_executable(isomorph ${ffree_SRCS} main_isomorph.cpp)
 
 target_link_libraries(

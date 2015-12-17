@@ -43,7 +43,7 @@ public:
 
     int nodeCount() const;
 
-    vector<Edge> difference(MGraph *other);
+    vector<Edge> difference(const MGraph *other);
 
     set<NodeT> neighborhood(NodeT node) const;
     set<NodeT> closedNeighborhood(NodeT node) const;

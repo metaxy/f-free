@@ -200,7 +200,7 @@ vector<string> Common::listFiles(string path)
     return files;
 }
 
-Edge Common::transformEdge(const Edge &e, NodeMapping *mapping)
+Edge Common::transformEdge(const Edge &e, const NodeMapping *mapping)
 {
     /*clog << e.first << " " << e.second << endl;
     for(auto a: *mapping) {

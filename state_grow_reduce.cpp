@@ -14,8 +14,8 @@ MGraph StateGrowReduce::solve()
     for(NodeT node: nodes) {
         this->grow(&graph, node);
         //clog << "difference size" << m_input.difference(&graph).size() << endl;
-        if(m_input.difference(&graph).size() == 0) break;
         this->reduce(&graph);
+         if(m_input.difference(&graph).size() == 0) break;
     }
     this->extend(&graph);
     return graph;
