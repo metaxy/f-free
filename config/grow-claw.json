@@ -1,7 +1,7 @@
 {
   "instances" : ["./model/albert_barabasi"],
   "forbidden" : [ "./forbidden/claw"],
-  "progs" : ["grow_reduce", "grow_reduce2"],
+  "progs" : ["grow_reduce", "grow_reduce2", "bottom --useWeight 0"],
   "seed" : 5489,
   "max_time" : 5
 }
