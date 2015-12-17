@@ -11,7 +11,7 @@ MGraph StateGrowReduce2::solve()
     MGraph graph(m_input);
     graph.clear();
     int i = 0;
-    while(this->growIsomorph(&graph) > 0 && i < 100) {
+    while(this->growIsomorph(&graph) > 0 && i < 10) {
         this->reduce(&graph);
         i++;
         if(m_input.difference(&graph).size() == 0) break;
