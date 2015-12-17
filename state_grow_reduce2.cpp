@@ -10,11 +10,15 @@ MGraph StateGrowReduce2::solve()
 {
     MGraph graph(m_input);
     graph.clear();
-    while(this->growIsomorph(&graph) > 0) {
+    int i = 0;
+    while(this->growIsomorph(&graph) > 0 && i < 100) {
         this->reduce(&graph);
+        i++;
         if(m_input.difference(&graph).size() == 0) break;
+
     }
-    this->extend(&graph);
+    this->reduce(&graph);
+    //this->extend(&graph);
     return graph;
 }
 
@@ -36,6 +40,7 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
     map<Edge, int> modified;
     int count1 = 0;
     int count0 = 0;
+    int sizeBefore = m_input.difference(graph).size();
     for(auto forbidden : m_forbidden) {
         vector<MGraph> solutions = Forbidden::posibleSolutions(forbidden);
         for(const MGraph solution : solutions) {
@@ -47,7 +52,9 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
                     bool mod = modified.find(e) != modified.end();
                     if(!mod) {
                         graph->flip(e);
+                        modified[e] = 1;
                     }
+
 
                 }
 
@@ -58,6 +65,8 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
             }
         }
     }
+    //clog << "after: " << sizeBefore - m_input.difference(graph).size() << endl;
+   // clog << "1: " << count1 << " 0: " << count0 << endl;
     return count1+count0;
 }
 

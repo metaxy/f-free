@@ -11,7 +11,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/newman_watts_strogatz/n_70_m_2_p_0.2.txt";
+        fileName = "../model/albert_barabasi/n_10_m_3.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
@@ -87,6 +87,7 @@ bool State::testSolved(MGraph *output)
 {
     for(MGraph needle : m_forbidden) {
         if(!VF::subgraphIsoOne(output, &needle).empty()) {
+            clog << "not solved" << endl;
             return false;
         }
     }
