@@ -1,7 +1,7 @@
 {
-  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz", "./model/cluster_very_small"],
-  "forbidden" : ["./forbidden/triangle", "./forbidden/claw"],
-  "progs" : ["bottom_random", "random", "random2"],
+  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz", "./model/cluster_very_small", "./model/bio1"],
+  "forbidden" : ["./forbidden/triangle", "./forbidden/claw", "./forbidden/cluster", "./forbidden/cograph"],
+  "progs" : ["extend","random","grow_reduce"],
   "seed" : 5489,
   "max_time" : 10
 }
