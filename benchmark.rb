@@ -109,7 +109,7 @@ def run_a_config(config, options, forbidden, instances)
           debug_out = JSON.parse(debug_outstring[0].slice(8,debug_outstring[0].size))
         end
         
-        if(no_correct)
+        if(no_correct == true)
           if(kcorrect != 0)
             qual = kcorrect.to_f/k.to_f
           else
