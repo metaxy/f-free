@@ -19,7 +19,7 @@ MGraph StateBlp::solve()
         int step = 0;
         while(!mappings.empty()) {
             for(NodeMapping mapping : mappings) {
-                g.addConstraint(&input, &forbidden, &mapping);
+                g.addConstraint(&input, &needle, &mapping);
             }
 
             Model ret = g.optimize();
@@ -31,7 +31,7 @@ MGraph StateBlp::solve()
                 }
             }
             step++;
-            mappings = VF::subgraphIsoAll(&input, &forbidden);
+            mappings = VF::subgraphIsoAll(&input, &needle);
         }
     }
     return input;

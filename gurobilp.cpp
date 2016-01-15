@@ -99,7 +99,7 @@ void GurobiLP::setObjective(Model weights)
         exit(-1);
     }
 }
-void GurobiLP::addConstraint(MGraph *graph, MGraph *forbidden, NodeMapping *mapping)
+void GurobiLP::addConstraint(const MGraph *graph, const MGraph *forbidden, const NodeMapping *mapping)
 {
     GRBLinExpr expr;
     for(Edge edge: forbidden->edges()) {
