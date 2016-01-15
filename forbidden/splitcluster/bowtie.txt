@@ -1,3 +1,6 @@
 A B
 B C
+A C
 C D
+E D
+E C
