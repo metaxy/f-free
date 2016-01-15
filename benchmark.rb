@@ -69,7 +69,10 @@ def run_a_config(config, options, forbidden, instances)
   entries_size = entries.size
   current_file = 0
   i = 0
-  
+  if(!File.exists? "#{instances}/#{File.basename(forbidden)}.k.json")
+    abort("no optimal results computed for #{forbidden} on #{instances}")
+  end
+          
   sols = JSON.parse(File.read("#{instances}/#{File.basename(forbidden)}.k.json"))
   entries.each do |graph|
     current_file += 1
@@ -110,27 +113,25 @@ def run_a_config(config, options, forbidden, instances)
           debug_out = JSON.parse(debug_outstring[0].slice(8,debug_outstring[0].size))
         end
         
-        if(no_correct == true)
+        if(no_correct == false)
           if(kcorrect != 0)
             qual = kcorrect.to_f/k.to_f
-          else
-            if(k == 0)
-              qual = 1
-            else
-              qual = (kcorrect+0.1)/(k+0.1)
-            end
+          else # it has to be k == 0, because they should solve right
+            qual = 1
           end
         else
           qual = 1
         end
       end
       diff = finish - start
+      
       if(quality[prog].nil?)
         quality[prog] = 0.0
         count[prog] = 0
         time[prog] = 0.0
         failed[prog] = 0
       end
+      
       if(!no_correct)
         quality[prog] += qual
         count[prog] += 1
