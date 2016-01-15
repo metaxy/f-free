@@ -66,6 +66,7 @@ def run_a_config(config, options, forbidden, instances)
   output['results'] = {}
   output['graphs'] = {}
   quality = Hash.new
+  count_quality = Hash.new
   count = Hash.new
   time = Hash.new
   failed = Hash.new
