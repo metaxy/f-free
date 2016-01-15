@@ -43,6 +43,11 @@ def parse_time(file_name)
 end
 
 def run_a_config(config, options, forbidden, instances)
+  if(!File.exists? "#{instances}/#{File.basename(forbidden)}.k.json")
+    puts("no optimal results computed for #{forbidden} on #{instances}")
+    return
+  end
+  
   bench_folder = DateTime.now.strftime("#{$BENCHMARKS_PATH}/%Y_%m_%d__%H_%M_%S")
   time_string = DateTime.now.strftime("%Y.%m.%d %H:%M:%S")
    
@@ -69,9 +74,7 @@ def run_a_config(config, options, forbidden, instances)
   entries_size = entries.size
   current_file = 0
   i = 0
-  if(!File.exists? "#{instances}/#{File.basename(forbidden)}.k.json")
-    abort("no optimal results computed for #{forbidden} on #{instances}")
-  end
+
           
   sols = JSON.parse(File.read("#{instances}/#{File.basename(forbidden)}.k.json"))
   entries.each do |graph|
@@ -128,14 +131,16 @@ def run_a_config(config, options, forbidden, instances)
       if(quality[prog].nil?)
         quality[prog] = 0.0
         count[prog] = 0
+        count_quality[prog] = 0
         time[prog] = 0.0
         failed[prog] = 0
       end
       
       if(!no_correct)
         quality[prog] += qual
-        count[prog] += 1
+        count_quality[prog] += 1
       end
+      count[prog] += 1
       
       if(k == -1)
         failed[prog] += 1
@@ -175,7 +180,7 @@ def run_a_config(config, options, forbidden, instances)
     
     output['stats'][prog] = 
     {
-      "quality" => (quality[prog]/count[prog].to_f)*100,
+      "quality" => (quality[prog]/count_quality[prog].to_f)*100,
       "failed" => failed[prog],
       "failed_percent" => (failed[prog]/count[prog].to_f)*100,
       "mean_time" => (time[prog]/(count[prog]-failed[prog]).to_f)

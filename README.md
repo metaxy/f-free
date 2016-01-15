@@ -15,6 +15,13 @@ cd build
 cmake ..
 make
 ```
+
+# Generate optimal Solutions
+You need a alid gurobi license to use the blp program.
+
+Example:
+`ruby generate_k.rb -i model/albert_barabasi/ -f forbidden/claw -p blp -t 300`
+
 # Run benchmark
 
 ## Create a benchmark config file
@@ -53,3 +60,4 @@ The results are in `data_benchmarks/`.
 Every result single (all programs tested against one instance and one forbidden subgraph) will habe its own folder by date.
 
 There will be some files. The most interesing will be results.json
+
