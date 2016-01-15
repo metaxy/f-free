@@ -42,3 +42,14 @@ For example
 ```
 
 The binary file should be in `build/` and begin with `ffree_`. So if in the config we have `"grow_reduce"` then `ffree_grow_reduce` will be called.
+
+## Run Benchmark
+`ruby ruby benchmark.rb -c config/your_config_file.json`
+
+Every programm will be tested against every instance with all the possible forbidden subgraphs.
+
+## View Results 
+The results are in `data_benchmarks/`.
+Every result single (all programs tested against one instance and one forbidden subgraph) will habe its own folder by date.
+
+There will be some files. The most interesing will be results.json
