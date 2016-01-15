@@ -81,9 +81,10 @@ def run_a_config(config, options, forbidden, instances)
     kcorrect = sols[graph]['min_k'].to_i
     puts "# File #{current_file} of #{entries_size} (#{graph})"
     
-    next if kcorrect == -1 or kcorrect == 0
-    
     graph_content = File.read(instances+"/"+graph)
+    
+    no_correct = false
+    no_correct = true if kcorrect == -1
     
     output['graphs'][graph] = sols[graph]
     config["progs"].each do |prog|
@@ -107,14 +108,19 @@ def run_a_config(config, options, forbidden, instances)
         if(debug_outstring.size() > 0)
           debug_out = JSON.parse(debug_outstring[0].slice(8,debug_outstring[0].size))
         end
-        if(kcorrect != 0)
-          qual = kcorrect.to_f/k.to_f
-        else
-          if(k == 0)
-            qual = 1
+        
+        if(no_correct)
+          if(kcorrect != 0)
+            qual = kcorrect.to_f/k.to_f
           else
-            qual = (kcorrect+0.1)/(k+0.1)
+            if(k == 0)
+              qual = 1
+            else
+              qual = (kcorrect+0.1)/(k+0.1)
+            end
           end
+        else
+          qual = 1
         end
       end
       diff = finish - start
@@ -124,8 +130,11 @@ def run_a_config(config, options, forbidden, instances)
         time[prog] = 0.0
         failed[prog] = 0
       end
-      quality[prog] += qual
-      count[prog] += 1
+      if(!no_correct)
+        quality[prog] += qual
+        count[prog] += 1
+      end
+      
       if(k == -1)
         failed[prog] += 1
       else
@@ -165,7 +174,6 @@ def run_a_config(config, options, forbidden, instances)
     output['stats'][prog] = 
     {
       "quality" => (quality[prog]/count[prog].to_f)*100,
-      "quality_solved" => (quality[prog]/(count[prog]-failed[prog]).to_f)*100,
       "failed" => failed[prog],
       "failed_percent" => (failed[prog]/count[prog].to_f)*100,
       "mean_time" => (time[prog]/(count[prog]-failed[prog]).to_f)
