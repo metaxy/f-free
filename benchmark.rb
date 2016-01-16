@@ -43,6 +43,7 @@ def parse_time(file_name)
 end
 
 def run_a_config(config, options, forbidden, instances)
+  puts "RUN TESTS on #{forbidden} for #{forbidden}"
   if(!File.exists? "#{instances}/#{File.basename(forbidden)}.k.json")
     puts("no optimal results computed for #{forbidden} on #{instances}")
     return
@@ -95,7 +96,6 @@ def run_a_config(config, options, forbidden, instances)
     
     output['graphs'][graph] = sols[graph]
     config["progs"].each do |prog|
-      puts "this is one is not solved" if no_correct
       command = create_command(prog, instances+"/"+graph, forbidden, config["max_time"], config["seed"])
       simple_command = create_simple_command(prog, instances+"/"+graph, forbidden, config["max_time"], config["seed"])
       
