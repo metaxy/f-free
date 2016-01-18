@@ -133,6 +133,13 @@ target_link_libraries(
     ${ffree_LIBS}
 )
 
+add_executable(ffree_grow_reduce3 ${ffree_SRCS} state_grow_reduce3.cpp main_grow_reduce3.cpp)
+
+target_link_libraries(
+    ffree_grow_reduce3
+    ${ffree_LIBS}
+)
+
 add_executable(ffree_extend ${ffree_SRCS} state_extend.cpp main_extend.cpp)
 
 target_link_libraries(
