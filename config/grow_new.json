@@ -1,0 +1,7 @@
+{
+  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz", "./model/bio1"],
+  "forbidden" : ["./forbidden/triangle", "./forbidden/claw", "./forbidden/cluster", "./forbidden/cograph"],
+  "progs" : ["grow_reduce3","grow_reduce"],
+  "seed" : 5489,
+  "max_time" : 10
+}
