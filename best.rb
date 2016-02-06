@@ -2,6 +2,7 @@ require 'date'
 require 'json'
 require 'fileutils'
 require 'optparse'
+require_relative 'utils'
 $BIN_PATH = "./build"
 
 def main()
@@ -41,8 +42,7 @@ end
 
 def run(input, forbidden, prog, timeout)
   ret = `timeout #{timeout}s #{$BIN_PATH}/ffree_#{prog} --input '#{input}' --forbidden '#{forbidden}'`
-  return -1 if(ret.chomp == "") 
-  return ret.split("\n").select{ |line| ! line.start_with?("#")}.size
+  return get_k(ret)
 end
 
 main();

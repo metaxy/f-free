@@ -2,6 +2,7 @@ require 'date'
 require 'json'
 require 'fileutils'
 require 'optparse'
+require_relative 'utils'
 
 $BIN_PATH = "./build"
 $TMP_FILE = DateTime.now.strftime("./tmp/tmp_%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
@@ -15,10 +16,6 @@ end
 def create_simple_command(name, input, forbidden, timeout, seed)
   return "timeout #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{seed}"
 end
-
-def parse_log(file)
-end
-
 
 def check_env()
   if(`git status -s` != "")
@@ -104,90 +101,39 @@ def run_a_config(config, options, forbidden, instances)
       finish = Time.now
       i += 1
       result_file_name = "output_#{graph}_#{prog}__#{i}.json"
-      File.write(bench_folder+"/"+result_file_name, ret.split("\n").select{ |line| ! line.start_with?("#")}.map{ |line| line.split(" ")})
+      File.write(bench_folder+"/"+result_file_name, ret.split("\n").select{ |line| ! line.start_with?("#")}.map{ |line| line.split(" ")}) # write result
       
-      debug_out = {}
-      if(ret.chomp == "")
-        k = -1
-        qual = 0
-      else
-        k = ret.split("\n").select{ |line| ! line.start_with?("#")}.size
-        debug_outstring = ret.split("\n").select{ |line| line.start_with?("#debug:")}
-        if(debug_outstring.size() > 0)
-          debug_out = JSON.parse(debug_outstring[0].slice(8,debug_outstring[0].size))
-        end
-        
-        if(no_correct == false)
-          if(kcorrect != 0)
-            qual = kcorrect.to_f/k.to_f
-          else # it has to be k == 0, because they should solve right
-            qual = 1
-          end
-        else
-          qual = 1
-        end
-      end
-      diff = finish - start
-      
-      if(quality[prog].nil?)
-        quality[prog] = 0.0
-        count[prog] = 0
-        count_quality[prog] = 0
-        time[prog] = 0.0
-        failed[prog] = 0
-      end
-      
-      if(!no_correct)
-        quality[prog] += qual
-        count_quality[prog] += 1
-      end
-      count[prog] += 1
-      
-      if(k == -1)
-        failed[prog] += 1
-      else
-        time[prog] += diff
-      end
+      k = get_k(ret) # calculated distance by prog
+
+      run_time = finish - start
       
       if(output['results'][graph].nil?)
         output['results'][graph] = []
       end
+      
       output['results'][graph] << {
         "prog" => prog,
         "graph" => graph,
-        "k" => k,
-        "kcorrect" => kcorrect,
-        "time" => diff,
-        "quality" => qual,
+        "metrics" => get_metrics(k, kcorrect),
+        "time" => run_time,
         "simple_command" => simple_command,
         "time_log" => parse_time($TMP_FILE+'.time'),
         "log_output" => File.read($TMP_FILE+'.log'),
         "result_file_name" => bench_folder+"/"+result_file_name,
         "model_file_name" => instances+"/"+graph,
-        "debug_out" => debug_out
+        "debug_out" => get_debug(ret)
       }
+      
       puts "[#{prog}] k: #{k} of #{kcorrect} (#{qual*100}%)"
-      FileUtils.rm($TMP_FILE+'.time')
+      FileUtils.rm($TMP_FILE+'.time') # cleanup temp files
       FileUtils.rm($TMP_FILE+'.log')
       
-      File.write(fileName,  JSON.pretty_generate(output))
+      File.write(fileName,  JSON.pretty_generate(output)) # save log in case that the script fails
     end
   end
   output['end_time'] = Time.now.to_s
   
   output['stats'] = {}
-  
-  config["progs"].each do |prog|
-    
-    output['stats'][prog] = 
-    {
-      "quality" => (quality[prog]/count_quality[prog].to_f)*100,
-      "failed" => failed[prog],
-      "failed_percent" => (failed[prog]/count[prog].to_f)*100,
-      "mean_time" => (time[prog]/(count[prog]-failed[prog]).to_f)
-    }
-    puts "[#{prog}] qual: #{output['stats'][prog]["quality"]}, qualSolved: #{output['stats'][prog]["quality_solved"]}, failed:  #{output['stats'][prog]["failed"]}"
-  end
   
   File.write(fileName,  JSON.pretty_generate(output))
   
