@@ -114,7 +114,7 @@ def run_a_config(config, options, forbidden, instances)
       output['results'][graph] << {
         "prog" => prog,
         "graph" => graph,
-        "metrics" => get_metrics(k, kcorrect),
+        "metrics" => get_metrics(k, kcorrect),  
         "time" => run_time,
         "simple_command" => simple_command,
         "time_log" => parse_time($TMP_FILE+'.time'),
@@ -124,7 +124,7 @@ def run_a_config(config, options, forbidden, instances)
         "debug_out" => get_debug(ret)
       }
       
-      puts "[#{prog}] k: #{k} of #{kcorrect} (#{qual*100}%)"
+      puts "[#{prog}] k: #{k} of #{kcorrect}"
       FileUtils.rm($TMP_FILE+'.time') # cleanup temp files
       FileUtils.rm($TMP_FILE+'.log')
       
