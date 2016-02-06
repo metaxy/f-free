@@ -151,6 +151,23 @@ def run_a_config(config, options, forbidden, instances)
   
 end
 
+def calculate_stats(data)
+  ret = {}
+  data["config"]["progs"].each do |prog|
+    results = output["results"].select {|k,v| v["prog"] == prog}
+    metrics = results.to_a.map {|a| a[1]["metrics"]}
+    hasOptimal = metrics.select {|x| x["no_correct"] == false}
+    hasNoOptimal = metrics.select {|x| x["no_correct"] == true}
+    failed = metrics.select {|x| x["solved"] == false}.length
+    
+    ret[prog] = {
+      "failed" => failed,
+      "failed_percent" => (failed.to_f / results.length.to_f) * 100,
+      "avg_absolut" => 
+    }
+  end
+  return ret
+end
 
 def main()
   check_env()
