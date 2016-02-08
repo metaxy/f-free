@@ -120,6 +120,7 @@ def get_metrics(k, kcorrect)
       qual_inv = k.to_f / kcorrect.to_f
     else # it has to be k == 0, because they should solve right
       qual = 1
+      qual_inv = 1
     end
     
     return {
