@@ -130,15 +130,16 @@ def calculate_stats(data)
       end
     end
     
-    metrics = results.to_a.map {|a| a["metrics"]}
+    metrics = results.map {|a| a["metrics"]}
     hasOptimal = metrics.select {|x| x["no_correct"] == false}
     hasNoOptimal = metrics.select {|x| x["no_correct"] == true}
     failed = metrics.select {|x| x["solved"] == false}.length
     
     quality = hasOptimal.map{|a| a["quality"]}
-    qualityInv = hasOptimal.map{|a| a["qualityInv"]}
+    qualityInv = hasOptimal.map{|a| a["quality_inv"]}
     distance = hasOptimal.map{|a| a["distance"]}
     absolut = metrics.map{|a| a["absolut"]}
+    time = results.map{ |a| a["time"]}
     
     wins = 0
     results.each do |graph,result|
@@ -155,6 +156,8 @@ def calculate_stats(data)
       "qualityInvStd" =>  qualityInv.standard_deviation,
       "absolut" =>  absolut.mean,
       "absolutStd" =>  absolut.standard_deviation,
+      "time" => time.mean,
+      "timeStd" => time.standard_deviation
     }
   end
   return ret
