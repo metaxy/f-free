@@ -149,7 +149,7 @@ def calculate_stats(data)
       "failed_percent" => (failed.to_f / results.length.to_f) * 100,
       "quality" =>  quality.mean,
       "qualityStd" =>  quality.standard_deviation,
-      "distance" =>  distance.mea,
+      "distance" =>  distance.mean,
       "distanceStd" =>  distance.standard_deviation,
       "qualityInv" =>  qualityInv.mean,
       "qualityInvStd" =>  qualityInv.standard_deviation,
