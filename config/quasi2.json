@@ -1,0 +1,7 @@
+{
+  "instances" : ["./model/albert_barabasi"],
+  "forbidden" : [ "./forbidden/p5_c5"],
+  "progs" : ["mover"],
+  "seed" : 5489,
+  "max_time" : 5
+}

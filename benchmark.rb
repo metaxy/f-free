@@ -102,7 +102,7 @@ def run_a_config(config, options, forbidden, instances)
   end
   output['end_time'] = Time.now.to_s
   
-  output['stats'] = {}
+  output['stats'] = calculate_stats(output)
   
   File.write(fileName,  JSON.pretty_generate(output))
   
@@ -123,15 +123,38 @@ end
 def calculate_stats(data)
   ret = {}
   data["config"]["progs"].each do |prog|
-    results = output["results"].select {|k,v| v["prog"] == prog}
+    
+    output["results"].each do |k,results|
+      results.each do |result|
+        results << result if result["prog"] == prog
+      end
+    end
+    
     metrics = results.to_a.map {|a| a[1]["metrics"]}
     hasOptimal = metrics.select {|x| x["no_correct"] == false}
     hasNoOptimal = metrics.select {|x| x["no_correct"] == true}
     failed = metrics.select {|x| x["solved"] == false}.length
     
+    quality = hasOptimal.map{|a| a["quality"]}
+    qualityInv = hasOptimal.map{|a| a["qualityInv"]}
+    distance = hasOptimal.map{|a| a["distance"]}
+    absolut = metrics.map{|a| a["absolut"]}
+    
+    wins = 0
+    results.each do |graph,result|
+      
+    end
     ret[prog] = {
       "failed" => failed,
       "failed_percent" => (failed.to_f / results.length.to_f) * 100,
+      "quality" =>  quality.mean,
+      "qualityStd" =>  quality.standard_deviation,
+      "distance" =>  distance.mea,
+      "distanceStd" =>  distance.standard_deviation,
+      "qualityInv" =>  qualityInv.mean,
+      "qualityInvStd" =>  qualityInv.standard_deviation,
+      "absolut" =>  absolut.mean,
+      "absolutStd" =>  absolut.standard_deviation,
     }
   end
   return ret
