@@ -4,18 +4,8 @@ require 'fileutils'
 require 'optparse'
 require_relative 'utils'
 
-$BIN_PATH = "./build"
-$TMP_FILE = DateTime.now.strftime("./tmp/tmp_%Y_%m_%d__%H_%M_%S_")+rand(1 .. 500000000).to_s
-$BENCHMARKS_PATH = "./data_benchmarks"
 
-def create_command(name, input, forbidden, timeout, seed)
-  format_string_time = '{"elapsed_time": "%E", "kernel_time" : "%S", "user_time" : "%U", "cpu_usage" : "%P", "max_memory" : "%M", "page_faults" : "%F", "context_switches_forced" : "%c", "context_switches": "%w", "io_input": "%I", "io_output": "%O"}'
-  return "/usr/bin/time -f '#{format_string_time}' --output '#{$TMP_FILE}.time' timeout  #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{seed} 2>#{$TMP_FILE}.log"
-end
 
-def create_simple_command(name, input, forbidden, timeout, seed)
-  return "timeout #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --seed #{seed}"
-end
 
 def check_env()
   if(`git status -s` != "")
@@ -27,17 +17,6 @@ def check_env()
   FileUtils.mkpath './tmp'
 end
 
-def parse_time(file_name)
-  file = File.read(file_name)
-  if(file.start_with? 'Command exited')
-    lines = file.split(/(\n)/)
-    data = JSON.parse(lines[2])
-    data['extra'] = lines[0]
-    return data
-  else
-    return JSON.parse(file)
-  end
-end
 
 def run_a_config(config, options, forbidden, instances)
   puts "RUN TESTS on #{forbidden} for #{forbidden}"
@@ -93,20 +72,11 @@ def run_a_config(config, options, forbidden, instances)
     
     output['graphs'][graph] = sols[graph]
     config["progs"].each do |prog|
-      command = create_command(prog, instances+"/"+graph, forbidden, config["max_time"], config["seed"])
-      simple_command = create_simple_command(prog, instances+"/"+graph, forbidden, config["max_time"], config["seed"])
-      
-      start = Time.now
-      ret = `#{command}`
-      finish = Time.now
+      run = run_prog(prog, instances+"/"+graph, forbidden, config["max_time"], config["seed"])
       i += 1
       result_file_name = "output_#{graph}_#{prog}__#{i}.json"
-      File.write(bench_folder+"/"+result_file_name, ret.split("\n").select{ |line| ! line.start_with?("#")}.map{ |line| line.split(" ")}) # write result
-      
-      k = get_k(ret) # calculated distance by prog
+      File.write(bench_folder+"/"+result_file_name, run['result']) # write result
 
-      run_time = finish - start
-      
       if(output['results'][graph].nil?)
         output['results'][graph] = []
       end
@@ -114,19 +84,18 @@ def run_a_config(config, options, forbidden, instances)
       output['results'][graph] << {
         "prog" => prog,
         "graph" => graph,
-        "metrics" => get_metrics(k, kcorrect),  
-        "time" => run_time,
-        "simple_command" => simple_command,
-        "time_log" => parse_time($TMP_FILE+'.time'),
-        "log_output" => File.read($TMP_FILE+'.log'),
+        "metrics" => get_metrics(run['k'], kcorrect),  
+        "time" => run['run_time'],
+        "simple_command" => run['command'],
+        "time_log" => run['time_log'],
+        "log_output" => run['time_log'],
         "result_file_name" => bench_folder+"/"+result_file_name,
         "model_file_name" => instances+"/"+graph,
-        "debug_out" => get_debug(ret)
+        "debug_out" => run['debug_out']
       }
       
-      puts "[#{prog}] k: #{k} of #{kcorrect}"
-      FileUtils.rm($TMP_FILE+'.time') # cleanup temp files
-      FileUtils.rm($TMP_FILE+'.log')
+      puts "[#{prog}] k: #{run['k']} of #{kcorrect}"
+    
       
       File.write(fileName,  JSON.pretty_generate(output)) # save log in case that the script fails
     end
@@ -163,14 +132,13 @@ def calculate_stats(data)
     ret[prog] = {
       "failed" => failed,
       "failed_percent" => (failed.to_f / results.length.to_f) * 100,
-      "avg_absolut" => 
     }
   end
   return ret
 end
 
 def main()
-  check_env()
+  #check_env()
 
   options = {}
   OptionParser.new do |opts|

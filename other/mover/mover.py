@@ -2,7 +2,7 @@
 from networkit import *
 
 # Read a graph. Note that multiple formats are supported.
-G = readGraph("/home/paul/n_80_m_8_p_0.8.txt", Format.EdgeListSpaceZero)
+G = readGraph(sys.argv[1], Format.EdgeListSpaceZero)
 
 # Generate edge ids (needed for triangle counting)
 G.indexEdges()
@@ -17,9 +17,14 @@ qtm = community.QuasiThresholdEditingLocalMover(G, linEd.getParents(), 100).run(
 # Get the edited graph
 qg = qtm.getQuasiThresholdGraph()
 
-# Write the edited graph
-writeGraph(qg, "/home/paul/1.txt", Format.EdgeListSpaceOne)
+a = G.edges()
+b = qg.edges()
 
-# Or the number of needed edits:
-print(qtm.getNumberOfEdits())
-
+for edge in a:
+  if not edge in b:
+    print(str(edge[0]) + " " + str(edge[1]))
+  
+for edge in b:
+  if not edge in a:
+    print(str(edge[0]) + " " + str(edge[1]))
+  
