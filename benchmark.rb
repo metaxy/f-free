@@ -123,8 +123,7 @@ end
 def calculate_stats(data)
   ret = {}
   data["config"]["progs"].each do |prog|
-    
-    output["results"].each do |k,results|
+    data["results"].each do |k,results|
       results.each do |result|
         results << result if result["prog"] == prog
       end
