@@ -107,7 +107,7 @@ end
 
 def get_metrics(k, kcorrect)
   solved = k != -1
-  if(kcorrect != -1) # we have no correct result
+  if(kcorrect == -1) # we have no correct result
     return {
       "absolut" => k,
       "no_correct" => true,
@@ -116,7 +116,7 @@ def get_metrics(k, kcorrect)
     }
   else
     if(kcorrect != 0)
-      qual = kcorrect.to_f/k.to_f
+      qual = kcorrect.to_f / k.to_f
       qual_inv = k.to_f / kcorrect.to_f
     else # it has to be k == 0, because they should solve right
       qual = 1
