@@ -4,9 +4,6 @@ require 'fileutils'
 require 'optparse'
 require_relative 'utils'
 
-
-
-
 def check_env()
   if(`git status -s` != "")
     puts "Please commit first"
@@ -52,7 +49,6 @@ def run_a_config(config, options, forbidden, instances)
   entries_size = entries.size
   current_file = 0
   i = 0
-
           
   sols = JSON.parse(File.read("#{instances}/#{File.basename(forbidden)}.k.json"))
   entries.each do |graph|
