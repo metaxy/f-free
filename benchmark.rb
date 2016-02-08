@@ -138,7 +138,7 @@ def calculate_stats(data)
 end
 
 def main()
-  #check_env()
+  check_env()
 
   options = {}
   OptionParser.new do |opts|
