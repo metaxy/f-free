@@ -130,7 +130,7 @@ def calculate_stats(data)
       end
     end
     
-    metrics = results.to_a.map {|a| a[1]["metrics"]}
+    metrics = results.to_a.map {|a| a["metrics"]}
     hasOptimal = metrics.select {|x| x["no_correct"] == false}
     hasNoOptimal = metrics.select {|x| x["no_correct"] == true}
     failed = metrics.select {|x| x["solved"] == false}.length
