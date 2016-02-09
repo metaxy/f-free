@@ -138,8 +138,14 @@ def calculate_stats(data)
     time = results.map{ |a| a["time"]}
     
     wins = 0
-    results.each do |graph,result|
-      
+    results.each do |result|
+      other = data["results"][results["graph"]].select {|x| x["prog"] != prog}
+      winning = true
+      other.each do |o|
+        winning = false if o["metrics"]["absolut"] <= result["metrics"]["absolut"]
+      end
+      wins += 1 if winning
+
     end
     ret[prog] = {
       "failed" => failed,
@@ -153,7 +159,8 @@ def calculate_stats(data)
       "absolut" =>  absolut.mean,
       "absolutStd" =>  absolut.standard_deviation,
       "time" => time.mean,
-      "timeStd" => time.standard_deviation
+      "timeStd" => time.standard_deviation,
+      "winning" => wins
     }
   end
   return ret

@@ -9,6 +9,7 @@ StateExtend::StateExtend(Config conf) : State(conf), m_countIteration(0), m_vali
 MGraph StateExtend::solve()
 {
     MGraph graph(m_input);
+    if(isValid(graph)) return graph;
     graph.clear();
     while(this->extend(&graph)) {}
     return graph;

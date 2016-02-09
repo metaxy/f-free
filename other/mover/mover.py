@@ -27,4 +27,4 @@ for edge in a:
 for edge in b:
   if not edge in a:
     print(str(edge[0]) + " " + str(edge[1]))
-  
+print("#k: " + str(qtm.getNumberOfEdits()))
