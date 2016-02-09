@@ -1,0 +1,7 @@
+{
+  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz"],
+  "forbidden" : [ "./forbidden/p5_c5"],
+  "progs" : ["grow_reduce3 --reduce simple", "extend", "mover"],
+  "seed" : 5489,
+  "max_time" : 10
+}
