@@ -9,7 +9,7 @@ public:
     void final();
 
 protected:
-    void extend(MGraph *graph);
+    bool extend(MGraph *graph);
     int m_countIteration;
     int m_validChanges;
     int m_invalidChanges;

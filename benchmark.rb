@@ -16,7 +16,7 @@ end
 
 
 def run_a_config(config, options, forbidden, instances)
-  puts "RUN TESTS on #{forbidden} for #{forbidden}"
+  puts "RUN TESTS on #{instances} for #{forbidden}"
   if(!File.exists? "#{instances}/#{File.basename(forbidden)}.k.json")
     puts("no optimal results computed for #{forbidden} on #{instances}")
     return
