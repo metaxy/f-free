@@ -139,7 +139,7 @@ def calculate_stats(data)
     
     wins = 0
     results.each do |result|
-      other = data["results"][results["graph"]].select {|x| x["prog"] != prog}
+      other = data["results"][result["graph"]].select {|x| x["prog"] != prog}
       winning = true
       other.each do |o|
         winning = false if o["metrics"]["absolut"] <= result["metrics"]["absolut"]
