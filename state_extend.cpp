@@ -10,19 +10,21 @@ MGraph StateExtend::solve()
 {
     MGraph graph(m_input);
     graph.clear();
-    for(int i = 0; i < 20; i++) {
-        this->extend(&graph);
-    }
+    while(this->extend(&graph)) {}
     return graph;
 }
 
-void StateExtend::extend(MGraph *graph)
+bool StateExtend::extend(MGraph *graph)
 {
+    bool some = false;
     for(Edge e : m_input.difference(graph)) {
         graph->flip(e);
         if(!isValid(graph))
             graph->flip(e);
+        else
+            some = true;
     }
+    return some;
 }
 
 void StateExtend::final()
