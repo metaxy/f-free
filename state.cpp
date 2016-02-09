@@ -11,7 +11,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/albert_barabasi/n_140_m_5.txt";
+        fileName = "../model/albert_barabasi/n_70_m_1.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
