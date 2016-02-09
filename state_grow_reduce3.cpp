@@ -23,7 +23,7 @@ MGraph StateGrowReduce3::solve()
             graph.setWeight(e, m_input.getWeight(e));
         }
 
-        if(conf["reduce"] == "simple") {
+        if(this->getString("reduce", "") == "simple") {
             this->reduceSimple(&graph);
         } else {
             this->reduce(&graph);

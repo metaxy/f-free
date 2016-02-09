@@ -82,7 +82,14 @@ int State::getInt(const string &name, int def)
     }
     return def;
 }
-
+string State::getString(const string &name, string def)
+{
+    auto iter = m_config.find(name);
+    if(iter != m_config.end()) {
+        return iter->second;
+    }
+    return def;
+}
 bool State::testSolved(MGraph *output)
 {
     for(MGraph needle : m_forbidden) {

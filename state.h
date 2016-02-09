@@ -24,6 +24,7 @@ protected:
     map<string,string> m_debug;
     double getDouble(const string &name, double def);
     int getInt(const string &name, int def);
+    string getString(const string &name, string def);
     bool isValid(const MGraph *input);
 
 private:

@@ -10,6 +10,7 @@ public:
 
     void grow(MGraph *graph, NodeT node);
     void reduce(MGraph *graph);
+    void reduceSimple(MGraph *graph);
 protected:
     void extend(MGraph *graph);
     int m_countIteration;
