@@ -107,11 +107,19 @@ end
 
 def get_metrics(k, kcorrect)
   solved = k != -1
+  if(solved == false)
+    return {
+      "k_correct" => kcorrect,
+      "solved" => false,
+      "no_correct" => kcorrect == -1,
+    }
+  end
+  
   if(kcorrect == -1) # we have no correct result
     return {
       "absolut" => k,
       "no_correct" => true,
-      "solved" => solved,
+      "solved" => true,
       "k_correct" => kcorrect
     }
   else
@@ -128,8 +136,8 @@ def get_metrics(k, kcorrect)
       "no_correct" => false,
       "quality" => qual,
       "quality_inv" => qual_inv,
-      "distance" => kcorrect - k,
-      "solved" => solved,
+      "distance" => k - kcorrect,
+      "solved" => true,
       "k_correct" => kcorrect
     
     }
