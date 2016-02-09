@@ -14,6 +14,7 @@ MGraph StateGrowReduce3::solve()
     set<NodeT> explored;
     for(NodeT node: nodes) {
         explored.insert(node);
+
         set<NodeT> neighborhood = m_input.neighborhood(node);
         for(NodeT n: neighborhood) {
             if(explored.find(node) == explored.end())
@@ -21,8 +22,15 @@ MGraph StateGrowReduce3::solve()
             Edge e(n, node);
             graph.setWeight(e, m_input.getWeight(e));
         }
-        this->reduce(&graph);
-         if(m_input.difference(&graph).size() == 0) break;
+
+        if(conf["reduce"] == "simple") {
+            this->reduceSimple(&graph);
+        } else {
+            this->reduce(&graph);
+        }
+
+        if(m_input.difference(&graph).size() == 0)
+            break;
     }
     this->extend(&graph);
     return graph;
@@ -45,6 +53,20 @@ void StateGrowReduce3::reduce(MGraph *graph)
             if(VF::subgraphIsoAll(graph, &forbidden).size() >= size_before) {
                 graph->flip(foundEdge);
             }
+            mapping = VF::subgraphIsoOne(graph, &forbidden);
+        }
+    }
+}
+void StateGrowReduce3::reduceSimple(MGraph *graph)
+{
+    for(auto forbidden : m_forbidden) {
+        vector<Edge> forbiddenEdges = forbidden.edges();
+        NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
+        while(!mapping.empty()) {
+            Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
+            graph->flip(foundEdge);
+            if(!isValid(graph))
+                graph->flip(foundEdge);
             mapping = VF::subgraphIsoOne(graph, &forbidden);
         }
     }

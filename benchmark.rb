@@ -126,10 +126,10 @@ def calculate_stats(data)
       end
     end
     
-    metrics = results.map {|a| a["metrics"]}
+    metrics = results.map {|a| a["metrics"]}.select {|x| x["solved"] == true}
     hasOptimal = metrics.select {|x| x["no_correct"] == false}
     hasNoOptimal = metrics.select {|x| x["no_correct"] == true}
-    failed = metrics.select {|x| x["solved"] == false}.length
+    failed = results.select {|x| x["metrics"]["solved"] == false}.length
     
     quality = hasOptimal.map{|a| a["quality"]}
     qualityInv = hasOptimal.map{|a| a["quality_inv"]}
@@ -146,8 +146,9 @@ def calculate_stats(data)
         winning = false if o["metrics"]["solved"] == true && o["metrics"]["absolut"] <= result["metrics"]["absolut"]
       end
       wins += 1 if winning
-
     end
+    
+    
     ret[prog] = {
       "failed" => failed,
       "failed_percent" => (failed.to_f / results.length.to_f) * 100,
