@@ -3,5 +3,5 @@
   "forbidden" : [ "./forbidden/p5_c5"],
   "progs" : ["bottom_random", "extend", "mover"],
   "seed" : 5489,
-  "max_time" : 15
+  "max_time" : 30
 }
