@@ -49,7 +49,7 @@ MergeGraph StateApprox2K::solve(MergeGraph graph)
                }
            }
        }
-       a = 0.99*a - 0.1;
+       a = 0.99*a - 0.01;
     }
     return graph;
 }

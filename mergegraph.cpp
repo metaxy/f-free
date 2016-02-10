@@ -32,11 +32,6 @@ MergeGraph::MergeGraph(GGraph input) : MergeGraph(input.nodeCount())
         this->addEdge(e);
     }
 }
-/*MergeGraph::MergeGraph(Graph input) : MergeGraph(input.nNodes)
-{
-    de("MergeGraph::MergeGraph(Graph)");
-    m_input = input;
-}*/
 MergeGraph::MergeGraph(MergeGraph *copy)
 {
     de("MergeGraph::MergeGraph(MergeGraph*)");
@@ -68,11 +63,6 @@ MergeGraph::MergeGraph(const MergeGraph &copy)
 
 MergeGraph::~MergeGraph()
 {
-   /* if(m_deleted != nullptr)
-        delete[] m_deleted;
-    for(int i = 0; i < m_nodeCount; i++) {
-        delete [] m_matrix[i];
-    }*/
 }
 void MergeGraph::addEdge(const Edge &e)
 {
