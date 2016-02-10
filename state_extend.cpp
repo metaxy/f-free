@@ -3,7 +3,7 @@
 #include "randomize.h"
 #include "forbidden.h"
 #include <math.h>
-StateExtend::StateExtend(Config conf) : State(conf), m_countIteration(0), m_validChanges(0), m_invalidChanges(0), m_skipBecauseOfWeight(0)
+StateExtend::StateExtend(Config conf) : State(conf), m_countIteration(0), m_validChanges(0), m_invalidChanges(0)
 {
 }
 MGraph StateExtend::solve()
@@ -11,7 +11,9 @@ MGraph StateExtend::solve()
     MGraph graph(m_input);
     if(isValid(&graph)) return graph;
     graph.clear();
-    while(this->extend(&graph)) {}
+    while(this->extend(&graph)) {
+        m_countIteration++;
+    }
     return graph;
 }
 
@@ -21,14 +23,20 @@ bool StateExtend::extend(MGraph *graph)
     vector<Edge> edges = r->randomVector(m_input.difference(graph));
     for(Edge e : edges) {
         graph->flip(e);
-        if(!isValid(graph))
+        if(!isValid(graph)) {
             graph->flip(e);
-        else
+            m_invalidChanges++;
+        } else {
             some = true;
+            m_validChanges++;
+        }
     }
     return some;
 }
 
 void StateExtend::final()
 {
+    m_debug["countIteration"] = std::to_string(m_countIteration);
+    m_debug["validChanges"] = std::to_string(m_validChanges);
+    m_debug["invalidChanges"] = std::to_string(m_invalidChanges);
 }
