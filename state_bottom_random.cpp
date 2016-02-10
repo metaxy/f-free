@@ -9,6 +9,7 @@ StateBottomRandom::StateBottomRandom(Config conf) : State(conf), m_countIteratio
 MGraph StateBottomRandom::solve()
 {
     MGraph input(m_input);
+    if(isValid(&input)) return graph;
     MGraph weighted;
     input.clear();
     while(true) {
