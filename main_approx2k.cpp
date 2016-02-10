@@ -15,12 +15,17 @@ int main(int argc, char* argv[])
     }
     GGraph i = Common::graphFromFile(fileName);
     MergeGraph input(i);
+
     MergeGraph solved = state.solve(input);
     solved.restoreMerges();
     solved.normalize();
-    for(const Edge &e: input.difference(&solved)) {
+
+    auto edges = input.difference(&solved);
+
+    for(const Edge &e: edges) {
         cout << i.nodeName(e.first) << " " << i.nodeName(e.second) << endl;
     }
+    cout << "#k: " << edges.size() << endl;
     return 0;
 }
  

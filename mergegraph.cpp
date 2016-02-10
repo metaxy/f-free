@@ -338,6 +338,7 @@ vector<Edge> MergeGraph::difference(MergeGraph *other)
         for(int j = i+1; j < m_nodeCount; j++) {
             if(isDeleted(j)) continue;
             if(other->m_matrix[i][j] - m_matrix[i][j] != 0) {
+                //clog << other->m_matrix[i][j] << m_matrix[i][j] << endl;
                 list.push_back(Edge(i,j));
             }
         }
