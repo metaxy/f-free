@@ -162,7 +162,8 @@ def calculate_stats(data)
       "absolutStd" =>  absolut.standard_deviation,
       "time" => time.mean,
       "timeStd" => time.standard_deviation,
-      "winning" => wins
+      "winning" => wins,
+      "perfect" => hasOptimal.select {|x| x["absolut"] == x["k_correct"]}.length
     }
   end
   return ret

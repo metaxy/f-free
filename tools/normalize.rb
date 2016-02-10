@@ -20,7 +20,7 @@ def main()
     File.readlines(options[:path]+"/"+graph).each do |line|
       next if line.start_with? "#"
       sp = line.split("\s")
-      next if sp.size != 2
+      next if sp.length != 2
       nodes << sp[0] if(!nodes.include? sp[0])
       nodes << sp[1] if(!nodes.include? sp[1])
       out += nodes.index(sp[0]).to_s + " " + nodes.index(sp[1]).to_s + "\n"

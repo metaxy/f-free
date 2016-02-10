@@ -10,6 +10,7 @@ option(test "Build all tests." OFF)
 set( ffree_SRCS
     graph.cpp
     mgraph.cpp
+    mergegraph.cpp
     common.cpp
     randomize.cpp
     anyoption.cpp
@@ -144,6 +145,13 @@ add_executable(ffree_extend ${ffree_SRCS} state_extend.cpp main_extend.cpp)
 
 target_link_libraries(
     ffree_extend
+    ${ffree_LIBS}
+)
+
+add_executable(ffree_approx2k ${ffree_SRCS} state_approx2k.cpp main_approx2k.cpp)
+
+target_link_libraries(
+    ffree_approx2k
     ${ffree_LIBS}
 )
 add_executable(isomorph ${ffree_SRCS} main_isomorph.cpp)
