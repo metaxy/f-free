@@ -8,7 +8,7 @@
 #include <set>
 #include <unordered_map>
 
-#define MAXNODES 200
+#define MAXNODES 50
 
 class VFSorted {
 public:

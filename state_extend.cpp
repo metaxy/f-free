@@ -18,7 +18,8 @@ MGraph StateExtend::solve()
 bool StateExtend::extend(MGraph *graph)
 {
     bool some = false;
-    for(Edge e : m_input.difference(graph)) {
+    vector<Edge> edges = r->randomVector(m_input.difference(graph));
+    for(Edge e : edges) {
         graph->flip(e);
         if(!isValid(graph))
             graph->flip(e);

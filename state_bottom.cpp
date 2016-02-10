@@ -9,7 +9,7 @@ StateBottom::StateBottom(Config conf) : State(conf), m_countIteration(0), m_vali
 MGraph StateBottom::solve()
 {
     MGraph input(m_input);
-    if(isValid(&input)) return graph;
+    if(isValid(&input)) return input;
     MGraph weighted;
     input.clear();
     while(true) {
