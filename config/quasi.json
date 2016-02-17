@@ -1,5 +1,5 @@
 {
-  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz", "./model/bio1","./model/bio2"],
+  "instances" : ["./model/bio1","./model/bio2"],
   "forbidden" : [ "./forbidden/p5_c5"],
   "progs" : ["bottom_random", "extend", "mover"],
   "seed" : 5489,
