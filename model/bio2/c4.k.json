@@ -1,0 +1,5569 @@
+{
+  "optK_01_c_0.33_cost_matrix_component_nr_1170_size_8_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_01_c_0.33_cost_matrix_component_nr_3394_size_6_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_01_c_0.5_cost_matrix_component_nr_3128_size_6_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_01_c_0.5_cost_matrix_component_nr_3675_size_4_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_01_c_0.66_cost_matrix_component_nr_1214_size_6_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_01_c_0.66_cost_matrix_component_nr_3225_size_6_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_02_c_0.33_cost_matrix_component_nr_1676_size_8_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_02_c_0.33_cost_matrix_component_nr_1818_size_10_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_02_c_0.5_cost_matrix_component_nr_3046_size_11_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_02_c_0.5_cost_matrix_component_nr_727_size_9_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_02_c_0.66_cost_matrix_component_nr_1086_size_9_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_02_c_0.66_cost_matrix_component_nr_3470_size_7_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_03_c_0.33_cost_matrix_component_nr_2262_size_12_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_03_c_0.33_cost_matrix_component_nr_2754_size_11_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_03_c_0.5_cost_matrix_component_nr_1493_size_6_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_03_c_0.5_cost_matrix_component_nr_2922_size_8_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_03_c_0.66_cost_matrix_component_nr_1071_size_7_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_03_c_0.66_cost_matrix_component_nr_2450_size_6_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_04_c_0.33_cost_matrix_component_nr_2213_size_8_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_04_c_0.33_cost_matrix_component_nr_3353_size_10_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_04_c_0.5_cost_matrix_component_nr_2262_size_12_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_04_c_0.5_cost_matrix_component_nr_2358_size_19_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_04_c_0.66_cost_matrix_component_nr_2635_size_9_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_04_c_0.66_cost_matrix_component_nr_3077_size_7_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_05_c_0.33_cost_matrix_component_nr_1497_size_12_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_05_c_0.33_cost_matrix_component_nr_3532_size_7_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_05_c_0.5_cost_matrix_component_nr_2058_size_9_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_05_c_0.5_cost_matrix_component_nr_2646_size_10_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_05_c_0.66_cost_matrix_component_nr_1504_size_9_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "5",
+        "8"
+      ]
+    ]
+  },
+  "optK_05_c_0.66_cost_matrix_component_nr_2801_size_9_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_06_c_0.33_cost_matrix_component_nr_1067_size_16_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_06_c_0.33_cost_matrix_component_nr_1965_size_11_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_06_c_0.5_cost_matrix_component_nr_2809_size_10_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_06_c_0.5_cost_matrix_component_nr_3532_size_7_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_06_c_0.66_cost_matrix_component_nr_1365_size_22_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_06_c_0.66_cost_matrix_component_nr_2813_size_8_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_07_c_0.33_cost_matrix_component_nr_3320_size_14_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "7",
+        "8"
+      ]
+    ]
+  },
+  "optK_07_c_0.33_cost_matrix_component_nr_3579_size_11_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_07_c_0.5_cost_matrix_component_nr_2052_size_14_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_07_c_0.5_cost_matrix_component_nr_2082_size_16_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_07_c_0.66_cost_matrix_component_nr_1222_size_16_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "1",
+        "13"
+      ]
+    ]
+  },
+  "optK_07_c_0.66_cost_matrix_component_nr_3924_size_19_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_08_c_0.33_cost_matrix_component_nr_1145_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_08_c_0.33_cost_matrix_component_nr_1182_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_08_c_0.5_cost_matrix_component_nr_1728_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_08_c_0.5_cost_matrix_component_nr_976_size_12_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_08_c_0.66_cost_matrix_component_nr_2042_size_15_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "7",
+        "8"
+      ]
+    ]
+  },
+  "optK_08_c_0.66_cost_matrix_component_nr_2890_size_10_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "5",
+        "6"
+      ]
+    ]
+  },
+  "optK_09_c_0.33_cost_matrix_component_nr_1478_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_09_c_0.33_cost_matrix_component_nr_873_size_14_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "3",
+        "9"
+      ]
+    ]
+  },
+  "optK_09_c_0.5_cost_matrix_component_nr_2604_size_11_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_09_c_0.5_cost_matrix_component_nr_840_size_10_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "8",
+        "9"
+      ]
+    ]
+  },
+  "optK_09_c_0.66_cost_matrix_component_nr_2558_size_12_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "1",
+        "2"
+      ],
+      [
+        "1",
+        "8"
+      ]
+    ]
+  },
+  "optK_09_c_0.66_cost_matrix_component_nr_756_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_10_c_0.33_cost_matrix_component_nr_2263_size_17_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_10_c_0.33_cost_matrix_component_nr_2725_size_13_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "4",
+        "5"
+      ],
+      [
+        "4",
+        "6"
+      ]
+    ]
+  },
+  "optK_10_c_0.5_cost_matrix_component_nr_1621_size_23_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_10_c_0.5_cost_matrix_component_nr_792_size_11_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "0",
+        "10"
+      ]
+    ]
+  },
+  "optK_10_c_0.66_cost_matrix_component_nr_1490_size_10_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "1",
+        "9"
+      ],
+      [
+        "5",
+        "8"
+      ]
+    ]
+  },
+  "optK_10_c_0.66_cost_matrix_component_nr_1909_size_12_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "2",
+        "7"
+      ]
+    ]
+  },
+  "optK_11_c_0.33_cost_matrix_component_nr_1637_size_20_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_11_c_0.33_cost_matrix_component_nr_1987_size_19_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_11_c_0.5_cost_matrix_component_nr_1289_size_11_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "3",
+        "7"
+      ],
+      [
+        "3",
+        "9"
+      ],
+      [
+        "5",
+        "6"
+      ]
+    ]
+  },
+  "optK_11_c_0.5_cost_matrix_component_nr_2718_size_13_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_11_c_0.66_cost_matrix_component_nr_2855_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_11_c_0.66_cost_matrix_component_nr_3511_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_12_c_0.33_cost_matrix_component_nr_1621_size_23_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "10",
+        "12"
+      ]
+    ]
+  },
+  "optK_12_c_0.33_cost_matrix_component_nr_2268_size_20_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_12_c_0.5_cost_matrix_component_nr_2503_size_12_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "3"
+      ],
+      [
+        "4",
+        "9"
+      ]
+    ]
+  },
+  "optK_12_c_0.5_cost_matrix_component_nr_2603_size_18_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "5"
+      ],
+      [
+        "0",
+        "6"
+      ]
+    ]
+  },
+  "optK_12_c_0.66_cost_matrix_component_nr_2891_size_14_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "10",
+        "3"
+      ]
+    ]
+  },
+  "optK_12_c_0.66_cost_matrix_component_nr_764_size_16_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_13_c_0.33_cost_matrix_component_nr_2125_size_15_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "12",
+        "4"
+      ]
+    ]
+  },
+  "optK_13_c_0.33_cost_matrix_component_nr_375_size_26_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "13",
+        "4"
+      ],
+      [
+        "16",
+        "21"
+      ]
+    ]
+  },
+  "optK_13_c_0.5_cost_matrix_component_nr_1478_size_13_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "3",
+        "4"
+      ]
+    ]
+  },
+  "optK_13_c_0.5_cost_matrix_component_nr_2448_size_16_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "8",
+        "9"
+      ]
+    ]
+  },
+  "optK_13_c_0.66_cost_matrix_component_nr_1915_size_11_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "2",
+        "6"
+      ],
+      [
+        "2",
+        "7"
+      ]
+    ]
+  },
+  "optK_13_c_0.66_cost_matrix_component_nr_2577_size_12_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_14_c_0.33_cost_matrix_component_nr_1932_size_14_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_14_c_0.33_cost_matrix_component_nr_3312_size_16_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "1",
+        "15"
+      ],
+      [
+        "10",
+        "13"
+      ]
+    ]
+  },
+  "optK_14_c_0.5_cost_matrix_component_nr_1729_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_14_c_0.5_cost_matrix_component_nr_2819_size_14_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "1",
+        "2"
+      ],
+      [
+        "2",
+        "3"
+      ]
+    ]
+  },
+  "optK_14_c_0.66_cost_matrix_component_nr_3019_size_12_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_14_c_0.66_cost_matrix_component_nr_3334_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_15_c_0.33_cost_matrix_component_nr_568_size_20_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_15_c_0.33_cost_matrix_component_nr_803_size_25_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "20",
+        "21"
+      ]
+    ]
+  },
+  "optK_15_c_0.5_cost_matrix_component_nr_1508_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "12",
+        "13"
+      ]
+    ]
+  },
+  "optK_15_c_0.5_cost_matrix_component_nr_1825_size_16_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_15_c_0.66_cost_matrix_component_nr_3088_size_19_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "13",
+        "6"
+      ]
+    ]
+  },
+  "optK_15_c_0.66_cost_matrix_component_nr_3655_size_15_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_16_c_0.33_cost_matrix_component_nr_2171_size_20_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "1",
+        "12"
+      ],
+      [
+        "10",
+        "11"
+      ],
+      [
+        "10",
+        "17"
+      ]
+    ]
+  },
+  "optK_16_c_0.33_cost_matrix_component_nr_729_size_16_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_16_c_0.5_cost_matrix_component_nr_284_size_14_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "10",
+        "7"
+      ]
+    ]
+  },
+  "optK_16_c_0.5_cost_matrix_component_nr_540_size_18_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_16_c_0.66_cost_matrix_component_nr_1541_size_12_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "2",
+        "8"
+      ]
+    ]
+  },
+  "optK_16_c_0.66_cost_matrix_component_nr_1938_size_15_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "2",
+        "5"
+      ]
+    ]
+  },
+  "optK_17_c_0.33_cost_matrix_component_nr_1273_size_26_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_17_c_0.33_cost_matrix_component_nr_952_size_18_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_17_c_0.5_cost_matrix_component_nr_2181_size_16_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "3",
+        "5"
+      ]
+    ]
+  },
+  "optK_17_c_0.5_cost_matrix_component_nr_2795_size_13_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "10",
+        "2"
+      ],
+      [
+        "10",
+        "3"
+      ]
+    ]
+  },
+  "optK_17_c_0.66_cost_matrix_component_nr_1670_size_20_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "4",
+        "6"
+      ]
+    ]
+  },
+  "optK_17_c_0.66_cost_matrix_component_nr_2567_size_16_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_18_c_0.33_cost_matrix_component_nr_1816_size_34_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_18_c_0.33_cost_matrix_component_nr_458_size_24_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_18_c_0.5_cost_matrix_component_nr_375_size_26_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "10",
+        "4"
+      ],
+      [
+        "15",
+        "4"
+      ]
+    ]
+  },
+  "optK_18_c_0.5_cost_matrix_component_nr_76_size_22_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_18_c_0.66_cost_matrix_component_nr_2447_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_18_c_0.66_cost_matrix_component_nr_2509_size_19_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "13",
+        "9"
+      ]
+    ]
+  },
+  "optK_19_c_0.33_cost_matrix_component_nr_1487_size_23_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "10",
+        "15"
+      ],
+      [
+        "13",
+        "22"
+      ]
+    ]
+  },
+  "optK_19_c_0.33_cost_matrix_component_nr_795_size_27_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_19_c_0.5_cost_matrix_component_nr_1284_size_18_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_19_c_0.5_cost_matrix_component_nr_2002_size_14_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "0",
+        "6"
+      ]
+    ]
+  },
+  "optK_19_c_0.66_cost_matrix_component_nr_1162_size_15_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "11"
+      ],
+      [
+        "10",
+        "13"
+      ],
+      [
+        "11",
+        "7"
+      ],
+      [
+        "13",
+        "7"
+      ]
+    ]
+  },
+  "optK_19_c_0.66_cost_matrix_component_nr_2915_size_13_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_20_c_0.33_cost_matrix_component_nr_2078_size_17_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "3",
+        "8"
+      ]
+    ]
+  },
+  "optK_20_c_0.33_cost_matrix_component_nr_55_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "0",
+        "4"
+      ]
+    ]
+  },
+  "optK_20_c_0.5_cost_matrix_component_nr_1001_size_19_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "4",
+        "5"
+      ]
+    ]
+  },
+  "optK_20_c_0.5_cost_matrix_component_nr_308_size_18_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "0",
+        "11"
+      ],
+      [
+        "16",
+        "2"
+      ],
+      [
+        "16",
+        "5"
+      ]
+    ]
+  },
+  "optK_20_c_0.66_cost_matrix_component_nr_2877_size_13_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "2",
+        "7"
+      ]
+    ]
+  },
+  "optK_20_c_0.66_cost_matrix_component_nr_734_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "0",
+        "13"
+      ]
+    ]
+  },
+  "optK_21_c_0.33_cost_matrix_component_nr_1951_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "7",
+        "8"
+      ]
+    ]
+  },
+  "optK_21_c_0.33_cost_matrix_component_nr_293_size_27_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "11",
+        "7"
+      ]
+    ]
+  },
+  "optK_21_c_0.5_cost_matrix_component_nr_2204_size_14_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "10",
+        "12"
+      ],
+      [
+        "11",
+        "13"
+      ],
+      [
+        "12",
+        "8"
+      ]
+    ]
+  },
+  "optK_21_c_0.5_cost_matrix_component_nr_2726_size_14_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "11",
+        "6"
+      ]
+    ]
+  },
+  "optK_21_c_0.66_cost_matrix_component_nr_2762_size_22_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "4",
+        "8"
+      ]
+    ]
+  },
+  "optK_21_c_0.66_cost_matrix_component_nr_762_size_15_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "11",
+        "7"
+      ],
+      [
+        "13",
+        "3"
+      ]
+    ]
+  },
+  "optK_22_c_0.33_cost_matrix_component_nr_204_size_27_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "15",
+        "5"
+      ],
+      [
+        "26",
+        "5"
+      ]
+    ]
+  },
+  "optK_22_c_0.33_cost_matrix_component_nr_2556_size_24_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "13",
+        "6"
+      ]
+    ]
+  },
+  "optK_22_c_0.5_cost_matrix_component_nr_1301_size_20_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "2",
+        "4"
+      ],
+      [
+        "2",
+        "5"
+      ],
+      [
+        "3",
+        "6"
+      ]
+    ]
+  },
+  "optK_22_c_0.5_cost_matrix_component_nr_2022_size_16_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_22_c_0.66_cost_matrix_component_nr_131_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "16",
+        "7"
+      ]
+    ]
+  },
+  "optK_22_c_0.66_cost_matrix_component_nr_2204_size_14_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "10",
+        "12"
+      ]
+    ]
+  },
+  "optK_23_c_0.33_cost_matrix_component_nr_1035_size_30_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_23_c_0.33_cost_matrix_component_nr_1374_size_25_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_23_c_0.5_cost_matrix_component_nr_1707_size_16_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "0",
+        "14"
+      ]
+    ]
+  },
+  "optK_23_c_0.5_cost_matrix_component_nr_2489_size_24_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "16",
+        "17"
+      ]
+    ]
+  },
+  "optK_23_c_0.66_cost_matrix_component_nr_1205_size_22_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_23_c_0.66_cost_matrix_component_nr_1249_size_15_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "2",
+        "8"
+      ]
+    ]
+  },
+  "optK_24_c_0.33_cost_matrix_component_nr_1948_size_19_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "11",
+        "2"
+      ],
+      [
+        "12",
+        "5"
+      ]
+    ]
+  },
+  "optK_24_c_0.33_cost_matrix_component_nr_2105_size_22_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "17",
+        "5"
+      ]
+    ]
+  },
+  "optK_24_c_0.5_cost_matrix_component_nr_1931_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_24_c_0.5_cost_matrix_component_nr_464_size_19_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "2",
+        "4"
+      ],
+      [
+        "4",
+        "5"
+      ]
+    ]
+  },
+  "optK_24_c_0.66_cost_matrix_component_nr_2686_size_18_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_24_c_0.66_cost_matrix_component_nr_2788_size_15_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "12",
+        "4"
+      ]
+    ]
+  },
+  "optK_25_c_0.33_cost_matrix_component_nr_1305_size_25_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_25_c_0.33_cost_matrix_component_nr_1786_size_42_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "13",
+        "28"
+      ],
+      [
+        "18",
+        "31"
+      ],
+      [
+        "25",
+        "38"
+      ],
+      [
+        "27",
+        "38"
+      ]
+    ]
+  },
+  "optK_25_c_0.5_cost_matrix_component_nr_2054_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "5",
+        "7"
+      ]
+    ]
+  },
+  "optK_25_c_0.5_cost_matrix_component_nr_3925_size_22_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "14",
+        "3"
+      ]
+    ]
+  },
+  "optK_25_c_0.66_cost_matrix_component_nr_1284_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "13",
+        "4"
+      ]
+    ]
+  },
+  "optK_25_c_0.66_cost_matrix_component_nr_1446_size_23_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_26_c_0.33_cost_matrix_component_nr_1681_size_19_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "14"
+      ],
+      [
+        "10",
+        "12"
+      ]
+    ]
+  },
+  "optK_26_c_0.33_cost_matrix_component_nr_253_size_25_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "18",
+        "4"
+      ]
+    ]
+  },
+  "optK_26_c_0.5_cost_matrix_component_nr_1183_size_23_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "12",
+        "3"
+      ],
+      [
+        "12",
+        "4"
+      ],
+      [
+        "13",
+        "8"
+      ]
+    ]
+  },
+  "optK_26_c_0.5_cost_matrix_component_nr_1491_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "3",
+        "4"
+      ]
+    ]
+  },
+  "optK_26_c_0.66_cost_matrix_component_nr_1595_size_32_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "17",
+        "19"
+      ],
+      [
+        "4",
+        "9"
+      ]
+    ]
+  },
+  "optK_26_c_0.66_cost_matrix_component_nr_2776_size_24_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "6",
+        "7"
+      ],
+      [
+        "6",
+        "8"
+      ],
+      [
+        "7",
+        "8"
+      ]
+    ]
+  },
+  "optK_27_c_0.33_cost_matrix_component_nr_125_size_42_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_27_c_0.33_cost_matrix_component_nr_2285_size_22_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "11",
+        "14"
+      ],
+      [
+        "13",
+        "18"
+      ],
+      [
+        "16",
+        "21"
+      ],
+      [
+        "3",
+        "6"
+      ]
+    ]
+  },
+  "optK_27_c_0.5_cost_matrix_component_nr_2559_size_18_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "1",
+        "12"
+      ],
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_27_c_0.5_cost_matrix_component_nr_378_size_45_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "0",
+        "10"
+      ],
+      [
+        "0",
+        "23"
+      ],
+      [
+        "10",
+        "17"
+      ],
+      [
+        "20",
+        "23"
+      ],
+      [
+        "20",
+        "42"
+      ],
+      [
+        "29",
+        "31"
+      ]
+    ]
+  },
+  "optK_27_c_0.66_cost_matrix_component_nr_1298_size_24_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "1",
+        "10"
+      ],
+      [
+        "14",
+        "21"
+      ],
+      [
+        "17",
+        "18"
+      ],
+      [
+        "18",
+        "8"
+      ],
+      [
+        "20",
+        "8"
+      ],
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_27_c_0.66_cost_matrix_component_nr_886_size_17_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "13",
+        "3"
+      ],
+      [
+        "16",
+        "7"
+      ],
+      [
+        "6",
+        "8"
+      ]
+    ]
+  },
+  "optK_28_c_0.33_cost_matrix_component_nr_1725_size_34_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "21",
+        "4"
+      ],
+      [
+        "29",
+        "6"
+      ]
+    ]
+  },
+  "optK_28_c_0.33_cost_matrix_component_nr_638_size_26_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "18",
+        "22"
+      ],
+      [
+        "18",
+        "23"
+      ],
+      [
+        "19",
+        "24"
+      ],
+      [
+        "19",
+        "25"
+      ],
+      [
+        "2",
+        "20"
+      ],
+      [
+        "21",
+        "7"
+      ]
+    ]
+  },
+  "optK_28_c_0.5_cost_matrix_component_nr_2488_size_20_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_28_c_0.5_cost_matrix_component_nr_3748_size_15_cutoff_10.0.graph": {
+    "min_k": 9,
+    "solution": [
+      [
+        "0",
+        "2"
+      ],
+      [
+        "1",
+        "12"
+      ],
+      [
+        "1",
+        "3"
+      ],
+      [
+        "1",
+        "8"
+      ],
+      [
+        "10",
+        "5"
+      ],
+      [
+        "10",
+        "7"
+      ],
+      [
+        "10",
+        "9"
+      ],
+      [
+        "12",
+        "2"
+      ],
+      [
+        "14",
+        "7"
+      ]
+    ]
+  },
+  "optK_28_c_0.66_cost_matrix_component_nr_2244_size_17_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "12"
+      ],
+      [
+        "0",
+        "14"
+      ]
+    ]
+  },
+  "optK_28_c_0.66_cost_matrix_component_nr_852_size_27_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "10",
+        "11"
+      ],
+      [
+        "11",
+        "23"
+      ]
+    ]
+  },
+  "optK_29_c_0.33_cost_matrix_component_nr_192_size_29_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "12",
+        "20"
+      ],
+      [
+        "15",
+        "4"
+      ]
+    ]
+  },
+  "optK_29_c_0.33_cost_matrix_component_nr_2310_size_20_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "14",
+        "4"
+      ]
+    ]
+  },
+  "optK_29_c_0.5_cost_matrix_component_nr_1809_size_21_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "5"
+      ],
+      [
+        "1",
+        "10"
+      ],
+      [
+        "10",
+        "19"
+      ],
+      [
+        "10",
+        "4"
+      ]
+    ]
+  },
+  "optK_29_c_0.5_cost_matrix_component_nr_3242_size_24_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "22"
+      ],
+      [
+        "17",
+        "5"
+      ]
+    ]
+  },
+  "optK_29_c_0.66_cost_matrix_component_nr_1832_size_17_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "1",
+        "3"
+      ],
+      [
+        "1",
+        "4"
+      ],
+      [
+        "1",
+        "5"
+      ],
+      [
+        "11",
+        "13"
+      ],
+      [
+        "13",
+        "5"
+      ]
+    ]
+  },
+  "optK_29_c_0.66_cost_matrix_component_nr_3184_size_19_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "9"
+      ],
+      [
+        "1",
+        "18"
+      ],
+      [
+        "14",
+        "2"
+      ],
+      [
+        "14",
+        "7"
+      ]
+    ]
+  },
+  "optK_30_c_0.33_cost_matrix_component_nr_2014_size_24_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "1",
+        "10"
+      ],
+      [
+        "13",
+        "17"
+      ],
+      [
+        "20",
+        "7"
+      ],
+      [
+        "5",
+        "8"
+      ]
+    ]
+  },
+  "optK_30_c_0.33_cost_matrix_component_nr_3624_size_22_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "1",
+        "4"
+      ],
+      [
+        "11",
+        "4"
+      ],
+      [
+        "13",
+        "4"
+      ],
+      [
+        "13",
+        "5"
+      ],
+      [
+        "18",
+        "5"
+      ]
+    ]
+  },
+  "optK_30_c_0.5_cost_matrix_component_nr_2404_size_20_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "11",
+        "12"
+      ],
+      [
+        "12",
+        "13"
+      ]
+    ]
+  },
+  "optK_30_c_0.5_cost_matrix_component_nr_690_size_21_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "11",
+        "12"
+      ],
+      [
+        "12",
+        "14"
+      ],
+      [
+        "14",
+        "9"
+      ],
+      [
+        "15",
+        "6"
+      ],
+      [
+        "4",
+        "7"
+      ],
+      [
+        "4",
+        "9"
+      ]
+    ]
+  },
+  "optK_30_c_0.66_cost_matrix_component_nr_2404_size_20_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "11",
+        "14"
+      ],
+      [
+        "12",
+        "9"
+      ],
+      [
+        "14",
+        "4"
+      ],
+      [
+        "2",
+        "8"
+      ]
+    ]
+  },
+  "optK_30_c_0.66_cost_matrix_component_nr_952_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "16",
+        "9"
+      ]
+    ]
+  },
+  "optK_31_c_0.33_cost_matrix_component_nr_154_size_27_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "13",
+        "3"
+      ]
+    ]
+  },
+  "optK_31_c_0.33_cost_matrix_component_nr_1718_size_24_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "17",
+        "19"
+      ],
+      [
+        "19",
+        "7"
+      ],
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_31_c_0.5_cost_matrix_component_nr_2087_size_26_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "1",
+        "4"
+      ],
+      [
+        "21",
+        "25"
+      ],
+      [
+        "8",
+        "9"
+      ]
+    ]
+  },
+  "optK_31_c_0.5_cost_matrix_component_nr_2155_size_17_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "1",
+        "5"
+      ],
+      [
+        "1",
+        "6"
+      ],
+      [
+        "1",
+        "7"
+      ],
+      [
+        "15",
+        "5"
+      ],
+      [
+        "15",
+        "6"
+      ]
+    ]
+  },
+  "optK_31_c_0.66_cost_matrix_component_nr_1336_size_17_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "10"
+      ],
+      [
+        "10",
+        "7"
+      ],
+      [
+        "16",
+        "4"
+      ],
+      [
+        "2",
+        "5"
+      ]
+    ]
+  },
+  "optK_31_c_0.66_cost_matrix_component_nr_192_size_29_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_32_c_0.33_cost_matrix_component_nr_1512_size_29_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_32_c_0.33_cost_matrix_component_nr_389_size_29_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "15",
+        "26"
+      ]
+    ]
+  },
+  "optK_32_c_0.5_cost_matrix_component_nr_1948_size_19_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "10"
+      ],
+      [
+        "0",
+        "12"
+      ],
+      [
+        "0",
+        "16"
+      ],
+      [
+        "1",
+        "10"
+      ]
+    ]
+  },
+  "optK_32_c_0.5_cost_matrix_component_nr_368_size_54_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_32_c_0.66_cost_matrix_component_nr_1186_size_22_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "13",
+        "5"
+      ],
+      [
+        "5",
+        "8"
+      ]
+    ]
+  },
+  "optK_32_c_0.66_cost_matrix_component_nr_204_size_27_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "0",
+        "5"
+      ],
+      [
+        "10",
+        "4"
+      ],
+      [
+        "11",
+        "4"
+      ],
+      [
+        "18",
+        "5"
+      ],
+      [
+        "18",
+        "6"
+      ]
+    ]
+  },
+  "optK_33_c_0.33_cost_matrix_component_nr_305_size_23_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "15",
+        "22"
+      ],
+      [
+        "22",
+        "8"
+      ]
+    ]
+  },
+  "optK_33_c_0.33_cost_matrix_component_nr_320_size_29_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "16",
+        "18"
+      ],
+      [
+        "18",
+        "25"
+      ]
+    ]
+  },
+  "optK_33_c_0.5_cost_matrix_component_nr_1213_size_31_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "18",
+        "22"
+      ],
+      [
+        "18",
+        "3"
+      ]
+    ]
+  },
+  "optK_33_c_0.5_cost_matrix_component_nr_1803_size_19_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "10",
+        "8"
+      ],
+      [
+        "13",
+        "8"
+      ],
+      [
+        "14",
+        "3"
+      ],
+      [
+        "3",
+        "4"
+      ]
+    ]
+  },
+  "optK_33_c_0.66_cost_matrix_component_nr_2535_size_24_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "18",
+        "2"
+      ],
+      [
+        "18",
+        "4"
+      ],
+      [
+        "4",
+        "5"
+      ],
+      [
+        "5",
+        "6"
+      ]
+    ]
+  },
+  "optK_33_c_0.66_cost_matrix_component_nr_605_size_20_cutoff_10.0.graph": {
+    "min_k": 8,
+    "solution": [
+      [
+        "1",
+        "14"
+      ],
+      [
+        "1",
+        "15"
+      ],
+      [
+        "11",
+        "13"
+      ],
+      [
+        "12",
+        "14"
+      ],
+      [
+        "13",
+        "18"
+      ],
+      [
+        "14",
+        "2"
+      ],
+      [
+        "16",
+        "7"
+      ],
+      [
+        "19",
+        "3"
+      ]
+    ]
+  },
+  "optK_34_c_0.33_cost_matrix_component_nr_1235_size_44_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "0",
+        "21"
+      ],
+      [
+        "1",
+        "20"
+      ],
+      [
+        "10",
+        "12"
+      ],
+      [
+        "13",
+        "24"
+      ],
+      [
+        "17",
+        "3"
+      ]
+    ]
+  },
+  "optK_34_c_0.33_cost_matrix_component_nr_2146_size_21_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "10",
+        "12"
+      ],
+      [
+        "10",
+        "18"
+      ],
+      [
+        "11",
+        "13"
+      ],
+      [
+        "12",
+        "2"
+      ],
+      [
+        "13",
+        "3"
+      ],
+      [
+        "13",
+        "5"
+      ]
+    ]
+  },
+  "optK_34_c_0.5_cost_matrix_component_nr_1951_size_18_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "1",
+        "14"
+      ]
+    ]
+  },
+  "optK_34_c_0.5_cost_matrix_component_nr_2146_size_21_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "0",
+        "7"
+      ],
+      [
+        "14",
+        "17"
+      ],
+      [
+        "17",
+        "2"
+      ]
+    ]
+  },
+  "optK_34_c_0.66_cost_matrix_component_nr_1305_size_25_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "13",
+        "4"
+      ]
+    ]
+  },
+  "optK_34_c_0.66_cost_matrix_component_nr_1632_size_18_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "1",
+        "2"
+      ],
+      [
+        "15",
+        "17"
+      ],
+      [
+        "17",
+        "3"
+      ]
+    ]
+  },
+  "optK_35_c_0.33_cost_matrix_component_nr_1160_size_25_cutoff_10.0.graph": {
+    "min_k": 7,
+    "solution": [
+      [
+        "10",
+        "20"
+      ],
+      [
+        "11",
+        "22"
+      ],
+      [
+        "18",
+        "2"
+      ],
+      [
+        "19",
+        "20"
+      ],
+      [
+        "20",
+        "22"
+      ],
+      [
+        "21",
+        "24"
+      ],
+      [
+        "7",
+        "8"
+      ]
+    ]
+  },
+  "optK_35_c_0.33_cost_matrix_component_nr_2100_size_33_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "16",
+        "5"
+      ],
+      [
+        "5",
+        "6"
+      ]
+    ]
+  },
+  "optK_35_c_0.5_cost_matrix_component_nr_211_size_38_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_35_c_0.5_cost_matrix_component_nr_645_size_21_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "1",
+        "4"
+      ],
+      [
+        "10",
+        "4"
+      ],
+      [
+        "14",
+        "5"
+      ],
+      [
+        "17",
+        "6"
+      ]
+    ]
+  },
+  "optK_35_c_0.66_cost_matrix_component_nr_1798_size_19_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "0",
+        "8"
+      ],
+      [
+        "10",
+        "13"
+      ],
+      [
+        "13",
+        "5"
+      ]
+    ]
+  },
+  "optK_35_c_0.66_cost_matrix_component_nr_798_size_23_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "0",
+        "11"
+      ],
+      [
+        "0",
+        "3"
+      ],
+      [
+        "15",
+        "8"
+      ],
+      [
+        "17",
+        "7"
+      ],
+      [
+        "2",
+        "7"
+      ],
+      [
+        "7",
+        "8"
+      ]
+    ]
+  },
+  "optK_36_c_0.33_cost_matrix_component_nr_137_size_31_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_36_c_0.33_cost_matrix_component_nr_2695_size_23_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "0",
+        "12"
+      ],
+      [
+        "1",
+        "15"
+      ],
+      [
+        "11",
+        "16"
+      ],
+      [
+        "22",
+        "7"
+      ],
+      [
+        "22",
+        "8"
+      ],
+      [
+        "4",
+        "6"
+      ]
+    ]
+  },
+  "optK_36_c_0.5_cost_matrix_component_nr_1055_size_25_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "14",
+        "22"
+      ],
+      [
+        "18",
+        "20"
+      ],
+      [
+        "18",
+        "9"
+      ]
+    ]
+  },
+  "optK_36_c_0.5_cost_matrix_component_nr_296_size_25_cutoff_10.0.graph": {
+    "min_k": 9,
+    "solution": [
+      [
+        "0",
+        "14"
+      ],
+      [
+        "0",
+        "21"
+      ],
+      [
+        "1",
+        "17"
+      ],
+      [
+        "1",
+        "22"
+      ],
+      [
+        "13",
+        "14"
+      ],
+      [
+        "13",
+        "21"
+      ],
+      [
+        "15",
+        "6"
+      ],
+      [
+        "16",
+        "20"
+      ],
+      [
+        "16",
+        "6"
+      ]
+    ]
+  },
+  "optK_36_c_0.66_cost_matrix_component_nr_1441_size_17_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "11",
+        "6"
+      ],
+      [
+        "16",
+        "2"
+      ],
+      [
+        "6",
+        "8"
+      ]
+    ]
+  },
+  "optK_36_c_0.66_cost_matrix_component_nr_2529_size_28_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "2",
+        "22"
+      ],
+      [
+        "24",
+        "8"
+      ],
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_37_c_0.33_cost_matrix_component_nr_370_size_62_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "42",
+        "45"
+      ],
+      [
+        "42",
+        "46"
+      ],
+      [
+        "42",
+        "47"
+      ]
+    ]
+  },
+  "optK_37_c_0.33_cost_matrix_component_nr_655_size_89_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_37_c_0.5_cost_matrix_component_nr_3266_size_20_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "14",
+        "3"
+      ],
+      [
+        "15",
+        "3"
+      ],
+      [
+        "6",
+        "8"
+      ]
+    ]
+  },
+  "optK_37_c_0.5_cost_matrix_component_nr_670_size_33_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "19",
+        "28"
+      ],
+      [
+        "19",
+        "8"
+      ],
+      [
+        "3",
+        "8"
+      ]
+    ]
+  },
+  "optK_37_c_0.66_cost_matrix_component_nr_3068_size_31_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "1",
+        "14"
+      ],
+      [
+        "10",
+        "9"
+      ]
+    ]
+  },
+  "optK_37_c_0.66_cost_matrix_component_nr_726_size_24_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "12",
+        "16"
+      ],
+      [
+        "13",
+        "21"
+      ],
+      [
+        "14",
+        "23"
+      ],
+      [
+        "14",
+        "3"
+      ],
+      [
+        "15",
+        "16"
+      ]
+    ]
+  },
+  "optK_38_c_0.33_cost_matrix_component_nr_2622_size_27_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "18",
+        "24"
+      ],
+      [
+        "20",
+        "26"
+      ],
+      [
+        "20",
+        "5"
+      ]
+    ]
+  },
+  "optK_38_c_0.33_cost_matrix_component_nr_336_size_27_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "13",
+        "14"
+      ],
+      [
+        "19",
+        "20"
+      ],
+      [
+        "2",
+        "21"
+      ],
+      [
+        "2",
+        "22"
+      ],
+      [
+        "2",
+        "4"
+      ]
+    ]
+  },
+  "optK_38_c_0.5_cost_matrix_component_nr_1868_size_23_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "13",
+        "22"
+      ]
+    ]
+  },
+  "optK_38_c_0.5_cost_matrix_component_nr_313_size_20_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "1",
+        "16"
+      ],
+      [
+        "13",
+        "7"
+      ],
+      [
+        "8",
+        "9"
+      ]
+    ]
+  },
+  "optK_38_c_0.66_cost_matrix_component_nr_293_size_27_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "16",
+        "17"
+      ],
+      [
+        "16",
+        "23"
+      ],
+      [
+        "16",
+        "3"
+      ],
+      [
+        "17",
+        "23"
+      ],
+      [
+        "17",
+        "8"
+      ],
+      [
+        "18",
+        "4"
+      ]
+    ]
+  },
+  "optK_38_c_0.66_cost_matrix_component_nr_3266_size_20_cutoff_10.0.graph": {
+    "min_k": 7,
+    "solution": [
+      [
+        "0",
+        "15"
+      ],
+      [
+        "0",
+        "17"
+      ],
+      [
+        "0",
+        "5"
+      ],
+      [
+        "11",
+        "15"
+      ],
+      [
+        "11",
+        "9"
+      ],
+      [
+        "15",
+        "19"
+      ],
+      [
+        "18",
+        "4"
+      ]
+    ]
+  },
+  "optK_39_c_0.33_cost_matrix_component_nr_1830_size_28_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "16",
+        "21"
+      ],
+      [
+        "17",
+        "24"
+      ],
+      [
+        "22",
+        "24"
+      ]
+    ]
+  },
+  "optK_39_c_0.33_cost_matrix_component_nr_3576_size_34_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_39_c_0.5_cost_matrix_component_nr_1554_size_22_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "1",
+        "11"
+      ],
+      [
+        "10",
+        "17"
+      ]
+    ]
+  },
+  "optK_39_c_0.5_cost_matrix_component_nr_2222_size_21_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "6"
+      ],
+      [
+        "0",
+        "7"
+      ],
+      [
+        "0",
+        "8"
+      ],
+      [
+        "13",
+        "2"
+      ]
+    ]
+  },
+  "optK_39_c_0.66_cost_matrix_component_nr_1512_size_29_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "1",
+        "28"
+      ],
+      [
+        "22",
+        "6"
+      ],
+      [
+        "23",
+        "6"
+      ],
+      [
+        "25",
+        "4"
+      ],
+      [
+        "25",
+        "6"
+      ]
+    ]
+  },
+  "optK_39_c_0.66_cost_matrix_component_nr_2384_size_20_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "10",
+        "7"
+      ],
+      [
+        "14",
+        "3"
+      ],
+      [
+        "17",
+        "3"
+      ],
+      [
+        "17",
+        "4"
+      ]
+    ]
+  },
+  "optK_40_c_0.33_cost_matrix_component_nr_1229_size_29_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "21",
+        "23"
+      ],
+      [
+        "21",
+        "24"
+      ]
+    ]
+  },
+  "optK_40_c_0.33_cost_matrix_component_nr_992_size_32_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "30",
+        "4"
+      ]
+    ]
+  },
+  "optK_40_c_0.5_cost_matrix_component_nr_1345_size_51_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "1",
+        "16"
+      ],
+      [
+        "25",
+        "27"
+      ],
+      [
+        "39",
+        "7"
+      ]
+    ]
+  },
+  "optK_40_c_0.5_cost_matrix_component_nr_81_size_23_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "18"
+      ],
+      [
+        "16",
+        "18"
+      ]
+    ]
+  },
+  "optK_40_c_0.66_cost_matrix_component_nr_1606_size_36_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_40_c_0.66_cost_matrix_component_nr_682_size_26_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "11",
+        "6"
+      ],
+      [
+        "14",
+        "3"
+      ],
+      [
+        "17",
+        "18"
+      ],
+      [
+        "6",
+        "8"
+      ]
+    ]
+  },
+  "optK_41_c_0.33_cost_matrix_component_nr_165_size_42_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "13",
+        "16"
+      ],
+      [
+        "13",
+        "24"
+      ]
+    ]
+  },
+  "optK_41_c_0.33_cost_matrix_component_nr_854_size_39_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "0",
+        "1"
+      ],
+      [
+        "10",
+        "19"
+      ],
+      [
+        "10",
+        "5"
+      ],
+      [
+        "22",
+        "4"
+      ],
+      [
+        "30",
+        "4"
+      ]
+    ]
+  },
+  "optK_41_c_0.5_cost_matrix_component_nr_2105_size_22_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "15",
+        "6"
+      ]
+    ]
+  },
+  "optK_41_c_0.5_cost_matrix_component_nr_2953_size_22_cutoff_10.0.graph": {
+    "min_k": 9,
+    "solution": [
+      [
+        "0",
+        "6"
+      ],
+      [
+        "0",
+        "7"
+      ],
+      [
+        "1",
+        "8"
+      ],
+      [
+        "10",
+        "12"
+      ],
+      [
+        "11",
+        "15"
+      ],
+      [
+        "15",
+        "9"
+      ],
+      [
+        "18",
+        "20"
+      ],
+      [
+        "20",
+        "6"
+      ],
+      [
+        "20",
+        "8"
+      ]
+    ]
+  },
+  "optK_41_c_0.66_cost_matrix_component_nr_1138_size_30_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_41_c_0.66_cost_matrix_component_nr_1812_size_29_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "0",
+        "11"
+      ],
+      [
+        "11",
+        "13"
+      ],
+      [
+        "11",
+        "8"
+      ]
+    ]
+  },
+  "optK_42_c_0.33_cost_matrix_component_nr_1213_size_31_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "1",
+        "14"
+      ],
+      [
+        "16",
+        "21"
+      ],
+      [
+        "17",
+        "20"
+      ],
+      [
+        "20",
+        "21"
+      ]
+    ]
+  },
+  "optK_42_c_0.33_cost_matrix_component_nr_412_size_28_cutoff_10.0.graph": {
+    "min_k": 9,
+    "solution": [
+      [
+        "1",
+        "13"
+      ],
+      [
+        "10",
+        "17"
+      ],
+      [
+        "10",
+        "19"
+      ],
+      [
+        "13",
+        "14"
+      ],
+      [
+        "13",
+        "2"
+      ],
+      [
+        "14",
+        "21"
+      ],
+      [
+        "19",
+        "21"
+      ],
+      [
+        "2",
+        "21"
+      ],
+      [
+        "21",
+        "8"
+      ]
+    ]
+  },
+  "optK_42_c_0.5_cost_matrix_component_nr_1205_size_22_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "0",
+        "10"
+      ]
+    ]
+  },
+  "optK_42_c_0.5_cost_matrix_component_nr_646_size_23_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "14",
+        "19"
+      ],
+      [
+        "14",
+        "21"
+      ],
+      [
+        "14",
+        "22"
+      ],
+      [
+        "19",
+        "4"
+      ],
+      [
+        "19",
+        "9"
+      ]
+    ]
+  },
+  "optK_42_c_0.66_cost_matrix_component_nr_1681_size_19_cutoff_10.0.graph": {
+    "min_k": 8,
+    "solution": [
+      [
+        "12",
+        "17"
+      ],
+      [
+        "12",
+        "7"
+      ],
+      [
+        "14",
+        "15"
+      ],
+      [
+        "15",
+        "18"
+      ],
+      [
+        "15",
+        "2"
+      ],
+      [
+        "16",
+        "7"
+      ],
+      [
+        "18",
+        "8"
+      ],
+      [
+        "7",
+        "9"
+      ]
+    ]
+  },
+  "optK_42_c_0.66_cost_matrix_component_nr_1692_size_21_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "10",
+        "11"
+      ],
+      [
+        "15",
+        "20"
+      ]
+    ]
+  },
+  "optK_43_c_0.33_cost_matrix_component_nr_2276_size_26_cutoff_10.0.graph": {
+    "min_k": 8,
+    "solution": [
+      [
+        "11",
+        "20"
+      ],
+      [
+        "12",
+        "14"
+      ],
+      [
+        "12",
+        "16"
+      ],
+      [
+        "12",
+        "20"
+      ],
+      [
+        "15",
+        "21"
+      ],
+      [
+        "16",
+        "17"
+      ],
+      [
+        "18",
+        "20"
+      ],
+      [
+        "2",
+        "8"
+      ]
+    ]
+  },
+  "optK_43_c_0.33_cost_matrix_component_nr_964_size_54_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "2"
+      ],
+      [
+        "14",
+        "18"
+      ],
+      [
+        "17",
+        "26"
+      ],
+      [
+        "18",
+        "32"
+      ]
+    ]
+  },
+  "optK_43_c_0.5_cost_matrix_component_nr_1971_size_22_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "14",
+        "18"
+      ],
+      [
+        "21",
+        "6"
+      ]
+    ]
+  },
+  "optK_43_c_0.5_cost_matrix_component_nr_204_size_27_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "0",
+        "10"
+      ],
+      [
+        "21",
+        "7"
+      ],
+      [
+        "26",
+        "4"
+      ]
+    ]
+  },
+  "optK_43_c_0.66_cost_matrix_component_nr_1565_size_29_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "0",
+        "14"
+      ],
+      [
+        "1",
+        "10"
+      ],
+      [
+        "12",
+        "17"
+      ],
+      [
+        "12",
+        "23"
+      ],
+      [
+        "13",
+        "19"
+      ],
+      [
+        "16",
+        "8"
+      ]
+    ]
+  },
+  "optK_43_c_0.66_cost_matrix_component_nr_1752_size_19_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "7"
+      ],
+      [
+        "1",
+        "6"
+      ],
+      [
+        "16",
+        "6"
+      ],
+      [
+        "17",
+        "3"
+      ]
+    ]
+  },
+  "optK_44_c_0.33_cost_matrix_component_nr_1012_size_37_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "1",
+        "26"
+      ]
+    ]
+  },
+  "optK_44_c_0.33_cost_matrix_component_nr_1197_size_24_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_44_c_0.5_cost_matrix_component_nr_1096_size_27_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "17",
+        "22"
+      ],
+      [
+        "17",
+        "4"
+      ],
+      [
+        "17",
+        "9"
+      ]
+    ]
+  },
+  "optK_44_c_0.5_cost_matrix_component_nr_1679_size_24_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "14",
+        "3"
+      ],
+      [
+        "21",
+        "3"
+      ],
+      [
+        "21",
+        "4"
+      ]
+    ]
+  },
+  "optK_44_c_0.66_cost_matrix_component_nr_1161_size_20_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "11",
+        "13"
+      ],
+      [
+        "12",
+        "13"
+      ],
+      [
+        "17",
+        "6"
+      ],
+      [
+        "6",
+        "9"
+      ]
+    ]
+  },
+  "optK_44_c_0.66_cost_matrix_component_nr_2171_size_20_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "11",
+        "8"
+      ],
+      [
+        "14",
+        "15"
+      ],
+      [
+        "15",
+        "6"
+      ]
+    ]
+  },
+  "optK_45_c_0.33_cost_matrix_component_nr_1158_size_24_cutoff_10.0.graph": {
+    "min_k": 12,
+    "solution": [
+      [
+        "1",
+        "14"
+      ],
+      [
+        "10",
+        "17"
+      ],
+      [
+        "12",
+        "2"
+      ],
+      [
+        "13",
+        "14"
+      ],
+      [
+        "14",
+        "20"
+      ],
+      [
+        "14",
+        "7"
+      ],
+      [
+        "15",
+        "3"
+      ],
+      [
+        "17",
+        "3"
+      ],
+      [
+        "18",
+        "5"
+      ],
+      [
+        "19",
+        "2"
+      ],
+      [
+        "19",
+        "3"
+      ],
+      [
+        "2",
+        "4"
+      ]
+    ]
+  },
+  "optK_45_c_0.33_cost_matrix_component_nr_1330_size_27_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "1",
+        "8"
+      ],
+      [
+        "10",
+        "13"
+      ],
+      [
+        "10",
+        "14"
+      ],
+      [
+        "10",
+        "8"
+      ],
+      [
+        "14",
+        "19"
+      ],
+      [
+        "26",
+        "8"
+      ]
+    ]
+  },
+  "optK_45_c_0.5_cost_matrix_component_nr_1373_size_22_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "21"
+      ],
+      [
+        "14",
+        "17"
+      ]
+    ]
+  },
+  "optK_45_c_0.5_cost_matrix_component_nr_1816_size_34_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_45_c_0.66_cost_matrix_component_nr_1113_size_22_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "1",
+        "12"
+      ],
+      [
+        "1",
+        "5"
+      ],
+      [
+        "11",
+        "12"
+      ],
+      [
+        "12",
+        "14"
+      ],
+      [
+        "14",
+        "8"
+      ],
+      [
+        "20",
+        "4"
+      ]
+    ]
+  },
+  "optK_45_c_0.66_cost_matrix_component_nr_636_size_41_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_46_c_0.33_cost_matrix_component_nr_1087_size_30_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "23"
+      ],
+      [
+        "15",
+        "16"
+      ],
+      [
+        "20",
+        "24"
+      ],
+      [
+        "24",
+        "3"
+      ]
+    ]
+  },
+  "optK_46_c_0.33_cost_matrix_component_nr_2050_size_32_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "2",
+        "20"
+      ],
+      [
+        "27",
+        "3"
+      ]
+    ]
+  },
+  "optK_46_c_0.5_cost_matrix_component_nr_1487_size_23_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "13",
+        "16"
+      ],
+      [
+        "13",
+        "18"
+      ],
+      [
+        "13",
+        "21"
+      ],
+      [
+        "2",
+        "6"
+      ]
+    ]
+  },
+  "optK_46_c_0.5_cost_matrix_component_nr_1640_size_23_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "10",
+        "19"
+      ],
+      [
+        "13",
+        "21"
+      ],
+      [
+        "14",
+        "21"
+      ]
+    ]
+  },
+  "optK_46_c_0.66_cost_matrix_component_nr_2327_size_28_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "0",
+        "5"
+      ],
+      [
+        "1",
+        "13"
+      ],
+      [
+        "12",
+        "6"
+      ],
+      [
+        "13",
+        "25"
+      ],
+      [
+        "13",
+        "26"
+      ],
+      [
+        "14",
+        "18"
+      ]
+    ]
+  },
+  "optK_46_c_0.66_cost_matrix_component_nr_488_size_24_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "10",
+        "22"
+      ]
+    ]
+  },
+  "optK_47_c_0.33_cost_matrix_component_nr_1614_size_27_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "11",
+        "14"
+      ],
+      [
+        "15",
+        "16"
+      ],
+      [
+        "18",
+        "26"
+      ],
+      [
+        "20",
+        "21"
+      ]
+    ]
+  },
+  "optK_47_c_0.33_cost_matrix_component_nr_978_size_92_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "16",
+        "29"
+      ],
+      [
+        "5",
+        "65"
+      ]
+    ]
+  },
+  "optK_47_c_0.5_cost_matrix_component_nr_1642_size_28_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "13",
+        "26"
+      ],
+      [
+        "22",
+        "24"
+      ]
+    ]
+  },
+  "optK_47_c_0.5_cost_matrix_component_nr_246_size_26_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "0",
+        "14"
+      ],
+      [
+        "11",
+        "18"
+      ],
+      [
+        "11",
+        "5"
+      ],
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_47_c_0.66_cost_matrix_component_nr_412_size_28_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "0",
+        "3"
+      ],
+      [
+        "16",
+        "3"
+      ],
+      [
+        "18",
+        "25"
+      ],
+      [
+        "20",
+        "8"
+      ],
+      [
+        "22",
+        "5"
+      ]
+    ]
+  },
+  "optK_47_c_0.66_cost_matrix_component_nr_610_size_31_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "11",
+        "8"
+      ],
+      [
+        "13",
+        "3"
+      ],
+      [
+        "13",
+        "8"
+      ]
+    ]
+  },
+  "optK_48_c_0.33_cost_matrix_component_nr_1164_size_56_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "14",
+        "3"
+      ],
+      [
+        "14",
+        "39"
+      ],
+      [
+        "29",
+        "34"
+      ],
+      [
+        "3",
+        "34"
+      ],
+      [
+        "30",
+        "42"
+      ],
+      [
+        "32",
+        "42"
+      ]
+    ]
+  },
+  "optK_48_c_0.33_cost_matrix_component_nr_841_size_36_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "21",
+        "4"
+      ],
+      [
+        "21",
+        "7"
+      ],
+      [
+        "24",
+        "6"
+      ],
+      [
+        "27",
+        "32"
+      ],
+      [
+        "29",
+        "35"
+      ]
+    ]
+  },
+  "optK_48_c_0.5_cost_matrix_component_nr_2365_size_52_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "20",
+        "37"
+      ],
+      [
+        "34",
+        "7"
+      ]
+    ]
+  },
+  "optK_48_c_0.5_cost_matrix_component_nr_590_size_56_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "10",
+        "16"
+      ],
+      [
+        "5",
+        "53"
+      ]
+    ]
+  },
+  "optK_48_c_0.66_cost_matrix_component_nr_328_size_31_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "1",
+        "13"
+      ],
+      [
+        "1",
+        "15"
+      ],
+      [
+        "5",
+        "6"
+      ],
+      [
+        "5",
+        "7"
+      ]
+    ]
+  },
+  "optK_48_c_0.66_cost_matrix_component_nr_526_size_26_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "12",
+        "7"
+      ],
+      [
+        "16",
+        "3"
+      ],
+      [
+        "18",
+        "3"
+      ],
+      [
+        "18",
+        "5"
+      ],
+      [
+        "19",
+        "24"
+      ],
+      [
+        "22",
+        "3"
+      ]
+    ]
+  },
+  "optK_49_c_0.33_cost_matrix_component_nr_2529_size_28_cutoff_10.0.graph": {
+    "min_k": 10,
+    "solution": [
+      [
+        "10",
+        "21"
+      ],
+      [
+        "10",
+        "24"
+      ],
+      [
+        "12",
+        "13"
+      ],
+      [
+        "12",
+        "23"
+      ],
+      [
+        "12",
+        "3"
+      ],
+      [
+        "19",
+        "21"
+      ],
+      [
+        "19",
+        "3"
+      ],
+      [
+        "2",
+        "21"
+      ],
+      [
+        "2",
+        "24"
+      ],
+      [
+        "24",
+        "25"
+      ]
+    ]
+  },
+  "optK_49_c_0.33_cost_matrix_component_nr_682_size_26_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "1",
+        "14"
+      ],
+      [
+        "1",
+        "16"
+      ],
+      [
+        "10",
+        "16"
+      ],
+      [
+        "10",
+        "2"
+      ],
+      [
+        "11",
+        "2"
+      ],
+      [
+        "15",
+        "16"
+      ]
+    ]
+  },
+  "optK_49_c_0.5_cost_matrix_component_nr_2047_size_35_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "13",
+        "33"
+      ],
+      [
+        "14",
+        "33"
+      ],
+      [
+        "14",
+        "7"
+      ],
+      [
+        "15",
+        "27"
+      ],
+      [
+        "21",
+        "27"
+      ],
+      [
+        "23",
+        "32"
+      ]
+    ]
+  },
+  "optK_49_c_0.5_cost_matrix_component_nr_2415_size_27_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "17",
+        "4"
+      ],
+      [
+        "19",
+        "7"
+      ],
+      [
+        "2",
+        "25"
+      ],
+      [
+        "25",
+        "26"
+      ]
+    ]
+  },
+  "optK_49_c_0.66_cost_matrix_component_nr_1816_size_34_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "13",
+        "31"
+      ],
+      [
+        "23",
+        "7"
+      ],
+      [
+        "5",
+        "7"
+      ]
+    ]
+  },
+  "optK_49_c_0.66_cost_matrix_component_nr_2767_size_22_cutoff_10.0.graph": {
+    "min_k": 11,
+    "solution": [
+      [
+        "1",
+        "5"
+      ],
+      [
+        "1",
+        "7"
+      ],
+      [
+        "10",
+        "13"
+      ],
+      [
+        "13",
+        "16"
+      ],
+      [
+        "14",
+        "20"
+      ],
+      [
+        "14",
+        "4"
+      ],
+      [
+        "14",
+        "6"
+      ],
+      [
+        "14",
+        "7"
+      ],
+      [
+        "15",
+        "6"
+      ],
+      [
+        "15",
+        "7"
+      ],
+      [
+        "21",
+        "5"
+      ]
+    ]
+  },
+  "optK_50_c_0.33_cost_matrix_component_nr_745_size_35_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "10",
+        "16"
+      ],
+      [
+        "19",
+        "23"
+      ],
+      [
+        "2",
+        "25"
+      ],
+      [
+        "22",
+        "23"
+      ],
+      [
+        "25",
+        "7"
+      ]
+    ]
+  },
+  "optK_50_c_0.33_cost_matrix_component_nr_991_size_34_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "15",
+        "20"
+      ],
+      [
+        "15",
+        "27"
+      ],
+      [
+        "21",
+        "3"
+      ]
+    ]
+  },
+  "optK_50_c_0.5_cost_matrix_component_nr_1434_size_24_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "10",
+        "13"
+      ],
+      [
+        "10",
+        "2"
+      ]
+    ]
+  },
+  "optK_50_c_0.5_cost_matrix_component_nr_1935_size_22_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "16",
+        "4"
+      ],
+      [
+        "19",
+        "2"
+      ],
+      [
+        "20",
+        "21"
+      ]
+    ]
+  },
+  "optK_50_c_0.66_cost_matrix_component_nr_1971_size_22_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "10",
+        "17"
+      ],
+      [
+        "15",
+        "18"
+      ],
+      [
+        "16",
+        "2"
+      ],
+      [
+        "18",
+        "21"
+      ],
+      [
+        "18",
+        "3"
+      ],
+      [
+        "20",
+        "3"
+      ]
+    ]
+  },
+  "optK_50_c_0.66_cost_matrix_component_nr_387_size_22_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "10",
+        "21"
+      ],
+      [
+        "10",
+        "5"
+      ],
+      [
+        "18",
+        "21"
+      ]
+    ]
+  },
+  "optK_51_c_0.33_cost_matrix_component_nr_1124_size_32_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "10",
+        "25"
+      ],
+      [
+        "13",
+        "25"
+      ],
+      [
+        "14",
+        "26"
+      ],
+      [
+        "16",
+        "25"
+      ],
+      [
+        "27",
+        "6"
+      ]
+    ]
+  },
+  "optK_51_c_0.33_cost_matrix_component_nr_1275_size_48_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "11",
+        "33"
+      ],
+      [
+        "2",
+        "7"
+      ],
+      [
+        "22",
+        "35"
+      ],
+      [
+        "23",
+        "7"
+      ]
+    ]
+  },
+  "optK_51_c_0.5_cost_matrix_component_nr_1273_size_26_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "0",
+        "13"
+      ],
+      [
+        "13",
+        "17"
+      ],
+      [
+        "13",
+        "2"
+      ]
+    ]
+  },
+  "optK_51_c_0.5_cost_matrix_component_nr_293_size_27_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "11",
+        "5"
+      ],
+      [
+        "12",
+        "19"
+      ],
+      [
+        "13",
+        "3"
+      ],
+      [
+        "15",
+        "5"
+      ],
+      [
+        "6",
+        "9"
+      ],
+      [
+        "7",
+        "9"
+      ]
+    ]
+  },
+  "optK_51_c_0.66_cost_matrix_component_nr_110_size_25_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "18",
+        "8"
+      ]
+    ]
+  },
+  "optK_51_c_0.66_cost_matrix_component_nr_458_size_24_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_52_c_0.33_cost_matrix_component_nr_1281_size_40_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "18",
+        "3"
+      ]
+    ]
+  },
+  "optK_52_c_0.33_cost_matrix_component_nr_169_size_93_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "24",
+        "49"
+      ],
+      [
+        "27",
+        "51"
+      ],
+      [
+        "34",
+        "56"
+      ]
+    ]
+  },
+  "optK_52_c_0.5_cost_matrix_component_nr_2339_size_25_cutoff_10.0.graph": {
+    "min_k": 11,
+    "solution": [
+      [
+        "1",
+        "12"
+      ],
+      [
+        "10",
+        "23"
+      ],
+      [
+        "10",
+        "24"
+      ],
+      [
+        "12",
+        "17"
+      ],
+      [
+        "13",
+        "16"
+      ],
+      [
+        "14",
+        "18"
+      ],
+      [
+        "14",
+        "24"
+      ],
+      [
+        "17",
+        "20"
+      ],
+      [
+        "17",
+        "21"
+      ],
+      [
+        "17",
+        "22"
+      ],
+      [
+        "2",
+        "24"
+      ]
+    ]
+  },
+  "optK_52_c_0.5_cost_matrix_component_nr_539_size_30_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "14",
+        "17"
+      ],
+      [
+        "14",
+        "25"
+      ],
+      [
+        "22",
+        "7"
+      ],
+      [
+        "26",
+        "7"
+      ]
+    ]
+  },
+  "optK_52_c_0.66_cost_matrix_component_nr_1183_size_23_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "5"
+      ],
+      [
+        "12",
+        "5"
+      ]
+    ]
+  },
+  "optK_52_c_0.66_cost_matrix_component_nr_296_size_25_cutoff_10.0.graph": {
+    "min_k": 14,
+    "solution": [
+      [
+        "0",
+        "14"
+      ],
+      [
+        "0",
+        "22"
+      ],
+      [
+        "1",
+        "10"
+      ],
+      [
+        "1",
+        "19"
+      ],
+      [
+        "1",
+        "3"
+      ],
+      [
+        "10",
+        "14"
+      ],
+      [
+        "10",
+        "22"
+      ],
+      [
+        "11",
+        "5"
+      ],
+      [
+        "13",
+        "14"
+      ],
+      [
+        "13",
+        "22"
+      ],
+      [
+        "13",
+        "5"
+      ],
+      [
+        "19",
+        "21"
+      ],
+      [
+        "23",
+        "5"
+      ],
+      [
+        "3",
+        "5"
+      ]
+    ]
+  },
+  "optK_53_c_0.33_cost_matrix_component_nr_2745_size_26_cutoff_10.0.graph": {
+    "min_k": 7,
+    "solution": [
+      [
+        "0",
+        "13"
+      ],
+      [
+        "0",
+        "14"
+      ],
+      [
+        "1",
+        "19"
+      ],
+      [
+        "1",
+        "24"
+      ],
+      [
+        "14",
+        "19"
+      ],
+      [
+        "17",
+        "19"
+      ],
+      [
+        "21",
+        "4"
+      ]
+    ]
+  },
+  "optK_53_c_0.33_cost_matrix_component_nr_750_size_31_cutoff_10.0.graph": {
+    "min_k": 8,
+    "solution": [
+      [
+        "12",
+        "28"
+      ],
+      [
+        "15",
+        "19"
+      ],
+      [
+        "18",
+        "21"
+      ],
+      [
+        "26",
+        "5"
+      ],
+      [
+        "27",
+        "5"
+      ],
+      [
+        "30",
+        "4"
+      ],
+      [
+        "30",
+        "5"
+      ],
+      [
+        "5",
+        "8"
+      ]
+    ]
+  },
+  "optK_53_c_0.5_cost_matrix_component_nr_2745_size_26_cutoff_10.0.graph": {
+    "min_k": 9,
+    "solution": [
+      [
+        "0",
+        "14"
+      ],
+      [
+        "1",
+        "5"
+      ],
+      [
+        "10",
+        "15"
+      ],
+      [
+        "10",
+        "3"
+      ],
+      [
+        "12",
+        "15"
+      ],
+      [
+        "12",
+        "3"
+      ],
+      [
+        "14",
+        "18"
+      ],
+      [
+        "14",
+        "8"
+      ],
+      [
+        "19",
+        "7"
+      ]
+    ]
+  },
+  "optK_53_c_0.5_cost_matrix_component_nr_631_size_53_cutoff_10.0.graph": {
+    "min_k": 7,
+    "solution": [
+      [
+        "14",
+        "25"
+      ],
+      [
+        "14",
+        "43"
+      ],
+      [
+        "14",
+        "44"
+      ],
+      [
+        "25",
+        "36"
+      ],
+      [
+        "25",
+        "44"
+      ],
+      [
+        "28",
+        "36"
+      ],
+      [
+        "28",
+        "44"
+      ]
+    ]
+  },
+  "optK_53_c_0.66_cost_matrix_component_nr_1047_size_30_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "13",
+        "21"
+      ],
+      [
+        "17",
+        "21"
+      ]
+    ]
+  },
+  "optK_53_c_0.66_cost_matrix_component_nr_428_size_65_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_54_c_0.33_cost_matrix_component_nr_1046_size_31_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "1",
+        "3"
+      ],
+      [
+        "14",
+        "23"
+      ],
+      [
+        "18",
+        "22"
+      ],
+      [
+        "19",
+        "2"
+      ]
+    ]
+  },
+  "optK_54_c_0.33_cost_matrix_component_nr_1221_size_29_cutoff_10.0.graph": {
+    "min_k": 7,
+    "solution": [
+      [
+        "1",
+        "22"
+      ],
+      [
+        "12",
+        "13"
+      ],
+      [
+        "12",
+        "16"
+      ],
+      [
+        "13",
+        "17"
+      ],
+      [
+        "16",
+        "23"
+      ],
+      [
+        "22",
+        "4"
+      ],
+      [
+        "23",
+        "27"
+      ]
+    ]
+  },
+  "optK_54_c_0.5_cost_matrix_component_nr_1417_size_22_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "10",
+        "15"
+      ],
+      [
+        "11",
+        "5"
+      ],
+      [
+        "12",
+        "2"
+      ],
+      [
+        "12",
+        "4"
+      ],
+      [
+        "14",
+        "5"
+      ],
+      [
+        "15",
+        "8"
+      ]
+    ]
+  },
+  "optK_54_c_0.5_cost_matrix_component_nr_1675_size_32_cutoff_10.0.graph": {
+    "min_k": 8,
+    "solution": [
+      [
+        "10",
+        "23"
+      ],
+      [
+        "10",
+        "24"
+      ],
+      [
+        "13",
+        "28"
+      ],
+      [
+        "13",
+        "31"
+      ],
+      [
+        "15",
+        "19"
+      ],
+      [
+        "15",
+        "20"
+      ],
+      [
+        "19",
+        "25"
+      ],
+      [
+        "25",
+        "30"
+      ]
+    ]
+  },
+  "optK_54_c_0.66_cost_matrix_component_nr_2100_size_33_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "20",
+        "26"
+      ],
+      [
+        "20",
+        "5"
+      ],
+      [
+        "23",
+        "28"
+      ],
+      [
+        "26",
+        "28"
+      ],
+      [
+        "26",
+        "5"
+      ],
+      [
+        "28",
+        "5"
+      ]
+    ]
+  },
+  "optK_54_c_0.66_cost_matrix_component_nr_2176_size_47_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "40",
+        "42"
+      ],
+      [
+        "41",
+        "42"
+      ]
+    ]
+  },
+  "optK_55_c_0.33_cost_matrix_component_nr_2598_size_36_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "16",
+        "30"
+      ]
+    ]
+  },
+  "optK_55_c_0.33_cost_matrix_component_nr_701_size_40_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_55_c_0.5_cost_matrix_component_nr_328_size_31_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "19",
+        "20"
+      ],
+      [
+        "19",
+        "24"
+      ],
+      [
+        "19",
+        "4"
+      ],
+      [
+        "2",
+        "20"
+      ],
+      [
+        "4",
+        "5"
+      ]
+    ]
+  },
+  "optK_55_c_0.5_cost_matrix_component_nr_685_size_41_cutoff_10.0.graph": {
+    "min_k": 8,
+    "solution": [
+      [
+        "15",
+        "29"
+      ],
+      [
+        "19",
+        "28"
+      ],
+      [
+        "19",
+        "29"
+      ],
+      [
+        "2",
+        "29"
+      ],
+      [
+        "23",
+        "33"
+      ],
+      [
+        "25",
+        "33"
+      ],
+      [
+        "25",
+        "4"
+      ],
+      [
+        "34",
+        "35"
+      ]
+    ]
+  },
+  "optK_55_c_0.66_cost_matrix_component_nr_1897_size_23_cutoff_10.0.graph": {
+    "min_k": 12,
+    "solution": [
+      [
+        "0",
+        "10"
+      ],
+      [
+        "0",
+        "15"
+      ],
+      [
+        "1",
+        "22"
+      ],
+      [
+        "12",
+        "21"
+      ],
+      [
+        "12",
+        "22"
+      ],
+      [
+        "13",
+        "21"
+      ],
+      [
+        "14",
+        "6"
+      ],
+      [
+        "15",
+        "6"
+      ],
+      [
+        "18",
+        "21"
+      ],
+      [
+        "21",
+        "9"
+      ],
+      [
+        "3",
+        "4"
+      ],
+      [
+        "6",
+        "8"
+      ]
+    ]
+  },
+  "optK_55_c_0.66_cost_matrix_component_nr_745_size_35_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "17",
+        "34"
+      ],
+      [
+        "17",
+        "9"
+      ]
+    ]
+  },
+  "optK_56_c_0.33_cost_matrix_component_nr_1196_size_32_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "15",
+        "24"
+      ],
+      [
+        "23",
+        "7"
+      ]
+    ]
+  },
+  "optK_56_c_0.33_cost_matrix_component_nr_887_size_45_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "12",
+        "36"
+      ],
+      [
+        "2",
+        "36"
+      ],
+      [
+        "25",
+        "36"
+      ],
+      [
+        "4",
+        "42"
+      ],
+      [
+        "40",
+        "42"
+      ],
+      [
+        "41",
+        "42"
+      ]
+    ]
+  },
+  "optK_56_c_0.5_cost_matrix_component_nr_1035_size_30_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "11",
+        "7"
+      ],
+      [
+        "17",
+        "26"
+      ],
+      [
+        "18",
+        "4"
+      ]
+    ]
+  },
+  "optK_56_c_0.5_cost_matrix_component_nr_2159_size_49_cutoff_10.0.graph": {
+    "min_k": 8,
+    "solution": [
+      [
+        "1",
+        "42"
+      ],
+      [
+        "11",
+        "40"
+      ],
+      [
+        "17",
+        "40"
+      ],
+      [
+        "21",
+        "40"
+      ],
+      [
+        "23",
+        "38"
+      ],
+      [
+        "25",
+        "38"
+      ],
+      [
+        "34",
+        "36"
+      ],
+      [
+        "38",
+        "5"
+      ]
+    ]
+  },
+  "optK_56_c_0.66_cost_matrix_component_nr_3240_size_25_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "1",
+        "6"
+      ],
+      [
+        "11",
+        "7"
+      ],
+      [
+        "17",
+        "3"
+      ],
+      [
+        "17",
+        "8"
+      ]
+    ]
+  },
+  "optK_56_c_0.66_cost_matrix_component_nr_382_size_28_cutoff_10.0.graph": {
+    "min_k": 7,
+    "solution": [
+      [
+        "13",
+        "20"
+      ],
+      [
+        "13",
+        "4"
+      ],
+      [
+        "20",
+        "22"
+      ],
+      [
+        "20",
+        "25"
+      ],
+      [
+        "22",
+        "4"
+      ],
+      [
+        "25",
+        "4"
+      ],
+      [
+        "26",
+        "7"
+      ]
+    ]
+  },
+  "optK_57_c_0.33_cost_matrix_component_nr_378_size_45_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "10",
+        "11"
+      ],
+      [
+        "11",
+        "13"
+      ],
+      [
+        "11",
+        "19"
+      ],
+      [
+        "11",
+        "8"
+      ],
+      [
+        "31",
+        "44"
+      ]
+    ]
+  },
+  "optK_57_c_0.33_cost_matrix_component_nr_393_size_57_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "11",
+        "44"
+      ],
+      [
+        "11",
+        "45"
+      ],
+      [
+        "14",
+        "20"
+      ],
+      [
+        "41",
+        "49"
+      ]
+    ]
+  },
+  "optK_57_c_0.5_cost_matrix_component_nr_1084_size_26_cutoff_10.0.graph": {
+    "min_k": 12,
+    "solution": [
+      [
+        "10",
+        "3"
+      ],
+      [
+        "11",
+        "17"
+      ],
+      [
+        "11",
+        "4"
+      ],
+      [
+        "11",
+        "7"
+      ],
+      [
+        "12",
+        "7"
+      ],
+      [
+        "12",
+        "8"
+      ],
+      [
+        "18",
+        "22"
+      ],
+      [
+        "2",
+        "3"
+      ],
+      [
+        "20",
+        "6"
+      ],
+      [
+        "22",
+        "24"
+      ],
+      [
+        "22",
+        "8"
+      ],
+      [
+        "23",
+        "4"
+      ]
+    ]
+  },
+  "optK_57_c_0.5_cost_matrix_component_nr_208_size_62_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "49",
+        "7"
+      ],
+      [
+        "51",
+        "57"
+      ],
+      [
+        "53",
+        "55"
+      ],
+      [
+        "55",
+        "57"
+      ],
+      [
+        "59",
+        "7"
+      ]
+    ]
+  },
+  "optK_57_c_0.66_cost_matrix_component_nr_137_size_31_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_57_c_0.66_cost_matrix_component_nr_441_size_31_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "16",
+        "3"
+      ],
+      [
+        "18",
+        "20"
+      ]
+    ]
+  },
+  "optK_58_c_0.33_cost_matrix_component_nr_1693_size_29_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "12",
+        "14"
+      ],
+      [
+        "22",
+        "28"
+      ]
+    ]
+  },
+  "optK_58_c_0.33_cost_matrix_component_nr_842_size_37_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "23",
+        "24"
+      ],
+      [
+        "24",
+        "29"
+      ],
+      [
+        "32",
+        "6"
+      ]
+    ]
+  },
+  "optK_58_c_0.5_cost_matrix_component_nr_230_size_29_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "13",
+        "15"
+      ],
+      [
+        "24",
+        "25"
+      ],
+      [
+        "24",
+        "26"
+      ],
+      [
+        "25",
+        "3"
+      ],
+      [
+        "26",
+        "5"
+      ]
+    ]
+  },
+  "optK_58_c_0.5_cost_matrix_component_nr_953_size_29_cutoff_10.0.graph": {
+    "min_k": 11,
+    "solution": [
+      [
+        "1",
+        "13"
+      ],
+      [
+        "1",
+        "22"
+      ],
+      [
+        "1",
+        "24"
+      ],
+      [
+        "10",
+        "25"
+      ],
+      [
+        "11",
+        "25"
+      ],
+      [
+        "11",
+        "6"
+      ],
+      [
+        "15",
+        "27"
+      ],
+      [
+        "15",
+        "5"
+      ],
+      [
+        "18",
+        "26"
+      ],
+      [
+        "19",
+        "25"
+      ],
+      [
+        "20",
+        "9"
+      ]
+    ]
+  },
+  "optK_58_c_0.66_cost_matrix_component_nr_2415_size_27_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "1",
+        "2"
+      ],
+      [
+        "2",
+        "26"
+      ]
+    ]
+  },
+  "optK_58_c_0.66_cost_matrix_component_nr_2628_size_28_cutoff_10.0.graph": {
+    "min_k": 13,
+    "solution": [
+      [
+        "15",
+        "18"
+      ],
+      [
+        "21",
+        "22"
+      ],
+      [
+        "21",
+        "26"
+      ],
+      [
+        "21",
+        "7"
+      ],
+      [
+        "21",
+        "8"
+      ],
+      [
+        "22",
+        "26"
+      ],
+      [
+        "22",
+        "7"
+      ],
+      [
+        "23",
+        "25"
+      ],
+      [
+        "24",
+        "3"
+      ],
+      [
+        "24",
+        "6"
+      ],
+      [
+        "3",
+        "4"
+      ],
+      [
+        "4",
+        "7"
+      ],
+      [
+        "7",
+        "8"
+      ]
+    ]
+  },
+  "optK_59_c_0.33_cost_matrix_component_nr_534_size_43_cutoff_10.0.graph": {
+    "min_k": 7,
+    "solution": [
+      [
+        "14",
+        "22"
+      ],
+      [
+        "14",
+        "28"
+      ],
+      [
+        "15",
+        "28"
+      ],
+      [
+        "15",
+        "29"
+      ],
+      [
+        "20",
+        "29"
+      ],
+      [
+        "21",
+        "29"
+      ],
+      [
+        "21",
+        "34"
+      ]
+    ]
+  },
+  "optK_59_c_0.33_cost_matrix_component_nr_670_size_33_cutoff_10.0.graph": {
+    "min_k": 0,
+    "solution": [
+
+    ]
+  },
+  "optK_59_c_0.5_cost_matrix_component_nr_572_size_30_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "4",
+        "7"
+      ]
+    ]
+  },
+  "optK_59_c_0.5_cost_matrix_component_nr_990_size_33_cutoff_10.0.graph": {
+    "min_k": 1,
+    "solution": [
+      [
+        "6",
+        "7"
+      ]
+    ]
+  },
+  "optK_59_c_0.66_cost_matrix_component_nr_2331_size_22_cutoff_10.0.graph": {
+    "min_k": 7,
+    "solution": [
+      [
+        "0",
+        "9"
+      ],
+      [
+        "14",
+        "7"
+      ],
+      [
+        "17",
+        "19"
+      ],
+      [
+        "2",
+        "21"
+      ],
+      [
+        "2",
+        "6"
+      ],
+      [
+        "20",
+        "7"
+      ],
+      [
+        "5",
+        "9"
+      ]
+    ]
+  },
+  "optK_59_c_0.66_cost_matrix_component_nr_2695_size_23_cutoff_10.0.graph": {
+    "min_k": 10,
+    "solution": [
+      [
+        "0",
+        "13"
+      ],
+      [
+        "0",
+        "22"
+      ],
+      [
+        "0",
+        "3"
+      ],
+      [
+        "10",
+        "18"
+      ],
+      [
+        "12",
+        "2"
+      ],
+      [
+        "12",
+        "9"
+      ],
+      [
+        "14",
+        "18"
+      ],
+      [
+        "15",
+        "2"
+      ],
+      [
+        "18",
+        "21"
+      ],
+      [
+        "2",
+        "5"
+      ]
+    ]
+  },
+  "optK_60_c_0.33_cost_matrix_component_nr_230_size_29_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "11",
+        "20"
+      ],
+      [
+        "12",
+        "21"
+      ],
+      [
+        "13",
+        "23"
+      ]
+    ]
+  },
+  "optK_60_c_0.33_cost_matrix_component_nr_529_size_31_cutoff_10.0.graph": {
+    "min_k": 6,
+    "solution": [
+      [
+        "1",
+        "27"
+      ],
+      [
+        "12",
+        "21"
+      ],
+      [
+        "12",
+        "26"
+      ],
+      [
+        "12",
+        "27"
+      ],
+      [
+        "14",
+        "21"
+      ],
+      [
+        "19",
+        "28"
+      ]
+    ]
+  },
+  "optK_60_c_0.5_cost_matrix_component_nr_1482_size_26_cutoff_10.0.graph": {
+    "min_k": 5,
+    "solution": [
+      [
+        "1",
+        "13"
+      ],
+      [
+        "13",
+        "15"
+      ],
+      [
+        "13",
+        "22"
+      ],
+      [
+        "13",
+        "5"
+      ],
+      [
+        "3",
+        "5"
+      ]
+    ]
+  },
+  "optK_60_c_0.5_cost_matrix_component_nr_1606_size_36_cutoff_10.0.graph": {
+    "min_k": 2,
+    "solution": [
+      [
+        "0",
+        "33"
+      ],
+      [
+        "2",
+        "28"
+      ]
+    ]
+  },
+  "optK_60_c_0.66_cost_matrix_component_nr_1035_size_30_cutoff_10.0.graph": {
+    "min_k": 4,
+    "solution": [
+      [
+        "20",
+        "4"
+      ],
+      [
+        "22",
+        "3"
+      ],
+      [
+        "25",
+        "6"
+      ],
+      [
+        "4",
+        "6"
+      ]
+    ]
+  },
+  "optK_60_c_0.66_cost_matrix_component_nr_1487_size_23_cutoff_10.0.graph": {
+    "min_k": 3,
+    "solution": [
+      [
+        "10",
+        "16"
+      ],
+      [
+        "14",
+        "9"
+      ],
+      [
+        "15",
+        "21"
+      ]
+    ]
+  }
+}
