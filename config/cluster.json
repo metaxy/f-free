@@ -1,7 +1,7 @@
 {
-  "instances" : ["./model/newman_watts_strogatz"],
+  "instances" : ["./model/bio1", "./model/bio2"],
   "forbidden" : [ "./forbidden/cluster"],
-  "progs" : ["approx2k", "extend", "grow_reduce3"],
+  "progs" : ["approx2k", "extend --rounds 2", "grow_reduce3 --rounds 5"],
   "seed" : 5489,
   "max_time" : 30
 }
