@@ -7,7 +7,8 @@ State::State(Config conf) : m_config(conf)
     m_input = this->getInput();
     m_forbidden = this->getForbidden();
     r = new Randomize(getInt("seed", 5489));
-    begin_time = clock();
+    m_begin_time = clock();
+    m_hasTime = float(getInt("time", 10));
 }
 
 MGraph State::getInput()
@@ -119,13 +120,11 @@ bool State::isValid(const MGraph *input)
 }
 float State::timeLeft() const
 {
-    float time = float( clock () - begin_time ) /  CLOCKS_PER_SEC;
-    float hasTime = float(getInt("time", 10));
-    clog << "time left:" << hasTime - time << endl;
-    return hasTime - time;
+    float time = float( clock () - m_begin_time ) /  CLOCKS_PER_SEC;
+    clog << "time left:" << m_hasTime - time << endl;
+    return m_hasTime - time;
 }
 float State::timePerIteration() const
 {
-    float hasTime = float(getInt("time", 10));
-    return hasTime / float(getInt("rounds", 1));
+    return m_hasTime / float(getInt("rounds", 1));
 }

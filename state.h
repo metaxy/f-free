@@ -36,7 +36,9 @@ private:
     vector<MGraph> getForbidden();
 
     string debug() const;
-    clock_t begin_time;
+    clock_t m_begin_time;
+
+    float m_hasTime;
 
 };
 

@@ -24,7 +24,7 @@ MGraph StateGrowReduce3::solve()
         }
 
         this->reduce(&graph);
-        if(timeLeft() < 1) break;
+        if(timeLeft() < 2) break;
         if(m_input.difference(&graph).size() == 0)
             break;
     }
@@ -72,13 +72,13 @@ void StateGrowReduce3::reduceSimple(MGraph *graph)
 void StateGrowReduce3::extend(MGraph *graph)
 {
     clog << "extend" << endl;
-    if(timeLeft() < 1) return;
+    if(timeLeft() < 1.5) return;
 
     for(Edge e : m_input.difference(graph)) {
         graph->flip(e);
         if(!isValid(graph))
             graph->flip(e);
-        if(timeLeft() < 1) break;
+        if(timeLeft() < 1.5) break;
     }
 }
 

@@ -35,8 +35,9 @@ MGraph StateBottomRandom::solve()
                 oneChange = true;
                 m_validChanges++;
             }
-            if(timeLeft() < 0.5) break;
+            if(timeLeft() < 1) return input;
         }
+
         if(!oneChange) {
             break;
         }
