@@ -84,7 +84,7 @@ def run_a_config(config, options, forbidden, instances)
         "time" => run['run_time'],
         "simple_command" => run['command'],
         "time_log" => run['time_log'],
-        "log_output" => run['time_log'],
+        "log_output" => run['log_output'],
         "result_file_name" => bench_folder+"/"+result_file_name,
         "model_file_name" => instances+"/"+graph,
         "debug_out" => run['debug_out']
