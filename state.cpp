@@ -14,7 +14,7 @@ MGraph State::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/albert_barabasi/n_120_m_3.txt";
+        fileName = "../model/bio1/n_0094_nr_0676.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
@@ -120,12 +120,12 @@ bool State::isValid(const MGraph *input)
 float State::timeLeft() const
 {
     float time = float( clock () - begin_time ) /  CLOCKS_PER_SEC;
-    float hasTime = float(getInt("time", 10000000));
+    float hasTime = float(getInt("time", 10));
     clog << "time left:" << hasTime - time << endl;
     return hasTime - time;
 }
 float State::timePerIteration() const
 {
-    float hasTime = float(getInt("time", 10000000));
+    float hasTime = float(getInt("time", 10));
     return hasTime / float(getInt("rounds", 1));
 }

@@ -24,7 +24,7 @@ MGraph StateGrowReduce3::solve()
         }
 
         this->reduce(&graph);
-        if(timeLeft() < 0.5) break;
+        if(timeLeft() < 1) break;
         if(m_input.difference(&graph).size() == 0)
             break;
     }
@@ -40,6 +40,7 @@ void StateGrowReduce3::grow(MGraph *graph, NodeT node)
 
 void StateGrowReduce3::reduce(MGraph *graph)
 {
+    clog << "reduce" << endl;
     for(auto forbidden : m_forbidden) {
         vector<Edge> forbiddenEdges = forbidden.edges();
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
@@ -70,10 +71,14 @@ void StateGrowReduce3::reduceSimple(MGraph *graph)
 }
 void StateGrowReduce3::extend(MGraph *graph)
 {
+    clog << "extend" << endl;
+    if(timeLeft() < 1) return;
+
     for(Edge e : m_input.difference(graph)) {
         graph->flip(e);
         if(!isValid(graph))
             graph->flip(e);
+        if(timeLeft() < 1) break;
     }
 }
 
