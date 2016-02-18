@@ -82,7 +82,7 @@ def run_a_config(config, options, forbidden, instances)
         "prog" => prog,
         "graph" => graph,
         "graph_path" => instances+"/"+graph,
-        "metrics" => metrics["time"],  
+        "metrics" => metrics,  
         "simple_command" => run['command'],
         "time_log" => run['time_log'],
         "log_output" => run['log_output'],

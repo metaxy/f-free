@@ -9,7 +9,6 @@ StateBlp::StateBlp(Config conf) : State(conf)
 MGraph StateBlp::solve()
 {
     MGraph input(m_input);
-    Randomize r(getInt("seed", 5489));
     GurobiLP g(input.nodeCount());
     Model model = input.createModel();
     g.addModelVars(model);
