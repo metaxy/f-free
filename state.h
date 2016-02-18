@@ -2,6 +2,7 @@
 #define STATE_H
 #include "mgraph.h"
 #include <vector>
+#include <time.h>
 #include "randomize.h"
 class State
 {
@@ -12,7 +13,7 @@ public:
     virtual void final();
     MGraph solveMultiple(int count);
 
-    bool testSolved(MGraph *output);
+    bool testSolved(MGraph *output) const;
 
     //virtual MGraph solveSingle(MGraph forbidden) = 0;
 protected:
@@ -22,16 +23,20 @@ protected:
     Randomize *r;
 
     map<string,string> m_debug;
-    double getDouble(const string &name, double def);
-    int getInt(const string &name, int def);
-    string getString(const string &name, string def);
+    double getDouble(const string &name, double def) const;
+    int getInt(const string &name, int def) const;
+    string getString(const string &name, string def) const;
     bool isValid(const MGraph *input);
+
+    float timeLeft() const;
+    float timePerIteration() const;
 
 private:
     MGraph getInput();
     vector<MGraph> getForbidden();
 
     string debug() const;
+    clock_t begin_time;
 
 };
 

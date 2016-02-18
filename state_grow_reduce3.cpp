@@ -24,7 +24,7 @@ MGraph StateGrowReduce3::solve()
         }
 
         this->reduce(&graph);
-
+        if(timeLeft() < 0.5) break;
         if(m_input.difference(&graph).size() == 0)
             break;
     }

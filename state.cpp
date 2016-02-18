@@ -1,12 +1,15 @@
 #include "state.h"
 #include "vf.h"
 #include <sstream>
+
 State::State(Config conf) : m_config(conf)
 {
     m_input = this->getInput();
     m_forbidden = this->getForbidden();
     r = new Randomize(getInt("seed", 5489));
+    begin_time = clock();
 }
+
 MGraph State::getInput()
 {
     string fileName = m_config["input"];
@@ -44,6 +47,7 @@ MGraph State::solveMultiple(int count)
             bestEdges = edges;
             bestSize = edges.size();
         }
+        if(timeLeft() < timePerIteration()) break;
         i++;
     }
     this->final();
@@ -58,7 +62,7 @@ MGraph State::solveMultiple(int count)
     return bestSolved;
 }
 
-double State::getDouble(const string &name, double def)
+double State::getDouble(const string &name, double def) const
 {
     auto iter = m_config.find(name);
     if(iter != m_config.end()) {
@@ -70,7 +74,7 @@ double State::getDouble(const string &name, double def)
     }
     return def;
 }
-int State::getInt(const string &name, int def)
+int State::getInt(const string &name, int def) const
 {
     auto iter = m_config.find(name);
     if(iter != m_config.end()) {
@@ -82,7 +86,7 @@ int State::getInt(const string &name, int def)
     }
     return def;
 }
-string State::getString(const string &name, string def)
+string State::getString(const string &name, string def) const
 {
     auto iter = m_config.find(name);
     if(iter != m_config.end()) {
@@ -90,7 +94,7 @@ string State::getString(const string &name, string def)
     }
     return def;
 }
-bool State::testSolved(MGraph *output)
+bool State::testSolved(MGraph *output) const
 {
     for(MGraph needle : m_forbidden) {
         if(!VF::subgraphIsoOne(output, &needle).empty()) {
@@ -112,4 +116,15 @@ void State::final()
 bool State::isValid(const MGraph *input)
 {
     return !VF::subgraphIsoHasOne(input, m_forbidden);
+}
+float State::timeLeft() const
+{
+    float time = float( clock () - begin_time ) /  CLOCKS_PER_SEC;
+    float hasTime = float(getInt("time", 10000000));
+    return hasTime - time;
+}
+float State::timePerIteration() const
+{
+    float hasTime = float(getInt("time", 10000000));
+    return hasTime / float(getInt("rounds", 1));
 }

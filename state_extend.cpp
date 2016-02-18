@@ -13,6 +13,7 @@ MGraph StateExtend::solve()
     graph.clear();
     while(this->extend(&graph)) {
         m_countIteration++;
+        if(timeLeft() < 0.5) break;
     }
     return graph;
 }
@@ -30,6 +31,7 @@ bool StateExtend::extend(MGraph *graph)
             some = true;
             m_validChanges++;
         }
+        if(timeLeft() < 0.2) break;
     }
     return some;
 }
