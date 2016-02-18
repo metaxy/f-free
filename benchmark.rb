@@ -76,12 +76,13 @@ def run_a_config(config, options, forbidden, instances)
       if(output['results'][graph].nil?)
         output['results'][graph] = []
       end
-      
+      metrics = get_metrics(run['k'], kcorrect)
+      metrics["time"] = run['run_time']
       output['results'][graph] << {
         "prog" => prog,
         "graph" => graph,
-        "metrics" => get_metrics(run['k'], kcorrect),  
-        "time" => run['run_time'],
+        "graph_path" => instances+"/"+graph,
+        "metrics" => metrics["time"],  
         "simple_command" => run['command'],
         "time_log" => run['time_log'],
         "log_output" => run['log_output'],
@@ -135,7 +136,7 @@ def calculate_stats(data)
     qualityInv = hasOptimal.map{|a| a["quality_inv"]}
     distance = hasOptimal.map{|a| a["distance"]}
     absolut = metrics.map{|a| a["absolut"]}
-    time = results.map{ |a| a["time"]}
+    time = metrics.map{ |a| a["time"]}
     
     wins = 0
     results.each do |result|
