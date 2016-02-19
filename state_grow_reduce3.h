@@ -17,6 +17,8 @@ protected:
     int m_validChanges;
     int m_invalidChanges;
     int m_skipBecauseOfWeight;
+
+    int m_factorSize;
 };
 
 #endif // STATE_GROW_REDUCE3_H

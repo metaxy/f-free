@@ -5,6 +5,7 @@
 #include <math.h>
 StateGrowReduce3::StateGrowReduce3(Config conf) : State(conf), m_countIteration(0), m_validChanges(0), m_invalidChanges(0), m_skipBecauseOfWeight(0)
 {
+    m_factorSize = getDouble("factorSize", 1.0);
 }
 MGraph StateGrowReduce3::solve()
 {
@@ -48,7 +49,7 @@ void StateGrowReduce3::reduce(MGraph *graph)
             Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
             int size_before = VF::subgraphIsoAll(graph, &forbidden).size();//this is very time expensive
             graph->flip(foundEdge);
-            if(VF::subgraphIsoAll(graph, &forbidden).size() >= size_before) {
+            if(VF::subgraphIsoAll(graph, &forbidden).size() >= m_factorSize * float(size_before)) {
                 graph->flip(foundEdge);
             }
             mapping = VF::subgraphIsoOne(graph, &forbidden);
