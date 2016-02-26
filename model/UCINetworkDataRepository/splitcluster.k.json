@@ -1,0 +1,32 @@
+{
+  "adjnoun.txt": {
+    "min_k": -1
+  },
+  "celegansneural.paj.txt": {
+    "min_k": -1
+  },
+  "cond-mat-2005.paj.txt": {
+    "min_k": -1
+  },
+  "dolphins.txt": {
+    "min_k": -1
+  },
+  "football.txt": {
+    "min_k": -1
+  },
+  "karate.txt": {
+    "min_k": -1
+  },
+  "lesmiserables.txt": {
+    "min_k": -1
+  },
+  "polblogs.paj.txt": {
+    "min_k": -1
+  },
+  "polbooks.paj.txt": {
+    "min_k": -1
+  },
+  "power.paj.txt": {
+    "min_k": -1
+  }
+}

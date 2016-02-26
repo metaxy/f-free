@@ -37,5 +37,24 @@ ruby generate_k.rb -i model/bio2/ -f forbidden/splitcluster -p blp -t $TIME
 ruby generate_k.rb -i model/bio2/ -f forbidden/triangle -p blp -t $TIME
 ruby generate_k.rb -i model/bio2/ -f forbidden/x172_triangle -p blp -t $TIME
 
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/2k2_c4_c5 -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/2p3 -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/3k2_triangle -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/c4 -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/c4_p5 -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/claw -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/cluster -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/cograph -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/k14_paw -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/p4_c4 -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/p5_c5 -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/p5_triangle -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/paw -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/split -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/splitcluster -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/triangle -p blp -t $TIME
+ruby generate_k.rb -i model/UCINetworkDataRepository/ -f forbidden/x172_triangle -p blp -t $TIME
+
+
 
 
