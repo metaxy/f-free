@@ -10,9 +10,9 @@ G.indexEdges()
 print(G.edges())
 
 # because QuasiThresholdEditingLocalMover would return one edit on many graphs which require no edits, because they are already quasi-thresholds graphs
-#if(properties.IsQuasiThresholdGraph(G).run().isQuasiThresholdGraph()): 
-  #print("#k: 0");
- # exit(0);
+if(properties.IsQuasiThresholdGraph(G).run().isQuasiThresholdGraph()): 
+  print("#k: 0");
+  exit(0);
 
 
 
