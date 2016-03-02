@@ -48,7 +48,7 @@ MGraph State::solveMultiple(int count)
             bestEdges = edges;
             bestSize = edges.size();
         }
-        if(timeLeft() < timePerIteration()) break;
+        if(timeLeft() < timePerIteration() || timeLeft() < 1) break;
         i++;
     }
     this->final();
