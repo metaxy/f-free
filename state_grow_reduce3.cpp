@@ -29,7 +29,7 @@ MGraph StateGrowReduce3::solve()
         if(m_input.difference(&graph).size() == 0)
             break;
     }
-    if(timeLeft() < 2) break;
+    if(timeLeft() < 2) return graph;
     this->extend(&graph);
     return graph;
 }
