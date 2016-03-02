@@ -7,8 +7,6 @@ G = readGraph(sys.argv[1], Format.EdgeListSpaceZero)
 # Generate edge ids (needed for triangle counting)
 G.indexEdges()
 
-print(G.edges())
-
 # because QuasiThresholdEditingLocalMover would return one edit on many graphs which require no edits, because they are already quasi-thresholds graphs
 if(properties.IsQuasiThresholdGraph(G).run().isQuasiThresholdGraph()): 
   print("#k: 0");
