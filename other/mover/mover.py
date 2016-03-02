@@ -7,6 +7,14 @@ G = readGraph(sys.argv[1], Format.EdgeListSpaceZero)
 # Generate edge ids (needed for triangle counting)
 G.indexEdges()
 
+
+# because QuasiThresholdEditingLocalMover would return one edit on many graphs which require no edits, because they are already quasi-thresholds graphs
+if(properties.IsQuasiThresholdGraph(G).run().isQuasiThresholdGraph()): 
+  print("#k: 0");
+  exit(0);
+
+
+
 # Execute the initialization (in one linear scan, therefore the name)
 linEd = community.QuasiThresholdEditingLinear(G).run()
 
