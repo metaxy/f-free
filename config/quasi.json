@@ -1,6 +1,6 @@
 {
   "instances" : ["./model/bio1","./model/bio2", "./model/UCINetworkDataRepository"],
-  "forbidden" : [ "./forbidden/p5_c5"],
+  "forbidden" : [ "./forbidden/p4_c4"],
   "progs" : ["bottom_random --rounds 5", "grow_reduce3 --rounds 5", "extend --rounds 5", "mover"],
   "seed" : 5489,
   "max_time" : 30
