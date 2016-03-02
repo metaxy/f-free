@@ -32,11 +32,17 @@ public:
     static string dotColor(float id, int size);
 
     static vector<string> listFiles(string path = ".");
+    static bool isFile(string path);
+    static bool isDir(string path);
+
+
     static  Edge transformEdge(const Edge &e, const NodeMapping *mapping);
     static double getDouble(Config *m_config, const string &name, double def);
     static int getInt(Config *m_config, const string &name, int def);
 
     static string json(map<string,string> map);
+
+
 };
 
 template <typename T> int sgn(T val) {

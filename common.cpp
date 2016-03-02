@@ -8,6 +8,9 @@
 #include <vector>
 #include "anyoption.h"
 using namespace std;
+#include <sys/stat.h>
+
+
 Common::Common()
 {
 }
@@ -199,7 +202,19 @@ vector<string> Common::listFiles(string path)
 
     return files;
 }
+bool Common::isFile(string path)
+{
+    struct stat buf;
+    stat(path.c_str(), &buf);
+    return S_ISREG(buf.st_mode);
+}
 
+bool Common::isDir(string path)
+{
+    struct stat buf;
+    stat(path.c_str(), &buf);
+    return S_ISDIR(buf.st_mode);
+}
 Edge Common::transformEdge(const Edge &e, const NodeMapping *mapping)
 {
     /*clog << e.first << " " << e.second << endl;
