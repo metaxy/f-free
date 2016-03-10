@@ -1,6 +1,6 @@
 import networkx as nx 
 import tools as tools
-
+# see https://networkx.github.io/documentation/latest/reference/generators.html
 for n in range(10, 100, 10):
   for m in [2,4,6,8]:
     for p in [2,4,6,8]:
