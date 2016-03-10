@@ -68,6 +68,7 @@ bool VF::subgraphIsoHasOne(const MGraph *haystack, vector<MGraph> needle)
      return false;
 }
 
+
 bool subgraphIsoAllVisitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
 {
     ReducedNodeMapping *subgraphIsoData = (ReducedNodeMapping *) usr_data;
@@ -76,6 +77,14 @@ bool subgraphIsoAllVisitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
         mapping[ni1[i]] = ni2[i];
     }
     return subgraphIsoData->add(mapping);
+}
+
+
+bool subgraphIsoCountAllVisitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
+{
+    int* count = (int*) usr_data;
+    (*count)++;
+    return false;
 }
 
 vector<NodeMapping> VF::subgraphIsoAll(const MGraph *haystack, const MGraph *needle)
@@ -97,6 +106,17 @@ vector<NodeMapping> VF::subgraphIso(const MGraph *haystack, const MGraph *needle
     match(&s0, subgraphIsoAllVisitor, &subgraphIsoData);
     return subgraphIsoData.get();
 }
+
+int VF::subgraphIsoCountAll(const MGraph *haystack, const MGraph *needle)
+{
+    Graph big = VF::createGraph(haystack);
+    Graph small = VF::createGraph(needle);
+    VF2SubState s0(&small, &big);
+    int count = 0;
+    match(&s0, subgraphIsoCountAllVisitor, &count);
+    return count;
+}
+
 vector<NodeMapping> VF::subgraphMono(const MGraph *haystack, const MGraph *needle, int count)
 {
     Graph big = VF::createGraph(haystack);
@@ -106,3 +126,5 @@ vector<NodeMapping> VF::subgraphMono(const MGraph *haystack, const MGraph *needl
     match(&s0, subgraphIsoAllVisitor, &subgraphIsoData);
     return subgraphIsoData.get();
 }
+
+

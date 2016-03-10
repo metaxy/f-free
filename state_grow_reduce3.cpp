@@ -48,9 +48,9 @@ void StateGrowReduce3::reduce(MGraph *graph)
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
         while(!mapping.empty()) {
             Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
-            int size_before = VF::subgraphIsoAll(graph, &forbidden).size();//this is very time expensive
+            int size_before = VF::subgraphIsoCountAll(graph, &forbidden);//this is very time expensive
             graph->flip(foundEdge);
-            if(VF::subgraphIsoAll(graph, &forbidden).size() >= m_factorSize * float(size_before)) {
+            if(VF::subgraphIsoCountAll(graph, &forbidden) >= m_factorSize * float(size_before)) {
                 graph->flip(foundEdge);
             }
             mapping = VF::subgraphIsoOne(graph, &forbidden);

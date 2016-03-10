@@ -18,7 +18,7 @@ MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
     map<Edge, int> modified;
     vector<Edge> forbiddenEdges = forbidden.edges();
     double forbiddenEdgesSize = forbiddenEdges.size();
-    int do_convergence = VF::subgraphIsoAll(&input, &forbidden).size() < this->getInt("convergenceMaxValue", 5000);
+    int do_convergence = VF::subgraphIsoCountAll(&input, &forbidden) < this->getInt("convergenceMaxValue", 5000);
     NodeMapping mapping = VF::subgraphIsoOne(&input, &forbidden);
     while(!mapping.empty()) {
         //clog << m_countSteps << endl;
@@ -46,9 +46,9 @@ MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
         }
 
         if(do_convergence) {
-            int size_before = VF::subgraphIsoAll(&input, &forbidden).size();
+            int size_before = VF::subgraphIsoCountAll(&input, &forbidden);
             input.flip(foundEdge);
-            if(VF::subgraphIsoAll(&input, &forbidden).size() > size_before) {
+            if(VF::subgraphIsoCountAll(&input, &forbidden) > size_before) {
              input.flip(foundEdge);
             } else {
                 modified[foundEdge] = 1;

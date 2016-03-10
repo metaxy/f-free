@@ -13,6 +13,7 @@ public:
     static Subgraph createSubgraph(const MGraph *needle, map<NodeT, NodeT> mapping);
     static vector<NodeMapping> subgraphIso(const MGraph *haystack, const MGraph *needle, int count);
     static vector<NodeMapping> subgraphMono(const MGraph *haystack, const MGraph *needle, int count);
+    static int subgraphIsoCountAll(const MGraph *haystack, const MGraph *needle);
 
 private:
     static Graph createGraph(const MGraph *input);

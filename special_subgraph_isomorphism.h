@@ -7,6 +7,10 @@ public:
     SpecialSubgraphIsomorphism();
 
     static vector<NodeMapping> findAllP3(MGraph *graph);
+    static int countAllP3(MGraph *graph);
+
+    static int hasP3(MGraph *graph);
 };
+
 
 #endif // SPECIAL_SUBGRAPH_ISOMORPHISM_H
