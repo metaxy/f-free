@@ -259,3 +259,9 @@ string Common::json(map<string,string> map)
     ret += "}";
     return ret;
 }
+
+bool Common::endsWith(const string& a, const string& b)
+{
+    if (b.size() > a.size()) return false;
+    return std::equal(a.begin() + a.size() - b.size(), a.end(), b.begin());
+}

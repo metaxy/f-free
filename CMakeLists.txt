@@ -17,10 +17,9 @@ set( ffree_SRCS
     forbidden.cpp
     vf.cpp
     state.cpp
-
-
-
-
+    reducednodemapping.cpp
+    special_subgraph_isomorphism.cpp
+    timer.cpp
 )
 
 set( vflib_SRCS
@@ -158,6 +157,14 @@ add_executable(isomorph ${ffree_SRCS} main_isomorph.cpp)
 
 target_link_libraries(
     isomorph
+    ${ffree_LIBS}
+)
+
+
+add_executable(benchmark_iso ${ffree_SRCS} main_benchmark_iso.cpp)
+
+target_link_libraries(
+    benchmark_iso
     ${ffree_LIBS}
 )
 

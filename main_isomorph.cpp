@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     if(Common::isDir(conf["small"])) {
         vector<string> files = Common::listFiles(conf["small"]);
         for(string file : files) {
-            if(file == "." || file == "..") continue;
+            if(!Common::endsWith(file, ".txt") && !Common::endsWith(file, ".graph")) continue;
             smallGraphs.push_back(MGraph(Common::graphFromFile(conf["small"] + "/"+ file)));
         }
 

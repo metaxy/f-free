@@ -41,6 +41,7 @@ public:
     static int getInt(Config *m_config, const string &name, int def);
 
     static string json(map<string,string> map);
+    static bool endsWith(const string& a, const string& b);
 
 
 };
