@@ -10,6 +10,7 @@ def create_command(name, input, forbidden, timeout)
 end
 
 def generate(instances, forbidden, prog, time)
+  puts "Generate Solutions for #{instances} with #{forbidden}"
   options = {}
   options[:instances] = instances
   options[:forbidden] = forbidden
@@ -89,23 +90,23 @@ def main()
     end
   end.parse!
   
-  all_instances = Dir.entries("./model/")
-  all_forbidden = Dir.entries("./model/")
-
+  all_instances = Dir.entries("./model").select! {|x| not x.start_with? '.'}
+  all_forbidden = Dir.entries("./forbidden").select! {|x| not x.start_with? '.'}
+  
   if(options[:instances] == nil)
       all_instances.each do |instance|
         if(options[:forbidden] == nil) 
           all_forbidden.each do |forbidden|
-            generate(instance, forbidden, options[:prog], options[:time])
+            generate("./model/"+instance, "./forbidden/"+forbidden, options[:prog], options[:time])
           end
         else
-            generate(instance, options[:forbidden], options[:prog], options[:time])
+            generate("./model/"+instance, options[:forbidden], options[:prog], options[:time])
         end
       end
   else
     if(options[:forbidden] == nil) 
       all_forbidden.each do |forbidden|
-        generate(options[:instances], forbidden, options[:prog], options[:time])
+        generate(options[:instances], "./forbidden/"+forbidden, options[:prog], options[:time])
       end
     else
       generate(options[:instances], options[:forbidden], options[:prog], options[:time])
