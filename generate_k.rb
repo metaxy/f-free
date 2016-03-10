@@ -10,6 +10,7 @@ def create_command(name, input, forbidden, timeout)
 end
 
 def generate(instances, forbidden, prog, time)
+  options = {}
   options[:instances] = instances
   options[:forbidden] = forbidden
   options[:prog] = prog
