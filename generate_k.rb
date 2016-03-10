@@ -9,29 +9,12 @@ def create_command(name, input, forbidden, timeout)
   return "timeout  #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' 2>/dev/null"
 end
 
+def generate(instances, forbidden, prog, time)
+  options[:instances] = instances
+  options[:forbidden] = forbidden
+  options[:prog] = prog
+  options[:time] = time
 
-def main()
-  
-  options = {}
-  options[:time] = 60*5
-  OptionParser.new do |opts|
-    opts.banner = "Usage: benchmark.rb [options]"
-
-    opts.on("-i", "--instances CONFIG", "Which folder to generate") do |v|
-      options[:instances] = v
-    end
-    opts.on("-f", "--forbidden CONFIG", "Which structures to forbid") do |v|
-      options[:forbidden] = v
-    end
-    opts.on("-p", "--prog CONFIG", "Which structures to forbid") do |v|
-      options[:prog] = v
-    end
-    opts.on("-t", "--t CONFIG", "Max time in seconds") do |v|
-      options[:time] = v
-    end
-  end.parse!
-  
-  
   entries = Dir.entries(options[:instances])
   entries_size = entries.size
   current_file = 0
@@ -76,6 +59,57 @@ def main()
   puts "Notsolved:"
   p notsolved
   File.write(options[:instances]+"/"+File.basename(options[:forbidden])+".k.json",  JSON.pretty_generate(output))
+ 
+end
+
+def main()
+  
+  options = {}
+  options[:time] = 60*5 # 5 min
+  options[:prog] = "blp"
+  
+  options[:instances] = nil
+  options[:forbidden] = nil
+
+  OptionParser.new do |opts|
+    opts.banner = "Usage: benchmark.rb [options]"
+
+    opts.on("-i", "--instances PATH", "Which folder to generate") do |v|
+      options[:instances] = v
+    end
+    opts.on("-f", "--forbidden PATH", "Which structures to forbid") do |v|
+      options[:forbidden] = v
+    end
+    opts.on("-p", "--prog NAME", "Programm to run") do |v|
+      options[:prog] = v
+    end
+    opts.on("-t", "--t TIM", "Max run time in seconds") do |v|
+      options[:time] = v
+    end
+  end.parse!
+  
+  all_instances = Dir.entries("./model/")
+  all_forbidden = Dir.entries("./model/")
+
+  if(options[:instances] == nil)
+      all_instances.each do |instance|
+        if(options[:forbidden] == nil) 
+          all_forbidden.each do |forbidden|
+            generate(instance, forbidden, options[:prog], options[:time])
+          end
+        else
+            generate(instance, options[:forbidden], options[:prog], options[:time])
+        end
+      end
+  else
+    if(options[:forbidden] == nil) 
+      all_forbidden.each do |forbidden|
+        generate(options[:instances], forbidden, options[:prog], options[:time])
+      end
+    else
+      generate(options[:instances], options[:forbidden], options[:prog], options[:time])
+    end
+  end 
   
 end
 
