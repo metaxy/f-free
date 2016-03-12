@@ -4,11 +4,16 @@ find_path(
     GUROBI_PATH include/gurobi_c++.h
     PATHS ~/bin/gurobi650/linux64/ /home/users/w/walger/irb-ubuntu/cluster/gruppe1/gurobi
 )
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+find_package(Boost 1.45.0 COMPONENTS graph)
 
 option(test "Build all tests." OFF)
 
 set( ffree_SRCS
-    graph.cpp
+    ggraph.cpp
+    vgraph.cpp
     mgraph.cpp
     mergegraph.cpp
     common.cpp
@@ -79,6 +84,7 @@ include_directories(lib/vflib/include/)
 set(
   ffree_LIBS
   vflib
+  ${Boost_LIBRARIES}
 )
 
 ADD_DEFINITIONS(

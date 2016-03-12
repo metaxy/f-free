@@ -1,7 +1,4 @@
-#include "graph.h"
 #include "common.h"
-#include "mgraph.h"
-#include "vf.h"
 
 #include "state_random_half.h"
 int main(int argc, char* argv[])

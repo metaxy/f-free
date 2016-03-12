@@ -1,6 +1,6 @@
 #include <sstream>
 #include <fstream>
-#include "graph.h"
+#include "ggraph.h"
 
 GGraph::GGraph() : m_nodeCount(0)
 {

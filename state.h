@@ -9,13 +9,11 @@ class State
 public:
     State(Config conf);
     virtual MGraph solve() = 0;
-
     virtual void final();
     MGraph solveMultiple(int count);
-
     bool testSolved(MGraph *output) const;
+    vector<Edge> difference(VGraph *solved) const;
 
-    //virtual MGraph solveSingle(MGraph forbidden) = 0;
 protected:
     Config m_config;
     MGraph m_input;

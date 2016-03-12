@@ -1,6 +1,4 @@
-#include "graph.h"
 #include "common.h"
-#include "mgraph.h"
 #include "vf.h"
 
 int main(int argc, char* argv[])

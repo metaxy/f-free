@@ -1,8 +1,4 @@
-#include "graph.h"
-#include "common.h"
 #include "mergegraph.h"
-#include "vf.h"
-
 #include "state_approx2k.h"
 int main(int argc, char* argv[])
 {

@@ -42,7 +42,7 @@ MGraph State::solveMultiple(int count)
     for(int i = 0; i< count; ) {
         MGraph solved = this->solve();
         if(!testSolved(&solved)) continue;
-        vector<Edge> edges = m_input.difference(&solved);
+        vector<Edge> edges = this->difference(&solved);
         if(edges.size() < bestSize) {
             bestSolved = solved;
             bestEdges = edges;
@@ -62,7 +62,10 @@ MGraph State::solveMultiple(int count)
     }
     return bestSolved;
 }
-
+vector<Edge> State::difference(VGraph *solved) const
+{
+    return m_input.difference(solved);
+}
 double State::getDouble(const string &name, double def) const
 {
     auto iter = m_config.find(name);

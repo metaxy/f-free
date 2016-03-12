@@ -3,6 +3,7 @@
 #include "common.h"
 #include <vector>
 #include <set>
+typedef tuple<NodeT,NodeT,NodeT> P3;
 class MergeGraph
 {
 public:

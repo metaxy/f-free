@@ -241,6 +241,7 @@ bool MergeGraph::hasSameNeighbours(NodeT u, NodeT v)
     for (i++; i<m_nodeCount; i++) if (!isDeleted(i) && (connected(u,i) != connected(v, i))) return false;
     return true;
 }
+
 P3 MergeGraph::findP3() const
 {
     de("find all p3s");

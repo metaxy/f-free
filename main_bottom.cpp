@@ -1,8 +1,3 @@
-#include "graph.h"
-#include "common.h"
-#include "mgraph.h"
-#include "vf.h"
-
 #include "state_bottom.h"
 int main(int argc, char* argv[])
 {

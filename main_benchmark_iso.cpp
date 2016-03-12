@@ -1,4 +1,3 @@
-#include "graph.h"
 #include "common.h"
 #include "mgraph.h"
 #include "vf.h"
@@ -35,7 +34,7 @@ int main(int argc, char* argv[])
 
     cout << "==== find all p3s ====" << endl;
     Timer timer;
-    for(MGraph graph : graphs) {
+   /* for(MGraph graph : graphs) {
         SpecialSubgraphIsomorphism::findAllP3(&graph);
     }
     cout << "special:" << timer.elapsed() << endl;
@@ -61,7 +60,7 @@ int main(int argc, char* argv[])
     cout << "VF:" << timer.elapsed() << endl;
 
     cout << endl << "==== has a p3 === " << endl;
-    timer.reset();
+    timer.reset();*/
 
     for(MGraph graph : graphs) {
         for(int i  = 0; i < 100; i++)

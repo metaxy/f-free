@@ -43,7 +43,7 @@ void StateGrowReduce::reduce(MGraph *graph)
             int size_before = VF::subgraphIsoCountAll(graph, &forbidden);
            // clog << size_before << endl;
             graph->flip(foundEdge);
-            if(VF::subgraphIsoCountAll(graph, &forbidden).size() >= size_before) {
+            if(VF::subgraphIsoCountAll(graph, &forbidden) >= size_before) {
                 graph->flip(foundEdge);
             }
             mapping = VF::subgraphIsoOne(graph, &forbidden);

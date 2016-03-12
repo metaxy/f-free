@@ -2,14 +2,14 @@
 #define COMMON_H
 
 #define _DEBUG
-#include "graph.h"
+#include "ggraph.h"
 #include <cstring>
 #include <iostream>
 #include <tuple>
 #include <set>
 #include <map>
 #include <unordered_map>
-#include "graph.h"
+#include "ggraph.h"
 #include "mgraph.h"
 
 typedef map<string, string> Config;
@@ -28,7 +28,7 @@ public:
     static void printSubgraph(Subgraph *subgraph);
 
     static Config parseConfig(int argc, char* argv[]);
-   static Config parseConfigOptions(int argc, char* argv[], vector<string> options);
+    static Config parseConfigOptions(int argc, char* argv[], vector<string> options);
     static string dotColor(float id, int size);
 
     static vector<string> listFiles(string path = ".");
