@@ -9,6 +9,8 @@
  + `tools/` some tools for graphs generations or tests
 
 # Compile
+It needs boost-devel and gurobi for the BLP-Alogorithm.
+
 ```sh
 mkdir build
 cd build

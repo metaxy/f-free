@@ -11,13 +11,14 @@ class MGraph: public VGraph
 {
 public:
     MGraph();
-    MGraph(int nodeCount, NodeT defValue = M_NOT_CONNECTED);
     MGraph(GGraph input);
     MGraph(MGraph *copy);
     MGraph(const MGraph &copy);
+    MGraph(VGraph *other);
     ~MGraph();
     bool connected(NodeT x, NodeT y) const;
     bool connected(const Edge &e) const;
+    void setConnected(const Edge &e, bool connected);
 
 
     void addEdge(const Edge &e);
@@ -29,20 +30,18 @@ public:
     void clear();
 
     vector<NodeT> nodes() const;
-    vector<Edge> edges() const;
+    vector<Edge> allEdges() const;
     vector<Edge> connectedEdges() const;
 
     int nodeCount() const;
 
     set<NodeT> neighborhood(NodeT node) const;
 
-    private:
-    int m_nodeCount;
-
-    GGraph m_input;
+private:
+    MGraph(int nodeCount, NodeT defValue = M_NOT_CONNECTED);
     int getWeight(NodeT x, NodeT y) const;
 
-    
+    int m_nodeCount;
     NodeT **m_matrix = nullptr;
 
 };

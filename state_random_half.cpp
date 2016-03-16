@@ -18,7 +18,7 @@ MGraph StateRandomHalf::solveSingle(MGraph input, MGraph forbidden)
     vector<NodeMapping> mappings = VF::subgraphIsoAll(&input, &forbidden);
     MGraph copy(input);
     for(NodeMapping mapping : mappings) {
-        for(const Edge &edge : forbidden.edges()) {
+        for(const Edge &edge : forbidden.allEdges()) {
             Edge e = Common::transformEdge(edge, &mapping);
             int weight = copy.getWeight(e);
             if(weight > 0)
@@ -30,7 +30,7 @@ MGraph StateRandomHalf::solveSingle(MGraph input, MGraph forbidden)
 
     NodeMapping mapping = VF::subgraphIsoOne(&input, &forbidden);
     while(!mapping.empty()) {
-        for(const Edge &edge : forbidden.edges()) {
+        for(const Edge &edge : forbidden.allEdges()) {
             Edge e = Common::transformEdge(edge, &mapping);
             int weight = abs(copy.getWeight(e));
 

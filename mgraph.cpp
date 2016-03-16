@@ -4,9 +4,13 @@
 #include <cassert>
 MGraph::MGraph()
 {
-    //de("MGraph::Mgraph()");
-}
 
+}
+/**
+ * @brief MGraph::MGraph is private constuctor
+ * @param nodeCount how many nodes has this graph
+ * @param defValue is a edge per default connected or not
+ */
 MGraph::MGraph(int nodeCount, NodeT defValue) : m_nodeCount(nodeCount)
 {
     m_matrix = new NodeT*[m_nodeCount];
@@ -25,7 +29,6 @@ MGraph::MGraph(int nodeCount, NodeT defValue) : m_nodeCount(nodeCount)
 
 MGraph::MGraph(GGraph input) : MGraph(input.nodeCount())
 {
-    //de("MGraph::Mgraph(Graph)");
     m_input = input;
     for(Edge e : input.edges()) {
         this->addEdge(e);
@@ -33,7 +36,6 @@ MGraph::MGraph(GGraph input) : MGraph(input.nodeCount())
 }
 MGraph::MGraph(MGraph *copy)
 {
-    //de("MGraph::Mgraph(MGraph*)");
     m_nodeCount = copy->m_nodeCount;
     m_input = copy->m_input;
     m_matrix = new NodeT*[m_nodeCount];
@@ -57,14 +59,19 @@ MGraph::MGraph(const MGraph &copy)
         }
     }
 }
+MGraph::MGraph(VGraph *other) :  MGraph(other->nodeCount())
+{
+    m_input = other->m_input;
+    for(Edge e : other->connectedEdges()) {
+        this->addEdge(e);
+    }
+}
 
 MGraph::~MGraph()
 {
-   /* if(m_deleted != nullptr)
-        delete[] m_deleted;
     for(int i = 0; i < m_nodeCount; i++) {
         delete [] m_matrix[i];
-    }*/
+    }
 }
 void MGraph::addEdge(const Edge &e)
 {
@@ -82,6 +89,12 @@ bool MGraph::connected(const Edge &e) const
 {
     return connected(e.first,e.second);
 }
+
+void MGraph::setConnected(const Edge &e, bool connected)
+{
+    setWeight(e, connected ? M_CONNECTED : M_NOT_CONNECTED);
+}
+
 int MGraph::setWeight(Edge e, int weight)
 {
     m_matrix[e.first][e.second] = weight;
@@ -101,7 +114,7 @@ int MGraph::getWeight(Edge e) const
 
 void MGraph::clear()
 {
-    for(Edge e : edges()) {
+    for(Edge e : allEdges()) {
         setWeight(e, M_NOT_CONNECTED); //not connected
     }
 }
@@ -116,7 +129,7 @@ vector<NodeT> MGraph::nodes() const
     return list;
 }
 
-vector<Edge> MGraph::edges() const
+vector<Edge> MGraph::allEdges() const
 {
     vector<Edge> list;
     for(int i = 0; i < m_nodeCount; i++) {

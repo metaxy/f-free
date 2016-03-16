@@ -32,7 +32,7 @@ void StateGrowReduce2::grow(MGraph *graph, NodeT node)
     set<NodeT> neighborhood = m_input.neighborhood(node);
     for(NodeT n: neighborhood) {
         Edge e(n, node);
-        graph->setWeight(e, m_input.getWeight(e));
+        graph->setConnected(e, m_input.connected(e));
     }
 }
 int StateGrowReduce2::growIsomorph(MGraph *graph)
@@ -50,7 +50,7 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
             for(const NodeMapping mapping: mappings) {
                 int sim = Forbidden::similarity(mapping, &forbidden, diff);
                 if(sim < 1) {
-                    Edge e = Common::transformEdge(r->randomElement(forbidden.edges()), &mapping);
+                    Edge e = Common::transformEdge(r->randomElement(forbidden.allEdges()), &mapping);
                     bool mod = modified.find(e) != modified.end();
                     if(!mod) {
                         graph->flip(e);
@@ -72,7 +72,7 @@ int StateGrowReduce2::growIsomorph(MGraph *graph)
 void StateGrowReduce2::reduce(MGraph *graph)
 {
     for(auto forbidden : m_forbidden) {
-        vector<Edge> forbiddenEdges = forbidden.edges();
+        vector<Edge> forbiddenEdges = forbidden.allEdges();
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
         while(!mapping.empty()) {
             //clog << "test mapping" << endl;

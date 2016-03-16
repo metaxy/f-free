@@ -27,7 +27,7 @@ void StateGrowReduce::grow(MGraph *graph, NodeT node)
     clog << "neigborhood size " << neighborhood.size() << endl;
     for(NodeT n: neighborhood) {
         Edge e(n, node);
-        graph->setWeight(e, m_input.getWeight(e));
+        graph->setConnected(e, m_input.connected(e));
     }
 }
 
@@ -35,7 +35,7 @@ void StateGrowReduce::reduce(MGraph *graph)
 {
     for(auto forbidden : m_forbidden) {
         clog << "forbidden start" << endl;
-        vector<Edge> forbiddenEdges = forbidden.edges();
+        vector<Edge> forbiddenEdges = forbidden.allEdges();
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
         while(!mapping.empty()) {
             //clog << "test mapping" << endl;

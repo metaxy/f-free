@@ -24,9 +24,9 @@ MGraph StateBlp::solve()
             Model ret = g.optimize();
             for(const auto &i: ret) {
                 if(i.second > 0) {
-                    input.setWeight(i.first, 1);
+                    input.setConnected(i.first, true);
                 } else {
-                    input.setWeight(i.first, 0);
+                    input.setConnected(i.first, false);
                 }
             }
             step++;

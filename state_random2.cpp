@@ -17,7 +17,7 @@ MGraph StateRandom2::solveSingle(MGraph input, MGraph forbidden)
 {
     NodeMapping mapping = VF::subgraphIsoOne(&input, &forbidden);
     while(!mapping.empty()) {
-        Edge e = Common::transformEdge(r->randomElement(forbidden.edges()), &mapping);
+        Edge e = Common::transformEdge(r->randomElement(forbidden.allEdges()), &mapping);
         input.flip(e);
         m_countSteps++;
         mapping = VF::subgraphIsoOne(&input, &forbidden);

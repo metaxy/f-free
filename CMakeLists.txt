@@ -7,7 +7,7 @@ find_path(
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.45.0 COMPONENTS graph)
+find_package(Boost 1.50.0 COMPONENTS graph)
 
 option(test "Build all tests." OFF)
 
@@ -15,7 +15,7 @@ set( ffree_SRCS
     ggraph.cpp
     vgraph.cpp
     mgraph.cpp
-    mergegraph.cpp
+
     common.cpp
     randomize.cpp
     anyoption.cpp
@@ -23,8 +23,7 @@ set( ffree_SRCS
     vf.cpp
     state.cpp
     reducednodemapping.cpp
-    special_subgraph_isomorphism.cpp
-    timer.cpp
+
 )
 
 set( vflib_SRCS
@@ -79,8 +78,7 @@ add_library(
     ${vflib_INCLUDE}
 )
 
-
-include_directories(lib/vflib/include/)
+include_directories(lib/vflib/include/  ${Boost_INCLUDES})
 set(
   ffree_LIBS
   vflib
@@ -153,7 +151,7 @@ target_link_libraries(
     ${ffree_LIBS}
 )
 
-add_executable(ffree_approx2k ${ffree_SRCS} state_approx2k.cpp main_approx2k.cpp)
+add_executable(ffree_approx2k ${ffree_SRCS} mergegraph.cpp state_approx2k.cpp main_approx2k.cpp)
 
 target_link_libraries(
     ffree_approx2k
@@ -167,7 +165,7 @@ target_link_libraries(
 )
 
 
-add_executable(benchmark_iso ${ffree_SRCS} main_benchmark_iso.cpp)
+add_executable(benchmark_iso ${ffree_SRCS} boostgraph.cpp special_subgraph_isomorphism.cpp timer.cpp main_benchmark_iso.cpp)
 
 target_link_libraries(
     benchmark_iso

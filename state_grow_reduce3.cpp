@@ -21,7 +21,7 @@ MGraph StateGrowReduce3::solve()
             if(explored.find(node) == explored.end())
                 continue;
             Edge e(n, node);
-            graph.setWeight(e, m_input.getWeight(e));
+            graph.setConnected(e, m_input.connected(e));
         }
 
         this->reduce(&graph);
@@ -44,7 +44,7 @@ void StateGrowReduce3::reduce(MGraph *graph)
 {
     clog << "reduce" << endl;
     for(auto forbidden : m_forbidden) {
-        vector<Edge> forbiddenEdges = forbidden.edges();
+        vector<Edge> forbiddenEdges = forbidden.allEdges();
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
         while(!mapping.empty()) {
             Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
@@ -62,7 +62,7 @@ void StateGrowReduce3::reduce(MGraph *graph)
 void StateGrowReduce3::reduceSimple(MGraph *graph)
 {
     for(auto forbidden : m_forbidden) {
-        vector<Edge> forbiddenEdges = forbidden.edges();
+        vector<Edge> forbiddenEdges = forbidden.allEdges();
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
         while(!mapping.empty()) {
             Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);

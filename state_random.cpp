@@ -16,7 +16,7 @@ MGraph StateRandom::solve()
 MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
 {
     map<Edge, int> modified;
-    vector<Edge> forbiddenEdges = forbidden.edges();
+    vector<Edge> forbiddenEdges = forbidden.allEdges();
     double forbiddenEdgesSize = forbiddenEdges.size();
     int do_convergence = VF::subgraphIsoCountAll(&input, &forbidden) < this->getInt("convergenceMaxValue", 5000);
     NodeMapping mapping = VF::subgraphIsoOne(&input, &forbidden);

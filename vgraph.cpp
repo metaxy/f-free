@@ -6,23 +6,21 @@ VGraph::VGraph()
 }
 VGraph::~VGraph()
 {
-
 }
 
 Model VGraph::createModel() const
 {
     Model model;
-    for(Edge e : edges()) {
-         model[e] = getWeight(e);
+    for(Edge e : this->allEdges()) {
+         model[e] = connected(e) ? 1 : 0;
     }
     return model;
 }
 vector<Edge> VGraph::difference(const VGraph *other) const
 {
     vector<Edge> list;
-    assert(this->nodeCount() == other->nodeCount());
-    for(Edge edge : this->edges()) {
-        if(this->getWeight(edge) != other->getWeight(edge)) {
+    for(Edge edge : this->allEdges()) {
+        if(this->connected(edge) != other->connected(edge)) {
             list.push_back(edge);
         }
     }
