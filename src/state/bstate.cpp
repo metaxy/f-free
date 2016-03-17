@@ -15,23 +15,23 @@ BoostGraph BState::getInput()
     }
     return BoostGraph(Common::graphFromFile(fileName));
 }
-vector<BoostGraph> BState::getForbidden()
+vector<BoostGraph*> BState::getForbidden()
 {
     string folder = m_config["forbidden"];
     if(folder.empty()) {
         folder = "../forbidden/p5_c5";
     }
     vector<string> files = Common::listFiles(folder);
-    vector<BoostGraph> ret;
+    vector<BoostGraph*> ret;
     for(string file : files) {
         if(file == "." || file == "..") continue;
-        ret.push_back(BoostGraph(Common::graphFromFile(folder + "/"+ file)));
+        ret.push_back(new BoostGraph(Common::graphFromFile(folder + "/"+ file)));
     }
     return ret;
 }
 bool BState::isValid(const BoostGraph *input)
 {
-    return input->subgraphIsoHasOne(m_forbidden);
+    return !input->subgraphIsoHasOne(m_forbidden);
 }
 VGraph* BState::solveMultiple(int count)
 {

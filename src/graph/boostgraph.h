@@ -7,11 +7,13 @@
 #include <boost/graph/vf2_sub_graph_iso.hpp>
 using namespace boost;
 
-typedef adjacency_list<setS, vecS, bidirectionalS> boost_graph_type;
+typedef adjacency_list<setS, vecS, undirectedS> boost_graph_type;
 class BoostGraph : public VGraph
 {
 public:
     BoostGraph();
+    BoostGraph(const BoostGraph &graph);
+    BoostGraph(const BoostGraph *graph);
     BoostGraph(VGraph *graph);
     BoostGraph(GGraph input);
 
@@ -34,7 +36,7 @@ public:
     //subgraph ismorphism
 
     NodeMapping subgraphIsoOne(BoostGraph *needle) const;
-    bool subgraphIsoHasOne(vector<BoostGraph> needle) const;
+    bool subgraphIsoHasOne(vector<BoostGraph*> needle) const;
     vector<NodeMapping> subgraphIsoAll(const BoostGraph *needle) const;
     int subgraphIsoCountAll(const BoostGraph *needle) const;
 

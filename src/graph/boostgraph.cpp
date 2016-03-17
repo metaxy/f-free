@@ -2,9 +2,11 @@
 #include "src/iso/reducednodemapping.h"
 BoostGraph::BoostGraph()
 {
+    clog << "BoostGraph()"  << endl;
 }
 BoostGraph::BoostGraph(VGraph *graph)
 {
+    clog << "BoostGraph(VGraph*)"  << endl;
     m_input = graph->m_input;
     for(Edge e: graph->connectedEdges()) {
         addEdge(e);
@@ -12,10 +14,24 @@ BoostGraph::BoostGraph(VGraph *graph)
 }
 BoostGraph::BoostGraph(GGraph input)
 {
+    clog << "BoostGraph(GGraph)"  << endl;
     m_input = input;
     for(Edge e: input.edges()) {
         addEdge(e);
     }
+}
+BoostGraph::BoostGraph(const BoostGraph &graph)
+{
+    clog << "BoostGraph(Boostgraph &)"  << endl;
+    m_input = graph.m_input;
+    m_graph = graph.m_graph;
+}
+
+BoostGraph::BoostGraph(const BoostGraph *graph)
+{
+   clog << "BoostGraph(Boostgraph *)"  << endl;
+   m_input = graph->m_input;
+   m_graph = graph->m_graph;
 }
 
 BoostGraph::~BoostGraph()
@@ -23,7 +39,7 @@ BoostGraph::~BoostGraph()
 }
 bool BoostGraph::connected(const Edge &e) const
 {
-    return edge(e.first, e.second, m_graph).second;
+    return edge(e.first, e.second, m_graph).second == true;
 }
 void BoostGraph::addEdge(const Edge &e)
 {
@@ -32,17 +48,23 @@ void BoostGraph::addEdge(const Edge &e)
 void BoostGraph::setConnected(const Edge &e, bool connect)
 {
     if(connect) {
-        if(!this->connected(e))
+        if(!this->connected(e)) {
             add_edge(e.first, e.second, m_graph);
+        }
     } else {
-        if(this->connected(e))
+        if(this->connected(e)) {
             remove_edge(e.first, e.second, m_graph);
+         }
     }
 }
 
 void BoostGraph::flip(const Edge &e)
 {
-    setConnected(e, !connected(e));
+    if(!connected(e)) {
+        add_edge(e.first, e.second, m_graph);
+    } else {
+        remove_edge(e.first, e.second, m_graph);
+    }
 }
 
 void BoostGraph::clear()
@@ -92,13 +114,15 @@ vector<Edge> BoostGraph::connectedEdges() const
 
 set<NodeT> BoostGraph::neighborhood(NodeT node) const
 {
-    //todo: faster implemnatation: http://programmingexamples.net/wiki/Boost/BGL/AdjacentVertices
-    set<NodeT> ret;
-    for(NodeT i : this->nodes()) {
-        if(node == i) continue;
-        if(connected(Edge(node, i))) ret.insert(i);
-    }
-    return ret;
+     set<NodeT> ret;
+     typedef graph_traits <boost_graph_type>::adjacency_iterator adjacency_iterator;
+
+     std::pair<adjacency_iterator, adjacency_iterator> neighbors = boost::adjacent_vertices(vertex(node,m_graph), m_graph);
+
+     for(; neighbors.first != neighbors.second; ++neighbors.first){
+        ret.insert(*neighbors.first);
+     }
+     return ret;
 }
 
 struct vf2_callback_collect {
@@ -170,16 +194,20 @@ NodeMapping BoostGraph::subgraphIsoOne(BoostGraph *needle) const
     ReducedNodeMapping rmap(1);
     vf2_callback_collect callback(m_graph, needle->m_graph, &rmap);
     vf2_subgraph_iso(needle->m_graph, m_graph, callback);
-    NodeMapping ret;
-    return ret;
+    auto ret = rmap.get();
+    if(ret.size() == 0){
+        return NodeMapping();
+    } else {
+        return rmap.get()[0];
+    }
 }
 
-bool BoostGraph::subgraphIsoHasOne(vector<BoostGraph> needle) const
+bool BoostGraph::subgraphIsoHasOne(vector<BoostGraph*> needle) const
 {
-    int count = 0;
-    for(BoostGraph g : needle) {
-        vf2_callback_has callback(m_graph, g.m_graph, &count);
-        vf2_subgraph_iso(m_graph, g.m_graph, callback);
+    for(BoostGraph *g : needle) {
+        int count = 0;
+        vf2_callback_has callback(g->m_graph, m_graph, &count);
+        vf2_subgraph_iso(g->m_graph, m_graph, callback);
         if(count == 1) return true;
     }
     return false;
@@ -188,7 +216,7 @@ bool BoostGraph::subgraphIsoHasOne(vector<BoostGraph> needle) const
 vector<NodeMapping> BoostGraph::subgraphIsoAll(const BoostGraph *needle) const
 {
     ReducedNodeMapping rmap;
-    vf2_callback_collect callback(m_graph, needle->m_graph, &rmap);
+    vf2_callback_collect callback(needle->m_graph, m_graph,  &rmap);
     vf2_subgraph_iso(needle->m_graph, m_graph, callback);
     return rmap.get();
 }
@@ -196,7 +224,7 @@ vector<NodeMapping> BoostGraph::subgraphIsoAll(const BoostGraph *needle) const
 int BoostGraph::subgraphIsoCountAll(const BoostGraph *needle) const
 {
     int count = 0;
-    vf2_callback_count callback(m_graph, needle->m_graph, &count);
+    vf2_callback_count callback(needle->m_graph, m_graph, &count);
     //vf2_print_callback<boost_graph_type, boost_graph_type> callback(m_graph, needle->m_graph);
     vf2_subgraph_iso(needle->m_graph, m_graph, callback);
     return count;

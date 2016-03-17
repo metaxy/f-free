@@ -14,10 +14,10 @@ protected:
 
     BoostGraph m_input;
 
-    vector<BoostGraph> m_forbidden;
+    vector<BoostGraph*> m_forbidden;
     bool isValid(const BoostGraph *input);
     BoostGraph getInput();
-    vector<BoostGraph> getForbidden();
+    vector<BoostGraph*> getForbidden();
 
 };
 

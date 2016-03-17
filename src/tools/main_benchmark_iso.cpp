@@ -32,11 +32,11 @@ int main(int argc, char* argv[])
     }
 
     MGraph p3 = MGraph(Common::graphFromFile("/home/paul/coding/f-free/forbidden/cluster/p3.txt"));
-    BoostGraph bp3 = BoostGraph(Common::graphFromFile("/home/paul/coding/f-free/forbidden/cluster/p3.txt"));
+    BoostGraph *bp3 = new BoostGraph(Common::graphFromFile("/home/paul/coding/f-free/forbidden/cluster/p3.txt"));
     vector<MGraph> p3s;
     p3s.push_back(p3);
 
-    vector<BoostGraph> bp3s;
+    vector<BoostGraph*> bp3s;
     bp3s.push_back(bp3);
 
     Timer timer;
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 
     timer.reset();
     for(BoostGraph graph : bgraphs) {
-        graph.subgraphIsoAll(&bp3);
+        graph.subgraphIsoAll(bp3);
     }
     cout << "BO:" << timer.elapsed() << endl;
 
@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
 
     timer.reset();
     for(BoostGraph graph : bgraphs) {
-        graph.subgraphIsoCountAll(&bp3);
+        graph.subgraphIsoCountAll(bp3);
     }
     cout << "BO:" << timer.elapsed() << endl;
 

@@ -167,6 +167,14 @@ target_link_libraries(
     ${ffree_LIBS}
 )
 
+add_executable(ffree_extend_boost ${ffree_SRCS} ${ffree_B_SRCS} src/state/extend_boost/state_extend.cpp src/state/extend_boost/main_extend.cpp)
+
+target_link_libraries(
+    ffree_extend_boost
+    ${ffree_LIBS}
+)
+
+
 add_executable(ffree_approx2k ${ffree_SRCS} src/graph/mergegraph.cpp src/state/approx2k/state_approx2k.cpp src/state/approx2k/main_approx2k.cpp)
 
 target_link_libraries(

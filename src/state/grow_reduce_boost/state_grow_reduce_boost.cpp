@@ -5,7 +5,7 @@ StateGrowReduceBoost::StateGrowReduceBoost(Config conf) : BState(conf), m_countI
 }
 BoostGraph StateGrowReduceBoost::solve()
 {
-    BoostGraph graph(m_input.m_input);
+    BoostGraph graph(m_input);
     graph.clear();
     vector<NodeT> nodes = r->randomVector(m_input.nodes());
     set<NodeT> explored;
@@ -13,6 +13,7 @@ BoostGraph StateGrowReduceBoost::solve()
         explored.insert(node);
 
         set<NodeT> neighborhood = m_input.neighborhood(node);
+        clog << neighborhood.size() << endl;
         for(NodeT n: neighborhood) {
             if(explored.find(node) == explored.end())
                 continue;
@@ -32,16 +33,18 @@ void StateGrowReduceBoost::reduce(BoostGraph *graph)
 {
     clog << "reduce" << endl;
     for(auto forbidden : m_forbidden) {
-        vector<Edge> forbiddenEdges = forbidden.allEdges();
-        NodeMapping mapping = graph->subgraphIsoOne(&forbidden);
+        vector<Edge> forbiddenEdges = forbidden->allEdges();
+        NodeMapping mapping = graph->subgraphIsoOne(forbidden);
         while(!mapping.empty()) {
+            clog << "do mapping" << endl;
             Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
-            int size_before = graph->subgraphIsoCountAll(&forbidden);//this is very time expensive
+            int size_before = graph->subgraphIsoCountAll(forbidden);//this is very time expensive
+            clog << size_before << endl;
             graph->flip(foundEdge);
-            if(graph->subgraphIsoCountAll(&forbidden) >= m_factorSize * float(size_before)) {
+            if(graph->subgraphIsoCountAll(forbidden) >= m_factorSize * float(size_before)) {
                 graph->flip(foundEdge);
             }
-            mapping = graph->subgraphIsoOne(&forbidden);
+            mapping = graph->subgraphIsoOne(forbidden);
         }
     }
 }
