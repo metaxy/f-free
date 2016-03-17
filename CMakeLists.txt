@@ -12,19 +12,27 @@ find_package(Boost 1.50.0 COMPONENTS graph)
 option(test "Build all tests." OFF)
 
 set( ffree_SRCS
-    ggraph.cpp
-    vgraph.cpp
-    mgraph.cpp
-
-    common.cpp
-    randomize.cpp
-    anyoption.cpp
-    forbidden.cpp
-    vf.cpp
-    state.cpp
-    reducednodemapping.cpp
-
+    src/common/common.cpp
+    src/common/randomize.cpp
+    src/common/anyoption.cpp
+    src/graph/ggraph.cpp
+    src/graph/vgraph.cpp
+    src/iso/reducednodemapping.cpp
+    src/state/state.cpp
 )
+
+set( ffree_M_SRCS
+  src/graph/mgraph.cpp
+  src/state/mstate.cpp
+  src/iso/vf.cpp
+  src/iso/forbidden.cpp
+)
+
+set( ffree_B_SRCS
+  src/graph/boostgraph.cpp
+  src/state/bstate.cpp
+)
+
 
 set( vflib_SRCS
    lib/vflib/src/argedit.cc
@@ -78,7 +86,7 @@ add_library(
     ${vflib_INCLUDE}
 )
 
-include_directories(lib/vflib/include/  ${Boost_INCLUDES})
+include_directories(lib/vflib/include/ ${Boost_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR})
 set(
   ffree_LIBS
   vflib
@@ -89,40 +97,40 @@ ADD_DEFINITIONS(
     -std=c++11
     -Ofast
 )
-add_executable(ffree_random ${ffree_SRCS} state_random.cpp main_random.cpp)
+add_executable(ffree_random ${ffree_SRCS} ${ffree_M_SRCS} src/state/random/state_random.cpp src/state/random/main_random.cpp)
 
 target_link_libraries(
     ffree_random
     ${ffree_LIBS}
 )
-add_executable(ffree_random2 ${ffree_SRCS} state_random2.cpp main_random2.cpp)
+add_executable(ffree_random2 ${ffree_SRCS} ${ffree_M_SRCS} src/state/random2/state_random2.cpp src/state/random2/main_random2.cpp)
 
 target_link_libraries(
     ffree_random2
     ${ffree_LIBS}
 )
-add_executable(ffree_random_half ${ffree_SRCS} state_random_half.cpp main_random_half.cpp)
+add_executable(ffree_random_half ${ffree_SRCS} ${ffree_M_SRCS} src/state/random_half/state_random_half.cpp src/state/random_half/main_random_half.cpp)
 
 target_link_libraries(
     ffree_random_half
     ${ffree_LIBS}
 )
 
-add_executable(ffree_bottom ${ffree_SRCS} state_bottom.cpp main_bottom.cpp)
+add_executable(ffree_bottom ${ffree_SRCS} ${ffree_M_SRCS} src/state/bottom/state_bottom.cpp src/state/bottom/main_bottom.cpp)
 
 target_link_libraries(
     ffree_bottom
     ${ffree_LIBS}
 )
 
-add_executable(ffree_bottom_random ${ffree_SRCS} state_bottom_random.cpp main_bottom_random.cpp)
+add_executable(ffree_bottom_random ${ffree_SRCS} ${ffree_M_SRCS} src/state/bottom_random/state_bottom_random.cpp src/state/bottom_random/main_bottom_random.cpp)
 
 target_link_libraries(
     ffree_bottom_random
     ${ffree_LIBS}
 )
 
-add_executable(ffree_grow_reduce ${ffree_SRCS} state_grow_reduce.cpp main_grow_reduce.cpp)
+add_executable(ffree_grow_reduce ${ffree_SRCS} ${ffree_M_SRCS} src/state/grow_reduce/state_grow_reduce.cpp src/state/grow_reduce/main_grow_reduce.cpp)
 
 target_link_libraries(
     ffree_grow_reduce
@@ -130,34 +138,42 @@ target_link_libraries(
 )
 
 
-add_executable(ffree_grow_reduce2 ${ffree_SRCS} state_grow_reduce2.cpp main_grow_reduce2.cpp)
+add_executable(ffree_grow_reduce2 ${ffree_SRCS} ${ffree_M_SRCS} src/state/grow_reduce2/state_grow_reduce2.cpp src/state/grow_reduce2/main_grow_reduce2.cpp)
 
 target_link_libraries(
     ffree_grow_reduce2
     ${ffree_LIBS}
 )
 
-add_executable(ffree_grow_reduce3 ${ffree_SRCS} state_grow_reduce3.cpp main_grow_reduce3.cpp)
+add_executable(ffree_grow_reduce3 ${ffree_SRCS} ${ffree_M_SRCS} src/state/grow_reduce3/state_grow_reduce3.cpp src/state/grow_reduce3/main_grow_reduce3.cpp)
 
 target_link_libraries(
     ffree_grow_reduce3
     ${ffree_LIBS}
 )
 
-add_executable(ffree_extend ${ffree_SRCS} state_extend.cpp main_extend.cpp)
+add_executable(ffree_grow_reduce_boost ${ffree_SRCS} ${ffree_B_SRCS} src/state/grow_reduce_boost/state_grow_reduce_boost.cpp src/state/grow_reduce_boost/main_grow_reduce_boost.cpp)
+
+target_link_libraries(
+    ffree_grow_reduce_boost
+    ${ffree_LIBS}
+)
+
+
+add_executable(ffree_extend ${ffree_SRCS} ${ffree_M_SRCS} src/state/extend/state_extend.cpp src/state/extend/main_extend.cpp)
 
 target_link_libraries(
     ffree_extend
     ${ffree_LIBS}
 )
 
-add_executable(ffree_approx2k ${ffree_SRCS} mergegraph.cpp state_approx2k.cpp main_approx2k.cpp)
+add_executable(ffree_approx2k ${ffree_SRCS} src/graph/mergegraph.cpp src/state/approx2k/state_approx2k.cpp src/state/approx2k/main_approx2k.cpp)
 
 target_link_libraries(
     ffree_approx2k
     ${ffree_LIBS}
 )
-add_executable(isomorph ${ffree_SRCS} main_isomorph.cpp)
+add_executable(isomorph ${ffree_SRCS} ${ffree_M_SRCS} src/tools/main_isomorph.cpp)
 
 target_link_libraries(
     isomorph
@@ -165,7 +181,7 @@ target_link_libraries(
 )
 
 
-add_executable(benchmark_iso ${ffree_SRCS} boostgraph.cpp special_subgraph_isomorphism.cpp timer.cpp main_benchmark_iso.cpp)
+add_executable(benchmark_iso ${ffree_SRCS} ${ffree_M_SRCS} ${ffree_B_SRCS} src/iso/special_subgraph_isomorphism.cpp src/common/timer.cpp src/tools/main_benchmark_iso.cpp)
 
 target_link_libraries(
     benchmark_iso
@@ -197,7 +213,7 @@ if(GUROBI_PATH)
     include_directories(
         ${GUROBI_PATH}/include
     )
-    add_executable(ffree_blp ${ffree_SRCS} gurobilp.cpp state_blp.cpp main_blp.cpp)
+    add_executable(ffree_blp ${ffree_SRCS} ${ffree_M_SRCS} src/common/gurobilp.cpp src/state/blp/state_blp.cpp src/state/blp/main_blp.cpp)
 
     find_library(G1 libgurobi_g++4.2.a ${GUROBI_PATH}/lib)
     find_library(G2 libgurobi65.so ${GUROBI_PATH}/lib)
