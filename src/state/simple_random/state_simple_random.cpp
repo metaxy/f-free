@@ -18,7 +18,7 @@ BoostGraph StateSimpleRandom::solve()
 
             for(int i = 0; i < forbidden->allEdges().size(); i++) {
                 Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
-                if(modified.find(e) != modified.end()) {
+                if(modified.find(e) == modified.end()) {
                     graph.flip(e);
                     modified[e] = 1;
                     break;

@@ -12,7 +12,7 @@ MGraph MState::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/bio1/n_0094_nr_0676.txt";
+        fileName = "../model/albert_barabasi/n_10_m_3.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }

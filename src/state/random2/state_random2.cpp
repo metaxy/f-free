@@ -1,6 +1,6 @@
 #include "state_random2.h"
 #include "src/iso/vf.h"
-StateRandom2::StateRandom2(Config conf) : MState(conf)
+StateRandom2::StateRandom2(Config conf) : MState(conf), m_countSteps(0)
 {
 }
 MGraph StateRandom2::solve()
@@ -10,13 +10,11 @@ MGraph StateRandom2::solve()
     for(MGraph needle : m_forbidden) {
         NodeMapping mapping = VF::subgraphIsoOne(&graph, &needle);
         while(!mapping.empty()) {
-            for(int i = 0; i < needle.allEdges().size(); i++) {
-                Edge e = Common::transformEdge(r->randomElement(needle.allEdges()), &mapping);
-                if(modified.find(e) != modified.end()) {
-                    graph.flip(e);
-                    modified[e] = 1;
-                    break;
-                }
+            Edge e = Common::transformEdge(r->randomElement(needle.allEdges()), &mapping);
+            if(modified.find(e) == modified.end()) {
+                //clog << e.first << "," << e.second << endl;
+                graph.flip(e);
+                modified[e] = 1;
             }
             m_countSteps++;
             mapping = VF::subgraphIsoOne(&graph, &needle);
