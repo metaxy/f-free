@@ -167,13 +167,20 @@ target_link_libraries(
     ${ffree_LIBS}
 )
 
-add_executable(ffree_extend_boost ${ffree_SRCS} ${ffree_B_SRCS} src/state/extend_boost/state_extend.cpp src/state/extend_boost/main_extend.cpp)
+add_executable(ffree_extend_boost ${ffree_SRCS} ${ffree_B_SRCS} src/state/extend_boost/state_extend_boost.cpp src/state/extend_boost/main_extend_boost.cpp)
 
 target_link_libraries(
     ffree_extend_boost
     ${ffree_LIBS}
 )
 
+
+add_executable(ffree_simple_random ${ffree_SRCS} ${ffree_B_SRCS} src/state/simple_random/state_simple_random.cpp src/state/simple_random/main_simple_random.cpp)
+
+target_link_libraries(
+    ffree_simple_random
+    ${ffree_LIBS}
+)
 
 add_executable(ffree_approx2k ${ffree_SRCS} src/graph/mergegraph.cpp src/state/approx2k/state_approx2k.cpp src/state/approx2k/main_approx2k.cpp)
 

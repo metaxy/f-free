@@ -38,6 +38,7 @@ Edge  Randomize::randomElement(vector<Edge> list)
     return list[dis(m_rgen)];
 }
 
+
 vector<Edge> Randomize::randomVector(vector<Edge> a)
 {
     std::shuffle(std::begin(a), std::end(a), std::default_random_engine(m_rseed()));

@@ -1,7 +1,7 @@
 {
-  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz", "./model/cluster_very_small", "./model/bio1"],
-  "forbidden" : ["./forbidden/triangle", "./forbidden/claw", "./forbidden/cluster", "./forbidden/cograph"],
-  "progs" : ["extend","random","grow_reduce"],
-  "seed" : 5489,
+  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz",  "./model/bio1", "./model/UCINetworkDataRepository/"],
+  "forbidden" : ["./forbidden/triangle", "./forbidden/claw", "./forbidden/splitcluster", "./forbidden/2k2_c4_c5"],
+  "progs" : ["extend_boost","random","random2", "simple_random"],
+  "seed" : 5419,
   "max_time" : 10
 }

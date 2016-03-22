@@ -17,11 +17,12 @@ public:
     NodeT randomElement(set<NodeT> a);
     vector<NodeT> randomVector(vector<NodeT> a);
     vector<Edge> randomVector(vector<Edge> a);
-private:
     std::random_device m_rseed;
     std::mt19937 m_rgen;
 
     int m_seed;
+private:
+
 };
 
 #endif // RANDOMIZE_H

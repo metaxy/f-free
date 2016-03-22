@@ -5,9 +5,8 @@
 
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/vf2_sub_graph_iso.hpp>
-using namespace boost;
 
-typedef adjacency_list<setS, vecS, undirectedS> boost_graph_type;
+typedef boost::adjacency_list<boost::setS, boost::vecS, boost::undirectedS> boost_graph_type;
 class BoostGraph : public VGraph
 {
 public:

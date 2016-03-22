@@ -2,11 +2,9 @@
 #include "src/iso/reducednodemapping.h"
 BoostGraph::BoostGraph()
 {
-    clog << "BoostGraph()"  << endl;
 }
 BoostGraph::BoostGraph(VGraph *graph)
 {
-    clog << "BoostGraph(VGraph*)"  << endl;
     m_input = graph->m_input;
     for(Edge e: graph->connectedEdges()) {
         addEdge(e);
@@ -14,7 +12,6 @@ BoostGraph::BoostGraph(VGraph *graph)
 }
 BoostGraph::BoostGraph(GGraph input)
 {
-    clog << "BoostGraph(GGraph)"  << endl;
     m_input = input;
     for(Edge e: input.edges()) {
         addEdge(e);
@@ -22,14 +19,12 @@ BoostGraph::BoostGraph(GGraph input)
 }
 BoostGraph::BoostGraph(const BoostGraph &graph)
 {
-    clog << "BoostGraph(Boostgraph &)"  << endl;
     m_input = graph.m_input;
     m_graph = graph.m_graph;
 }
 
 BoostGraph::BoostGraph(const BoostGraph *graph)
 {
-   clog << "BoostGraph(Boostgraph *)"  << endl;
    m_input = graph->m_input;
    m_graph = graph->m_graph;
 }
@@ -39,21 +34,21 @@ BoostGraph::~BoostGraph()
 }
 bool BoostGraph::connected(const Edge &e) const
 {
-    return edge(e.first, e.second, m_graph).second == true;
+    return boost::edge(e.first, e.second, m_graph).second == true;
 }
 void BoostGraph::addEdge(const Edge &e)
 {
-    add_edge(e.first, e.second, m_graph);
+    boost::add_edge(e.first, e.second, m_graph);
 }
 void BoostGraph::setConnected(const Edge &e, bool connect)
 {
     if(connect) {
         if(!this->connected(e)) {
-            add_edge(e.first, e.second, m_graph);
+            boost::add_edge(e.first, e.second, m_graph);
         }
     } else {
         if(this->connected(e)) {
-            remove_edge(e.first, e.second, m_graph);
+            boost::remove_edge(e.first, e.second, m_graph);
          }
     }
 }
@@ -61,24 +56,24 @@ void BoostGraph::setConnected(const Edge &e, bool connect)
 void BoostGraph::flip(const Edge &e)
 {
     if(!connected(e)) {
-        add_edge(e.first, e.second, m_graph);
+        boost::add_edge(e.first, e.second, m_graph);
     } else {
-        remove_edge(e.first, e.second, m_graph);
+        boost::remove_edge(e.first, e.second, m_graph);
     }
 }
 
 void BoostGraph::clear()
 {
     for(Edge e: this->connectedEdges()) {
-        remove_edge(e.first, e.second, m_graph);
+        boost::remove_edge(e.first, e.second, m_graph);
     }
 }
 
 vector<NodeT> BoostGraph::nodes() const
 {
     vector<NodeT> ret;
-    graph_traits<boost_graph_type>::vertex_iterator vi, vi_end;
-    for (boost::tie(vi, vi_end) = vertices(m_graph); vi != vi_end; ++vi) {
+    boost::graph_traits<boost_graph_type>::vertex_iterator vi, vi_end;
+    for (boost::tie(vi, vi_end) = boost::vertices(m_graph); vi != vi_end; ++vi) {
         ret.push_back(*vi);
     }
     return ret;
@@ -105,9 +100,9 @@ vector<Edge> BoostGraph::allEdges() const
 vector<Edge> BoostGraph::connectedEdges() const
 {
     vector<Edge> ret;
-    graph_traits<boost_graph_type>::edge_iterator i, end;
-    for (tie(i, end) = edges(m_graph); i != end; ++i) {
-       ret.push_back(Edge(source(*i, m_graph), target(*i, m_graph)));
+    boost::graph_traits<boost_graph_type>::edge_iterator i, end;
+    for (boost::tie(i, end) = boost::edges(m_graph); i != end; ++i) {
+       ret.push_back(Edge(boost::source(*i, m_graph), boost::target(*i, m_graph)));
     }
     return ret;
 }
@@ -115,9 +110,9 @@ vector<Edge> BoostGraph::connectedEdges() const
 set<NodeT> BoostGraph::neighborhood(NodeT node) const
 {
      set<NodeT> ret;
-     typedef graph_traits <boost_graph_type>::adjacency_iterator adjacency_iterator;
+     typedef boost::graph_traits <boost_graph_type>::adjacency_iterator adjacency_iterator;
 
-     std::pair<adjacency_iterator, adjacency_iterator> neighbors = boost::adjacent_vertices(vertex(node,m_graph), m_graph);
+     std::pair<adjacency_iterator, adjacency_iterator> neighbors = boost::adjacent_vertices(boost::vertex(node,m_graph), m_graph);
 
      for(; neighbors.first != neighbors.second; ++neighbors.first){
         ret.insert(*neighbors.first);
@@ -138,7 +133,7 @@ struct vf2_callback_collect {
   {
     NodeMapping nodeMapping;
     BGL_FORALL_VERTICES_T(v, graph1_, boost_graph_type)
-        nodeMapping[get(vertex_index_t(), graph1_, v)] = get(vertex_index_t(), graph1_, get(f, v));
+        nodeMapping[boost::get(boost::vertex_index_t(), graph1_, v)] = boost::get(boost::vertex_index_t(), graph1_, boost::get(f, v));
     return !m_map->add(nodeMapping);
   }
 
@@ -225,7 +220,6 @@ int BoostGraph::subgraphIsoCountAll(const BoostGraph *needle) const
 {
     int count = 0;
     vf2_callback_count callback(needle->m_graph, m_graph, &count);
-    //vf2_print_callback<boost_graph_type, boost_graph_type> callback(m_graph, needle->m_graph);
     vf2_subgraph_iso(needle->m_graph, m_graph, callback);
     return count;
 }

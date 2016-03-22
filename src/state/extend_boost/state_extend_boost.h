@@ -1,10 +1,10 @@
-#ifndef STATE_EXTEND_H
-#define STATE_EXTEND_H
+#ifndef STATE_EXTEND_BOOST_D_H
+#define STATE_EXTEND_BOOST_H
 #include "src/state/bstate.h"
-class StateExtend : public BState
+class StateExtendBoost : public BState
 {
 public:
-    StateExtend(Config conf);
+    StateExtendBoost(Config conf);
     BoostGraph solve();
     void final();
 

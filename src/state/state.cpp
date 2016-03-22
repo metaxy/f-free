@@ -6,7 +6,7 @@ State::State(Config conf) : m_config(conf)
 {
     r = new Randomize(getInt("seed", 5489));
     m_begin_time = clock();
-    m_hasTime = float(getInt("time", 10));
+    m_hasTime = float(getInt("time", 999999999));//many time per default
 }
 double State::getDouble(const string &name, double def) const
 {
@@ -51,7 +51,7 @@ void State::final()
 float State::timeLeft() const
 {
     float time = float( clock () - m_begin_time ) /  CLOCKS_PER_SEC;
-    clog << "time left:" << m_hasTime - time << endl;
+    //clog << "time left:" << m_hasTime - time << endl;
     return m_hasTime - time;
 }
 float State::timePerIteration() const

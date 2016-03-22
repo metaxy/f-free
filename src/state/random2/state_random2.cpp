@@ -5,22 +5,24 @@ StateRandom2::StateRandom2(Config conf) : MState(conf)
 }
 MGraph StateRandom2::solve()
 {
-    MGraph input(m_input);
+    MGraph graph(m_input);
+    map<Edge,int> modified;
     for(MGraph needle : m_forbidden) {
-        input = this->solveSingle(input, needle);
+        NodeMapping mapping = VF::subgraphIsoOne(&graph, &needle);
+        while(!mapping.empty()) {
+            for(int i = 0; i < needle.allEdges().size(); i++) {
+                Edge e = Common::transformEdge(r->randomElement(needle.allEdges()), &mapping);
+                if(modified.find(e) != modified.end()) {
+                    graph.flip(e);
+                    modified[e] = 1;
+                    break;
+                }
+            }
+            m_countSteps++;
+            mapping = VF::subgraphIsoOne(&graph, &needle);
+        }
     }
-    return input;
-}
-MGraph StateRandom2::solveSingle(MGraph input, MGraph forbidden)
-{
-    NodeMapping mapping = VF::subgraphIsoOne(&input, &forbidden);
-    while(!mapping.empty()) {
-        Edge e = Common::transformEdge(r->randomElement(forbidden.allEdges()), &mapping);
-        input.flip(e);
-        m_countSteps++;
-        mapping = VF::subgraphIsoOne(&input, &forbidden);
-    }
-    return input;
+    return graph;
 }
 void StateRandom2::final()
 {

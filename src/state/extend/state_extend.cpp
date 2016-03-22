@@ -20,6 +20,7 @@ bool StateExtend::extend(MGraph *graph)
 {
     bool some = false;
     vector<Edge> edges = r->randomVector(m_input.difference(graph));
+     clog << "diff = " << m_input.difference(graph).size() << endl;
     for(Edge e : edges) {
         graph->flip(e);
         if(!isValid(graph)) {
@@ -31,6 +32,7 @@ bool StateExtend::extend(MGraph *graph)
         }
         if(timeLeft() < 0.2) break;
     }
+     clog << "valid changes" << m_validChanges << " invalid" << m_invalidChanges << endl;
     return some;
 }
 
