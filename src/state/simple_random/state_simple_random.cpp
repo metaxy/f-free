@@ -9,7 +9,6 @@ BoostGraph StateSimpleRandom::solve()
     map<Edge,int> modified;
     for(BoostGraph *forbidden : m_forbidden) {
         while(true) {
-            clog << ".";
             m_countSteps++;
             NodeMapping mapping = graph.subgraphIsoOne(forbidden);
             if(mapping.empty()) {
