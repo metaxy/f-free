@@ -17,18 +17,20 @@ BoostGraph StateGrowReduceBoost::solve()
 
         //grow phase
         set<NodeT> neighborhood = m_input.neighborhood(node);
+        BoostGraph explore(graph);
+
         clog << neighborhood.size() << endl;
         for(NodeT n: neighborhood) {
             if(explored.find(node) == explored.end())
                 continue;
             Edge e(n, node);
             if(modified.find(e) == modified.end()) {
-                graph.setConnected(e, m_input.connected(e));
+                explore.setConnected(e, m_input.connected(e));
             }
         }
         for(BoostGraph *forbidden : m_forbidden) {
-            for(int i = 0; i < 200; i++) {
-                NodeMapping mapping = graph.subgraphIsoOne(forbidden);
+            for(int i = 0; i< 1000; i++) {
+                NodeMapping mapping = explore.subgraphIsoOne(forbidden);
                 if(mapping.empty()) {
                      break;
                 }
@@ -36,13 +38,25 @@ BoostGraph StateGrowReduceBoost::solve()
                 for(int i = 0; i < forbidden->allEdges().size(); i++) {
                     Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
                     if(modified.find(e) == modified.end()) {
-                        graph.flip(e);
+                        explore.flip(e);
                         modified[e] = 1;
                         break;
                     }
                 }
             }
         }
+        if(!isValid(&explore)) {
+            for(Edge e : graph.difference(&explore)) {
+                explore.flip(e);
+                if(isValid(&explore)) break;
+            }
+        }
+        graph = explore;
+
+        /*clog << "modified " << modified.size() << endl;
+        for(BoostGraph *forbidden : m_forbidden) {
+            clog << "isomorhisms: " << graph.subgraphIsoCountAll(forbidden) << endl;
+        }*/
         if(timeLeft() < 2)
             break;
 
@@ -50,7 +64,9 @@ BoostGraph StateGrowReduceBoost::solve()
             break;
     }
     this->reduce(&graph);
-    this->extend(&graph);
+    if(timeLeft() > 1) {
+        this->extend(&graph);
+    }
     return graph;
 }
 
@@ -64,16 +80,10 @@ void StateGrowReduceBoost::reduce(BoostGraph *graph)
             if(mapping.empty()) {
                  break;
             }
-
-            for(int i = 0; i < forbidden->allEdges().size(); i++) {
-                Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
-                if(modified.find(e) == modified.end()) {
-                    graph->flip(e);
-                    modified[e] = 1;
-                    break;
-                }
-            }
-        }
+            Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
+             clog << e.first << "," <<  e.second << endl;
+            graph->flip(e);
+         }
     }
     clog << "reduce end" << endl;
 
@@ -82,6 +92,7 @@ void StateGrowReduceBoost::extend(BoostGraph *graph)
 {
     clog << "extend" << endl;
     for(Edge e : m_input.difference(graph)) {
+        if(timeLeft() < 0.1) return;
         graph->flip(e);
         if(!isValid(graph))
             graph->flip(e);
