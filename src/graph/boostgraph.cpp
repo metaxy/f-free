@@ -143,6 +143,28 @@ private:
   ReducedNodeMapping *m_map;
 };
 
+struct vf2_callback_collect_one {
+
+  vf2_callback_collect_one(const boost_graph_type& graph1, const boost_graph_type& graph2, NodeMapping *mapping) : graph1_(graph1), graph2_(graph2)
+  {
+    nodeMapping = mapping;
+  }
+
+  template <typename CorrespondenceMap1To2,
+            typename CorrespondenceMap2To1>
+  bool operator() (CorrespondenceMap1To2 f, CorrespondenceMap2To1) const
+  {
+    BGL_FORALL_VERTICES_T(v, graph1_, boost_graph_type)
+        nodeMapping->insert(std::pair<NodeT, NodeT>(boost::get(boost::vertex_index_t(), graph1_, v), boost::get(boost::vertex_index_t(), graph1_, boost::get(f, v))));
+    return false;
+  }
+
+private:
+  const boost_graph_type& graph1_;
+  const boost_graph_type& graph2_;
+  NodeMapping *nodeMapping;
+};
+
 struct vf2_callback_count {
 
   vf2_callback_count(const boost_graph_type& graph1, const boost_graph_type& graph2, int *count) : graph1_(graph1), graph2_(graph2)
@@ -186,15 +208,10 @@ private:
 };
 NodeMapping BoostGraph::subgraphIsoOne(BoostGraph *needle) const
 {
-    ReducedNodeMapping rmap(1);
-    vf2_callback_collect callback(m_graph, needle->m_graph, &rmap);
+    NodeMapping map;
+    vf2_callback_collect_one callback(needle->m_graph, m_graph, &map);
     vf2_subgraph_iso(needle->m_graph, m_graph, callback);
-    auto ret = rmap.get();
-    if(ret.size() == 0){
-        return NodeMapping();
-    } else {
-        return rmap.get()[0];
-    }
+    return map;
 }
 
 bool BoostGraph::subgraphIsoHasOne(vector<BoostGraph*> needle) const

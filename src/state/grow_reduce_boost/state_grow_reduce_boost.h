@@ -11,7 +11,6 @@ public:
 protected:
     void extend(BoostGraph *graph);
     void reduce(BoostGraph *graph);
-    void reduceSimple(MGraph *graph);
 
     int m_countIteration;
     int m_validChanges;

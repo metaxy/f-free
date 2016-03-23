@@ -1,7 +1,7 @@
 {
   "instances" : ["./model/bio1","./model/bio2", "./model/UCINetworkDataRepository"],
   "forbidden" : [ "./forbidden/p4_c4"],
-  "progs" : ["extend_boost --rounds 15", "grow_reduce3 --rounds 5", "grow_reduce_boost --rounds 5", "mover"],
+  "progs" : ["extend_boost --rounds 15", "grow_reduce3 --rounds 5", "grow_reduce_boost --rounds 1", "mover"],
   "seed" : 5489,
   "max_time" : 10
 }

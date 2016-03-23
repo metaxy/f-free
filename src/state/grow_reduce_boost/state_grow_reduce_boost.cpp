@@ -7,24 +7,49 @@ BoostGraph StateGrowReduceBoost::solve()
 {
     BoostGraph graph(m_input);
     graph.clear();
+
     vector<NodeT> nodes = r->randomVector(m_input.nodes());
     set<NodeT> explored;
+    map<Edge,int> modified;
+    clog << nodes.size() << endl;
     for(NodeT node: nodes) {
         explored.insert(node);
 
+        //grow phase
         set<NodeT> neighborhood = m_input.neighborhood(node);
         clog << neighborhood.size() << endl;
         for(NodeT n: neighborhood) {
             if(explored.find(node) == explored.end())
                 continue;
             Edge e(n, node);
-            graph.setConnected(e, m_input.connected(e));
+            if(modified.find(e) == modified.end()) {
+                graph.setConnected(e, m_input.connected(e));
+            }
         }
+        for(BoostGraph *forbidden : m_forbidden) {
+            for(int i = 0; i < 200; i++) {
+                NodeMapping mapping = graph.subgraphIsoOne(forbidden);
+                if(mapping.empty()) {
+                     break;
+                }
 
-        this->reduce(&graph);
+                for(int i = 0; i < forbidden->allEdges().size(); i++) {
+                    Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
+                    if(modified.find(e) == modified.end()) {
+                        graph.flip(e);
+                        modified[e] = 1;
+                        break;
+                    }
+                }
+            }
+        }
+        if(timeLeft() < 2)
+            break;
+
         if(m_input.difference(&graph).size() == 0)
             break;
     }
+    this->reduce(&graph);
     this->extend(&graph);
     return graph;
 }
@@ -32,24 +57,30 @@ BoostGraph StateGrowReduceBoost::solve()
 void StateGrowReduceBoost::reduce(BoostGraph *graph)
 {
     clog << "reduce" << endl;
-    for(auto forbidden : m_forbidden) {
-        vector<Edge> forbiddenEdges = forbidden->allEdges();
-        NodeMapping mapping = graph->subgraphIsoOne(forbidden);
-        while(!mapping.empty()) {
-            clog << "do mapping" << endl;
-            Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
-            int size_before = graph->subgraphIsoCountAll(forbidden);//this is very time expensive
-            clog << size_before << endl;
-            graph->flip(foundEdge);
-            if(graph->subgraphIsoCountAll(forbidden) >= m_factorSize * float(size_before)) {
-                graph->flip(foundEdge);
+    map<Edge,int> modified;
+    for(BoostGraph *forbidden : m_forbidden) {
+        while(true) {
+            NodeMapping mapping = graph->subgraphIsoOne(forbidden);
+            if(mapping.empty()) {
+                 break;
             }
-            mapping = graph->subgraphIsoOne(forbidden);
+
+            for(int i = 0; i < forbidden->allEdges().size(); i++) {
+                Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
+                if(modified.find(e) == modified.end()) {
+                    graph->flip(e);
+                    modified[e] = 1;
+                    break;
+                }
+            }
         }
     }
+    clog << "reduce end" << endl;
+
 }
 void StateGrowReduceBoost::extend(BoostGraph *graph)
 {
+    clog << "extend" << endl;
     for(Edge e : m_input.difference(graph)) {
         graph->flip(e);
         if(!isValid(graph))
