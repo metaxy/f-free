@@ -7,7 +7,7 @@ BoostGraph StateGrowReduceBoost::solve()
 {
     BoostGraph graph(m_input);
     graph.clear();
-    string sortType = this->getString("sort", "random");
+    string sortType = this->getString("sort", "hits");
     string reduceType = this->getString("reduce", "random");
     vector<NodeT> nodes;
     if(sortType == "random") {
@@ -21,6 +21,10 @@ BoostGraph StateGrowReduceBoost::solve()
     } else if(sortType == "hits" || sortType == "hits_rev") {
         nodes = m_input.nodes();
         map<NodeT, int> hits;
+        for(NodeT n : nodes) {
+            hits[n] = 0;
+        }
+
         for(BoostGraph *forbidden : m_forbidden) {
             vector<NodeMapping> n = m_input.subgraphIsoAll(forbidden);
             for(NodeMapping mapping : n) {
