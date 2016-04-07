@@ -18,6 +18,22 @@ BoostGraph StateGrowReduceBoost::solve()
     } else if(sortType == "neighbors_rev") {
         nodes = m_input.nodes();
         std::sort (nodes.begin(), nodes.end(), [this](NodeT a, NodeT b){ return m_input.neighborhood(b).size() < m_input.neighborhood(a).size(); });
+    } else if(sortType == "hits" || sortType == "hits_rev") {
+        nodes = m_input.nodes();
+        map<NodeT, int> hits;
+        for(BoostGraph *forbidden : m_forbidden) {
+            vector<NodeMapping> n = m_input.subgraphIsoAll(forbidden);
+            for(NodeMapping mapping : n) {
+                for(const auto &m : mapping) {
+                     hits[m.second] = hits[m.second] + 1;
+                }
+            }
+        }
+        if(sortType == "hits") {
+            std::sort (nodes.begin(), nodes.end(), [hits](NodeT a, NodeT b){ return hits.at(a) < hits.at(b); });
+        } else {
+            std::sort (nodes.begin(), nodes.end(), [hits](NodeT a, NodeT b){ return hits.at(b) < hits.at(a); });
+        }
     }  else {
         clog << "false sortType" << endl;
         exit(-1);
