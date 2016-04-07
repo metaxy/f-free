@@ -1,7 +1,13 @@
 {
-  "instances" : ["./model/albert_barabasi", "./model/newman_watts_strogatz", "./model/bio1"],
+  "instances" : ["./model/bio1"],
   "forbidden" : ["./forbidden/triangle", "./forbidden/claw", "./forbidden/cluster", "./forbidden/cograph"],
-  "progs" : ["grow_reduce3","grow_reduce"],
+  "progs" : [
+    "grow_reduce3",
+    "grow_reduce", 
+    "grow_reduce_boost --sort random",
+    "grow_reduce_boost --sort neighbors",
+    "grow_reduce_boost --sort neighbors_rev"
+  ],
   "seed" : 5489,
   "max_time" : 10
 }

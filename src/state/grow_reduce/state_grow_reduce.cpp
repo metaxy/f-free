@@ -10,7 +10,6 @@ MGraph StateGrowReduce::solve()
     vector<NodeT> nodes = r->randomVector(m_input.nodes());
     for(NodeT node: nodes) {
         this->grow(&graph, node);
-        //clog << "difference size" << m_input.difference(&graph).size() << endl;
         this->reduce(&graph);
          if(m_input.difference(&graph).size() == 0) break;
     }
@@ -21,7 +20,6 @@ MGraph StateGrowReduce::solve()
 void StateGrowReduce::grow(MGraph *graph, NodeT node)
 {
     set<NodeT> neighborhood = m_input.neighborhood(node);
-    clog << "neigborhood size " << neighborhood.size() << endl;
     for(NodeT n: neighborhood) {
         Edge e(n, node);
         graph->setConnected(e, m_input.connected(e));
@@ -31,14 +29,11 @@ void StateGrowReduce::grow(MGraph *graph, NodeT node)
 void StateGrowReduce::reduce(MGraph *graph)
 {
     for(auto forbidden : m_forbidden) {
-        clog << "forbidden start" << endl;
         vector<Edge> forbiddenEdges = forbidden.allEdges();
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
         while(!mapping.empty()) {
-            //clog << "test mapping" << endl;
             Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
             int size_before = VF::subgraphIsoCountAll(graph, &forbidden);
-           // clog << size_before << endl;
             graph->flip(foundEdge);
             if(VF::subgraphIsoCountAll(graph, &forbidden) >= size_before) {
                 graph->flip(foundEdge);

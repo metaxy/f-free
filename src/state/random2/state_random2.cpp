@@ -12,7 +12,6 @@ MGraph StateRandom2::solve()
         while(!mapping.empty()) {
             Edge e = Common::transformEdge(r->randomElement(needle.allEdges()), &mapping);
             if(modified.find(e) == modified.end()) {
-                //clog << e.first << "," << e.second << endl;
                 graph.flip(e);
                 modified[e] = 1;
             }

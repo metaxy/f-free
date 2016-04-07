@@ -1,14 +1,27 @@
 #include "state_grow_reduce_boost.h"
+#include <algorithm>
 StateGrowReduceBoost::StateGrowReduceBoost(Config conf) : BState(conf), m_countIteration(0), m_validChanges(0), m_invalidChanges(0), m_skipBecauseOfWeight(0)
 {
-    m_factorSize = getDouble("factorSize", 1.0);
 }
 BoostGraph StateGrowReduceBoost::solve()
 {
     BoostGraph graph(m_input);
     graph.clear();
-
-    vector<NodeT> nodes = r->randomVector(m_input.nodes());
+    string sortType = this->getString("sort", "random");
+    string reduceType = this->getString("reduce", "random");
+    vector<NodeT> nodes;
+    if(sortType == "random") {
+        nodes = r->randomVector(m_input.nodes());
+    } else if(sortType == "neighbors") {
+        nodes = m_input.nodes();
+        std::sort (nodes.begin(), nodes.end(), [this](NodeT a, NodeT b){ return m_input.neighborhood(a).size() < m_input.neighborhood(b).size(); });
+    } else if(sortType == "neighbors_rev") {
+        nodes = m_input.nodes();
+        std::sort (nodes.begin(), nodes.end(), [this](NodeT a, NodeT b){ return m_input.neighborhood(b).size() < m_input.neighborhood(a).size(); });
+    }  else {
+        clog << "false sortType" << endl;
+        exit(-1);
+    }
     set<NodeT> explored;
     map<Edge,int> modified;
     clog << nodes.size() << endl;
@@ -28,31 +41,49 @@ BoostGraph StateGrowReduceBoost::solve()
                 explore.setConnected(e, m_input.connected(e));
             }
         }
-        for(BoostGraph *forbidden : m_forbidden) {
-            for(int i = 0; i< 1000; i++) {
-                NodeMapping mapping = explore.subgraphIsoOne(forbidden);
-                if(mapping.empty()) {
-                     break;
-                }
+        if(reduceType == "random") {
+            for(BoostGraph *forbidden : m_forbidden) {
+                for(int i = 0; i< 1000; i++) {
+                    NodeMapping mapping = explore.subgraphIsoOne(forbidden);
+                    if(mapping.empty()) {
+                         break;
+                    }
 
-                for(int i = 0; i < forbidden->allEdges().size(); i++) {
-                    Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
-                    if(modified.find(e) == modified.end()) {
-                        explore.flip(e);
-                        modified[e] = 1;
-                        break;
+                    for(int i = 0; i < forbidden->allEdges().size(); i++) {
+                        Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
+                        if(modified.find(e) == modified.end()) {
+                            explore.flip(e);
+                            modified[e] = 1;
+                            break;
+                        }
                     }
                 }
             }
-        }
-        if(!isValid(&explore)) {
-            for(Edge e : graph.difference(&explore)) {
-                explore.flip(e);
-                if(isValid(&explore)) break;
+            if(!isValid(&explore)) {
+                for(Edge e : graph.difference(&explore)) {
+                    explore.flip(e);
+                    if(isValid(&explore)) break;
+                }
             }
+            graph = explore;
+        } else if(reduceType == "count") {
+            for(auto forbidden : m_forbidden) {
+                vector<Edge> forbiddenEdges = forbidden->allEdges();
+                NodeMapping mapping = explore.subgraphIsoOne(forbidden);
+                while(!mapping.empty()) {
+                    Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
+                    int size_before = explore.subgraphIsoCountAll(forbidden);//this is very time expensive
+                    explore.flip(foundEdge);
+                    if(explore.subgraphIsoCountAll(forbidden) >=  size_before) {
+                        explore.flip(foundEdge);
+                    }
+                    mapping = explore.subgraphIsoOne(forbidden);
+                }
+            }
+        } else {
+            clog << "false reducetype" << endl;
+            exit(-1);
         }
-        graph = explore;
-
         /*clog << "modified " << modified.size() << endl;
         for(BoostGraph *forbidden : m_forbidden) {
             clog << "isomorhisms: " << graph.subgraphIsoCountAll(forbidden) << endl;
@@ -63,31 +94,13 @@ BoostGraph StateGrowReduceBoost::solve()
         if(m_input.difference(&graph).size() == 0)
             break;
     }
-    this->reduce(&graph);
+    //this->reduce(&graph);
     if(timeLeft() > 1) {
         this->extend(&graph);
     }
     return graph;
 }
 
-void StateGrowReduceBoost::reduce(BoostGraph *graph)
-{
-    clog << "reduce" << endl;
-    map<Edge,int> modified;
-    for(BoostGraph *forbidden : m_forbidden) {
-        while(true) {
-            NodeMapping mapping = graph->subgraphIsoOne(forbidden);
-            if(mapping.empty()) {
-                 break;
-            }
-            Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
-             clog << e.first << "," <<  e.second << endl;
-            graph->flip(e);
-         }
-    }
-    clog << "reduce end" << endl;
-
-}
 void StateGrowReduceBoost::extend(BoostGraph *graph)
 {
     clog << "extend" << endl;

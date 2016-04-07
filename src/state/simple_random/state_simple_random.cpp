@@ -13,7 +13,7 @@ BoostGraph StateSimpleRandom::solve()
             NodeMapping mapping = graph.subgraphIsoOne(forbidden);
             if(mapping.empty()) {
                  break;
-             }
+            }
 
             for(int i = 0; i < forbidden->allEdges().size(); i++) {
                 Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);

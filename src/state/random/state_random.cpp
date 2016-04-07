@@ -20,9 +20,6 @@ MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
     int do_convergence = VF::subgraphIsoCountAll(&input, &forbidden) < this->getInt("convergenceMaxValue", 5000);
     NodeMapping mapping = VF::subgraphIsoOne(&input, &forbidden);
     while(!mapping.empty()) {
-        //clog << m_countSteps << endl;
-        //Common::printNodeMapping(mapping);
-        //clog << "size = " <<  VF::subgraphIsoAll(&input, &forbidden).size()<< endl;
         Edge foundEdge;
         while(true) {
             Edge e = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
@@ -37,7 +34,6 @@ MGraph StateRandom::solveSingle(MGraph input, MGraph forbidden)
                 prob = 1.0/(forbiddenEdgesSize);
             }
             if(r->choice(prob)) {
-                //clog << "modfiy " << e.first << ":" << e.second << " mod = " << mod << endl;
                 foundEdge = e;
                 break;
             }
