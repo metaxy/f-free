@@ -10,7 +10,7 @@ public:
 
 protected:
     void extend(BoostGraph *graph);
-
+    void reduceByCount(BoostGraph *explore);
     int m_countIteration;
     int m_validChanges;
     int m_invalidChanges;

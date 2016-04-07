@@ -59,27 +59,17 @@ BoostGraph StateGrowReduceBoost::solve()
                     }
                 }
             }
-            if(!isValid(&explore)) {
+            this->reduceByCount(&explore);
+            /*if(!isValid(&explore)) {
                 for(Edge e : graph.difference(&explore)) {
                     explore.flip(e);
                     if(isValid(&explore)) break;
                 }
-            }
+            }*/
             graph = explore;
         } else if(reduceType == "count") {
-            for(auto forbidden : m_forbidden) {
-                vector<Edge> forbiddenEdges = forbidden->allEdges();
-                NodeMapping mapping = explore.subgraphIsoOne(forbidden);
-                while(!mapping.empty()) {
-                    Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
-                    int size_before = explore.subgraphIsoCountAll(forbidden);//this is very time expensive
-                    explore.flip(foundEdge);
-                    if(explore.subgraphIsoCountAll(forbidden) >=  size_before) {
-                        explore.flip(foundEdge);
-                    }
-                    mapping = explore.subgraphIsoOne(forbidden);
-                }
-            }
+            reduceByCount(&explore);
+            graph = explore;
         } else {
             clog << "false reducetype" << endl;
             exit(-1);
@@ -94,7 +84,7 @@ BoostGraph StateGrowReduceBoost::solve()
         if(m_input.difference(&graph).size() == 0)
             break;
     }
-    //this->reduce(&graph);
+
     if(timeLeft() > 1) {
         this->extend(&graph);
     }
@@ -111,7 +101,23 @@ void StateGrowReduceBoost::extend(BoostGraph *graph)
             graph->flip(e);
     }
 }
-
+void StateGrowReduceBoost::reduceByCount(BoostGraph *explore)
+{
+    for(auto forbidden : m_forbidden) {
+        vector<Edge> forbiddenEdges = forbidden->allEdges();
+        NodeMapping mapping = explore->subgraphIsoOne(forbidden);
+        while(!mapping.empty()) {
+            Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
+            int size_before = explore->subgraphIsoCountAll(forbidden);//this is very time expensive
+            explore->flip(foundEdge);
+            if(explore->subgraphIsoCountAll(forbidden) >=  size_before) {
+                explore->flip(foundEdge);
+            }
+            mapping = explore->subgraphIsoOne(forbidden);
+        }
+    }
+    return;
+}
 void StateGrowReduceBoost::final()
 {
 }
