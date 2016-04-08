@@ -78,7 +78,7 @@ def run_a_config(config, options, forbidden, instances)
       end
       
       metrics = get_metrics(run['k'], kcorrect)
-      if(metric == nil)
+      if(metrics == nil)
         puts run['log_output']
         puts run['result']
         exit(-1)
