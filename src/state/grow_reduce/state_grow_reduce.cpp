@@ -13,10 +13,12 @@ MGraph StateGrowReduce::solve()
         while(!isValid(&graph)) {
             this->reduce(&graph);
         }
-        assert(VF::subgraphIsoHasOne(&graph, m_forbidden) == false);
+        if(timeLeft() < 2)
+            break;
     }
-    assert(VF::subgraphIsoHasOne(&graph, m_forbidden) == false);
-    this->extend(&graph);
+    if(timeLeft() > 2) {
+        this->extend(&graph);
+    }
     return graph;
 }
 
