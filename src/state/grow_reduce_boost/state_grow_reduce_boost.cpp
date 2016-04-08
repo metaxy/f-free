@@ -62,33 +62,36 @@ BoostGraph StateGrowReduceBoost::solve()
             }
         }
         if(reduceType == "random") {
-            for(BoostGraph *forbidden : m_forbidden) {
-                for(int i = 0; i< 1000; i++) {
-                    NodeMapping mapping = explore.subgraphIsoOne(forbidden);
-                    if(mapping.empty()) {
-                         break;
-                    }
+            while(isValid(&explore)) {
+                for(BoostGraph *forbidden : m_forbidden) {
+                    for(int i = 0; i< 1000; i++) {
+                        NodeMapping mapping = explore.subgraphIsoOne(forbidden);
+                        if(mapping.empty()) {
+                             break;
+                        }
 
-                    for(int i = 0; i < forbidden->allEdges().size(); i++) {
-                        Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
-                        if(modified.find(e) == modified.end()) {
-                            explore.flip(e);
-                            modified[e] = 1;
-                            break;
+                        for(int i = 0; i < forbidden->allEdges().size(); i++) {
+                            Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
+                            if(modified.find(e) == modified.end()) {
+                                explore.flip(e);
+                                modified[e] = 1;
+                                break;
+                            }
                         }
                     }
                 }
-            }
-            this->reduceByCount(&explore);
-            /*if(!isValid(&explore)) {
+                this->reduceByCount(&explore);
+             }
+            if(!isValid(&explore)) {
                 for(Edge e : graph.difference(&explore)) {
                     explore.flip(e);
                     if(isValid(&explore)) break;
                 }
-            }*/
+            }
             graph = explore;
         } else if(reduceType == "count") {
-            reduceByCount(&explore);
+            while(!isValid(&explore))
+                reduceByCount(&explore);
             graph = explore;
         } else {
             clog << "false reducetype" << endl;
@@ -99,9 +102,6 @@ BoostGraph StateGrowReduceBoost::solve()
             clog << "isomorhisms: " << graph.subgraphIsoCountAll(forbidden) << endl;
         }*/
         if(timeLeft() < 2)
-            break;
-
-        if(m_input.difference(&graph).size() == 0)
             break;
     }
 

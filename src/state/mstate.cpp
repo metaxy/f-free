@@ -12,7 +12,7 @@ MGraph MState::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/albert_barabasi/n_10_m_3.txt";
+        fileName = "../model/bio1/n_0005_nr_0629.txt";
     }
     return MGraph(Common::graphFromFile(fileName));
 }
@@ -20,7 +20,7 @@ vector<MGraph> MState::getForbidden()
 {
     string folder = m_config["forbidden"];
     if(folder.empty()) {
-        folder = "../forbidden/p5_c5";
+        folder = "../forbidden/splitcluster";
     }
     vector<string> files = Common::listFiles(folder);
     vector<MGraph> ret;
@@ -53,7 +53,7 @@ VGraph* MState::solveMultiple(int count)
     this->final();
     cout << "#k: " << bestSize << endl;
     cout << "#debug: " << debug() << endl;
-
+    assert(VF::subgraphIsoHasOne(&bestSolved, m_forbidden) == false);
     bestSolved.printEdges(bestEdges);
     cout << "#k_repeat: " << bestSize << endl;
     return new MGraph(bestSolved);

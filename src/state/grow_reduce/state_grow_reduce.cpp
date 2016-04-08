@@ -10,9 +10,12 @@ MGraph StateGrowReduce::solve()
     vector<NodeT> nodes = r->randomVector(m_input.nodes());
     for(NodeT node: nodes) {
         this->grow(&graph, node);
-        this->reduce(&graph);
-         if(m_input.difference(&graph).size() == 0) break;
+        while(!isValid(&graph)) {
+            this->reduce(&graph);
+        }
+        assert(VF::subgraphIsoHasOne(&graph, m_forbidden) == false);
     }
+    assert(VF::subgraphIsoHasOne(&graph, m_forbidden) == false);
     this->extend(&graph);
     return graph;
 }
@@ -28,6 +31,7 @@ void StateGrowReduce::grow(MGraph *graph, NodeT node)
 
 void StateGrowReduce::reduce(MGraph *graph)
 {
+    clog << "start reduce" << endl;
     for(auto forbidden : m_forbidden) {
         vector<Edge> forbiddenEdges = forbidden.allEdges();
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);

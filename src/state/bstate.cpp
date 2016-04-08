@@ -51,7 +51,7 @@ VGraph* BState::solveMultiple(int count)
     this->final();
     cout << "#k: " << bestSize << endl;
     cout << "#debug: " << debug() << endl;
-
+    assert(bestSolved.subgraphIsoHasOne(m_forbidden) == false);
     bestSolved.printEdges(bestEdges);
     cout << "#k_repeat: " << bestSize << endl;
     return new BoostGraph(bestSolved);

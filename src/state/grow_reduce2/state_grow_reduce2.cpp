@@ -18,7 +18,6 @@ MGraph StateGrowReduce2::solve()
         //simBefore = sim;
         //this->reduce(&graph);
         this->extend(&graph);
-        if(m_input.difference(&graph).size() == 0) break;
     }
     this->extend(&graph);
     return graph;

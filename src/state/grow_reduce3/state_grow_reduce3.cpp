@@ -21,11 +21,10 @@ MGraph StateGrowReduce3::solve()
             Edge e(n, node);
             graph.setConnected(e, m_input.connected(e));
         }
-
-        this->reduce(&graph);
+        while(!isValid(&graph)) {
+            this->reduce(&graph);
+        }
         if(timeLeft() < 2) break;
-        if(m_input.difference(&graph).size() == 0)
-            break;
     }
     if(timeLeft() < 2) return graph;
     this->extend(&graph);
