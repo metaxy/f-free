@@ -5,6 +5,7 @@
 #include <set>
 #include <vector>
 #include "common.h"
+#include "src/graph/boostgraph.h"
 using namespace std;
 class Randomize
 {
@@ -17,6 +18,7 @@ public:
     NodeT randomElement(set<NodeT> a);
     vector<NodeT> randomVector(vector<NodeT> a);
     vector<Edge> randomVector(vector<Edge> a);
+    vector<BoostGraph*> randomVector(vector<BoostGraph*> a);
     std::random_device m_rseed;
     std::mt19937 m_rgen;
 

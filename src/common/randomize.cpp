@@ -49,4 +49,8 @@ vector<NodeT> Randomize::randomVector(vector<NodeT> a)
     std::shuffle(std::begin(a), std::end(a), std::default_random_engine(m_rseed()));
     return a;
 }
-
+vector<BoostGraph*> Randomize::randomVector(vector<BoostGraph*> a)
+{
+    std::shuffle(std::begin(a), std::end(a), std::default_random_engine(m_rseed()));
+    return a;
+}

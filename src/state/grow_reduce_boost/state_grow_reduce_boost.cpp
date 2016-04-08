@@ -63,7 +63,7 @@ BoostGraph StateGrowReduceBoost::solve()
         }
         if(reduceType == "random") {
             while(isValid(&explore)) {
-                for(BoostGraph *forbidden : m_forbidden) {
+                for(BoostGraph *forbidden : r->randomVector(m_forbidden)) {
                     for(int i = 0; i< 1000; i++) {
                         NodeMapping mapping = explore.subgraphIsoOne(forbidden);
                         if(mapping.empty()) {
@@ -123,7 +123,7 @@ void StateGrowReduceBoost::extend(BoostGraph *graph)
 }
 void StateGrowReduceBoost::reduceByCount(BoostGraph *explore)
 {
-    for(auto forbidden : m_forbidden) {
+    for(auto forbidden :  r->randomVector(m_forbidden)) {
         vector<Edge> forbiddenEdges = forbidden->allEdges();
         NodeMapping mapping = explore->subgraphIsoOne(forbidden);
         while(!mapping.empty()) {
