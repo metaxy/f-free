@@ -11,7 +11,7 @@ BoostGraph BState::getInput()
 {
     string fileName = m_config["input"];
     if(fileName.empty()) {
-        fileName = "../model/bio1/n_0094_nr_0676.txt";
+        fileName = "../model/bio1/n_0006_nr_1499.txt";
     }
     return BoostGraph(Common::graphFromFile(fileName));
 }
@@ -19,7 +19,7 @@ vector<BoostGraph*> BState::getForbidden()
 {
     string folder = m_config["forbidden"];
     if(folder.empty()) {
-        folder = "../forbidden/p5_c5";
+        folder = "../forbidden/triangle";
     }
     vector<string> files = Common::listFiles(folder);
     vector<BoostGraph*> ret;

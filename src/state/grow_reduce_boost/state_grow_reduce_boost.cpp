@@ -62,7 +62,7 @@ BoostGraph StateGrowReduceBoost::solve()
             }
         }
         if(reduceType == "random") {
-            while(isValid(&explore)) {
+            while(!isValid(&explore)) {
                 for(BoostGraph *forbidden : r->randomVector(m_forbidden)) {
                     for(int i = 0; i< 1000; i++) {
                         NodeMapping mapping = explore.subgraphIsoOne(forbidden);
