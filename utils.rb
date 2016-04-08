@@ -35,7 +35,7 @@ end
 
 
 def run_ffree(name, input, forbidden, timeout, seed)
-  cmd = "/usr/bin/time -f '#{$JSON_TIME}' --output '#{$TMP_FILE}.time' timeout  #{timeout}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --time #{timeout} --seed #{seed} 2>#{$TMP_FILE}.log"
+  cmd = "/usr/bin/time -f '#{$JSON_TIME}' --output '#{$TMP_FILE}.time' timeout  #{timeout.to_i*2}s #{$BIN_PATH}/ffree_#{name} --input '#{input}' --forbidden '#{forbidden}' --time #{timeout} --seed #{seed} 2>#{$TMP_FILE}.log"
   start = Time.now
   ret = `#{cmd}`
   finish = Time.now
