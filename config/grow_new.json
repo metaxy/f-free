@@ -1,6 +1,6 @@
 {
   "instances" : ["./model/bio1"],
-  "forbidden" : ["./forbidden/triangle", "./forbidden/splitcluster", "./forbidden/cluster", "./forbidden/cograph", "./forbidden/x172_triangle"],
+  "forbidden" : ["./forbidden/splitcluster", "./forbidden/cluster", "./forbidden/cograph", "./forbidden/x172_triangle",  "./forbidden/triangle"],
   "progs" : [
     "grow_reduce3",
     "grow_reduce", 
