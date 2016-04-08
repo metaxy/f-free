@@ -6,9 +6,11 @@ StateGrowReduceBoost::StateGrowReduceBoost(Config conf) : BState(conf), m_countI
 BoostGraph StateGrowReduceBoost::solve()
 {
     BoostGraph graph(m_input);
+    if(isValid(&graph)) return graph;
     graph.clear();
     string sortType = this->getString("sort", "hits");
     string reduceType = this->getString("reduce", "random");
+    string reduceFinalType = this->getString("reduceFinal", "count");
     vector<NodeT> nodes;
     if(sortType == "random") {
         nodes = r->randomVector(m_input.nodes());
@@ -80,14 +82,20 @@ BoostGraph StateGrowReduceBoost::solve()
                         }
                     }
                 }
-                this->reduceByCount(&explore);
-             }
-            if(!isValid(&explore)) {
-                for(Edge e : graph.difference(&explore)) {
-                    explore.flip(e);
-                    if(isValid(&explore)) break;
+                if(reduceFinalType == "revert") {
+                    if(!isValid(&explore)) {
+                        for(Edge e : graph.difference(&explore)) {
+                            explore.flip(e);
+                            if(isValid(&explore)) break;
+                        }
+                    }
+                } else if(reduceFinalType == "count"){
+                    this->reduceByCount(&explore);
+                } else {
+                    clog << "wrong reduceFinalType" << endl;
+                    exit(-1);
                 }
-            }
+             }
             graph = explore;
         } else if(reduceType == "count") {
             while(!isValid(&explore))
@@ -105,7 +113,7 @@ BoostGraph StateGrowReduceBoost::solve()
             break;
     }
 
-    if(timeLeft() > 1) {
+    if(timeLeft() > 2) {
         this->extend(&graph);
     }
     return graph;

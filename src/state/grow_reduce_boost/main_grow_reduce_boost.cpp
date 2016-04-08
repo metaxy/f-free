@@ -1,7 +1,7 @@
 #include "state_grow_reduce_boost.h"
 int main(int argc, char* argv[])
 {
-    vector<string> options = {"input", "forbidden", "rounds", "seed", "reduce", "time", "sort"};
+    vector<string> options = {"input", "forbidden", "rounds", "seed", "reduce", "time", "sort", "reduceFinal"};
     Config conf = Common::parseConfigOptions(argc, argv, options);
     StateGrowReduceBoost state(conf);
     state.solveMultiple(Common::getInt(&conf, "rounds", 1));

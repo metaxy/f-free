@@ -8,6 +8,7 @@ MGraph StateGrowReduce::solve()
     MGraph graph(m_input);
     graph.clear();
     vector<NodeT> nodes = r->randomVector(m_input.nodes());
+    if(isValid(&graph)) return graph;
     for(NodeT node: nodes) {
         this->grow(&graph, node);
         while(!isValid(&graph)) {

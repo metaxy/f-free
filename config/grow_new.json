@@ -4,11 +4,13 @@
   "progs" : [
     "grow_reduce3",
     "grow_reduce", 
-    "grow_reduce_boost --sort random",
     "grow_reduce_boost --sort neighbors",
     "grow_reduce_boost --sort neighbors_rev",
     "grow_reduce_boost --sort hits_rev",
-    "grow_reduce_boost --sort hits"
+    "grow_reduce_boost --sort hits",
+    "grow_reduce_boost --sort random --reduce count",
+    "grow_reduce_boost --sort random --reduce random --reduceFinal count",
+    "grow_reduce_boost --sort random --reduce random --reduceFinal revert",
   ],
   "seed" : 5489,
   "max_time" : 10
