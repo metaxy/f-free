@@ -10,7 +10,7 @@
     "grow_reduce_boost --sort hits",
     "grow_reduce_boost --sort random --reduce count",
     "grow_reduce_boost --sort random --reduce random --reduceFinal count",
-    "grow_reduce_boost --sort random --reduce random --reduceFinal revert",
+    "grow_reduce_boost --sort random --reduce random --reduceFinal revert"
   ],
   "seed" : 5489,
   "max_time" : 10
