@@ -123,6 +123,10 @@ def get_metrics(k, kcorrect)
       "k_correct" => kcorrect
     }
   else
+    if(k < kcorrect)
+      puts "return #{k} but correct is #{kcorrect}"
+      return nil
+    end
     if(kcorrect != 0)
       qual = kcorrect.to_f / k.to_f
       qual_inv = k.to_f / kcorrect.to_f

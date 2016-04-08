@@ -76,7 +76,13 @@ def run_a_config(config, options, forbidden, instances)
       if(output['results'][graph].nil?)
         output['results'][graph] = []
       end
+      
       metrics = get_metrics(run['k'], kcorrect)
+      if(metric == nil)
+        puts run['log_output']
+        puts run['result']
+        exit(-1)
+      end
       metrics["time"] = run['run_time']
       output['results'][graph] << {
         "prog" => prog,

@@ -65,6 +65,8 @@ BoostGraph StateGrowReduceBoost::solve()
         }
         if(reduceType == "random") {
             while(!isValid(&explore)) {
+                if(timeLeft() < 1)
+                    return graph;
                 for(BoostGraph *forbidden : r->randomVector(m_forbidden)) {
                     for(int i = 0; i< 1000; i++) {
                         NodeMapping mapping = explore.subgraphIsoOne(forbidden);
@@ -80,6 +82,8 @@ BoostGraph StateGrowReduceBoost::solve()
                                 break;
                             }
                         }
+                        if(timeLeft() < 1)
+                            return graph;
                     }
                 }
                 if(reduceFinalType == "revert") {
@@ -87,10 +91,26 @@ BoostGraph StateGrowReduceBoost::solve()
                         for(Edge e : graph.difference(&explore)) {
                             explore.flip(e);
                             if(isValid(&explore)) break;
+                            if(timeLeft() < 1)
+                                return graph;
                         }
                     }
                 } else if(reduceFinalType == "count"){
-                    this->reduceByCount(&explore);
+                    for(auto forbidden :  r->randomVector(m_forbidden)) {
+                        vector<Edge> forbiddenEdges = forbidden->allEdges();
+                        NodeMapping mapping = explore.subgraphIsoOne(forbidden);
+                        while(!mapping.empty()) {
+                            Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
+                            int size_before = explore.subgraphIsoCountAll(forbidden);//this is very time expensive
+                            explore.flip(foundEdge);
+                            if(explore.subgraphIsoCountAll(forbidden) >=  size_before) {
+                                explore.flip(foundEdge);
+                            }
+                            if(timeLeft() < 1)
+                                return graph;
+                            mapping = explore.subgraphIsoOne(forbidden);
+                        }
+                    }
                 } else {
                     clog << "wrong reduceFinalType" << endl;
                     exit(-1);
