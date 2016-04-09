@@ -105,7 +105,7 @@ def get_debug(output)
   return {}      
 end
 
-def get_metrics(k, kcorrect)
+def get_metrics(k, kcorrect, graph_info)
   solved = k != -1
   if(solved == false)
     return {
@@ -137,10 +137,12 @@ def get_metrics(k, kcorrect)
     
     return {
       "absolut" => k,
+      "absolutNorm" => k/(nodeCount*nodeCount),
       "no_correct" => false,
       "quality" => qual,
       "quality_inv" => qual_inv,
       "distance" => k - kcorrect,
+      "distanceNorm" => (k - kcorrect)/(nodeCount*nodeCount),
       "solved" => true,
       "k_correct" => kcorrect
     

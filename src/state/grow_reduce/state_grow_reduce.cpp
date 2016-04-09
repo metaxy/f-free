@@ -6,9 +6,9 @@ StateGrowReduce::StateGrowReduce(Config conf) : MState(conf), m_countIteration(0
 MGraph StateGrowReduce::solve()
 {
     MGraph graph(m_input);
+    if(isValid(&graph)) return graph;
     graph.clear();
     vector<NodeT> nodes = r->randomVector(m_input.nodes());
-    if(isValid(&graph)) return graph;
     for(NodeT node: nodes) {
         this->grow(&graph, node);
         while(!isValid(&graph)) {

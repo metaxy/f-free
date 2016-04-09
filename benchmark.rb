@@ -51,6 +51,7 @@ def run_a_config(config, options, forbidden, instances)
   i = 0
           
   sols = JSON.parse(File.read("#{instances}/#{File.basename(forbidden)}.k.json"))
+  graph_info = JSON.parse(File.read("#{instances}/graph_info.json"))
   entries.each do |graph|
     current_file += 1
     
@@ -77,7 +78,7 @@ def run_a_config(config, options, forbidden, instances)
         output['results'][graph] = []
       end
       
-      metrics = get_metrics(run['k'], kcorrect)
+      metrics = get_metrics(run['k'], kcorrect, graph_info[graph])
       if(metrics == nil)
         puts run['log_output']
         puts run['result']
@@ -141,8 +142,11 @@ def calculate_stats(data)
     quality = hasOptimal.map{|a| a["quality"]}
     qualityInv = hasOptimal.map{|a| a["quality_inv"]}
     distance = hasOptimal.map{|a| a["distance"]}
+    distanceNorm = hasOptimal.map{|a| a["distanceNorm"]}
     absolut = metrics.map{|a| a["absolut"]}
+    absolutNorm = metrics.map{|a| a["absolutNorm"]}
     time = metrics.map{ |a| a["time"]}
+    
     
     wins = 0
     results.each do |result|
@@ -162,11 +166,15 @@ def calculate_stats(data)
       "quality" =>  quality.mean,
       "qualityStd" =>  quality.standard_deviation,
       "distance" =>  distance.mean,
+      "distanceNorm" =>  distanceNorm.mean,
       "distanceStd" =>  distance.standard_deviation,
+      "distanceNormStd" =>  distanceNorm.standard_deviation,
       "qualityInv" =>  qualityInv.mean,
       "qualityInvStd" =>  qualityInv.standard_deviation,
       "absolut" =>  absolut.mean,
+      "absolutNorm" =>  absolutNorm.mean,
       "absolutStd" =>  absolut.standard_deviation,
+      "absolutNormStd" =>  absolutNorm.standard_deviation,
       "time" => time.mean,
       "timeStd" => time.standard_deviation,
       "winning" => wins,
