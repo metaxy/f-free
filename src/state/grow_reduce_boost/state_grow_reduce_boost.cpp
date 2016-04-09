@@ -9,7 +9,7 @@ BoostGraph StateGrowReduceBoost::solve()
     if(isValid(&graph)) return graph;
     graph.clear();
     string sortType = this->getString("sort", "hits");
-    string reduceType = this->getString("reduce", "random");
+    string reduceType = this->getString("reduce", "count");
     string reduceFinalType = this->getString("reduceFinal", "count");
     vector<NodeT> nodes;
     if(sortType == "random") {
@@ -118,8 +118,23 @@ BoostGraph StateGrowReduceBoost::solve()
              }
             graph = explore;
         } else if(reduceType == "count") {
-            while(!isValid(&explore))
-                reduceByCount(&explore);
+            while(!isValid(&explore)) {
+                for(auto forbidden :  r->randomVector(m_forbidden)) {
+                    vector<Edge> forbiddenEdges = forbidden->allEdges();
+                    NodeMapping mapping = explore.subgraphIsoOne(forbidden);
+                    while(!mapping.empty()) {
+                        Edge foundEdge = Common::transformEdge(r->randomElement(forbiddenEdges), &mapping);
+                        int size_before = explore.subgraphIsoCountAll(forbidden);//this is very time expensive
+                        explore.flip(foundEdge);
+                        if(explore.subgraphIsoCountAll(forbidden) >=  size_before) {
+                            explore.flip(foundEdge);
+                        }
+                        if(timeLeft() < 1)
+                            return graph;
+                        mapping = explore.subgraphIsoOne(forbidden);
+                    }
+                }
+            }
             graph = explore;
         } else {
             clog << "false reducetype" << endl;
