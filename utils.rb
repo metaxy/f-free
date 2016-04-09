@@ -106,6 +106,7 @@ def get_debug(output)
 end
 
 def get_metrics(k, kcorrect, graph_info)
+  nodeCount = graphInfo["nodeCount"]
   solved = k != -1
   if(solved == false)
     return {
