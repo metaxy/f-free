@@ -108,6 +108,11 @@ end
 def get_metrics(k, kcorrect, graph_info)
   nodeCount = graph_info["nodeCount"]
   solved = k != -1
+  n2 = 1
+  if(nodeCount != 0) 
+    n2 = nodeCount.to_f*nodeCount.to_f
+  end
+  
   if(solved == false)
     return {
       "k_correct" => kcorrect,
@@ -119,6 +124,7 @@ def get_metrics(k, kcorrect, graph_info)
   if(kcorrect == -1) # we have no correct result
     return {
       "absolut" => k,
+      "absolutNorm" => k.to_f/n2,
       "no_correct" => true,
       "solved" => true,
       "k_correct" => kcorrect
@@ -135,15 +141,15 @@ def get_metrics(k, kcorrect, graph_info)
       qual = 1
       qual_inv = 1
     end
-    
+  
     return {
       "absolut" => k,
-      "absolutNorm" => k/(nodeCount*nodeCount),
+      "absolutNorm" => k.to_f/n2,
       "no_correct" => false,
       "quality" => qual,
       "quality_inv" => qual_inv,
       "distance" => k - kcorrect,
-      "distanceNorm" => (k - kcorrect)/(nodeCount*nodeCount),
+      "distanceNorm" => (k.to_f - kcorrect.to_f)/n2,
       "solved" => true,
       "k_correct" => kcorrect
     
