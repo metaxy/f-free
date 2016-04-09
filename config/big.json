@@ -1,0 +1,33 @@
+{
+  "instances" : [
+  "./model/bio1",
+  "./model/albert_barabasi",
+  "./model/duplication_divergence",
+  "./model/bio2",
+  "./model/powerlaw"
+  ],
+  "forbidden" : [
+    "./forbidden/splitcluster", 
+    "./forbidden/cluster", 
+    "./forbidden/cograph", 
+    "./forbidden/x172_triangle",  
+    "./forbidden/p4_c4",
+    "./forbidden/split",
+    "./forbidden/k14_paw",
+    "./forbidden/2k2_c4_c5"
+    ],
+  "progs" : [
+    "extend",
+    "simple_random",
+    "random",
+    "grow_reduce3",
+    "grow_reduce", 
+    "grow_reduce_boost --sort neighbors",
+    "grow_reduce_boost --sort neighbors_rev",
+    "grow_reduce_boost --sort hits_rev",
+    "grow_reduce_boost --sort random",
+    "grow_reduce_boost --sort hits --reduce count"
+  ],
+  "seed" : 5489,
+  "max_time" : 10
+}
