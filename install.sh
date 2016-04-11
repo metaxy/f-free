@@ -5,7 +5,7 @@ tar xvjf boost_1_60_0.tar.bz2
 rm boost_1_60_0.tar.bz2
 cd boost_1_60_0/
 ls -la
-./boostrap.sh
+./bootstrap.sh
 ./b2
 cd ../../
 mkdir build
