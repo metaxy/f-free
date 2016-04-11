@@ -3,8 +3,8 @@
 #include "src/graph/vgraph.h"
 #include "src/common/common.h"
 
-#include "src/boost_1_55_0/boost/graph/adjacency_list.hpp"
-#include "src/boost_1_55_0/boost/graph/vf2_sub_graph_iso.hpp"
+#include "src/boost_1_60_0/boost/graph/adjacency_list.hpp"
+#include "src/boost_1_60_0/boost/graph/vf2_sub_graph_iso.hpp"
 
 typedef boost::adjacency_list<boost::setS, boost::vecS, boost::undirectedS> boost_graph_type;
 class BoostGraph : public VGraph
