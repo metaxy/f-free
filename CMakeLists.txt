@@ -4,10 +4,6 @@ find_path(
     GUROBI_PATH include/gurobi_c++.h
     PATHS ~/bin/gurobi650/linux64/ /home/users/w/walger/irb-ubuntu/cluster/gruppe1/gurobi
 )
-set(Boost_USE_STATIC_LIBS OFF)
-set(Boost_USE_MULTITHREADED ON)
-set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.50.0 COMPONENTS graph)
 
 option(test "Build all tests." OFF)
 
@@ -86,11 +82,10 @@ add_library(
     ${vflib_INCLUDE}
 )
 
-include_directories(lib/vflib/include/ ${Boost_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(lib/vflib/include/ ${CMAKE_CURRENT_SOURCE_DIR})
 set(
   ffree_LIBS
   vflib
-  ${Boost_LIBRARIES}
 )
 
 ADD_DEFINITIONS(
