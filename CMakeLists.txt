@@ -82,7 +82,7 @@ add_library(
     ${vflib_INCLUDE}
 )
 
-include_directories(lib/vflib/include/ ${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(lib/vflib/include/ ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/src/boost_1_60_0/ ${CMAKE_CURRENT_SOURCE_DIR}/src/boost_1_60_0/boost/ ${CMAKE_CURRENT_SOURCE_DIR}/src/)
 set(
   ffree_LIBS
   vflib
