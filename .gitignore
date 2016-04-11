@@ -7,5 +7,5 @@ model/cluster_very_small/cluster.k.json
 model/easy/
 model/easy2/
 model/some/
-src/boost_1_60_0/
+src/boost_*
 
