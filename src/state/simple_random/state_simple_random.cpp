@@ -4,23 +4,24 @@ StateSimpleRandom::StateSimpleRandom(Config conf) : BState(conf), m_countSteps(0
 }
 BoostGraph StateSimpleRandom::solve()
 {
-    clog << "solve" << endl;
     BoostGraph graph(m_input);
     map<Edge,int> modified;
-    for(BoostGraph *forbidden : m_forbidden) {
-        while(true) {
-            m_countSteps++;
-            NodeMapping mapping = graph.subgraphIsoOne(forbidden);
-            if(mapping.empty()) {
-                 break;
-            }
+    while(!isValid(&graph)) {
+        for(BoostGraph *forbidden : m_forbidden) {
+            while(true) {
+                m_countSteps++;
+                NodeMapping mapping = graph.subgraphIsoOne(forbidden);
+                if(mapping.empty()) {
+                     break;
+                }
 
-            for(int i = 0; i < forbidden->allEdges().size(); i++) {
-                Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
-                if(modified.find(e) == modified.end()) {
-                    graph.flip(e);
-                    modified[e] = 1;
-                    break;
+                for(int i = 0; i < forbidden->allEdges().size(); i++) {
+                    Edge e = Common::transformEdge(r->randomElement(forbidden->allEdges()), &mapping);
+                    if(modified.find(e) == modified.end()) {
+                        graph.flip(e);
+                        modified[e] = 1;
+                        break;
+                    }
                 }
             }
         }

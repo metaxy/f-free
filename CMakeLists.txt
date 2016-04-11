@@ -5,6 +5,12 @@ find_path(
     PATHS ~/bin/gurobi650/linux64/ /home/users/w/walger/irb-ubuntu/cluster/gruppe1/gurobi
 )
 
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+set(BOOST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src/boost_1_60_0/)
+find_package(Boost 1.60.0 COMPONENTS graph)
+
 option(test "Build all tests." OFF)
 
 set( ffree_SRCS
@@ -82,10 +88,11 @@ add_library(
     ${vflib_INCLUDE}
 )
 
-include_directories(lib/vflib/include/ ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/src/boost_1_60_0/ ${CMAKE_CURRENT_SOURCE_DIR}/src/boost_1_60_0/boost/ ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+include_directories(lib/vflib/include/  ${Boost_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/src/boost_1_60_0/ ${CMAKE_CURRENT_SOURCE_DIR}/src/boost_1_60_0/boost/ ${CMAKE_CURRENT_SOURCE_DIR}/src/)
 set(
   ffree_LIBS
   vflib
+  ${Boost_LIBRARIES}
 )
 
 ADD_DEFINITIONS(
