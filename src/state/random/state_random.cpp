@@ -7,8 +7,10 @@ StateRandom::StateRandom(Config conf) : MState(conf), m_countSteps(0)
 MGraph StateRandom::solve()
 {
     MGraph input(m_input);
-    for(MGraph needle : m_forbidden) {
-        input = this->solveSingle(input, needle);
+    while(!isValid(&input)) {
+        for(MGraph needle : m_forbidden) {
+            input = this->solveSingle(input, needle);
+        }
     }
     return input;
 }
