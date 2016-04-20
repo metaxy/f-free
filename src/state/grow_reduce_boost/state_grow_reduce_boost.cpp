@@ -46,7 +46,6 @@ BoostGraph StateGrowReduceBoost::solve()
     }
     set<NodeT> explored;
     map<Edge,int> modified;
-    clog << nodes.size() << endl;
     for(NodeT node: nodes) {
         explored.insert(node);
 
@@ -140,10 +139,6 @@ BoostGraph StateGrowReduceBoost::solve()
             clog << "false reducetype" << endl;
             exit(-1);
         }
-        /*clog << "modified " << modified.size() << endl;
-        for(BoostGraph *forbidden : m_forbidden) {
-            clog << "isomorhisms: " << graph.subgraphIsoCountAll(forbidden) << endl;
-        }*/
         if(timeLeft() < 2)
             break;
     }
@@ -156,7 +151,6 @@ BoostGraph StateGrowReduceBoost::solve()
 
 void StateGrowReduceBoost::extend(BoostGraph *graph)
 {
-    clog << "extend" << endl;
     for(Edge e : m_input.difference(graph)) {
         if(timeLeft() < 0.1) return;
         graph->flip(e);

@@ -1,7 +1,14 @@
 {
-  "instances" : ["./model/bio1", "./model/bio2"],
+   "instances" : [
+    "./model/bio1",
+    "./model/bio2", 
+    "./model/duplication_divergence",
+    "./model/newman_watts_strogatz",
+    "./model/albert_barabasi",
+    "./model/binomial",
+  ],
   "forbidden" : [ "./forbidden/cluster"],
-  "progs" : ["approx2k", "extend --rounds 2", "grow_reduce3 --rounds 5"],
+  "progs" : ["approx2k", "grow_reduce_boost --rounds 5"],
   "seed" : 5489,
   "max_time" : 30
 }

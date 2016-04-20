@@ -51,7 +51,6 @@ void State::final()
 float State::timeLeft() const
 {
     float time = float( clock () - m_begin_time ) /  CLOCKS_PER_SEC;
-    clog << "time left:" << m_hasTime - time << endl;
     return m_hasTime - time;
 }
 float State::timePerIteration() const
