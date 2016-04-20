@@ -1,10 +1,5 @@
 {
    "instances" : [
-    "./model/bio1",
-    "./model/bio2", 
-    "./model/duplication_divergence",
-    "./model/newman_watts_strogatz",
-    "./model/albert_barabasi",
     "./model/binomial"
   ],
   "forbidden" : [ "./forbidden/cluster"],
