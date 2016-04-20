@@ -3,7 +3,7 @@
     "./model/bio1",
     "./model/bio2", 
     "./model/UCINetworkDataRepository",
-    "./model/duplication_divergence",
+    "./model/duplication_divergence"
   ],
   "forbidden" : [ "./forbidden/p4_c4"],
   "progs" : ["grow_reduce_boost", "mover"],
