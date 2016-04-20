@@ -5,7 +5,7 @@
     "./model/duplication_divergence",
     "./model/newman_watts_strogatz",
     "./model/albert_barabasi",
-    "./model/binomial",
+    "./model/binomial"
   ],
   "forbidden" : [ "./forbidden/cluster"],
   "progs" : ["approx2k", "grow_reduce_boost --rounds 5"],
