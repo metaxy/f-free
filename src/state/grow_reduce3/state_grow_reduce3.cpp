@@ -39,7 +39,6 @@ void StateGrowReduce3::grow(MGraph *graph, NodeT node)
 
 void StateGrowReduce3::reduce(MGraph *graph)
 {
-    clog << "reduce" << endl;
     for(auto forbidden : m_forbidden) {
         vector<Edge> forbiddenEdges = forbidden.allEdges();
         NodeMapping mapping = VF::subgraphIsoOne(graph, &forbidden);
@@ -70,7 +69,6 @@ void StateGrowReduce3::reduceSimple(MGraph *graph)
 }
 void StateGrowReduce3::extend(MGraph *graph)
 {
-    clog << "extend" << endl;
     if(timeLeft() < 1.5) return;
 
     for(Edge e : m_input.difference(graph)) {
