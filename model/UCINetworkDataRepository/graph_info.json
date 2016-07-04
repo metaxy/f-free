@@ -1,0 +1,74 @@
+{
+  "karate.txt": {
+    "avgDegree": 2.2941176470588234,
+    "density": 0.13903743315508021,
+    "edgeCount": 78,
+    "maxDegree": 17,
+    "minDegree": 1,
+    "nodeCount": 34
+  },
+  "polbooks.paj.txt": {
+    "avgDegree": 4.2,
+    "density": 0.08076923076923077,
+    "edgeCount": 441,
+    "maxDegree": 25,
+    "minDegree": 2,
+    "nodeCount": 105
+  },
+  "power.paj.txt": {
+    "avgDegree": 1.334547662416515,
+    "density": 0.0005403026973346214,
+    "edgeCount": 6594,
+    "maxDegree": 19,
+    "minDegree": 1,
+    "nodeCount": 4941
+  },
+  "football.txt": {
+    "avgDegree": 5.3304347826086955,
+    "density": 0.0935163996948894,
+    "edgeCount": 613,
+    "maxDegree": 12,
+    "minDegree": 7,
+    "nodeCount": 115
+  },
+  "lesmiserables.txt": {
+    "avgDegree": 3.2987012987012987,
+    "density": 0.08680792891319207,
+    "edgeCount": 254,
+    "maxDegree": 36,
+    "minDegree": 1,
+    "nodeCount": 77
+  },
+  "adjnoun.txt": {
+    "avgDegree": 3.794642857142857,
+    "density": 0.06837194337194337,
+    "edgeCount": 425,
+    "maxDegree": 49,
+    "minDegree": 1,
+    "nodeCount": 112
+  },
+  "celegansneural.paj.txt": {
+    "avgDegree": 7.232323232323233,
+    "density": 0.048867048867048866,
+    "edgeCount": 2148,
+    "maxDegree": 134,
+    "minDegree": 1,
+    "nodeCount": 297
+  },
+  "dolphins.txt": {
+    "avgDegree": 2.564516129032258,
+    "density": 0.08408249603384453,
+    "edgeCount": 159,
+    "maxDegree": 12,
+    "minDegree": 1,
+    "nodeCount": 62
+  },
+  "polblogs.paj.txt": {
+    "avgDegree": 13.658496732026144,
+    "density": 0.022336053527434414,
+    "edgeCount": 16718,
+    "maxDegree": 351,
+    "minDegree": 1,
+    "nodeCount": 1224
+  }
+}

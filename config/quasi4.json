@@ -1,0 +1,9 @@
+{
+  "instances" : [
+    "./model/UCINetworkDataRepository",
+  ],
+  "forbidden" : [ "./forbidden/p4_c4"],
+  "progs" : ["grow_reduce_boost", "mover"],
+  "seed" : 5489,
+  "max_time" : 120
+}
